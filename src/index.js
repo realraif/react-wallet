@@ -3,11 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import { LayoutProvider }  from './context/LayoutContext';
 
 ReactDOM.render(
-  <React.StrictMode>
+  <LayoutProvider>
     <App />
-  </React.StrictMode>,
+  </LayoutProvider>,
   document.getElementById('root')
 );
 
