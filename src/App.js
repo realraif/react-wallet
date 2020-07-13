@@ -1,29 +1,27 @@
-import React, { useContext } from 'react';
-import logo from './logo.svg';
-import './App.css';
-import LayoutContext from './context/LayoutContext';
+import React from "react";
+
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+import PrivateRoute from './PrivateRoute';
+import Login from './pages/login/Login';
+import Layout from './components/layout/Layout'
 
 function App() {
-  const layoutContext = useContext(LayoutContext);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <button onClick={layoutContext.toggleSidebar}>toggle</button>
-        {layoutContext.isSidebarOpened ? 'open' : 'closed'}
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Switch>
+        <Route exact path="/" render={() => <Redirect to="/app/dashboard" />} />
+        <Route
+          exact
+          path="/app"
+          render={() => <Redirect to="/app/dashboard" />}
+        />
+        {/* <PrivateRoute path="/app" component={Layout} /> */}
+        <Route path="/app" component={Layout} />
+        <Route path="/login" component={Login} />
+        <Route component={Error} />
+      </Switch>
+    </BrowserRouter>
   );
 }
 
