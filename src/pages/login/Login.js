@@ -9,8 +9,7 @@ const Login = ({ history }) => {
       event.preventDefault();
       const { email, password } = event.target.elements;
       try {
-        await firebase
-          .auth()
+        await firebase.auth()
           .signInWithEmailAndPassword(email.value, password.value);
         history.push("/");
       } catch (error) {
