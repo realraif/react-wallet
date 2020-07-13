@@ -5,19 +5,20 @@ export const UserContext = React.createContext();
 
 export const UserProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
-  const [pending, setPending] = useState(true);
+  const [isPending, setIsPending] = useState(true);
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
       setCurrentUser(user)
-      setPending(false)
+      setIsPending(false)
     });
   }, []);
   
   return (
     <UserContext.Provider
       value={{
-        currentUser
+        currentUser,
+        isPending
       }}
     >
       {children}

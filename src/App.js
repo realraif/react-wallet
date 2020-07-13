@@ -17,8 +17,7 @@ function App() {
           path="/app"
           render={() => <Redirect to="/app/dashboard" />}
         />
-        {/* <PrivateRoute path="/app" component={Layout} /> */}
-        <Route path="/app" component={Layout} />
+        <PrivateRoute path="/app" component={Layout} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={SignUp} />
         <Route component={Error} />
