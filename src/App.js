@@ -2,8 +2,8 @@ import React from "react";
 
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import PrivateRoute from './PrivateRoute';
-import Login from './pages/login/Login';
-import Layout from './components/layout/Layout'
+import Login from './pages/Login/Login';
+import Layout from './components/Layout/Layout'
 
 function App() {
 
