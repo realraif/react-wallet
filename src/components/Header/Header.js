@@ -1,8 +1,10 @@
 import React, { useCallback, useContext } from "react";
 import { withRouter } from "react-router";
+import firebase from "../../firebase.js";
 import { UserContext } from "../../context/UserContext";
 
-import firebase from "../../firebase.js";
+import Styles from './Header.module.css';
+
 
 const Header = ( { history } ) => {
   const logtout = useCallback(async event => {
@@ -18,7 +20,7 @@ const Header = ( { history } ) => {
   const { currentUser } = useContext(UserContext);
 
   return(
-    <div>
+    <div className={Styles.Header}>
       {currentUser.email}
       <button onClick={logtout}>Logout</button>
     </div>

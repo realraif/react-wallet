@@ -8,6 +8,7 @@ import {
 // components
 import Header from "../Header/Header";
 import Sidebar from "../Sidebar/Sidebar";
+import Styles from './Layout.module.css'
 
 // pages
 import Dashboard from "../../pages/Dashboard/Dashboard";
@@ -15,12 +16,14 @@ import Dashboard from "../../pages/Dashboard/Dashboard";
 function Layout(props) {
 
   return (
-    <div>
+    <div className={Styles.Layout}>
       <Header/>
       <Sidebar />
-      <Switch>
-        <Route path="/app/dashboard" component={Dashboard} />
-      </Switch>
+      <div className={Styles.Content}>
+        <Switch>
+          <Route path="/app/dashboard" component={Dashboard} />
+        </Switch>
+      </div>
     </div>
   );
 }
