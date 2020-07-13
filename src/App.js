@@ -20,7 +20,7 @@ function App() {
         <PrivateRoute path="/app" component={Layout} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={SignUp} />
-        <Route component={Error} />
+        <Redirect to='/app' />
       </Switch>
     </BrowserRouter>
   );

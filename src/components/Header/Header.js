@@ -16,7 +16,6 @@ const Header = ( { history } ) => {
   }, [history]);
 
   const { currentUser } = useContext(UserContext);
-  console.log(currentUser.email);
 
   return(
     <div>
