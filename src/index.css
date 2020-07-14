@@ -11,6 +11,8 @@ body {
 
 button {
   color: #979797;
+  outline: 0;
+  cursor: pointer;
 }
 
 code {

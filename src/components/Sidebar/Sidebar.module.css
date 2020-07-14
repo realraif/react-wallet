@@ -12,3 +12,24 @@
   border-bottom: 1px solid #E5E5E5;
   box-sizing: border-box;
 }
+
+.Menu {
+  margin-top: 50px;
+  text-align: center;
+}
+
+.MenuButton {
+  width: 215px;
+  height: 50px;
+  text-transform: uppercase;
+  text-align: left;
+  padding: 0 15px;
+  border: 0;
+  border-radius: 2px;
+  color: white;
+  background-color: transparent;
+}
+
+.MenuButton:hover {
+  background-color: #8c8b8b8c;
+}
