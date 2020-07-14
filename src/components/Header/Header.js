@@ -4,6 +4,7 @@ import firebase from "../../firebase.js";
 import { UserContext } from "../../context/UserContext";
 
 import Styles from './Header.module.css';
+import Button from '../Buttons/HeaderButton/HeaderButton'
 
 
 const Header = ( { history } ) => {
@@ -21,8 +22,14 @@ const Header = ( { history } ) => {
 
   return(
     <div className={Styles.Header}>
-      {currentUser.email}
-      <button onClick={logtout}>Logout</button>
+      <div>
+        left
+      </div>
+      <div>
+        right
+        {currentUser.email}
+        <Button onClick={logtout}>Logout</Button>
+      </div>
     </div>
   );
 };
