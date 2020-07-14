@@ -7,7 +7,7 @@ import Styles from './Header.module.css';
 import Button from '../Buttons/HeaderButton/HeaderButton'
 
 
-const Header = ( { history } ) => {
+const Header = ( { history, title } ) => {
   const logtout = useCallback(async event => {
     event.preventDefault();
     try {
@@ -23,7 +23,9 @@ const Header = ( { history } ) => {
   return(
     <div className={Styles.Header}>
       <div>
-        left
+        <div className={Styles.Title}>
+          {title}
+        </div>
       </div>
       <div className={Styles.LeftSide}>
         {currentUser.email}
