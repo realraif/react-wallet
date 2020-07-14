@@ -25,10 +25,9 @@ const Header = ( { history } ) => {
       <div>
         left
       </div>
-      <div>
-        right
+      <div className={Styles.LeftSide}>
         {currentUser.email}
-        <Button onClick={logtout}>Logout</Button>
+        <Button onClick={logtout}>Log out</Button>
       </div>
     </div>
   );
