@@ -11,6 +11,22 @@
   height: 60px;
   border-bottom: 1px solid #E5E5E5;
   box-sizing: border-box;
+  display: flex;
+  align-items: flex-end;
+}
+
+.Logo {
+  margin: auto;
+  width: 215px;
+  padding: 0 15px;
+  box-sizing: border-box;
+}
+
+.Logo .Title {
+  font-size: 25px;
+  font-weight: 200;
+  color: white;
+  letter-spacing: 3px;
 }
 
 .Menu {
@@ -28,6 +44,8 @@
   border-radius: 2px;
   color: white;
   background-color: transparent;
+  font-size: 14px;
+  font-weight: bold;
 }
 
 .MenuButton:hover {

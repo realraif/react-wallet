@@ -7,7 +7,11 @@ import styles from "./Sidebar.module.css";
 const Sidebar = (props) => {
   return (
     <div className={styles.Sidebar}>
-      <div className={styles.LogoContainer}></div>
+      <div className={styles.LogoContainer}>
+        <div className={styles.Logo}>
+          <div className={styles.Title}>WALLET</div>
+        </div>
+      </div>
       <div className={styles.Menu}>
         {routes.map((route) => (
           <Link to={route.path} activeClassName="active">
