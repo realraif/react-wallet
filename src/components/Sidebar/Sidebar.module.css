@@ -20,6 +20,8 @@
   width: 215px;
   padding: 0 15px;
   box-sizing: border-box;
+  display: flex;
+  align-items: center;
 }
 
 .Logo .Title {
@@ -54,7 +56,8 @@
 }
 
 .MenuButton .ButtonText {
-  padding: 0 10px;
+  padding: 0 15px;
+  vertical-align: super;
 }
 
 .LogoIcon {

@@ -11,7 +11,7 @@ const Sidebar = (props) => {
     <div className={styles.Sidebar}>
       <div className={styles.LogoContainer}>
         <div className={styles.Logo}>
-          <WalletLogo className={styles.LogoIcon} />
+          <WalletLogo className={styles.LogoIcon} size="30" />
           <span className={styles.Title}>WALLET</span>
         </div>
       </div>
@@ -19,7 +19,7 @@ const Sidebar = (props) => {
         {routes.map((route) => (
           <Link to={route.path} activeClassName="active">
             <button className={styles.MenuButton}>
-              <route.icon />
+              <route.icon size="25" />
               <span className={styles.ButtonText}>{route.title}</span>
             </button>
           </Link>
