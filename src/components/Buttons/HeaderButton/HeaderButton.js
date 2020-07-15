@@ -1,9 +1,9 @@
 import React from 'react';
 import Styles from './HeaderButton.module.css';
 
-const HeaderButton = ( { children } ) => {
+const HeaderButton = ( { children, onClick } ) => {
   return(
-    <button className={Styles.Button}>
+    <button className={Styles.Button} onClick={onClick}>
       {children}
     </button>
   );
