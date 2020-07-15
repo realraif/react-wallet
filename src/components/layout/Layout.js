@@ -1,15 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { Route, Switch, withRouter } from "react-router-dom";
 
 import styles from "./Layout.module.css";
-import routes from '../../routes';
+import routes from "../../routes";
 
 // components
 import Header from "../Header/Header";
 import Sidebar from "../Sidebar/Sidebar";
 
-
 const Layout = (props) => {
+  const [timeFrame, setTimeFrame] = useState({});
+
+  const setDataTimeFrame = (timeFrame) => {
+    setTimeFrame(timeFrame);
+  };
 
   const getPageTitle = (currentPath) => {
     for (let i = 0; i < routes.length; i++) {
@@ -17,28 +21,33 @@ const Layout = (props) => {
         return routes[i].title;
       }
     }
-    return 'Wallet';
-  }
+    return "Wallet";
+  };
 
   return (
     <div className={styles.Layout}>
-      <Header title={getPageTitle(props.location.pathname)} />
-      <Sidebar routes={routes}/>
+      <Header
+        title={getPageTitle(props.location.pathname)}
+        setDataTimeFrame={setDataTimeFrame}
+      />
+      <Sidebar routes={routes} />
       <div className={styles.Content}>
         <Switch>
           {routes.map((prop, key) => {
-            return <Route
-              path={prop.path}
-              render={(props) => (
-                <prop.component {...props} />
-              )}
-              key={key}
-            />;
+            return (
+              <Route
+                path={prop.path}
+                render={(props) => (
+                  <prop.component {...props} timeFrame={timeFrame} />
+                )}
+                key={key}
+              />
+            );
           })}
         </Switch>
       </div>
     </div>
   );
-}
+};
 
 export default withRouter(Layout);
