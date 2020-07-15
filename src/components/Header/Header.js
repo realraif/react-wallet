@@ -8,7 +8,7 @@ import styles from "./Header.module.css";
 import Button from "../Buttons/HeaderButton/HeaderButton";
 import SelectBox from "../Buttons/HeaderButton/HeaderSelectbox";
 
-const Header = ({ history, title }) => {
+const Header = ({ history, title, setDataTimeFrame }) => {
   const logtout = useCallback(
     async (event) => {
       event.preventDefault();
@@ -28,7 +28,7 @@ const Header = ({ history, title }) => {
     <div className={styles.Header}>
       <div className={styles.LeftSide}>
         <div className={styles.Title}>{title}</div>
-        <SelectBox>
+        <SelectBox onSelectOption={setDataTimeFrame}>
           <option>24 hours</option>
           <option>past week</option>
           <option>past 30 days</option>
