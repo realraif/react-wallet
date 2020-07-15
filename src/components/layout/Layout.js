@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { Route, Switch, withRouter } from "react-router-dom";
 
 import styles from "./Layout.module.css";
-import routes from "../../routes";
+import routes from "routes";
 
-import Header from "../Header/Header";
-import Sidebar from "../Sidebar/Sidebar";
+import Header from "components/Header/Header";
+import Sidebar from "components/Sidebar/Sidebar";
 
 const Layout = (props) => {
   const [timeFrame, setTimeFrame] = useState({});

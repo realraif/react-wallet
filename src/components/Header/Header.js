@@ -1,8 +1,9 @@
 import React, { useCallback, useContext } from "react";
 import { withRouter } from "react-router";
 
-import firebase from "../../firebase.js";
-import { UserContext } from "../../context/UserContext";
+import firebase from "firebase.js";
+import { UserContext } from "context/UserContext";
+
 
 import styles from "./Header.module.css";
 import Button from "../Buttons/HeaderButton/HeaderButton";
