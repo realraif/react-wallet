@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { RiSurroundSoundLine as WalletLogo } from 'react-icons/ri';
+
 import routes from "../../routes";
 
 import styles from "./Sidebar.module.css";
@@ -9,15 +11,16 @@ const Sidebar = (props) => {
     <div className={styles.Sidebar}>
       <div className={styles.LogoContainer}>
         <div className={styles.Logo}>
-          <div className={styles.Title}>WALLET</div>
+          <WalletLogo className={styles.LogoIcon} />
+          <span className={styles.Title}>WALLET</span>
         </div>
       </div>
       <div className={styles.Menu}>
         {routes.map((route) => (
           <Link to={route.path} activeClassName="active">
             <button className={styles.MenuButton}>
-              <i className={route.icon} />
-              <p>{route.title}</p>
+              <route.icon />
+              <span className={styles.ButtonText}>{route.title}</span>
             </button>
           </Link>
         ))}

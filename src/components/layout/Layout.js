@@ -4,7 +4,6 @@ import { Route, Switch, withRouter } from "react-router-dom";
 import styles from "./Layout.module.css";
 import routes from "../../routes";
 
-// components
 import Header from "../Header/Header";
 import Sidebar from "../Sidebar/Sidebar";
 

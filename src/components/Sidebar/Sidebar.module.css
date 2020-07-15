@@ -27,6 +27,7 @@
   font-weight: 200;
   color: white;
   letter-spacing: 3px;
+  padding: 0 10px;
 }
 
 .Menu {
@@ -50,4 +51,12 @@
 
 .MenuButton:hover {
   background-color: #8c8b8b8c;
+}
+
+.MenuButton .ButtonText {
+  padding: 0 10px;
+}
+
+.LogoIcon {
+  color: #68B3FD;
 }
