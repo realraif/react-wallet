@@ -9,9 +9,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-button, select {
+button, select, a {
   color: #979797;
-  outline: 0;
+  outline: 0 !important;
   cursor: pointer;
 }
 

@@ -34,7 +34,6 @@
 
 .Menu {
   margin-top: 50px;
-  text-align: center;
 }
 
 .MenuButton {
@@ -49,6 +48,9 @@
   background-color: transparent;
   font-size: 14px;
   font-weight: bold;
+  display: flex;
+  align-items: center;
+  margin: auto;
 }
 
 .MenuButton:hover {

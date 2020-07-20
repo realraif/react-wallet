@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { RiSurroundSoundLine as WalletLogo } from 'react-icons/ri';
 
 import routes from "routes";
-
 import styles from "./Sidebar.module.css";
 
 const Sidebar = (props) => {
