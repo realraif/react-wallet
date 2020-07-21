@@ -1,9 +1,11 @@
 import React, { useCallback, useContext } from "react";
 import { withRouter } from "react-router";
 import { Navbar, NavDropdown } from "react-bootstrap";
+import { AiOutlineClockCircle } from "react-icons/ai";
 
 import firebase from "firebase.js";
 import { UserContext } from "context/UserContext";
+import SelectBox from 'components/SelectBox/SelectBox';
 
 import styles from "./Header.module.css";
 
@@ -27,16 +29,22 @@ const Header = ({ history, title, setDataTimeFrame }) => {
     <Navbar fluid className={styles.Header}>
       <div className={styles.LeftSide}>
         <div className={styles.Title}>{title}</div>
-        <select className={styles.SelectBox} onChange={setDataTimeFrame}>
+        <SelectBox
+          className={styles.SelectBox}
+          onSelect={setDataTimeFrame}
+          icon={AiOutlineClockCircle}
+        >
           <option>24 hours</option>
           <option>past week</option>
           <option>past 30 days</option>
-        </select>
+        </SelectBox>
       </div>
       <div className={styles.RightSide}>
         <div>{currentUser.email}</div>
         <NavDropdown title="Account" className={styles.DropDown}>
-          <NavDropdown.Item selected="selected">Manage bank accounts</NavDropdown.Item>
+          <NavDropdown.Item selected="selected">
+            Manage bank accounts
+          </NavDropdown.Item>
           <NavDropdown.Item>Transfer money</NavDropdown.Item>
           <NavDropdown.Divider />
           <NavDropdown.Item>Settings</NavDropdown.Item>

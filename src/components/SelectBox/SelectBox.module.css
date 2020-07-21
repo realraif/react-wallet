@@ -1,0 +1,24 @@
+
+.SelectBox {
+  padding: 7px 8px;
+  border-radius: 3px;
+  border: 1px solid transparent;
+  font-size: 16px;
+}
+
+.SelectBox select {
+  background-color: transparent;
+  border: 0;
+}
+
+.SelectBox:hover select, .SelectBox:hover .Icon {
+  color: #1DC7EA;
+}
+
+.SelectBox:hover {
+  Border: 1px solid #1DC7EA;
+}
+
+.Icon {
+  margin-right: 5px;
+}
