@@ -5,6 +5,7 @@ import { AiOutlineClockCircle } from "react-icons/ai";
 
 import firebase from "firebase.js";
 import { UserContext } from "context/UserContext";
+import { LayoutContext } from "context/LayoutContext";
 import SelectBox from 'components/SelectBox/SelectBox';
 
 import styles from "./Header.module.css";
@@ -24,11 +25,12 @@ const Header = ({ history, title, setDataTimeFrame }) => {
   );
 
   const { currentUser } = useContext(UserContext);
+  const { toggleSidebar } = useContext(LayoutContext);
 
   return (
     <Navbar fluid className={styles.Header}>
       <div className={styles.LeftSide}>
-        <div className={styles.Title}>{title}</div>
+        <div className={styles.Title} onClick={toggleSidebar}>{title}</div>
         <SelectBox
           className={styles.SelectBox}
           onSelect={setDataTimeFrame}

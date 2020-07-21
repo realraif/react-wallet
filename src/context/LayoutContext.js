@@ -1,6 +1,6 @@
 import React from "react";
 
-const LayoutContext = React.createContext();
+export const LayoutContext = React.createContext();
 
 function layoutReducer(state, action) {
   switch (action.type) {
@@ -16,6 +16,7 @@ export function LayoutProvider({ children }) {
   var [state, dispatch] = React.useReducer(layoutReducer, {
     isSidebarOpened: true,
     toggleSidebar: () => {
+      console.log('TOGGLE_SIDEBAR');
       dispatch({
         type: "TOGGLE_SIDEBAR",
       });
@@ -28,6 +29,3 @@ export function LayoutProvider({ children }) {
     </LayoutContext.Provider>
   );
 }
-
-
-export default LayoutContext
