@@ -1,7 +1,6 @@
 
 .Header {
   height: 60px;
-  margin-left: 260px;
   background-color: #FBFBFB;
   border-bottom: 1px solid #E5E5E5;
   box-sizing: border-box;
@@ -9,6 +8,31 @@
   align-items: center;
   justify-content: space-between;
   padding: 0 38px;
+}
+
+
+.LogoContainer {
+  width: 260px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: flex-end;
+}
+
+.Logo {
+  margin: auto;
+  width: 215px;
+  padding: 0 15px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+}
+
+.Logo .Title {
+  font-size: 25px;
+  font-weight: 200;
+  color: white;
+  letter-spacing: 3px;
+  padding: 0 10px;
 }
 
 .RightSide, .LeftSide {
