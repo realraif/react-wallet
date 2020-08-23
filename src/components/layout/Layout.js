@@ -25,25 +25,28 @@ const Layout = (props) => {
 
   return (
     <div className={styles.Layout}>
-      <Header
-        title={getPageTitle(props.location.pathname)}
-        setDataTimeFrame={setDataTimeFrame}
-      />
       <Sidebar routes={routes} />
-      <div className={styles.Content}>
-        <Switch>
-          {routes.map((prop, key) => {
-            return (
-              <Route
-                path={prop.path}
-                render={(props) => (
-                  <prop.component {...props} timeFrame={timeFrame} />
-                )}
-                key={key}
-              />
-            );
-          })}
-        </Switch>
+      <div className={styles.Main}>
+        <Header
+          title={getPageTitle(props.location.pathname)}
+          setDataTimeFrame={setDataTimeFrame}
+        />
+
+        <div className={styles.Content}>
+          <Switch>
+            {routes.map((prop, key) => {
+              return (
+                <Route
+                  path={prop.path}
+                  render={(props) => (
+                    <prop.component {...props} timeFrame={timeFrame} />
+                  )}
+                  key={key}
+                />
+              );
+            })}
+          </Switch>
+        </div>
       </div>
     </div>
   );

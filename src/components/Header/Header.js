@@ -1,7 +1,6 @@
 import React, { useCallback, useContext } from "react";
 import { withRouter } from "react-router";
-import { AppBar, Toolbar } from '@material-ui/core';
-import { RiSurroundSoundLine as WalletLogo } from 'react-icons/ri';
+import { AppBar, Toolbar } from "@material-ui/core";
 
 import { Navbar, NavDropdown } from "react-bootstrap";
 import { AiOutlineClockCircle } from "react-icons/ai";
@@ -9,7 +8,7 @@ import { AiOutlineClockCircle } from "react-icons/ai";
 import firebase from "firebase.js";
 import { UserContext } from "context/UserContext";
 import { LayoutContext } from "context/LayoutContext";
-import SelectBox from 'components/SelectBox/SelectBox';
+import SelectBox from "components/SelectBox/SelectBox";
 
 import styles from "./Header.module.css";
 
@@ -31,16 +30,10 @@ const Header = ({ history, title, setDataTimeFrame }) => {
   const { toggleSidebar } = useContext(LayoutContext);
 
   return (
-    <AppBar position="static" className={styles.Header}>
-
-<Toolbar>
-      <div className={styles.LogoContainer}>
-        {/* <div className={styles.Logo}>
-          <WalletLogo className={styles.LogoIcon} size="30" />
-          <span className={styles.Title}>WALLET</span>
-        </div> */}
-      </div>
-        sdfgß
+    <AppBar position="sticky" elevation={0} className={styles.Header}>
+      <Toolbar>
+        <div className={styles.LogoContainer}></div>
+        sdfgßß
       </Toolbar>
     </AppBar>
 
