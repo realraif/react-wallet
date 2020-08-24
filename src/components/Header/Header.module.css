@@ -10,7 +10,7 @@
   font-weight: 200;
 }
 
-.HeaderButton, .SelectBox, .DropDown > a {
+.HeaderButton, .SelectBox, .DropDown {
   background-color: transparent;
   padding: 7px 18px;
   border-radius: 3px;
@@ -18,7 +18,7 @@
   font-size: 16px;
 }
 
-.HeaderButton:hover, .SelectBox:hover, .DropDown > a:hover {
+.HeaderButton:hover, .SelectBox:hover, .DropDown:hover {
   color: #1DC7EA;
   Border: 1px solid #1DC7EA;
 }

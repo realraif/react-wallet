@@ -3,7 +3,7 @@ import { withRouter } from "react-router";
 import { makeStyles } from "@material-ui/core/styles";
 import { AppBar, Toolbar } from "@material-ui/core";
 
-import { NavDropdown } from "react-bootstrap";
+import { Dropdown } from "react-bootstrap";
 import { AiOutlineClockCircle } from "react-icons/ai";
 
 import firebase from "firebase.js";
@@ -22,9 +22,9 @@ const Header = ({ history, title, setDataTimeFrame }) => {
     Toolbar: {
       minHeight: "60px",
       borderBottom: "1px solid #E5E5E5",
-      '&> *': {
-        margin: '0 5px 0 5px'
-      }
+      "&> *": {
+        margin: "0 5px 0 5px",
+      },
     },
     grow: {
       flexGrow: 1,
@@ -64,14 +64,20 @@ const Header = ({ history, title, setDataTimeFrame }) => {
         </SelectBox>
         <div className={classes.grow}></div>
         <div>{currentUser.email}</div>
-        <NavDropdown title="Account" className={styles.DropDown}>
-          <NavDropdown.Item selected="selected">
-            Manage bank accounts
-          </NavDropdown.Item>
-          <NavDropdown.Item>Transfer money</NavDropdown.Item>
-          <NavDropdown.Divider />
-          <NavDropdown.Item>Settings</NavDropdown.Item>
-        </NavDropdown>
+        <Dropdown>
+          <Dropdown.Toggle
+            id="dropdown-basic"
+            className={styles.DropDown}
+          >
+            Account
+          </Dropdown.Toggle>
+          <Dropdown.Menu>
+            <Dropdown.Item href="#/action-1">Transfer money</Dropdown.Item>
+            <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
+            <Dropdown.Divider />
+            <Dropdown.Item href="#/action-3">Settings</Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
         <button className={styles.HeaderButton} onClick={logtout}>
           Log out
         </button>
