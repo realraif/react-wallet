@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { RiSurroundSoundLine as WalletLogo } from "react-icons/ri";
 import { ListItem, ListItemText, makeStyles } from "@material-ui/core";
 
@@ -7,6 +7,7 @@ import routes from "routes";
 import styles from "./Sidebar.module.css";
 
 const Sidebar = (props) => {
+
   const classes = makeStyles({
     itemLink: {
       width: "auto",
@@ -17,6 +18,8 @@ const Sidebar = (props) => {
       display: "block",
       padding: "10px 15px",
       backgroundColor: "transparent",
+      borderRadius: 2,
+      fontWeight: "bold"
     },
     itemIcon: {
       width: "24px",
@@ -30,9 +33,13 @@ const Sidebar = (props) => {
       color: "#FFF"
     },
     blue: {
-      backgroundColor: "#00acc1",
       "&:hover,&:focus": {
         backgroundColor: "#00acc1"
+      }
+    },
+    active: {
+      blue: {
+        backgroundColor: "#00acc1",
       }
     },
     itemText: {
@@ -53,7 +60,7 @@ const Sidebar = (props) => {
       </div>
       <div className={styles.Menu}>
         {routes.map((route) => (
-          <Link to={route.path} activeClassName="active">
+          <NavLink to={route.path} activeClassName={classes.active} style={{textDecoration: 'none'}}>
             <ListItem button className={classes.itemLink + " " + classes.blue}>
               <route.icon className={classes.itemIcon} size="25" />
               <ListItemText
@@ -66,7 +73,7 @@ const Sidebar = (props) => {
               <route.icon size="25" />
               <span className={styles.ButtonText}>{route.title}</span>
             </button> */}
-          </Link>
+          </NavLink>
         ))}
       </div>
     </div>
