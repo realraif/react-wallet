@@ -13,23 +13,25 @@ import SelectBox from "components/SelectBox/SelectBox";
 
 import styles from "./Header.module.css";
 
+const useStyles = makeStyles({
+  appBar: {
+    minHeight: "60px",
+    // backgroundColor: "#FBFBFB",
+  },
+  Toolbar: {
+    minHeight: "60px",
+    borderBottom: "1px solid #E5E5E5",
+    "&> *": {
+      margin: "0 5px 0 5px",
+    },
+  },
+  grow: {
+    flexGrow: 1,
+  },
+});
+
 const Header = ({ history, title, setDataTimeFrame }) => {
-  const classes = makeStyles({
-    appBar: {
-      minHeight: "60px",
-      // backgroundColor: "#FBFBFB",
-    },
-    Toolbar: {
-      minHeight: "60px",
-      borderBottom: "1px solid #E5E5E5",
-      "&> *": {
-        margin: "0 5px 0 5px",
-      },
-    },
-    grow: {
-      flexGrow: 1,
-    },
-  })();
+  const classes = useStyles();
 
   const logtout = useCallback(
     async (event) => {
@@ -65,10 +67,7 @@ const Header = ({ history, title, setDataTimeFrame }) => {
         <div className={classes.grow}></div>
         <div>{currentUser.email}</div>
         <Dropdown>
-          <Dropdown.Toggle
-            id="dropdown-basic"
-            className={styles.DropDown}
-          >
+          <Dropdown.Toggle id="dropdown-basic" className={styles.DropDown}>
             Account
           </Dropdown.Toggle>
           <Dropdown.Menu>
