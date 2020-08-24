@@ -5,22 +5,6 @@
   border-bottom: 1px solid #E5E5E5;
 }
 
-.RightSide, .LeftSide {
-  display: flex;
-  align-items: baseline;
-}
-
-.RightSide {
-  margin: -18px;
-}
-.RightSide > * {
-  margin-left: 10px;
-}
-
-.LeftSide > * {
-  margin-right: 10px;
-}
-
 .Title {
   font-size: 25px;
   font-weight: 200;

@@ -22,6 +22,9 @@ const Header = ({ history, title, setDataTimeFrame }) => {
     Toolbar: {
       minHeight: "60px",
       borderBottom: "1px solid #E5E5E5",
+      '&> *': {
+        margin: '0 5px 0 5px'
+      }
     },
     grow: {
       flexGrow: 1,
