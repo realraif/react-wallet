@@ -13,7 +13,7 @@ import SelectBox from "components/SelectBox/SelectBox";
 
 import styles from "./Header.module.css";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   appBar: {
     minHeight: "60px",
   },
@@ -76,10 +76,7 @@ const Header = ({ history, title, setDataTimeFrame }) => {
             <Dropdown.Item href="#/action-3">Settings</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
-        <Button 
-        onClick={logtout}
-        className={styles.HeaderButton} 
-        color="primary">
+        <Button onClick={logtout} color="primary">
           Log out
         </Button>
       </Toolbar>

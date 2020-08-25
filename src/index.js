@@ -19,6 +19,12 @@ const theme = createMuiTheme({
   },
   overrides: {
     MuiButton: {
+      text: {
+        padding: "7px 18px",
+        border: "1px solid transparent",
+        textTransform: "initial",
+        fontSize: "1rem"
+      },
       root: {
         "&:hover,&:focus": {
         color: "#1DC7EA",
