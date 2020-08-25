@@ -1,7 +1,7 @@
 import React, { useCallback, useContext } from "react";
 import { withRouter } from "react-router";
 import { makeStyles } from "@material-ui/core/styles";
-import { AppBar, Toolbar } from "@material-ui/core";
+import { AppBar, Toolbar, Button } from "@material-ui/core";
 
 import { Dropdown } from "react-bootstrap";
 import { AiOutlineClockCircle } from "react-icons/ai";
@@ -76,9 +76,12 @@ const Header = ({ history, title, setDataTimeFrame }) => {
             <Dropdown.Item href="#/action-3">Settings</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
-        <button className={styles.HeaderButton} onClick={logtout}>
+        <Button 
+        onClick={logtout}
+        className={styles.HeaderButton} 
+        color="primary">
           Log out
-        </button>
+        </Button>
       </Toolbar>
     </AppBar>
   );

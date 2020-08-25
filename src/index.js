@@ -3,9 +3,8 @@ import ReactDOM from "react-dom";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 
 import "bootstrap/dist/css/bootstrap.min.css";
-import purple from '@material-ui/core/colors/purple';
-import green from '@material-ui/core/colors/green';
-
+import purple from "@material-ui/core/colors/purple";
+import green from "@material-ui/core/colors/green";
 
 import "./index.css";
 import App from "./App";
@@ -14,11 +13,23 @@ import { LayoutProvider } from "./context/LayoutContext";
 import { UserProvider } from "./context/UserContext";
 
 const theme = createMuiTheme({
+  // type: "dark",
+  shape: {
+    borderRadius: 4,
+  },
   overrides: {
+    MuiButton: {
+      root: {
+        "&:hover,&:focus": {
+        color: "#1DC7EA",
+        border: "1px solid #1DC7EA",
+        }
+      },
+    },
     MuiAppBar: {
       colorPrimary: {
         backgroundColor: "#FBFBFB",
-        color: "#979797"
+        color: "#979797",
       },
     },
   },

@@ -5,6 +5,7 @@ import {
   ListItem,
   ListItemText,
   makeStyles,
+  useTheme,
 } from "@material-ui/core";
 
 import routes from "routes";
@@ -20,7 +21,6 @@ const useStyles = makeStyles((theme) => ({
     display: "block",
     padding: "10px 15px",
     backgroundColor: "transparent",
-    borderRadius: 2,
     fontWeight: "bold",
   },
   itemIcon: {
@@ -55,6 +55,8 @@ const useStyles = makeStyles((theme) => ({
 const Sidebar = (props) => {
   const classes = useStyles();
 
+  const theme = useTheme();
+  console.log(theme);
   return (
     <div className={styles.Sidebar}>
       <div className={styles.LogoContainer}>
