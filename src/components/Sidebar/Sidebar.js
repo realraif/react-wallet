@@ -36,7 +36,7 @@ const useStyles = makeStyles({
     },
   },
   active: {
-    blue: {
+    "& $blue": {
       backgroundColor: "#00acc1",
     },
   },
