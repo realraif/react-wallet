@@ -13,10 +13,9 @@ import SelectBox from "components/SelectBox/SelectBox";
 
 import styles from "./Header.module.css";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   appBar: {
     minHeight: "60px",
-    // backgroundColor: "#FBFBFB",
   },
   Toolbar: {
     minHeight: "60px",
@@ -28,7 +27,7 @@ const useStyles = makeStyles({
   grow: {
     flexGrow: 1,
   },
-});
+}));
 
 const Header = ({ history, title, setDataTimeFrame }) => {
   const classes = useStyles();

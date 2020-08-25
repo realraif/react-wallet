@@ -1,12 +1,16 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { RiSurroundSoundLine as WalletLogo } from "react-icons/ri";
-import { ListItem, ListItemText, makeStyles } from "@material-ui/core";
+import {
+  ListItem,
+  ListItemText,
+  makeStyles,
+} from "@material-ui/core";
 
 import routes from "routes";
 import styles from "./Sidebar.module.css";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   itemLink: {
     width: "auto",
     transition: "all 300ms linear",
@@ -46,7 +50,7 @@ const useStyles = makeStyles({
     fontSize: "14px",
     color: "#FFF",
   },
-});
+}));
 
 const Sidebar = (props) => {
   const classes = useStyles();
@@ -62,6 +66,7 @@ const Sidebar = (props) => {
       <div className={styles.Menu}>
         {routes.map((route) => (
           <NavLink
+            key={route.path}
             to={route.path}
             activeClassName={classes.active}
             style={{ textDecoration: "none" }}
