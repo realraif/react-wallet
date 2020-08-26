@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useCallback, useContext } from "react";
+import clsx from 'clsx';
 import { NavLink } from "react-router-dom";
 import { RiSurroundSoundLine as WalletLogo } from "react-icons/ri";
 import {
@@ -9,6 +10,7 @@ import {
   Drawer,
 } from "@material-ui/core";
 
+import { LayoutContext } from "context/LayoutContext";
 import routes from "routes";
 import styles from "./Sidebar.module.css";
 
@@ -16,6 +18,23 @@ const useStyles = makeStyles((theme) => ({
   drawer: {
     width: 260,
     backgroundColor: "rgba(0, 0, 0, 0.62)",
+  },
+  drawerOpen: {
+    transition: theme.transitions.create("width", {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+  },
+  drawerClose: {
+    transition: theme.transitions.create("width", {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }),
+    overflowX: "hidden",
+    width: theme.spacing(7) + 1,
+    [theme.breakpoints.up("sm")]: {
+      width: theme.spacing(9) + 1,
+    },
   },
   itemLink: {
     width: "auto",
@@ -58,6 +77,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Sidebar = (props) => {
+  const { isSidebarOpened } = useContext(LayoutContext);
+
   const classes = useStyles();
 
   const theme = useTheme();
@@ -65,7 +86,16 @@ const Sidebar = (props) => {
   return (
     <Drawer
       variant="permanent"
-      classes={{paper: classes.drawer}}
+      className={clsx({
+        [classes.drawerOpen]: isSidebarOpened,
+        [classes.drawerClose]: !isSidebarOpened,
+      })}
+      classes={{
+        paper: clsx(classes.drawer, {
+          [classes.drawerOpen]: isSidebarOpened,
+          [classes.drawerClose]: !isSidebarOpened,
+        }),
+      }}
     >
       <div className={styles.LogoContainer}>
         <div className={styles.Logo}>
