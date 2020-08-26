@@ -79,7 +79,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Sidebar = (props) => {
-  const { isSidebarOpen } = useContext(LayoutContext);
+  const { toggleSidebar, isSidebarOpen } = useContext(LayoutContext);
 
   const classes = useStyles();
 
@@ -100,7 +100,7 @@ const Sidebar = (props) => {
       }}
     >
       <div className={styles.LogoContainer}>
-        <div className={styles.Logo}>
+        <div className={styles.Logo} onClick={toggleSidebar}>
           <WalletLogo className={styles.LogoIcon} size="30" />
           <span className={styles.Title}>WALLET</span>
         </div>

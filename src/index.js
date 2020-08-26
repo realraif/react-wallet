@@ -15,7 +15,7 @@ import { UserProvider } from "./context/UserContext";
 const theme = createMuiTheme({
   // type: "dark",
   shape: {
-    borderRadius: 4,
+    borderRadius: 2,
   },
   overrides: {
     MuiButton: {

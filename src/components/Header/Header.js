@@ -3,10 +3,11 @@ import clsx from 'clsx';
 
 import { withRouter } from "react-router";
 import { makeStyles } from "@material-ui/core/styles";
-import { AppBar, Toolbar, Button } from "@material-ui/core";
+import { AppBar, Toolbar, Button, IconButton } from "@material-ui/core";
 
 import { Dropdown } from "react-bootstrap";
 import { AiOutlineClockCircle } from "react-icons/ai";
+import { MdMenu } from "react-icons/md";
 
 import firebase from "firebase.js";
 import { UserContext } from "context/UserContext";
@@ -37,13 +38,19 @@ const useStyles = makeStyles((theme) => ({
   Toolbar: {
     minHeight: "60px",
     borderBottom: "1px solid #E5E5E5",
-    "&> *": {
-      margin: "0 5px 0 5px",
-    },
   },
   grow: {
     flexGrow: 1,
   },
+  hide: {
+    display: 'none',
+  },
+  menuButton: {
+    marginRight: 36
+  },
+  headerItem: {
+    margin: "0 5px 0 5px"
+  }
 }));
 
 const Header = ({ history, title, setDataTimeFrame }) => {
@@ -74,11 +81,22 @@ const Header = ({ history, title, setDataTimeFrame }) => {
       })}
     >
       <Toolbar className={classes.Toolbar}>
-        <div className={styles.Title} onClick={toggleSidebar}>
+        <IconButton
+            color="inherit"
+            aria-label="open drawer"
+            onClick={toggleSidebar}
+            edge="start"
+            className={clsx(classes.menuButton, {
+              [classes.hide]: isSidebarOpen,
+            })}
+          >
+            <MdMenu />
+          </IconButton>
+        <div className={clsx(classes.headerItem, styles.Title)}>
           {title}
         </div>
         <SelectBox
-          className={styles.SelectBox}
+          className={clsx(classes.headerItem, styles.SelectBox)}
           onSelect={setDataTimeFrame}
           icon={AiOutlineClockCircle}
         >
@@ -89,7 +107,7 @@ const Header = ({ history, title, setDataTimeFrame }) => {
         <div className={classes.grow}></div>
         <div>{currentUser.email}</div>
         <Dropdown>
-          <Dropdown.Toggle id="dropdown-basic" className={styles.DropDown}>
+          <Dropdown.Toggle id="dropdown-basic" className={clsx(classes.headerItem, styles.DropDown)}>
             Account
           </Dropdown.Toggle>
           <Dropdown.Menu>
@@ -99,7 +117,7 @@ const Header = ({ history, title, setDataTimeFrame }) => {
             <Dropdown.Item href="#/action-3">Settings</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
-        <Button onClick={logtout} color="primary">
+        <Button onClick={logtout} color="primary" className={classes.headerItem}>
           Log out
         </Button>
       </Toolbar>

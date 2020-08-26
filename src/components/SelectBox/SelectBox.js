@@ -3,12 +3,12 @@ import React from "react";
 import styles from "./SelectBox.module.css";
 
 const SelectBox = (props) => {
+  const classes = props.className + " " + styles.SelectBox;
+
   return (
-    <div className={styles.SelectBox}>
+    <div className={classes}>
       {props.icon ? <props.icon className={styles.Icon} /> : null}
-      <select onChange={props.onSelect}>
-        {props.children}
-      </select>
+      <select onChange={props.onSelect}>{props.children}</select>
     </div>
   );
 };
