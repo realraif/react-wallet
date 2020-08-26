@@ -1,12 +1,4 @@
 
-.Sidebar {
-  width: 260px;
-  height: 100%;
-  position: fixed;
-  top: 0;
-  background-color: rgba(0, 0, 0, 0.62);
-}
-
 .LogoContainer {
   height: 60px;
   border-bottom: 1px solid #E5E5E5;

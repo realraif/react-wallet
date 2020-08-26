@@ -6,12 +6,17 @@ import {
   ListItemText,
   makeStyles,
   useTheme,
+  Drawer,
 } from "@material-ui/core";
 
 import routes from "routes";
 import styles from "./Sidebar.module.css";
 
 const useStyles = makeStyles((theme) => ({
+  drawer: {
+    width: 260,
+    backgroundColor: "rgba(0, 0, 0, 0.62)",
+  },
   itemLink: {
     width: "auto",
     transition: "all 300ms linear",
@@ -58,7 +63,10 @@ const Sidebar = (props) => {
   const theme = useTheme();
   console.log(theme);
   return (
-    <div className={styles.Sidebar}>
+    <Drawer
+      variant="permanent"
+      classes={{paper: classes.drawer}}
+    >
       <div className={styles.LogoContainer}>
         <div className={styles.Logo}>
           <WalletLogo className={styles.LogoIcon} size="30" />
@@ -84,7 +92,7 @@ const Sidebar = (props) => {
           </NavLink>
         ))}
       </div>
-    </div>
+    </Drawer>
   );
 };
 
