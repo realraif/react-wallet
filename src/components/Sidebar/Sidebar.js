@@ -1,4 +1,4 @@
-import React, { useCallback, useContext } from "react";
+import React, { useContext } from "react";
 import clsx from 'clsx';
 import { NavLink } from "react-router-dom";
 import { RiSurroundSoundLine as WalletLogo } from "react-icons/ri";
@@ -18,8 +18,10 @@ const useStyles = makeStyles((theme) => ({
   drawer: {
     width: 260,
     backgroundColor: "rgba(0, 0, 0, 0.62)",
+    border: 0
   },
   drawerOpen: {
+    width: 260,
     transition: theme.transitions.create("width", {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
@@ -77,7 +79,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Sidebar = (props) => {
-  const { isSidebarOpened } = useContext(LayoutContext);
+  const { isSidebarOpen } = useContext(LayoutContext);
 
   const classes = useStyles();
 
@@ -87,13 +89,13 @@ const Sidebar = (props) => {
     <Drawer
       variant="permanent"
       className={clsx({
-        [classes.drawerOpen]: isSidebarOpened,
-        [classes.drawerClose]: !isSidebarOpened,
+        [classes.drawerOpen]: isSidebarOpen,
+        [classes.drawerClose]: !isSidebarOpen,
       })}
       classes={{
         paper: clsx(classes.drawer, {
-          [classes.drawerOpen]: isSidebarOpened,
-          [classes.drawerClose]: !isSidebarOpened,
+          [classes.drawerOpen]: isSidebarOpen,
+          [classes.drawerClose]: !isSidebarOpen,
         }),
       }}
     >

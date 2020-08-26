@@ -1,4 +1,6 @@
 import React, { useCallback, useContext } from "react";
+import clsx from 'clsx';
+
 import { withRouter } from "react-router";
 import { makeStyles } from "@material-ui/core/styles";
 import { AppBar, Toolbar, Button } from "@material-ui/core";
@@ -13,9 +15,24 @@ import SelectBox from "components/SelectBox/SelectBox";
 
 import styles from "./Header.module.css";
 
+const drawerWidth = 260;
+
 const useStyles = makeStyles((theme) => ({
   appBar: {
     minHeight: "60px",
+    zIndex: theme.zIndex.drawer + 1,
+    transition: theme.transitions.create(['width', 'margin'], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }),
+  },
+  appBarShift: {
+    marginLeft: drawerWidth,
+    width: `calc(100% - ${drawerWidth}px)`,
+    transition: theme.transitions.create(["width", "margin"], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
   },
   Toolbar: {
     minHeight: "60px",
@@ -46,10 +63,16 @@ const Header = ({ history, title, setDataTimeFrame }) => {
   );
 
   const { currentUser } = useContext(UserContext);
-  const { toggleSidebar } = useContext(LayoutContext);
+  const { toggleSidebar, isSidebarOpen } = useContext(LayoutContext);
 
   return (
-    <AppBar position="sticky" elevation={0} className={classes.appBar}>
+    <AppBar
+      position="fixed"
+      elevation={0}
+      className={clsx(classes.appBar, {
+        [classes.appBarShift]: isSidebarOpen,
+      })}
+    >
       <Toolbar className={classes.Toolbar}>
         <div className={styles.Title} onClick={toggleSidebar}>
           {title}

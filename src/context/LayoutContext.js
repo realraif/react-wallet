@@ -5,7 +5,7 @@ export const LayoutContext = React.createContext();
 function layoutReducer(state, action) {
   switch (action.type) {
     case "TOGGLE_SIDEBAR":
-      return { ...state, isSidebarOpened: !state.isSidebarOpened };
+      return { ...state, isSidebarOpen: !state.isSidebarOpen };
     default: {
       throw new Error(`Unhandled action type: ${action.type}`);
     }
@@ -14,7 +14,7 @@ function layoutReducer(state, action) {
 
 export function LayoutProvider({ children }) {
   var [state, dispatch] = React.useReducer(layoutReducer, {
-    isSidebarOpened: true,
+    isSidebarOpen: true,
     toggleSidebar: () => {
       console.log('TOGGLE_SIDEBAR');
       dispatch({
