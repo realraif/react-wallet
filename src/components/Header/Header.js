@@ -1,5 +1,5 @@
 import React, { useCallback, useContext } from "react";
-import clsx from 'clsx';
+import clsx from "clsx";
 
 import { withRouter } from "react-router";
 import { makeStyles } from "@material-ui/core/styles";
@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
   appBar: {
     minHeight: "60px",
     zIndex: theme.zIndex.drawer + 1,
-    transition: theme.transitions.create(['width', 'margin'], {
+    transition: theme.transitions.create(["width", "margin"], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
@@ -35,22 +35,30 @@ const useStyles = makeStyles((theme) => ({
       duration: theme.transitions.duration.enteringScreen,
     }),
   },
-  Toolbar: {
+  toolbar: {
     minHeight: "60px",
     borderBottom: "1px solid #E5E5E5",
+  },
+  toolbarShift: {
+    paddingLeft: theme.spacing(8 + 3 + 2),
   },
   grow: {
     flexGrow: 1,
   },
   hide: {
-    display: 'none',
+    display: "none",
   },
   menuButton: {
-    marginRight: 36
+    marginRight: 36,
+    position: "absolute",
+    top: 0,
+    bottom: 0,
+    left: 30,
+    zIndex: theme.zIndex.appBar + 1
   },
   headerItem: {
-    margin: "0 5px 0 5px"
-  }
+    margin: "0 5px 0 5px",
+  },
 }));
 
 const Header = ({ history, title, setDataTimeFrame }) => {
@@ -80,19 +88,24 @@ const Header = ({ history, title, setDataTimeFrame }) => {
         [classes.appBarShift]: isSidebarOpen,
       })}
     >
-      <Toolbar className={classes.Toolbar}>
-        <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            onClick={toggleSidebar}
-            edge="start"
-            className={clsx(classes.menuButton, {
-              [classes.hide]: isSidebarOpen,
-            })}
-          >
-            <MdMenu />
-          </IconButton>
-        <div className={clsx(classes.headerItem, styles.Title)}>
+      <IconButton
+        color="inherit"
+        aria-label="open drawer"
+        onClick={toggleSidebar}
+        edge="start"
+        className={clsx(classes.menuButton, {
+          [classes.hide]: isSidebarOpen,
+        })}
+      >
+        <MdMenu />
+      </IconButton>
+
+      <Toolbar className={clsx(classes.toolbar, styles.Title, {
+            [classes.toolbarShift]: !isSidebarOpen,
+          })}>
+        <div
+          className={clsx(classes.headerItem, styles.Title)}
+        >
           {title}
         </div>
         <SelectBox
@@ -107,7 +120,10 @@ const Header = ({ history, title, setDataTimeFrame }) => {
         <div className={classes.grow}></div>
         <div>{currentUser.email}</div>
         <Dropdown>
-          <Dropdown.Toggle id="dropdown-basic" className={clsx(classes.headerItem, styles.DropDown)}>
+          <Dropdown.Toggle
+            id="dropdown-basic"
+            className={clsx(classes.headerItem, styles.DropDown)}
+          >
             Account
           </Dropdown.Toggle>
           <Dropdown.Menu>
@@ -117,7 +133,11 @@ const Header = ({ history, title, setDataTimeFrame }) => {
             <Dropdown.Item href="#/action-3">Settings</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
-        <Button onClick={logtout} color="primary" className={classes.headerItem}>
+        <Button
+          onClick={logtout}
+          color="primary"
+          className={classes.headerItem}
+        >
           Log out
         </Button>
       </Toolbar>

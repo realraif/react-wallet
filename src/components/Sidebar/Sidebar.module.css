@@ -5,29 +5,10 @@
   box-sizing: border-box;
   display: flex;
   align-items: flex-end;
-}
-
-.Logo {
-  margin: auto;
-  width: 215px;
-  padding: 0 15px;
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-}
-
-.Logo .Title {
-  font-size: 25px;
-  font-weight: 200;
-  color: white;
-  letter-spacing: 3px;
-  padding: 0 10px;
+  position: relative;
 }
 
 .Menu {
   margin-top: 50px;
 }
 
-.LogoIcon {
-  color: #68B3FD;
-}

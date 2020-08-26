@@ -1,13 +1,15 @@
 import React, { useContext } from "react";
-import clsx from 'clsx';
+import clsx from "clsx";
 import { NavLink } from "react-router-dom";
 import { RiSurroundSoundLine as WalletLogo } from "react-icons/ri";
+import { AiOutlineArrowLeft as ArrowButton } from "react-icons/ai";
 import {
   ListItem,
   ListItemText,
   makeStyles,
   useTheme,
   Drawer,
+  IconButton
 } from "@material-ui/core";
 
 import { LayoutContext } from "context/LayoutContext";
@@ -18,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
   drawer: {
     width: 260,
     backgroundColor: "rgba(0, 0, 0, 0.62)",
-    border: 0
+    border: 0,
   },
   drawerOpen: {
     width: 260,
@@ -35,17 +37,17 @@ const useStyles = makeStyles((theme) => ({
     overflowX: "hidden",
     width: theme.spacing(7) + 1,
     [theme.breakpoints.up("sm")]: {
-      width: theme.spacing(9) + 1,
+      width: theme.spacing(8 + 3),
     },
   },
   itemLink: {
     width: "auto",
     transition: "all 300ms linear",
-    margin: "10px 15px 0",
+    margin: `10px ${theme.spacing(2)}px 0`,
+    padding: `10px ${theme.spacing(2)}px`,
     borderRadius: "3px",
     position: "relative",
     display: "block",
-    padding: "10px 15px",
     backgroundColor: "transparent",
     fontWeight: "bold",
   },
@@ -55,7 +57,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "24px",
     lineHeight: "30px",
     float: "left",
-    marginRight: "15px",
+    marginRight: theme.spacing(4),
     textAlign: "center",
     verticalAlign: "middle",
     color: "#FFF",
@@ -75,6 +77,32 @@ const useStyles = makeStyles((theme) => ({
     lineHeight: "30px",
     fontSize: "14px",
     color: "#FFF",
+    display: "flex",
+    whiteSpace: "nowrap",
+  },
+  logo: {
+    position: "absolute",
+    bottom: 0,
+    top: 0,
+    left: theme.spacing(4),
+    display: "flex",
+    alignItems: "center",
+  },
+  logoIcon: {
+    color: "#68B3FD",
+    marginRight: theme.spacing(1),
+  },
+  logoTitle: {
+    fontSize: 22,
+    fontWeight: 200,
+    color: "#fff",
+    letterSpacing: 3,
+  },
+  arrowButton: {
+    color: "#fff",
+    position: "absolute",
+    bottom: 0,
+    right: 0,
   },
 }));
 
@@ -100,9 +128,18 @@ const Sidebar = (props) => {
       }}
     >
       <div className={styles.LogoContainer}>
-        <div className={styles.Logo} onClick={toggleSidebar}>
-          <WalletLogo className={styles.LogoIcon} size="30" />
-          <span className={styles.Title}>WALLET</span>
+        <IconButton
+          color="white"
+          className={classes.arrowButton}
+          aria-label="close drawer"
+          onClick={toggleSidebar}
+          edge="start"
+        >
+          <ArrowButton size="15" />
+        </IconButton>
+        <div className={classes.logo}>
+          <WalletLogo className={classes.logoIcon} size="25" />
+          <span className={classes.logoTitle}>wallet</span>
         </div>
       </div>
       <div className={styles.Menu}>
@@ -114,7 +151,7 @@ const Sidebar = (props) => {
             style={{ textDecoration: "none" }}
           >
             <ListItem button className={classes.itemLink + " " + classes.blue}>
-              <route.icon className={classes.itemIcon} size="25" />
+              <route.icon className={classes.itemIcon} size="20" />
               <ListItemText
                 primary={route.title}
                 className={classes.itemText}
