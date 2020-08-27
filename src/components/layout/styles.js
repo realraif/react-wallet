@@ -8,7 +8,7 @@ const menuActiveColor = "rgba(255, 255, 255, 0.23)";
 const scrollbarWU = 1;
 const itemIconWU = 3;
 const buttonSpaceWU = 2;
-const closedDrawerWidthWU = 4 * buttonSpaceWU + itemIconWU + scrollbarWU;
+const closedDrawerWU = 4 * buttonSpaceWU + itemIconWU;
 
 export default makeStyles((theme) => ({
   layout: {
@@ -54,13 +54,13 @@ export const useHeaderStyles = makeStyles((theme) => {
       borderBottom: headerBorder,
     },
     toolbarShift: {
-      paddingLeft: theme.spacing(closedDrawerWidthWU + 3),
+      paddingLeft: theme.spacing(closedDrawerWU + 3),
     },
     grow: {
       flexGrow: 1,
     },
     menuButton: {
-      width: theme.spacing(closedDrawerWidthWU - scrollbarWU),
+      width: theme.spacing(closedDrawerWU),
       position: "absolute",
       top: 0,
       bottom: 0,
@@ -113,18 +113,25 @@ export const useSidebarStyles = makeStyles((theme) => ({
   },
   drawerClose: {
     overflowX: "hidden",
-    width: theme.spacing(closedDrawerWidthWU),
+    width: theme.spacing(closedDrawerWU),
     transition: theme.transitions.create("width", {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
     "& $itemLink": {
-      maxWidth: theme.spacing(2 * buttonSpaceWU + itemIconWU),
+      minWidth: theme.spacing(2 * buttonSpaceWU + itemIconWU),
       transition: theme.transitions.create("max-width", {
         easing: theme.transitions.easing.sharp,
         duration: theme.transitions.duration.leavingScreen,
       }),
     },
+    "& $itemText" :{
+      opacity: 0,
+      transition: theme.transitions.create("opacity", {
+        easing: theme.transitions.easing.sharp,
+        duration: theme.transitions.duration.leavingScreen,
+      }),
+    }
   },
   menu: {
     marginTop: 40
@@ -148,7 +155,7 @@ export const useSidebarStyles = makeStyles((theme) => ({
     width: theme.spacing(itemIconWU),
     height: "30px",
     float: "left",
-    marginRight: theme.spacing(2 * buttonSpaceWU + scrollbarWU),
+    marginRight: 20,
     color: "#FFF",
   },
   active: {
@@ -158,11 +165,15 @@ export const useSidebarStyles = makeStyles((theme) => ({
   },
   itemText: {
     margin: "0",
+    letterSpacing: 1,
+    fontSize: 12,
+    fontWeight: 500,
+    textTransform: "uppercase",
     lineHeight: "30px",
-    fontSize: "14px",
     color: "#FFF",
     display: "flex",
     whiteSpace: "nowrap",
+    opacity: 1
   },
   logoContainer: {
     minHeight: headerHeigth,
