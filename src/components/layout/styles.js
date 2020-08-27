@@ -48,10 +48,10 @@ export const useHeaderStyles = makeStyles((theme) => {
         duration: theme.transitions.duration.enteringScreen,
       }),
     },
-    // appBarWide: {
-    //   width: "100%",
-    //   transition: 0
-    // },
+    appBarWide: {
+      width: "100%",
+      transition: "none"
+    },
     toolbar: {
       minHeight: headerHeigth,
       borderBottom: headerBorder,
