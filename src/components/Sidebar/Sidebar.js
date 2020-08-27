@@ -3,16 +3,12 @@ import clsx from "clsx";
 import { NavLink } from "react-router-dom";
 import { RiSurroundSoundLine as WalletLogo } from "react-icons/ri";
 import { AiOutlineArrowLeft as ArrowButton } from "react-icons/ai";
-import {
-  ListItem,
-  ListItemText,
-  Drawer,
-  IconButton,
-} from "@material-ui/core";
+import { ListItem, ListItemText, Drawer, IconButton } from "@material-ui/core";
 
 import { LayoutContext } from "context/LayoutContext";
 import routes from "routes";
 import { useSidebarStyles } from "../Layout/styles";
+
 
 const Sidebar = (props) => {
   const { toggleSidebar, isSidebarOpen } = useContext(LayoutContext);
@@ -32,7 +28,8 @@ const Sidebar = (props) => {
 
   return (
     <Drawer
-      variant="permanent"
+      variant={props.isSmallScreen ? "temporary" : "permanent"}
+      open
       className={clsx(classes.drawerContainer, {
         [classes.drawerOpen]: isSidebarOpen,
         [classes.drawerClose]: !isSidebarOpen,

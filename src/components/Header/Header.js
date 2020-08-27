@@ -1,8 +1,6 @@
 import React, { useCallback, useContext } from "react";
 import clsx from "clsx";
-
 import { withRouter } from "react-router";
-import { makeStyles } from "@material-ui/core/styles";
 import { AppBar, Toolbar, Button, IconButton } from "@material-ui/core";
 
 import { Dropdown } from "react-bootstrap";
@@ -10,18 +8,18 @@ import { AiOutlineClockCircle } from "react-icons/ai";
 import { MdMenu } from "react-icons/md";
 
 import firebase from "firebase.js";
+import { useHeaderStyles } from "../Layout/styles";
 import { UserContext } from "context/UserContext";
 import { LayoutContext } from "context/LayoutContext";
 import SelectBox from "components/SelectBox/SelectBox";
 
-import { useHeaderStyles } from "../Layout/styles";
 
-const Header = ({ history, title, setDataTimeFrame }) => {
+const Header = ({ history, title, setDataTimeFrame, isSmallScreen }) => {
   const { currentUser } = useContext(UserContext);
   const { toggleSidebar, isSidebarOpen } = useContext(LayoutContext);
   const classes = useHeaderStyles();
 
-  const logtout = useCallback(
+  const logout = useCallback(
     async (event) => {
       event.preventDefault();
       try {
@@ -52,12 +50,14 @@ const Header = ({ history, title, setDataTimeFrame }) => {
       elevation={0}
       className={clsx(classes.appBar, {
         [classes.appBarShift]: isSidebarOpen,
+        [classes.appBarWide]: isSmallScreen
       })}
     >
       {menuButton}
       <Toolbar
         className={clsx(classes.toolbar, {
           [classes.toolbarShift]: !isSidebarOpen,
+          [classes.appBarWide]: isSmallScreen
         })}
       >
         <div className={clsx(classes.headerItem, classes.title)}>{title}</div>
@@ -87,7 +87,7 @@ const Header = ({ history, title, setDataTimeFrame }) => {
           </Dropdown.Menu>
         </Dropdown>
         <Button
-          onClick={logtout}
+          onClick={logout}
           color="primary"
           className={classes.headerItem}
         >
