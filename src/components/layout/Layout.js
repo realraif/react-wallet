@@ -1,17 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Route, Switch, withRouter } from "react-router-dom";
 
 import routes from "routes";
 import useStyles from "./styles";
 import { useTheme } from "@material-ui/styles";
 
+import { LayoutContext } from "context/LayoutContext";
 import Header from "components/Header/Header";
 import Sidebar from "components/Sidebar/Sidebar";
 
 
 const Layout = (props) => {
-  var [isSmallScreen, setSmallScreen] = useState(true);
+  var [screenSize, setScreenSize] = useState(true);
   const [timeFrame, setTimeFrame] = useState({});
+  const { openSideBar } = useContext(LayoutContext);
   var theme = useTheme();
   const classes = useStyles();
 
@@ -39,11 +41,11 @@ const Layout = (props) => {
   return (
     <div className={classes.layout}>
       <Header
-        isSmallScreen={isSmallScreen}
+        isSmallScreen={screenSize == 'sm'}
         title={getPageTitle(props.location.pathname)}
         setDataTimeFrame={setDataTimeFrame}
       />
-      <Sidebar routes={routes} isSmallScreen={isSmallScreen} />
+      <Sidebar routes={routes} isSmallScreen={screenSize == 'sm'} />
       <main className={classes.content}>
         <Switch>
           {routes.map((prop, key) => {
@@ -63,14 +65,14 @@ const Layout = (props) => {
   );
 
   function handleWindowWidthChange() {
-    var windowWidth = window.innerWidth;
-    var breakpointWidth = theme.breakpoints.values.md;
-    var isUnderbreakpoint = windowWidth < breakpointWidth;
+    const windowWidth = window.innerWidth;
+    const isUnderSmallBreakpoint = windowWidth < theme.breakpoints.values.sm;
+    const isUnderMediumBreakpoint = windowWidth < theme.breakpoints.values.md;
+    const currentScreenSize = isUnderSmallBreakpoint ? "sm" : isUnderMediumBreakpoint ? "md" : "lg";
 
-    if (isUnderbreakpoint && !isSmallScreen) {
-      setSmallScreen(true);
-    } else if (!isUnderbreakpoint && isSmallScreen) {
-      setSmallScreen(false);
+    if (currentScreenSize !== screenSize) {
+      setScreenSize(currentScreenSize);
+      openSideBar(currentScreenSize !== "md");
     }
   }
 };
