@@ -25,6 +25,17 @@ const useStyles = makeStyles((theme) => ({
     "& :hover $arrowButton": {
       opacity: 1,
     },
+    "& ::-webkit-scrollbar": {
+      width: theme.spacing(1),
+    },
+    "& ::-webkit-scrollbar-track": {
+      boxShadow: "inset 0 0 6px rgba(0, 0, 0, 0.3)",
+    },
+
+    "& ::-webkit-scrollbar-thumb": {
+      backgroundColor: "darkgrey",
+      borderRadius: 6,
+    },
   },
   drawerOpen: {
     width: 260,
@@ -41,11 +52,19 @@ const useStyles = makeStyles((theme) => ({
     overflowX: "hidden",
     width: theme.spacing(7) + 1,
     [theme.breakpoints.up("sm")]: {
-      width: theme.spacing(8 + 3),
+      width: theme.spacing(8 + 3 + 1),
+    },
+    "& $itemLink": {
+      maxWidth: theme.spacing(7),
+      transition: theme.transitions.create("max-width", {
+        easing: theme.transitions.easing.sharp,
+        duration: theme.transitions.duration.leavingScreen,
+      }),
     },
   },
   itemLink: {
     width: "auto",
+    maxWidth: 260,
     transition: "all 300ms linear",
     margin: `10px ${theme.spacing(2)}px 0`,
     padding: `10px ${theme.spacing(2)}px`,
@@ -61,7 +80,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "24px",
     lineHeight: "30px",
     float: "left",
-    marginRight: theme.spacing(4),
+    marginRight: theme.spacing(5),
     textAlign: "center",
     verticalAlign: "middle",
     color: "#FFF",
