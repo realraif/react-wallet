@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Route, Switch, withRouter } from "react-router-dom";
 
-import styles from "./Layout.module.css";
 import routes from "routes";
 import useStyles from "./styles";
 
@@ -10,6 +9,7 @@ import Sidebar from "components/Sidebar/Sidebar";
 
 const Layout = (props) => {
   const [timeFrame, setTimeFrame] = useState({});
+  const classes = useStyles();
 
   const setDataTimeFrame = (timeFrame) => {
     setTimeFrame(timeFrame);
@@ -25,12 +25,12 @@ const Layout = (props) => {
   };
 
   return (
-    <div className={styles.Layout}>
+    <div className={classes.layout}>
       <Header
         title={getPageTitle(props.location.pathname)}
         setDataTimeFrame={setDataTimeFrame} />
       <Sidebar routes={routes} />
-      <main className={styles.Content}>
+      <main className={classes.content}>
         <Switch>
           {routes.map((prop, key) => {
             return (

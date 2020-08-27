@@ -8,6 +8,19 @@ const itemIconWU = 3;
 const buttonSpaceWU = 2;
 const closedDrawerWidthWU = 4*buttonSpaceWU + itemIconWU + scrollbarWU
 
+
+export default makeStyles((theme) => ({
+  layout: {
+    maxWidth: "100vw",
+    display: "flex"
+  },
+  content: {
+    width: "100%",
+    marginTop: headerHeigth,
+    minHeight: `calc(100vh - ${headerHeigth}px)`
+  }
+}));
+
 export const useHeaderStyles = makeStyles((theme) => ({
   appBar: {
     minHeight: headerHeigth,
