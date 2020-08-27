@@ -7,9 +7,8 @@ import {
   ListItem,
   ListItemText,
   makeStyles,
-  useTheme,
   Drawer,
-  IconButton
+  IconButton,
 } from "@material-ui/core";
 
 import { LayoutContext } from "context/LayoutContext";
@@ -21,6 +20,11 @@ const useStyles = makeStyles((theme) => ({
     width: 260,
     backgroundColor: "rgba(0, 0, 0, 0.62)",
     border: 0,
+  },
+  drawerContainer: {
+    "& :hover $arrowButton": {
+      opacity: 1,
+    },
   },
   drawerOpen: {
     width: 260,
@@ -90,33 +94,42 @@ const useStyles = makeStyles((theme) => ({
   },
   logoIcon: {
     color: "#68B3FD",
-    marginRight: theme.spacing(1),
+    marginRight: 4,
   },
   logoTitle: {
-    fontSize: 22,
+    fontSize: 19,
     fontWeight: 200,
     color: "#fff",
     letterSpacing: 3,
   },
   arrowButton: {
     color: "#fff",
-    position: "absolute",
-    bottom: 0,
-    right: 0,
+    margin: "auto 4px auto auto;",
+    opacity: 0,
+    transition: "all 300ms linear",
   },
 }));
 
 const Sidebar = (props) => {
   const { toggleSidebar, isSidebarOpen } = useContext(LayoutContext);
-
   const classes = useStyles();
 
-  const theme = useTheme();
-  console.log(theme);
+  const arrowButton = (
+    <IconButton
+      color="white"
+      className={classes.arrowButton}
+      aria-label="close drawer"
+      onClick={toggleSidebar}
+      edge="start"
+    >
+      <ArrowButton size="15" />
+    </IconButton>
+  );
+
   return (
     <Drawer
       variant="permanent"
-      className={clsx({
+      className={clsx(classes.drawerContainer, {
         [classes.drawerOpen]: isSidebarOpen,
         [classes.drawerClose]: !isSidebarOpen,
       })}
@@ -128,18 +141,10 @@ const Sidebar = (props) => {
       }}
     >
       <div className={styles.LogoContainer}>
-        <IconButton
-          color="white"
-          className={classes.arrowButton}
-          aria-label="close drawer"
-          onClick={toggleSidebar}
-          edge="start"
-        >
-          <ArrowButton size="15" />
-        </IconButton>
+        {arrowButton}
         <div className={classes.logo}>
           <WalletLogo className={classes.logoIcon} size="25" />
-          <span className={classes.logoTitle}>wallet</span>
+          <span className={classes.logoTitle}>wallet.</span>
         </div>
       </div>
       <div className={styles.Menu}>
