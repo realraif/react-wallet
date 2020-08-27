@@ -15,54 +15,12 @@ import { LayoutContext } from "context/LayoutContext";
 import SelectBox from "components/SelectBox/SelectBox";
 
 import styles from "./Header.module.css";
-
-const drawerWidth = 260;
-
-const useStyles = makeStyles((theme) => ({
-  appBar: {
-    minHeight: "60px",
-    zIndex: theme.zIndex.drawer + 1,
-    transition: theme.transitions.create(["width", "margin"], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-  },
-  appBarShift: {
-    marginLeft: drawerWidth,
-    width: `calc(100% - ${drawerWidth}px)`,
-    transition: theme.transitions.create(["width", "margin"], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  },
-  toolbar: {
-    minHeight: "60px",
-    borderBottom: "1px solid #E5E5E5",
-  },
-  toolbarShift: {
-    paddingLeft: theme.spacing(8 + 3 + 2),
-  },
-  grow: {
-    flexGrow: 1,
-  },
-  hide: {
-    display: "none",
-  },
-  menuButton: {
-    marginRight: 36,
-    position: "absolute",
-    top: 0,
-    bottom: 0,
-    left: 30,
-    zIndex: theme.zIndex.appBar + 1
-  },
-  headerItem: {
-    margin: "0 5px 0 5px",
-  },
-}));
+import { useHeaderStyles } from "../Layout/styles";
 
 const Header = ({ history, title, setDataTimeFrame }) => {
-  const classes = useStyles();
+  const { currentUser } = useContext(UserContext);
+  const { toggleSidebar, isSidebarOpen } = useContext(LayoutContext);
+  const classes = useHeaderStyles();
 
   const logtout = useCallback(
     async (event) => {
@@ -77,8 +35,17 @@ const Header = ({ history, title, setDataTimeFrame }) => {
     [history]
   );
 
-  const { currentUser } = useContext(UserContext);
-  const { toggleSidebar, isSidebarOpen } = useContext(LayoutContext);
+  const menuButton = !isSidebarOpen ? (
+    <div className={clsx(classes.menuButton)}>
+      <IconButton
+        color="inherit"
+        aria-label="open drawer"
+        onClick={toggleSidebar}
+      >
+        <MdMenu />
+      </IconButton>
+    </div>
+  ) : null;
 
   return (
     <AppBar
@@ -88,26 +55,13 @@ const Header = ({ history, title, setDataTimeFrame }) => {
         [classes.appBarShift]: isSidebarOpen,
       })}
     >
-      <IconButton
-        color="inherit"
-        aria-label="open drawer"
-        onClick={toggleSidebar}
-        edge="start"
-        className={clsx(classes.menuButton, {
-          [classes.hide]: isSidebarOpen,
+      {menuButton}
+      <Toolbar
+        className={clsx(classes.toolbar, styles.Title, {
+          [classes.toolbarShift]: !isSidebarOpen,
         })}
       >
-        <MdMenu />
-      </IconButton>
-
-      <Toolbar className={clsx(classes.toolbar, styles.Title, {
-            [classes.toolbarShift]: !isSidebarOpen,
-          })}>
-        <div
-          className={clsx(classes.headerItem, styles.Title)}
-        >
-          {title}
-        </div>
+        <div className={clsx(classes.headerItem, styles.Title)}>{title}</div>
         <SelectBox
           className={clsx(classes.headerItem, styles.SelectBox)}
           onSelect={setDataTimeFrame}

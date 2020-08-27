@@ -1,11 +1,57 @@
 import { makeStyles } from "@material-ui/styles";
 
+const headerHeigth = 60;
 const drawerWidth = 260;
+
 const scrollbarWU = 1;
 const itemIconWU = 3;
-const buttonSpace = 2;
+const buttonSpaceWU = 2;
+const closedDrawerWidthWU = 4*buttonSpaceWU + itemIconWU + scrollbarWU
 
-export default makeStyles(theme => ({
+export const useHeaderStyles = makeStyles((theme) => ({
+  appBar: {
+    minHeight: headerHeigth,
+    zIndex: theme.zIndex.drawer + 1,
+    transition: theme.transitions.create(["width", "margin"], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }),
+  },
+  appBarShift: {
+    marginLeft: drawerWidth,
+    width: `calc(100% - ${drawerWidth}px)`,
+    transition: theme.transitions.create(["width", "margin"], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+  },
+  toolbar: {
+    minHeight: headerHeigth,
+    borderBottom: "1px solid #E5E5E5",
+  },
+  toolbarShift: {
+    paddingLeft: theme.spacing(closedDrawerWidthWU + 3),
+  },
+  grow: {
+    flexGrow: 1,
+  },
+  menuButton: {
+    width: theme.spacing(closedDrawerWidthWU - scrollbarWU),
+    position: "absolute",
+    top: 0,
+    bottom: 0,
+    display: "flex",
+    zIndex: theme.zIndex.appBar + 1,
+    "& button" : {
+      margin: "auto"
+    }
+  },
+  headerItem: {
+    margin: "0 5px 0 5px",
+  },
+}));
+
+export const useSidebarStyles = makeStyles(theme => ({
   drawer: {
     width: drawerWidth,
     backgroundColor: "rgba(0, 0, 0, 0.62)",
@@ -36,13 +82,13 @@ export default makeStyles(theme => ({
   },
   drawerClose: {
     overflowX: "hidden",
-    width: theme.spacing(4*buttonSpace + itemIconWU + scrollbarWU),
+    width: theme.spacing(closedDrawerWidthWU),
     transition: theme.transitions.create("width", {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
     "& $itemLink": {
-      maxWidth: theme.spacing(2*buttonSpace + itemIconWU),
+      maxWidth: theme.spacing(2*buttonSpaceWU + itemIconWU),
       transition: theme.transitions.create("max-width", {
         easing: theme.transitions.easing.sharp,
         duration: theme.transitions.duration.leavingScreen,
@@ -53,8 +99,8 @@ export default makeStyles(theme => ({
     width: "auto",
     maxWidth: drawerWidth,
     transition: "all 300ms linear",
-    margin: `10px ${theme.spacing(buttonSpace)}px 0`,
-    padding: `10px ${theme.spacing(buttonSpace)}px`,
+    margin: `10px ${theme.spacing(buttonSpaceWU)}px 0`,
+    padding: `10px ${theme.spacing(buttonSpaceWU)}px`,
     borderRadius: "3px",
     position: "relative",
     display: "block",
@@ -65,7 +111,7 @@ export default makeStyles(theme => ({
     width: theme.spacing(itemIconWU),
     height: "30px",
     float: "left",
-    marginRight: theme.spacing(2*buttonSpace + scrollbarWU),
+    marginRight: theme.spacing(2*buttonSpaceWU + scrollbarWU),
     color: "#FFF",
   },
   blue: {
@@ -90,7 +136,7 @@ export default makeStyles(theme => ({
     position: "absolute",
     bottom: 0,
     top: 0,
-    left: theme.spacing(2*buttonSpace),
+    left: theme.spacing(2*buttonSpaceWU),
     display: "flex",
     alignItems: "center",
   },

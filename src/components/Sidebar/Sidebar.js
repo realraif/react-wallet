@@ -6,7 +6,6 @@ import { AiOutlineArrowLeft as ArrowButton } from "react-icons/ai";
 import {
   ListItem,
   ListItemText,
-  makeStyles,
   Drawer,
   IconButton,
 } from "@material-ui/core";
@@ -14,11 +13,11 @@ import {
 import { LayoutContext } from "context/LayoutContext";
 import routes from "routes";
 import styles from "./Sidebar.module.css";
-import useStyles from "./styles";
+import { useSidebarStyles } from "../Layout/styles";
 
 const Sidebar = (props) => {
   const { toggleSidebar, isSidebarOpen } = useContext(LayoutContext);
-  const classes = useStyles();
+  const classes = useSidebarStyles();
 
   const arrowButton = (
     <IconButton

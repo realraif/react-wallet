@@ -3,6 +3,7 @@ import { Route, Switch, withRouter } from "react-router-dom";
 
 import styles from "./Layout.module.css";
 import routes from "routes";
+import useStyles from "./styles";
 
 import Header from "components/Header/Header";
 import Sidebar from "components/Sidebar/Sidebar";
