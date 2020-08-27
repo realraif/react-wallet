@@ -14,7 +14,6 @@ import { UserContext } from "context/UserContext";
 import { LayoutContext } from "context/LayoutContext";
 import SelectBox from "components/SelectBox/SelectBox";
 
-import styles from "./Header.module.css";
 import { useHeaderStyles } from "../Layout/styles";
 
 const Header = ({ history, title, setDataTimeFrame }) => {
@@ -57,13 +56,13 @@ const Header = ({ history, title, setDataTimeFrame }) => {
     >
       {menuButton}
       <Toolbar
-        className={clsx(classes.toolbar, styles.Title, {
+        className={clsx(classes.toolbar, {
           [classes.toolbarShift]: !isSidebarOpen,
         })}
       >
-        <div className={clsx(classes.headerItem, styles.Title)}>{title}</div>
+        <div className={clsx(classes.headerItem, classes.title)}>{title}</div>
         <SelectBox
-          className={clsx(classes.headerItem, styles.SelectBox)}
+          className={clsx(classes.headerItem, classes.selectBox)}
           onSelect={setDataTimeFrame}
           icon={AiOutlineClockCircle}
         >
@@ -76,7 +75,7 @@ const Header = ({ history, title, setDataTimeFrame }) => {
         <Dropdown>
           <Dropdown.Toggle
             id="dropdown-basic"
-            className={clsx(classes.headerItem, styles.DropDown)}
+            className={clsx(classes.headerItem, classes.dropDown)}
           >
             Account
           </Dropdown.Toggle>

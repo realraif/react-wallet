@@ -12,7 +12,6 @@ import {
 
 import { LayoutContext } from "context/LayoutContext";
 import routes from "routes";
-import styles from "./Sidebar.module.css";
 import { useSidebarStyles } from "../Layout/styles";
 
 const Sidebar = (props) => {
@@ -45,14 +44,14 @@ const Sidebar = (props) => {
         }),
       }}
     >
-      <div className={styles.LogoContainer}>
+      <div className={classes.logoContainer}>
         {arrowButton}
         <div className={classes.logo}>
           <WalletLogo className={classes.logoIcon} size="25" />
           <span className={classes.logoTitle}>wallet.</span>
         </div>
       </div>
-      <div className={styles.Menu}>
+      <div className={classes.menu}>
         {routes.map((route) => (
           <NavLink
             key={route.path}
