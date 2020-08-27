@@ -59,7 +59,7 @@ const Sidebar = (props) => {
             activeClassName={classes.active}
             style={{ textDecoration: "none" }}
           >
-            <ListItem button className={classes.itemLink + " " + classes.blue}>
+            <ListItem button className={classes.itemLink}>
               <route.icon className={classes.itemIcon} size="20" />
               <ListItemText
                 primary={route.title}

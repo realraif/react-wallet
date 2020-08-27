@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/styles";
 const headerHeigth = 60;
 const drawerWidth = 260;
 const headerBorder = "1px solid #E5E5E5";
+const menuActiveColor = "rgba(255, 255, 255, 0.23)";
 
 const scrollbarWU = 1;
 const itemIconWU = 3;
@@ -139,6 +140,9 @@ export const useSidebarStyles = makeStyles((theme) => ({
     display: "block",
     backgroundColor: "transparent",
     fontWeight: "bold",
+    "&:hover,&:focus": {
+      backgroundColor: menuActiveColor,
+    },
   },
   itemIcon: {
     width: theme.spacing(itemIconWU),
@@ -147,14 +151,9 @@ export const useSidebarStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(2 * buttonSpaceWU + scrollbarWU),
     color: "#FFF",
   },
-  blue: {
-    "&:hover,&:focus": {
-      backgroundColor: "#00acc1",
-    },
-  },
   active: {
-    "& $blue": {
-      backgroundColor: "#00acc1",
+    "& $itemLink": {
+      backgroundColor: menuActiveColor,
     },
   },
   itemText: {
