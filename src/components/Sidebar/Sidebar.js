@@ -9,7 +9,6 @@ import { LayoutContext } from "context/LayoutContext";
 import routes from "routes";
 import { useSidebarStyles } from "../Layout/styles";
 
-
 const Sidebar = (props) => {
   const { toggleSidebar, isSidebarOpen } = useContext(LayoutContext);
   const classes = useSidebarStyles();
@@ -17,7 +16,9 @@ const Sidebar = (props) => {
   const arrowButton = (
     <IconButton
       color="white"
-      className={classes.arrowButton}
+      className={clsx(classes.arrowButton, {
+        [classes.visible]: props.isSmallScreen,
+      })}
       aria-label="close drawer"
       onClick={toggleSidebar}
       edge="start"
@@ -29,7 +30,7 @@ const Sidebar = (props) => {
   return (
     <Drawer
       variant={props.isSmallScreen ? "temporary" : "permanent"}
-      open
+      open={isSidebarOpen}
       className={clsx(classes.drawerContainer, {
         [classes.drawerOpen]: isSidebarOpen,
         [classes.drawerClose]: !isSidebarOpen,

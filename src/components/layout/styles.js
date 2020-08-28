@@ -35,6 +35,7 @@ export const useHeaderStyles = makeStyles((theme) => {
   return {
     appBar: {
       minHeight: headerHeigth,
+      maxHeight: headerHeigth,
       zIndex: theme.zIndex.drawer + 1,
       transition: theme.transitions.create(["width", "margin"], {
         easing: theme.transitions.easing.sharp,
@@ -210,4 +211,7 @@ export const useSidebarStyles = makeStyles((theme) => ({
     opacity: 0,
     transition: "all 300ms linear",
   },
+  visible: {
+    opacity: 1
+  }
 }));
