@@ -1,58 +1,23 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
+import * as serviceWorker from "./serviceWorker";
 
+import { CssBaseline } from "@material-ui/core";
+import { ThemeProvider } from "@material-ui/core/styles";
 import "bootstrap/dist/css/bootstrap.min.css";
-import purple from "@material-ui/core/colors/purple";
-import green from "@material-ui/core/colors/green";
 
 import "./index.css";
-import App from "./App";
-import * as serviceWorker from "./serviceWorker";
+import Themes from "./themes";
 import { LayoutProvider } from "./context/LayoutContext";
 import { UserProvider } from "./context/UserContext";
+import App from "./App";
 
-const theme = createMuiTheme({
-  // type: "dark",
-  shape: {
-    borderRadius: 2,
-  },
-  overrides: {
-    MuiButton: {
-      text: {
-        padding: "7px 18px",
-        border: "1px solid transparent",
-        textTransform: "initial",
-        fontSize: "1rem"
-      },
-      root: {
-        "&:hover,&:focus": {
-        color: "#1DC7EA",
-        border: "1px solid #1DC7EA",
-        }
-      },
-    },
-    MuiAppBar: {
-      colorPrimary: {
-        backgroundColor: "#FBFBFB",
-        color: "#979797",
-      },
-    },
-  },
-  palette: {
-    primary: {
-      main: purple[500],
-    },
-    secondary: {
-      main: green[500],
-    },
-  },
-});
 
 ReactDOM.render(
-  <ThemeProvider theme={theme}>
+  <ThemeProvider theme={Themes.default}>
     <LayoutProvider>
       <UserProvider>
+        <CssBaseline />
         <App />
       </UserProvider>
     </LayoutProvider>
