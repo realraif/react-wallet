@@ -48,6 +48,7 @@ const Header = ({ history, title, setDataTimeFrame, isSmallScreen }) => {
     <AppBar
       position="fixed"
       elevation={0}
+      color="default"
       className={clsx(classes.appBar, {
         [classes.appBarShift]: isSidebarOpen,
         [classes.appBarWide]: isSmallScreen

@@ -1,7 +1,4 @@
 body {
-  margin: 0;
-  background-color: #F7F7F8;
-  color: #979797;
   font-family: 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -9,8 +6,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-button, select, a {
-  color: #979797;
+select {
   outline: 0 !important;
   cursor: pointer;
 }

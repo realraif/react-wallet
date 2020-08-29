@@ -1,3 +1,4 @@
+import tinycolor from 'tinycolor2';
 import { makeStyles } from "@material-ui/styles";
 
 const headerHeigth = 60;
@@ -9,6 +10,10 @@ const scrollbarWU = 1;
 const itemIconWU = 3;
 const buttonSpaceWU = 2;
 const closedDrawerWU = 4 * buttonSpaceWU + itemIconWU;
+
+const setOpcaity = ( color, alpha ) => {
+  return tinycolor(color).setAlpha(alpha).toRgbString()
+};
 
 export default makeStyles((theme) => ({
   layout: {
@@ -86,10 +91,17 @@ export const useHeaderStyles = makeStyles((theme) => {
   };
 });
 
-export const useSidebarStyles = makeStyles((theme) => ({
+
+export const useSidebarStyles = makeStyles((theme) => {
+  const drawerThemeColor = theme.palette.background.drawer[theme.palette.type]
+
+  const drawerColor = setOpcaity(drawerThemeColor, 0.6);
+  const drawerRollerColor = setOpcaity(drawerThemeColor, 0.3);
+  const drawerRollerBGColor = setOpcaity(drawerThemeColor, 0.8);
+
+  return {
   drawer: {
-    width: drawerWidth,
-    backgroundColor: "rgba(0, 0, 0, 0.62)",
+    backgroundColor: drawerColor,
     border: 0,
   },
   drawerContainer: {
@@ -100,11 +112,11 @@ export const useSidebarStyles = makeStyles((theme) => ({
       width: theme.spacing(scrollbarWU),
     },
     "& ::-webkit-scrollbar-track": {
-      boxShadow: "inset 0 0 6px rgba(0, 0, 0, 0.3)",
+      boxShadow: `inset 0 0 6px ${drawerRollerBGColor}`,
     },
 
     "& ::-webkit-scrollbar-thumb": {
-      backgroundColor: "darkgrey",
+      backgroundColor: drawerRollerColor,
       borderRadius: 6,
     },
   },
@@ -160,7 +172,7 @@ export const useSidebarStyles = makeStyles((theme) => ({
     height: "30px",
     float: "left",
     marginRight: 20,
-    color: "#FFF",
+    // color: "#FFF",
   },
   active: {
     "& $itemLink": {
@@ -174,7 +186,7 @@ export const useSidebarStyles = makeStyles((theme) => ({
     fontWeight: 500,
     textTransform: "uppercase",
     lineHeight: "30px",
-    color: "#FFF",
+    // color: "#FFF",
     display: "flex",
     whiteSpace: "nowrap",
     opacity: 1
@@ -202,11 +214,11 @@ export const useSidebarStyles = makeStyles((theme) => ({
   logoTitle: {
     fontSize: 19,
     fontWeight: 200,
-    color: "#fff",
+    // color: "#fff",
     letterSpacing: 3,
   },
   arrowButton: {
-    color: "#fff",
+    // color: "#fff",
     margin: "auto 4px auto auto;",
     opacity: 0,
     transition: "all 300ms linear",
@@ -214,4 +226,5 @@ export const useSidebarStyles = makeStyles((theme) => ({
   visible: {
     opacity: 1
   }
-}));
+}});
+
