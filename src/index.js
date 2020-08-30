@@ -4,7 +4,7 @@ import * as serviceWorker from "./serviceWorker";
 
 import { CssBaseline } from "@material-ui/core";
 import { ThemeProvider } from "@material-ui/core/styles";
-// import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 import "./index.css";
 import Themes from "./themes";

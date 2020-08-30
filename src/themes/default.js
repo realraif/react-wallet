@@ -45,6 +45,7 @@ export default {
     },
     background: {
       light: "#F7F7F8",
+      paper: "#000",
       drawer: {
         light: "#000",
         dark: "#9393",
@@ -85,12 +86,12 @@ export default {
     },
     MuiDrawer: {
       paper: {
-        color: "pink",
+        color: "#fff",
       },
     },
     MuiButtonBase: {
       root: {
-        color: "pink"
+        color: "#fff"
       }
     }
   },
