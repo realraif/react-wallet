@@ -29,6 +29,7 @@ export default makeStyles((theme) => ({
 
 export const useHeaderStyles = makeStyles((theme) => {
   const hover = {
+    width: 150,
     backgroundColor: "transparent",
     border: "1px solid transparent",
     "&:hover": {
@@ -90,6 +91,7 @@ export const useHeaderStyles = makeStyles((theme) => {
     dropDown: hover,
   };
 });
+
 
 export const useSidebarStyles = makeStyles((theme) => {
   const drawerThemeColor = theme.palette.background.drawer[theme.palette.type];
