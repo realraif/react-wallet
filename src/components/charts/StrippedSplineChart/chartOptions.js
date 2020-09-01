@@ -1,39 +1,37 @@
-
 import Highcharts from "highcharts";
+import { ColorLuminance } from "utils";
 
+const defaultColor = "#4572A7";
 
-export default ( data, styles ) => {
-  const lineColor = styles.color ? styles.color : "#4572A7";
-  
+export default (data, styles) => {
   const options = getGenericOptions();
-  customiseOptions(options, data, lineColor, styles.height);
-
+  customiseOptions(options, data, styles);
   return options;
-}
+};
 
 const getGenericOptions = () => ({
   chart: {
     spacing: [0, 0, 0, 0],
-    margin: [0, 40, 0, 0]
+    margin: [0, 40, 0, 0],
   },
   credits: {
-      enabled: false
+    enabled: false,
   },
   title: {
-    text: ''
+    text: "",
   },
   tooltip: {
-      enabled: false
+    enabled: false,
   },
   legend: {
-  	enabled: false
+    enabled: false,
   },
   yAxis: {
-      visible: false,
-      endOnTick: false
+    visible: false,
+    endOnTick: false,
   },
   xAxis: {
-      visible: false
+    visible: false,
   },
   plotOptions: {
     series: {
@@ -42,20 +40,30 @@ const getGenericOptions = () => ({
         lineWidth: 3,
         radius: 1,
         lineColor: null, // inherit from series
-        enabled: false
-      }
-    }
+        enabled: false,
+      },
+    },
   },
-  series: [{
-    type: 'areaspline',
-    data: []
-  }]
+  series: [
+    {
+      type: "areaspline",
+      data: [],
+    },
+  ],
 });
 
+const customiseOptions = (options, data, styles) => {
+  options.series[0].data = confuigureSeries(data);
+  setChartColors(options, styles.color);
+  if (styles.height) {
+    options.chart.height = styles.height;
+  }
+};
 
-function setLastItemOptions(data) {
-  let chartTrend = [...data];
-  let yValue = chartTrend.pop();
+const confuigureSeries = (data) => {
+  let seriesData = [...data];
+  let yValue = seriesData.pop();
+
   let lastItem = {
     y: yValue,
     marker: {
@@ -64,60 +72,41 @@ function setLastItemOptions(data) {
       enabled: true,
     },
   };
-  chartTrend.push(lastItem);
-  return chartTrend;
-}
 
-function ColorLuminance(hex, lum) {
-  // validate hex string
-  hex = String(hex).replace(/[^0-9a-f]/gi, "");
-  if (hex.length < 6) {
-    hex = hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2];
-  }
-  lum = lum || 0;
-
-  // convert to decimal and change luminosity
-  var rgb = "#",
-    c,
-    i;
-  for (i = 0; i < 3; i++) {
-    c = parseInt(hex.substr(i * 2, 2), 16);
-    c = Math.round(Math.min(Math.max(0, c + c * lum), 255)).toString(16);
-    rgb += ("00" + c).substr(c.length);
-  }
-
-  return rgb;
-}
-
-const customiseOptions = (options, data, lineColor, height) => {
-  data = setLastItemOptions(data);
-  const lightColor = ColorLuminance(lineColor, 0.2);
-  const lighterColor = ColorLuminance(lineColor, 0.4);
-  const whiteColor = ColorLuminance(lineColor, 1);
-
-  var series = options.series[0];
-  var plotSeries = options.plotOptions.series;
-
-  plotSeries.color = lineColor;
-  plotSeries.marker.lineColor = lightColor;
-
-  if (height) {
-    options.chart.height = height;
-  }
-
-  series.data = data;
-  series.color = {
-    linearGradient: { x1: 1, x2: 0, y1: 1, y2: 1 },
-    stops: [
-      [0, lightColor],
-      [1, lineColor],
-    ],
-  };
-  series.fillColor = {
-    linearGradient: { x1: 0, x2: 1, y1: 0, y2: 1 },
-    stops: [
-      [0, Highcharts.color(lighterColor).setOpacity(0.3).get()],
-      [1, Highcharts.color(whiteColor).setOpacity(0.001).get()],
-    ],
-  };
+  seriesData.push(lastItem);
+  return seriesData;
 };
+
+const setChartColors = (options, chartColor) => {
+  let colors = getColors(chartColor || defaultColor);
+  let series = options.series[0];
+  let plotSeries = options.plotOptions.series;
+
+  plotSeries.color = colors.lineColor;
+  plotSeries.marker.lineColor = colors.lightColor;
+  series.color = setLineGradient(colors);
+  series.fillColor = setFillGradient(colors);
+};
+
+const setLineGradient = (colors) => ({
+  linearGradient: { x1: 1, x2: 0, y1: 1, y2: 1 },
+  stops: [
+    [0, colors.lightColor],
+    [1, colors.lineColor],
+  ],
+});
+
+const setFillGradient = (colors) => ({
+  linearGradient: { x1: 0, x2: 1, y1: 0, y2: 1 },
+  stops: [
+    [0, Highcharts.color(colors.lighterColor).setOpacity(0.3).get()],
+    [1, Highcharts.color(colors.whiteColor).setOpacity(0.001).get()],
+  ],
+});
+
+const getColors = (chartColor) => ({
+  lineColor: chartColor,
+  lightColor: ColorLuminance(chartColor, 0.2),
+  lighterColor: ColorLuminance(chartColor, 0.4),
+  whiteColor: ColorLuminance(chartColor, 1),
+});
