@@ -1,5 +1,5 @@
 
-export default {
+export default () => ({
   chart: {
     spacing: [0, 0, 0, 0],
     margin: [0, 40, 0, 0]
@@ -38,4 +38,4 @@ export default {
     type: 'areaspline',
     data: []
   }]
-};
+});
