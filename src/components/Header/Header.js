@@ -48,6 +48,7 @@ const Header = ({ history, title, setDataTimeFrame, isSmallScreen }) => {
       </IconButton>
     </div>
   ) : null;
+  
   const CustomSelectValue = props => (
     <div>
       <AiOutlineClockCircle />
