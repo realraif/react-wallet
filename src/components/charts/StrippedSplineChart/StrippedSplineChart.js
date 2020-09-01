@@ -6,7 +6,8 @@ import Styles from './StrippedSplineChart.module.css';
 
 
 function setLastItemOptions(data) {
-  var yValue = data.pop();
+  var chartTrend = [...data]
+  var yValue = chartTrend.pop();
   var lastItem = {
     y: yValue,
     marker: {
@@ -15,8 +16,8 @@ function setLastItemOptions(data) {
       enabled: true
     }
   }
-  data.push(lastItem);
-  return data;
+  chartTrend.push(lastItem);
+  return chartTrend;
 }
 
 function ColorLuminance(hex, lum) {
@@ -39,8 +40,10 @@ function ColorLuminance(hex, lum) {
 	return rgb;
 }
 
+
 const StrippedSplineChart = ( props ) => {
   var data = setLastItemOptions(props.data);
+
   var lineColor = props.color ? props.color : "#4572A7";
   var lightColor = ColorLuminance(lineColor, 0.2);
   var lighterColor = ColorLuminance(lineColor, 0.4);

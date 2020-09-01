@@ -12,9 +12,9 @@ const BalanceChart = ( props ) => {
   var formattedBalance = currentBalance.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits:2});
   var status = calcStatus(props.balanceTrend[0], currentBalance);
 
-  return(
+  return (
     <div className={Styles.BalanceChart}>
-      {/* <div className={Styles.Account}>
+      <div className={Styles.Account}>
         {props.accountID}
       </div>
       <div className={Styles.Balance}>
@@ -22,9 +22,9 @@ const BalanceChart = ( props ) => {
         <div className={Styles.Currency}>{props.currency}</div>
 
         <div className={Styles.Status}>
-          <BalanceStatus status={status} />
+          {/* <BalanceStatus status={status} /> */}
         </div>
-      </div> */}
+      </div>
       <div className={Styles.Chart}>
         <SplineChart data={props.balanceTrend} height="70" color={props.color} />
       </div>
