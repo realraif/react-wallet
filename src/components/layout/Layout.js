@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Route, Switch, withRouter } from "react-router-dom";
+import { useTheme } from "@material-ui/styles";
 
 import routes from "routes";
 import useStyles from "./styles";
-import { useTheme } from "@material-ui/styles";
-
 import { LayoutContext } from "context/LayoutContext";
+
 import Header from "components/Header/Header";
 import Sidebar from "components/Sidebar/Sidebar";
 

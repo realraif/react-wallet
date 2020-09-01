@@ -1,6 +1,7 @@
 import React from "react";
 import { Grid } from "@material-ui/core";
 import BalanceCard from "./BalanceCard";
+import withSection from 'HOC/withSection';
 
 const colors = ["#a275d0", "#559e55", "#75bad0"];
 
@@ -25,9 +26,9 @@ const balancesData = [
 
 const Balances = (props) => {
   return (
-    <Grid container justify="space-around" alignItems="center">
+    <Grid container justify="space-between" spacing={5} alignItems="center">
       {balancesData.map((balance, index) => (
-        <Grid item xs={3} key={balance.id}>
+        <Grid item xs={4} key={balance.id}>
           <BalanceCard
             balanceTrend={balance.trend}
             accountID={balance.id}
@@ -40,4 +41,4 @@ const Balances = (props) => {
   );
 };
 
-export default Balances;
+export default withSection(Balances, "balances");
