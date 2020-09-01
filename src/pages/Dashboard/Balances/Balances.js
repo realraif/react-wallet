@@ -1,6 +1,5 @@
 import React from "react";
 import { Grid } from "@material-ui/core";
-import SplineChart from "components/charts/StrippedSplineChart/StrippedSplineChart";
 import BalanceCard from "./BalanceCard";
 
 const colors = ["#a275d0", "#559e55", "#75bad0"];
@@ -22,6 +21,7 @@ const balancesData = [
     currency: "USD",
   },
 ];
+
 
 const Balances = (props) => {
   return (
