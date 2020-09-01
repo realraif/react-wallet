@@ -1,0 +1,41 @@
+.BalanceChart {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  background-color: white;
+  box-shadow: 5px 0 8px 0 #d2d2d2;
+}
+
+.Chart {
+  width: 100%;
+  margin-left: -5px;
+}
+
+.Balance {
+  padding: 10px 30px;
+}
+
+.Balance > * {
+  display: inline-block;
+}
+
+.BalanceText {
+  font-size: 30px;
+  font-weight: 500;
+  margin-right: 12px;
+}
+
+.Currency {
+  font-size: 12px;
+  color: #9191af;
+  text-transform: capitalize;
+}
+
+.Account {
+  color: #9191af;
+  margin: 24px 30px;
+}
+
+.Status {
+  float: right;
+}

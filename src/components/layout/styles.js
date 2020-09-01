@@ -219,7 +219,6 @@ export const useSidebarStyles = makeStyles((theme) => {
       letterSpacing: 3,
     },
     arrowButton: {
-      // color: "#fff",
       margin: "auto 4px auto auto;",
       opacity: 0,
       transition: "all 300ms linear",

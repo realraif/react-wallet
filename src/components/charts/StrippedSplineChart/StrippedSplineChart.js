@@ -2,6 +2,8 @@ import React from 'react';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import genericOptions from './chartOptions';
+import Styles from './StrippedSplineChart.module.css';
+
 
 function setLastItemOptions(data) {
   var yValue = data.pop();
@@ -81,7 +83,7 @@ const StrippedSplineChart = ( props ) => {
   }
   
   return (
-    <div>
+    <div className={Styles.ChartContainer}>
       <HighchartsReact highcharts={Highcharts} options={options}/>
     </div>
   );

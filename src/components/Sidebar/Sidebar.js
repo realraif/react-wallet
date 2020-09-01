@@ -15,7 +15,7 @@ const Sidebar = (props) => {
 
   const arrowButton = (
     <IconButton
-      color="white"
+      color="inherit"
       className={clsx(classes.arrowButton, {
         [classes.visible]: props.isSmallScreen,
       })}

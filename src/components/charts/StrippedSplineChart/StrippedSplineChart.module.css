@@ -1,0 +1,3 @@
+.ChartContainer div, .ChartContainer svg {
+  overflow: visible !important;
+}
