@@ -23,7 +23,7 @@ export default makeStyles((theme) => ({
   },
   content: {
     width: "100%",
-    padding: `${theme.spacing(topPaddingWU)}px ${theme.spacing(5)}px`,
+    padding: theme.spacing(topPaddingWU, 5),
     marginTop: headerHeigth,
     minHeight: `calc(100vh - ${headerHeigth}px)`,
   },
@@ -83,7 +83,7 @@ export const useHeaderStyles = makeStyles((theme) => {
       },
     },
     headerItem: {
-      margin: `0 ${theme.spacing(2)}px`,
+      margin: theme.spacing(0, 2),
     },
     title: {
       fontSize: 25,
@@ -175,7 +175,6 @@ export const useSidebarStyles = makeStyles((theme) => {
       height: "30px",
       float: "left",
       marginRight: 20,
-      // color: "#FFF",
     },
     active: {
       "& $itemLink": {
@@ -189,7 +188,6 @@ export const useSidebarStyles = makeStyles((theme) => {
       fontWeight: 500,
       textTransform: "uppercase",
       lineHeight: "30px",
-      // color: "#FFF",
       display: "flex",
       whiteSpace: "nowrap",
       opacity: 1,
@@ -217,7 +215,6 @@ export const useSidebarStyles = makeStyles((theme) => {
     logoTitle: {
       fontSize: 19,
       fontWeight: 200,
-      // color: "#fff",
       letterSpacing: 3,
     },
     arrowButton: {
