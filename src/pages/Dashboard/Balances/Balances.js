@@ -1,9 +1,9 @@
 import React from "react";
 import { Grid } from "@material-ui/core";
+import { useTheme } from "@material-ui/styles";
+
 import BalanceCard from "./BalanceCard";
 import withSection from 'HOC/withSection';
-
-const colors = ["#a275d0", "#559e55", "#75bad0"];
 
 const balancesData = [
   {
@@ -25,6 +25,9 @@ const balancesData = [
 
 
 const Balances = (props) => {
+  var theme = useTheme();
+  const colors = theme.charts.colors;
+
   return (
     <Grid container justify="space-between" spacing={5} alignItems="center">
       {balancesData.map((balance, index) => (

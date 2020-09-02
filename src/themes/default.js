@@ -65,6 +65,9 @@ export default {
     pageSides: 40,
     sectionTitle: 30,
   },
+  charts: {
+    colors: ["#a275d0", "#559e55", "#75bad0"],
+  },
   shape: {
     borderRadius: 2,
   },
@@ -96,8 +99,8 @@ export default {
     },
     MuiButtonBase: {
       root: {
-        color: "#fff"
-      }
-    }
+        color: "#fff",
+      },
+    },
   },
 };
