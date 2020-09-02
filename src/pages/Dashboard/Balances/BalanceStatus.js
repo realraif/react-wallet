@@ -1,24 +1,21 @@
 import React from "react";
+import { Typography } from "@material-ui/core";
+
 import Styles from "./BalanceStatus.module.css";
 
 const BalanceStatus = (props) => {
-  var changeTrend = null;
-  if (props.status > 0) {
-    changeTrend = <span>+</span>;
-  } else if (props.status < 0) {
-    changeTrend = <span>-</span>;
-  }
-
-  var status = Math.abs(props.status);
-  var timeframe = "this week";
+  const negativeTrend = props.status < 0;
+  const status = Math.abs(props.status);
 
   return (
     <div className={Styles.BalanceStatus}>
-      <div className={props.status < 0 ? Styles.Red : Styles.Green}>
-        {changeTrend}
+      
+      <Typography color={negativeTrend ? "error" : "primary"}>
+        {negativeTrend ? "-" : "+"}
         {status}%
-      </div>
-      <div className={Styles.Timeframe}>{timeframe}</div>
+      </Typography>
+
+      <div className={Styles.Timeframe}>this week</div>
     </div>
   );
 };
