@@ -2,7 +2,7 @@ import React from "react";
 import NumberFormat from "react-number-format";
 
 import SplineChart from "components/charts/StrippedSplineChart/StrippedSplineChart";
-import Status from './BalanceStatus';
+import Status from "./BalanceStatus";
 import Styles from "./BalanceCard.module.css";
 
 function calcStatus(startValue, endValue) {
@@ -19,7 +19,10 @@ const BalanceChart = (props) => {
       <div className={Styles.Account}>{props.accountID}</div>
       <div className={Styles.Balance}>
         <div className={Styles.BalanceText}>
-          <NumberFormat value={currentBalance.toFixed(2)} displayType={"text"} />
+          <NumberFormat
+            value={currentBalance.toFixed(2)}
+            displayType={"text"}
+          />
         </div>
         <div className={Styles.Currency}>{props.currency}</div>
 
