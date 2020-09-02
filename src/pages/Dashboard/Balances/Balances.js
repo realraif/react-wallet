@@ -28,7 +28,7 @@ const Balances = (props) => {
   return (
     <Grid container justify="space-between" spacing={5} alignItems="center">
       {balancesData.map((balance, index) => (
-        <Grid item xs={4} key={balance.id}>
+        <Grid item xs={12} md={6} lg={4} key={balance.id}>
           <BalanceCard
             balanceTrend={balance.trend}
             accountID={balance.id}

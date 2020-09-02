@@ -6,7 +6,6 @@ const drawerWidth = 260;
 const headerBorder = "1px solid #E5E5E5";
 const menuActiveColor = "rgba(255, 255, 255, 0.23)";
 
-const topPaddingWU = 5;
 const scrollbarWU = 1;
 const itemIconWU = 3;
 const buttonSpaceWU = 2;
@@ -23,7 +22,7 @@ export default makeStyles((theme) => ({
   },
   content: {
     width: "100%",
-    padding: theme.spacing(topPaddingWU, 5),
+    padding: `${theme.customSpacing.pageTop}px ${theme.customSpacing.pageSides}px`,
     marginTop: headerHeigth,
     minHeight: `calc(100vh - ${headerHeigth}px)`,
   },
@@ -64,6 +63,7 @@ export const useHeaderStyles = makeStyles((theme) => {
     toolbar: {
       minHeight: headerHeigth,
       borderBottom: headerBorder,
+      padding: `0 ${theme.customSpacing.pageSides}px`
     },
     toolbarShift: {
       paddingLeft: theme.spacing(closedDrawerWU + 3),
@@ -83,7 +83,7 @@ export const useHeaderStyles = makeStyles((theme) => {
       },
     },
     headerItem: {
-      margin: theme.spacing(0, 2),
+      marginRight: theme.spacing(2),
     },
     title: {
       fontSize: 25,
@@ -153,7 +153,7 @@ export const useSidebarStyles = makeStyles((theme) => {
       },
     },
     menu: {
-      marginTop: theme.spacing(topPaddingWU + 4),
+      marginTop: theme.customSpacing.pageTop + theme.customSpacing.sectionTitle,
     },
     itemLink: {
       width: "auto",

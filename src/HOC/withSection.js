@@ -8,7 +8,7 @@ const useStyles = makeStyles((theme) => ({
   },
   sectionTitle: {
     textTransform: "uppercase",
-    lineHeight: `${theme.spacing(4)}px`
+    lineHeight: `${theme.customSpacing.sectionTitle}px`
   },
 }));
 
