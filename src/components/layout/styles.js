@@ -30,7 +30,6 @@ export default makeStyles((theme) => ({
 
 export const useHeaderStyles = makeStyles((theme) => {
   const hover = {
-    width: 150,
     backgroundColor: "transparent",
     border: "1px solid transparent",
     "&:hover": {
@@ -63,7 +62,7 @@ export const useHeaderStyles = makeStyles((theme) => {
     toolbar: {
       minHeight: headerHeigth,
       borderBottom: headerBorder,
-      padding: `0 ${theme.customSpacing.pageSides}px`
+      padding: `0 ${theme.customSpacing.pageSides}px`,
     },
     toolbarShift: {
       paddingLeft: theme.spacing(closedDrawerWU + 3),
@@ -89,11 +88,13 @@ export const useHeaderStyles = makeStyles((theme) => {
       fontSize: 25,
       fontWeight: 200,
     },
-    selectBox: hover,
+    selectBox: {
+      width: 200,
+      ...hover,
+    },
     dropDown: hover,
   };
 });
-
 
 export const useSidebarStyles = makeStyles((theme) => {
   const drawerThemeColor = theme.palette.background.drawer[theme.palette.type];

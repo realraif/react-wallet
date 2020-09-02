@@ -15,7 +15,7 @@ const BalanceStatus = (props) => {
         {status}%
       </Typography>
 
-      <div className={Styles.Timeframe}>this week</div>
+      <div className={Styles.Timeframe}>{props.timeFrameText}</div>
     </div>
   );
 };

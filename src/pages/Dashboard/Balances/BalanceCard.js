@@ -10,7 +10,7 @@ function calcStatus(startValue, endValue) {
   return parseInt(percentageChange);
 }
 
-const BalanceChart = (props) => {
+const BalanceCard = (props) => {
   var currentBalance = props.balanceTrend[props.balanceTrend.length - 1];
   var status = calcStatus(props.balanceTrend[0], currentBalance);
 
@@ -27,7 +27,7 @@ const BalanceChart = (props) => {
         <div className={Styles.Currency}>{props.currency}</div>
 
         <div className={Styles.Status}>
-          <Status status={status} />
+          <Status status={status} timeFrameText={props.timeFrameText} />
         </div>
       </div>
       <div className={Styles.Chart}>
@@ -41,4 +41,4 @@ const BalanceChart = (props) => {
   );
 };
 
-export default BalanceChart;
+export default BalanceCard;

@@ -13,16 +13,16 @@ import { useHeaderStyles } from "../Layout/styles";
 import { UserContext } from "context/UserContext";
 import { LayoutContext } from "context/LayoutContext";
 
-
-const Header = ({ history, title, setDataTimeFrame, isSmallScreen }) => {
+const Header = ({
+  history,
+  title,
+  setDataTimeFrame,
+  isSmallScreen,
+  timeFrames,
+}) => {
   const { currentUser } = useContext(UserContext);
   const { toggleSidebar, isSidebarOpen } = useContext(LayoutContext);
   const classes = useHeaderStyles();
-  const timeFrames = [
-    { value: 24, label: "24 hours" },
-    { value: 24 * 7, label: "past week" },
-    { value: 24 * 30, label: "past 30 days" },
-  ];
 
   const logout = useCallback(
     async (event) => {
@@ -48,13 +48,13 @@ const Header = ({ history, title, setDataTimeFrame, isSmallScreen }) => {
       </IconButton>
     </div>
   ) : null;
-  
-  const CustomSelectValue = props => (
+
+  const CustomSelectValue = (props) => (
     <div>
       <AiOutlineClockCircle />
       {props.data.label}
     </div>
-  )
+  );
 
   return (
     <AppBar
@@ -74,19 +74,17 @@ const Header = ({ history, title, setDataTimeFrame, isSmallScreen }) => {
         })}
       >
         <div className={clsx(classes.headerItem, classes.title)}>{title}</div>
-        <Select
-          className={classes.selectBox}
-          classNamePrefix="timeframe"
-          defaultValue={timeFrames[0]}
-          options={timeFrames}
-          onChange={setDataTimeFrame}
-          name="timeframe"
-          components={{SingleValue: CustomSelectValue }}
-          icon={AiOutlineClockCircle}
-        />
         
+        <Select
+          options={timeFrames}
+          defaultValue={timeFrames[0]}
+          onChange={setDataTimeFrame}
+          components={{ SingleValue: CustomSelectValue }}
+          className={classes.selectBox}
+        />
+
         <div className={classes.grow}></div>
-        <div>{currentUser.email}</div>
+        <div className={classes.headerItem}>{currentUser.email}</div>
         <Dropdown>
           <Dropdown.Toggle
             id="dropdown-basic"

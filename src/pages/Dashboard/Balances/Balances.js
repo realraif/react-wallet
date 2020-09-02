@@ -23,6 +23,7 @@ const balancesData = [
   },
 ];
 
+const tempTimeFrame = "this week";
 
 const Balances = (props) => {
   var theme = useTheme();
@@ -37,6 +38,7 @@ const Balances = (props) => {
             accountID={balance.id}
             currency={balance.currency}
             color={colors[index]}
+            timeFrameText={tempTimeFrame}
           />
         </Grid>
       ))}

@@ -9,10 +9,15 @@ import { LayoutContext } from "context/LayoutContext";
 import Header from "components/Header/Header";
 import Sidebar from "components/Sidebar/Sidebar";
 
+const timeFrames = [
+  { value: 24, label: "24 hours" },
+  { value: 24 * 7, label: "past week" },
+  { value: 24 * 30, label: "past 30 days" },
+];
 
 const Layout = (props) => {
   var [screenSize, setScreenSize] = useState(true);
-  const [timeFrame, setTimeFrame] = useState({});
+  const [timeFrame, setTimeFrame] = useState(timeFrames[0]);
   const { openSideBar } = useContext(LayoutContext);
   var theme = useTheme();
   const classes = useStyles();
@@ -41,11 +46,12 @@ const Layout = (props) => {
   return (
     <div className={classes.layout}>
       <Header
-        isSmallScreen={screenSize == 'sm'}
+        timeFrames={timeFrames}
+        isSmallScreen={screenSize == "sm"}
         title={getPageTitle(props.location.pathname)}
         setDataTimeFrame={setDataTimeFrame}
       />
-      <Sidebar routes={routes} isSmallScreen={screenSize == 'sm'} />
+      <Sidebar routes={routes} isSmallScreen={screenSize == "sm"} />
       <main className={classes.content}>
         <Switch>
           {routes.map((prop, key) => {
@@ -68,7 +74,11 @@ const Layout = (props) => {
     const windowWidth = window.innerWidth;
     const isUnderSmallBreakpoint = windowWidth < theme.breakpoints.values.sm;
     const isUnderMediumBreakpoint = windowWidth < theme.breakpoints.values.md;
-    const currentScreenSize = isUnderSmallBreakpoint ? "sm" : isUnderMediumBreakpoint ? "md" : "lg";
+    const currentScreenSize = isUnderSmallBreakpoint
+      ? "sm"
+      : isUnderMediumBreakpoint
+      ? "md"
+      : "lg";
 
     if (currentScreenSize !== screenSize) {
       setScreenSize(currentScreenSize);
