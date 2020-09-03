@@ -1,4 +1,7 @@
 import tinycolor from "tinycolor2";
+import createBreakpoints from '@material-ui/core/styles/createBreakpoints';
+
+const breakpoints = createBreakpoints({});
 
 const primary = "#536DFE";
 const secondary = "#FF5C93";
@@ -108,7 +111,9 @@ export default {
     },
     MuiGrid: {
       root: {
-        maxWidth: "100%"
+        [breakpoints.down('sm')]: {
+          maxWidth: "100%",
+        },
       }
     }
   },
