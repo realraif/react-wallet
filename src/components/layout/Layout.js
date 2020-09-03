@@ -47,11 +47,11 @@ const Layout = (props) => {
     <div className={classes.layout}>
       <Header
         timeFrames={timeFrames}
-        isSmallScreen={screenSize == "sm"}
+        isSmallScreen={screenSize === "sm"}
         title={getPageTitle(props.location.pathname)}
         setDataTimeFrame={setDataTimeFrame}
       />
-      <Sidebar routes={routes} isSmallScreen={screenSize == "sm"} />
+      <Sidebar routes={routes} isSmallScreen={screenSize === "sm"} />
       <main className={classes.content}>
         <Switch>
           {routes.map((prop, key) => {

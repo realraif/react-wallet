@@ -13,6 +13,7 @@ const getGenericOptions = () => ({
   chart: {
     spacing: [0, 0, 0, 0],
     margin: [0, 40, 0, 0],
+    backgroundColor: 'rgba(0,0,0,0)',
   },
   credits: {
     enabled: false,
@@ -67,7 +68,6 @@ const confuigureSeries = (data) => {
   let lastItem = {
     y: yValue,
     marker: {
-      fillColor: "#FFFFFF",
       radius: 5,
       enabled: true,
     },

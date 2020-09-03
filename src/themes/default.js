@@ -39,13 +39,12 @@ export default {
       dark: tinycolor(info).darken(darkenRate).toHexString(),
     },
     text: {
-      primary: "#ffff",
+      primary: "#6E6E6E",
       secondary: "#6E6E6E",
       hint: "#B9B9B9",
     },
     background: {
       light: "#F7F7F8",
-      paper: "#000",
       drawer: {
         light: "#000",
         dark: "#9393",
@@ -102,5 +101,11 @@ export default {
         color: "#fff",
       },
     },
+    MuiCard: {
+      root: {
+        borderRadius: 6,
+        border: "1px solid #ececec"
+      }
+    }
   },
 };
