@@ -85,27 +85,26 @@ export default {
         },
       },
     },
-    MuiAppBar: {
-      // colorPrimary: {
-      //   backgroundColor: "#FBFBFB",
-      //   color: "#979797",
-      // },
-    },
     MuiDrawer: {
       paper: {
         color: "#fff",
       },
     },
-    MuiButtonBase: {
-      root: {
+    MuiListItem: {
+      button: {
         color: "#fff",
       },
     },
     MuiCard: {
       root: {
         borderRadius: 6,
-        border: "1px solid #ececec"
-      }
-    }
+        border: "1px solid #ececec",
+      },
+    },
+    MuiCardActionArea: {
+      root: {
+        color: "inherit",
+      },
+    },
   },
 };
