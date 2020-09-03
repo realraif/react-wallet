@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import NumberFormat from "react-number-format";
 
 import { Typography } from "@material-ui/core";
@@ -16,12 +16,17 @@ function calcStatus(startValue, endValue) {
 }
 
 const BalanceCard = (props) => {
-  var currentBalance = props.balanceTrend[props.balanceTrend.length - 1];
-  var status = calcStatus(props.balanceTrend[0], currentBalance);
+  const [elevation, setElevation] = useState(false)
+  const currentBalance = props.balanceTrend[props.balanceTrend.length - 1];
+  const status = calcStatus(props.balanceTrend[0], currentBalance);
+
+  const selectCard = () => {
+    setElevation(oldElevation => !oldElevation)
+  }
 
   return (
-    <Card elevation={0}>
-      <CardActionArea>
+    <Card elevation={elevation ? 5 : 0}>
+      <CardActionArea onClick={selectCard}>
         <CardContent>
           <Typography gutterBottom variant="h6">
             {props.accountID}
