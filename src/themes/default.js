@@ -106,5 +106,10 @@ export default {
         color: "inherit",
       },
     },
+    MuiGrid: {
+      root: {
+        maxWidth: "100%"
+      }
+    }
   },
 };

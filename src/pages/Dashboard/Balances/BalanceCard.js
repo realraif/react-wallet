@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import NumberFormat from "react-number-format";
 
 import { Typography } from "@material-ui/core";
@@ -16,13 +16,14 @@ function calcStatus(startValue, endValue) {
 }
 
 const BalanceCard = (props) => {
-  const [elevation, setElevation] = useState(false)
+  const [elevation, setElevation] = useState(false);
+  const chartRef = useRef();
   const currentBalance = props.balanceTrend[props.balanceTrend.length - 1];
   const status = calcStatus(props.balanceTrend[0], currentBalance);
 
   const selectCard = () => {
-    setElevation(oldElevation => !oldElevation)
-  }
+    setElevation((oldElevation) => !oldElevation);
+  };
 
   return (
     <Card elevation={elevation ? 5 : 0}>
@@ -47,6 +48,7 @@ const BalanceCard = (props) => {
         </CardContent>
         <div className={Styles.Chart}>
           <SplineChart
+            chartRef={chartRef}
             data={props.balanceTrend}
             height="70"
             color={props.color}
