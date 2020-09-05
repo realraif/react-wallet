@@ -4,11 +4,11 @@ import { withRouter } from "react-router";
 import { AppBar, Toolbar, Button, IconButton } from "@material-ui/core";
 import Select from "react-select";
 
-import { Dropdown } from "react-bootstrap";
 import { AiOutlineClockCircle } from "react-icons/ai";
 import { MdMenu } from "react-icons/md";
 
 import firebase from "firebase.js";
+import Dropdown from 'components/Dropdown/Dropdown';
 import { useHeaderStyles } from "../Layout/styles";
 import { UserContext } from "context/UserContext";
 import { LayoutContext } from "context/LayoutContext";
@@ -85,20 +85,7 @@ const Header = ({
 
         <div className={classes.grow}></div>
         <div className={classes.headerItem}>{currentUser.email}</div>
-        <Dropdown>
-          <Dropdown.Toggle
-            id="dropdown-basic"
-            className={clsx(classes.headerItem, classes.dropDown)}
-          >
-            Account
-          </Dropdown.Toggle>
-          <Dropdown.Menu>
-            <Dropdown.Item href="#/action-1">Transfer money</Dropdown.Item>
-            <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-            <Dropdown.Divider />
-            <Dropdown.Item href="#/action-3">Settings</Dropdown.Item>
-          </Dropdown.Menu>
-        </Dropdown>
+        <Dropdown className={classes.headerItem} />
         <Button onClick={logout} color="primary" className={classes.headerItem}>
           Log out
         </Button>
