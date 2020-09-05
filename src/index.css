@@ -6,7 +6,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-select {
+select, button {
   outline: 0 !important;
   cursor: pointer;
 }
