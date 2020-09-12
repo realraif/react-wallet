@@ -29,28 +29,28 @@ const BalanceCard = (props) => {
     <Card elevation={elevation ? 5 : 0}>
       <CardActionArea onClick={selectCard}>
         <CardContent>
-          <Typography gutterBottom variant="h6">
+          <Typography gutterBottom className={Styles.BalanceID}>
             {props.accountID}
           </Typography>
+
           <div className={Styles.Balance}>
-            <div className={Styles.BalanceText}>
+            <div>
               <NumberFormat
+                className={Styles.BalanceText}
                 value={currentBalance.toFixed(2)}
                 displayType={"text"}
               />
+              <span className={Styles.Currency}>{props.currency}</span>
             </div>
-            <div className={Styles.Currency}>{props.currency}</div>
-
-            <div className={Styles.Status}>
-              <Status status={status} timeFrameText={props.timeFrameText} />
-            </div>
+            <Status status={status} timeFrameText={props.timeFrameText} />
           </div>
         </CardContent>
+
         <div className={Styles.Chart}>
           <SplineChart
             chartRef={chartRef}
             data={props.balanceTrend}
-            height="70"
+            height="50"
             color={props.color}
           />
         </div>

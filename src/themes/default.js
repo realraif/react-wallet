@@ -63,8 +63,8 @@ export default {
       "0px 12px 33px 0px #E8EAFC, 0 3px 3px -2px #B2B2B21A, 0 1px 8px 0 #9A9A9A1A",
   },
   customSpacing: {
-    pageTop: 40,
-    pageSides: 40,
+    pageTop: 20,
+    pageSides: 30,
     sectionTitle: 30,
   },
   charts: {

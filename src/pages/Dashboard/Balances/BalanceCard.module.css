@@ -1,18 +1,16 @@
-.BalanceChart {
-  position: relative;
-  overflow: hidden;
-  border-radius: 16px;
-  background-color: white;
-  box-shadow: 5px 0 8px 0 #d2d2d2;
-}
 
 .Chart {
   width: 100%;
   margin-left: -5px;
 }
 
-.Balance > * {
-  display: inline-block;
+.Balance {
+  display: flex;
+  justify-content: space-between;
+}
+
+.BalanceID {
+  color: #9191af;
 }
 
 .BalanceText {
@@ -30,8 +28,4 @@
 .Account {
   color: #9191af;
   margin: 14px 30px;
-}
-
-.Status {
-  float: right;
 }

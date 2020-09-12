@@ -30,7 +30,7 @@ const Balances = (props) => {
   const colors = theme.charts.colors;
 
   return (
-    <Grid container justify="space-between" spacing={5} alignItems="center">
+    <Grid container justify="space-between" spacing={6} alignItems="center">
       {balancesData.map((balance, index) => (
         <Grid item xs={12} md={6} lg={4} key={balance.id}>
           <BalanceCard
