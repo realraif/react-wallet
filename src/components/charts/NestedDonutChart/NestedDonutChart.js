@@ -27,4 +27,4 @@ const NestedDonutChart = ({
   );
 };
 
-export default NestedDonutChart;
+export default React.memo(NestedDonutChart);
