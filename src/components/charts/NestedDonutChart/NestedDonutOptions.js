@@ -84,7 +84,7 @@ const setColors = (data, colors) => {
       slice.color = colors[index];
 
       index++;
-      if (index == colors.length) {
+      if (index === colors.length) {
         index = 0;
       }
     }
