@@ -56,7 +56,14 @@ const getGenericOptions = () => ({
 });
 
 const customiseOptions = (options, data, styles) => {
-  options.series = [{ data: data }];
+  options.series = [{
+    data: data.inner,
+    size: '60%',
+}, {
+    data: data.outer,
+    size: '80%',
+    innerSize: '60%'
+}];
 
   options.chart.height = styles.diameter || defaultDiameter;
   options.chart.width = styles.diameter || defaultDiameter;
