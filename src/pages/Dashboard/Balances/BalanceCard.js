@@ -10,8 +10,8 @@ import SplineChart from "components/charts/StrippedSplineChart/StrippedSplineCha
 import Status from "./BalanceStatus";
 import Styles from "./BalanceCard.module.css";
 
-function calcStatus(startValue, endValue) {
-  var percentageChange = ((endValue - startValue) / startValue) * 100;
+const calcStatus = (startValue, endValue) => {
+  const percentageChange = ((endValue - startValue) / startValue) * 100;
   return parseInt(percentageChange);
 }
 

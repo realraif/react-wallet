@@ -19,7 +19,7 @@ const Layout = (props) => {
   var [screenSize, setScreenSize] = useState(true);
   const [timeFrame, setTimeFrame] = useState(timeFrames[0]);
   const { openSideBar } = useContext(LayoutContext);
-  var theme = useTheme();
+  const theme = useTheme();
   const classes = useStyles();
 
   useEffect(function () {

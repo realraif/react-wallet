@@ -1,7 +1,7 @@
 import React from "react";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
-import sunburst from 'highcharts/modules/sunburst.js';
+import sunburst from "highcharts/modules/sunburst.js";
 import getChartOptions from "./NestedDonutOptions";
 sunburst(Highcharts);
 
@@ -9,10 +9,11 @@ const NestedDonutChart = ({
   data,
   setSelectedSlices,
   colors,
+  borderColor,
   diameter,
   chartRef,
 }) => {
-  const styles = { colors, diameter };
+  const styles = { colors, borderColor, diameter };
   const callBackMethods = { setSelectedSlices };
   const options = getChartOptions(data, callBackMethods, styles);
 

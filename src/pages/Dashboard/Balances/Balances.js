@@ -26,7 +26,7 @@ const balancesData = [
 const tempTimeFrame = "this week";
 
 const Balances = (props) => {
-  var theme = useTheme();
+  const theme = useTheme();
   const colors = theme.charts.colors;
 
   return (

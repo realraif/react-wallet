@@ -73,6 +73,7 @@ export default {
   },
   charts: {
     colors: ["#a275d0", "#559e55", "#75bad0"],
+    pieBorder: "#fff"
   },
   shape: {
     borderRadius: 2,

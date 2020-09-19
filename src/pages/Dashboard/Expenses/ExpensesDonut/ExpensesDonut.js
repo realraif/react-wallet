@@ -7,8 +7,9 @@ import data from "./mockdata";
 
 const ExpensesDonut = (props) => {
   const [selectedPoints, setSelectedPoints] = useState([]);
-  var theme = useTheme();
+  const theme = useTheme();
   const colors = theme.charts.colors;
+  const borderColor = theme.charts.pieBorder;
 
   const setSelectedSlices = useCallback((sp) => {
     let points = sp.map((slice) => {
@@ -23,6 +24,7 @@ const ExpensesDonut = (props) => {
         data={data}
         diameter={250}
         colors={colors}
+        borderColor={borderColor}
         setSelectedSlices={setSelectedSlices}
       />
       <div>{selectedPoints}</div>
