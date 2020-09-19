@@ -3,15 +3,16 @@ import { Typography } from "@material-ui/core";
 
 import Styles from "./BalanceStatus.module.css";
 
+
 const BalanceStatus = (props) => {
-  const negativeTrend = props.status < 0;
+  const isNegativeTrend = props.status < 0;
   const status = Math.abs(props.status);
 
   return (
     <div className={Styles.BalanceStatus}>
       
-      <Typography color={negativeTrend ? "error" : "primary"}>
-        {negativeTrend ? "-" : "+"}
+      <Typography color={isNegativeTrend ? "error" : "primary"}>
+        {isNegativeTrend ? "-" : "+"}
         {status}%
       </Typography>
 

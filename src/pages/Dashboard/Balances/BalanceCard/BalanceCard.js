@@ -6,20 +6,16 @@ import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardContent from "@material-ui/core/CardContent";
 
+import { getPercentDiff } from "utils";
 import SplineChart from "components/charts/StrippedSplineChart/StrippedSplineChart";
 import Status from "./BalanceStatus";
 import Styles from "./BalanceCard.module.css";
-
-const calcStatus = (startValue, endValue) => {
-  const percentageChange = ((endValue - startValue) / startValue) * 100;
-  return parseInt(percentageChange);
-}
 
 const BalanceCard = (props) => {
   const [elevation, setElevation] = useState(false);
   const chartRef = useRef();
   const currentBalance = props.balanceTrend[props.balanceTrend.length - 1];
-  const status = calcStatus(props.balanceTrend[0], currentBalance);
+  const status = getPercentDiff(props.balanceTrend[0], currentBalance);
 
   const selectCard = () => {
     setElevation((oldElevation) => !oldElevation);
