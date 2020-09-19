@@ -23,13 +23,22 @@ const getGenericOptions = () => ({
   },
   tooltip: false,
   plotOptions: {
-    pie: {
-      size: "100%",
-      slicedOffset: 0,
-    },
     series: {
       allowPointSelect: true,
       cursor: "pointer",
+      levels: [
+        {
+          level: 1,
+          colorByPoint: true,
+        },
+        {
+          level: 2,
+          colorVariation: {
+            key: "brightness",
+            to: -0.5,
+          },
+        },
+      ],
       dataLabels: {
         enabled: false,
       },
@@ -48,23 +57,13 @@ const customiseOptions = (options, data, styles) => {
   options.series = [
     {
       data: data,
-      type: "sunburst",
       allowDrillToNode: true,
-      levels: [
-        {
-          level: 1,
-          colorByPoint: true
-      },
-      {
-          level: 2,
-          colorVariation: {
-              key: 'brightness',
-              to: -0.5
-          }
-        }
-      ],
     },
   ];
+
+  if (styles.colors) {
+    options.plotOptions.series.colors = styles.colors;
+  }
 
   options.chart.height = styles.diameter || defaultDiameter;
   options.chart.width = styles.diameter || defaultDiameter;
