@@ -48,6 +48,11 @@ const data = [
 ];
 
 export default {
-  inner: data,
-  outer: data
-}
+  outer: data.reduce((arr, bank) => arr.concat(bank.cc), []),
+  inner: data.map((bank) => ({
+    ...bank,
+    y: bank.cc.reduce(function (a, b) {
+      return a + b.y;
+    }, 0),
+  })),
+};

@@ -21,24 +21,13 @@ const getGenericOptions = () => ({
   legend: {
     enabled: false,
   },
-  tooltip: {
-    pointFormatter: function () {
-      var percentage = this.percentage.toFixed(1);
-      var amount = this.y.toLocaleString(undefined, {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2,
-      });
-      return `<br>${percentage}%<br>total: $${amount}`;
-    },
-  },
+  tooltip: false,
   plotOptions: {
     pie: {
       size: "100%",
+      slicedOffset: 0
     },
     series: {
-      minPointSize: "70%",
-      maxPointSize: "100%",
-      innerSize: "20%",
       allowPointSelect: true,
       cursor: "pointer",
       dataLabels: {
@@ -61,7 +50,7 @@ const customiseOptions = (options, data, styles) => {
     size: '60%',
 }, {
     data: data.outer,
-    size: '80%',
+    size: '100%',
     innerSize: '60%'
 }];
 
