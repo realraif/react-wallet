@@ -11,7 +11,7 @@ const getGenericOptions = () => ({
   chart: {
     spacing: [0, 0, 0, 0],
     margin: [0, 0, 0, 0],
-    type: "pie",
+    type: "sunburst",
     backgroundColor: "transparent",
   },
   title: {
@@ -25,7 +25,7 @@ const getGenericOptions = () => ({
   plotOptions: {
     pie: {
       size: "100%",
-      slicedOffset: 0
+      slicedOffset: 0,
     },
     series: {
       allowPointSelect: true,
@@ -45,14 +45,26 @@ const getGenericOptions = () => ({
 });
 
 const customiseOptions = (options, data, styles) => {
-  options.series = [{
-    data: data.inner,
-    size: '60%',
-}, {
-    data: data.outer,
-    size: '100%',
-    innerSize: '60%'
-}];
+  options.series = [
+    {
+      data: data,
+      type: "sunburst",
+      allowDrillToNode: true,
+      levels: [
+        {
+          level: 1,
+          colorByPoint: true
+      },
+      {
+          level: 2,
+          colorVariation: {
+              key: 'brightness',
+              to: -0.5
+          }
+        }
+      ],
+    },
+  ];
 
   options.chart.height = styles.diameter || defaultDiameter;
   options.chart.width = styles.diameter || defaultDiameter;

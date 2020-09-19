@@ -1,58 +1,57 @@
-const data = [
+export default [
   {
     name: "BOA",
-    y: 12446,
-    cc: [
-      {
-        y: 12446,
-        name: "BOA1",
-      },
-      {
-        y: 1244,
-        name: "BOA2",
-      },
-    ],
+    id: "1",
   },
   {
+    value: 12446,
+    id: "1.1",
+    parent: "1",
+    name: "BOA1",
+  },
+  {
+    value: 1244,
+    id: "1.2",
+    parent: "1",
+    name: "BOA2",
+  },
+
+  {
     name: "Leumi",
-    y: 12446,
-    cc: [
-      {
-        y: 12446,
-        name: "Leumi1",
-      },
-      {
-        y: 1244,
-        name: "Leumi2",
-      },
-    ],
+    id: "2",
+  },
+  {
+    value: 1244,
+    id: "2.1",
+    parent: "2",
+    name: "Leumi1",
+  },
+  {
+    value: 12244,
+    id: "2.2",
+    parent: "2",
+    name: "Leumi2",
   },
   {
     name: "Discount",
-    y: 12446,
-    cc: [
-      {
-        y: 12446,
-        name: "Discount1",
-      },
-      {
-        y: 1244,
-        name: "Discount2",
-      },
-      {
-        y: 1244,
-        name: "Discount3",
-      },
-    ],
+    id: "3",
+  },
+  {
+    value: 12446,
+    name: "Discount1",
+    id: "3.1",
+    parent: "3",
+  },
+  {
+    value: 1244,
+    id: "3.2",
+    parent: "3",
+    name: "Discount2",
+  },
+  {
+    value: 1244,
+    id: "3.3",
+    parent: "3",
+    name: "Discount3",
   },
 ];
-
-export default {
-  outer: data.reduce((arr, bank) => arr.concat(bank.cc), []),
-  inner: data.map((bank) => ({
-    ...bank,
-    y: bank.cc.reduce(function (a, b) {
-      return a + b.y;
-    }, 0),
-  })),
-};

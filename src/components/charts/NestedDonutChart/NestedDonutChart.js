@@ -1,7 +1,9 @@
 import React from "react";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
+import sunburst from 'highcharts/modules/sunburst.js';
 import getChartOptions from "./NestedDonutOptions";
+sunburst(Highcharts);
 
 const NestedDonutChart = ({
   data,
