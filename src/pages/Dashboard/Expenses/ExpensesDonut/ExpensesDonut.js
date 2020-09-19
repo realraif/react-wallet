@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+
+import WithBox from "HOC/withBox";
 import DonutChart from "components/charts/NestedDonutChart/NestedDonutChart";
-import data from './mockdata';
+import data from "./mockdata";
 
 const ExpensesDonut = (props) => {
   const [selectedPoints, setSelectedPoints] = useState([]);
@@ -13,10 +15,14 @@ const ExpensesDonut = (props) => {
   };
 
   return (
-    <>
-      <DonutChart data={data} diameter={250} setSelectedSlices={setSelectedSlices} />
+    <WithBox>
+      <DonutChart
+        data={data}
+        diameter={250}
+        setSelectedSlices={setSelectedSlices}
+      />
       <div>{selectedPoints}</div>
-    </>
+    </WithBox>
   );
 };
 

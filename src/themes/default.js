@@ -1,5 +1,5 @@
 import tinycolor from "tinycolor2";
-import createBreakpoints from '@material-ui/core/styles/createBreakpoints';
+import createBreakpoints from "@material-ui/core/styles/createBreakpoints";
 
 const breakpoints = createBreakpoints({});
 
@@ -62,6 +62,10 @@ export default {
     widgetWide:
       "0px 12px 33px 0px #E8EAFC, 0 3px 3px -2px #B2B2B21A, 0 1px 8px 0 #9A9A9A1A",
   },
+  box: {
+    borderRadius: 6,
+    borderColor: "#ececec",
+  },
   customSpacing: {
     pageTop: 20,
     pageSides: 30,
@@ -111,16 +115,16 @@ export default {
     },
     MuiGrid: {
       root: {
-        [breakpoints.down('sm')]: {
+        [breakpoints.down("sm")]: {
           maxWidth: "100%",
         },
-      }
+      },
     },
-     MuiPaper: {
-       elevation5: {
-          boxShadow: 
-          "0px 3px 5px -1px #7877de33, 0px 5px 8px 0px #7877de33, 0px 1px 14px 0px #7877de33"
-       }
-     }
+    MuiPaper: {
+      elevation5: {
+        boxShadow:
+          "0px 3px 5px -1px #7877de33, 0px 5px 8px 0px #7877de33, 0px 1px 14px 0px #7877de33",
+      },
+    },
   },
 };
