@@ -1,22 +1,30 @@
 import React from "react";
 import { Typography } from "@material-ui/core";
+import { makeStyles } from "@material-ui/styles";
 
-import Styles from "./BalanceStatus.module.css";
-
+const useStyles = makeStyles((theme) => ({
+  balanceStatus: {
+    textAlign: "right",
+    fontWeight: 500,
+  },
+  timeframe: {
+    color: "#9191af",
+  },
+}));
 
 const BalanceStatus = (props) => {
+  const classes = useStyles();
   const isNegativeTrend = props.status < 0;
   const status = Math.abs(props.status);
 
   return (
-    <div className={Styles.BalanceStatus}>
-      
+    <div className={classes.balanceStatus}>
       <Typography color={isNegativeTrend ? "error" : "primary"}>
         {isNegativeTrend ? "-" : "+"}
         {status}%
       </Typography>
 
-      <div className={Styles.Timeframe}>{props.timeFrameText}</div>
+      <div className={classes.timeframe}>{props.timeFrameText}</div>
     </div>
   );
 };

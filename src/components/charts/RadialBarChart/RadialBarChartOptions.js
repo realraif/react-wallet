@@ -1,5 +1,8 @@
+const defaultDiameter = 100;
+
 export default (data, styles) => {
   const options = getGenericOptions();
+  customiseOptions(options, data, styles);
   return options;
 };
 
@@ -7,7 +10,8 @@ const getGenericOptions = () => ({
   chart: {
     spacing: [0, 0, 0, 0],
     margin: [0, 0, 0, 0],
-    height: 70,
+    height: defaultDiameter,
+    width: defaultDiameter,
     type: "solidgauge",
     backgroundColor: "transparent",
   },
@@ -32,10 +36,10 @@ const getGenericOptions = () => ({
     lineWidth: 0,
     backgroundColor: "transparent",
     tickLength: 0,
-    minorTicks: true,
+    minorTicks: false,
     minorTickInterval: 3,
     minorTickWidth: 1,
-    minorTickColor: "pink",
+    minorTickColor: "rgb(162, 117, 208)",
     minorTickLength: 2,
     labels: {
       enabled: false,
@@ -65,33 +69,47 @@ const getGenericOptions = () => ({
     style: {
       fontSize: "5px",
     },
-    pointFormatter: function () {
-      var color = this.series.chart.series[0].points[0].color;
-      return `<span 
-          style="text-align: center; font-size:0.8rem; color: ${color}; font-weight: bold">
-            ${this.y}%
-          </span>`;
-    },
-    positioner: function (labelWidth, labelHeight) {
-      return {
-        x: (this.chart.chartWidth - labelWidth) / 2,
-        y: (this.chart.chartHeight - labelHeight) * 0.5,
-      };
-    },
+    pointFormatter: function () {}
   },
 
   series: [
     {
-      name: "Move",
-      borderColor: "pink",
+      borderColor: "rgb(162, 117, 208)",
       data: [
         {
-          color: "pink",
+          color: "rgb(162, 117, 208)",
           radius: "100%",
           innerRadius: "100%",
           y: 80,
         },
       ],
     },
+    {
+      name: "gaugeTube",
+      borderWidth: "4px",
+      enableMouseTracking: false,
+      borderColor: "rgb(162, 117, 208, 0.2)",
+      data: [
+        {
+          color: "rgb(162, 117, 208, 0.2)",
+          radius: "100%",
+          innerRadius: "100%",
+          y: 100,
+        },
+      ],
+    },
   ],
 });
+
+const customiseOptions = (options, data, styles) => {
+  let serie = options.series[0].data[0];
+  serie.y = data.percentage;
+  serie.name = data.name;
+
+  if (styles.color) {
+    options.plotOptions.series.borderColor = styles.borderColor;
+  }
+
+  options.chart.height = styles.diameter || defaultDiameter;
+  options.chart.width = styles.diameter || defaultDiameter;
+};
