@@ -48,7 +48,7 @@ const getGenericOptions = () => ({
 
   plotOptions: {
     solidgauge: {
-      borderWidth: "8px",
+      borderWidth: "6px",
       dataLabels: {
         enabled: false,
       },
@@ -74,10 +74,10 @@ const getGenericOptions = () => ({
 
   series: [
     {
-      borderColor: "rgb(162, 117, 208)",
+      borderColor: "#20657b",
       data: [
         {
-          color: "rgb(162, 117, 208)",
+          color: "#20657b",
           radius: "100%",
           innerRadius: "100%",
           y: 80,
@@ -88,10 +88,10 @@ const getGenericOptions = () => ({
       name: "gaugeTube",
       borderWidth: "4px",
       enableMouseTracking: false,
-      borderColor: "rgb(162, 117, 208, 0.2)",
+      borderColor: "#20657b38",
       data: [
         {
-          color: "rgb(162, 117, 208, 0.2)",
+          color: "#20657b38",
           radius: "100%",
           innerRadius: "100%",
           y: 100,

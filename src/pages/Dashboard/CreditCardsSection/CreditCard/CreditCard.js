@@ -12,7 +12,18 @@ const useStyles = makeStyles((theme) => ({
   chart: {},
   activity: {
     display: "flex",
+    alignItems: "center",
     justifyContent: "space-between",
+  },
+  expenseText: {
+    fontSize: "1.4rem",
+    fontWeight: 500,
+    marginRight: 4,
+  },
+  currency: {
+    fontSize: "0.7rem",
+    color: "#9191af",
+    textTransform: "capitalize",
   },
 }));
 
@@ -31,25 +42,25 @@ const CreditCard = (props) => {
     <Card elevation={elevation ? 5 : 0}>
       <CardActionArea onClick={selectCard}>
         <CardContent>
-          <Typography gutterBottom>{props.cardID}</Typography>
-        </CardContent>
-        <div className={classes.activity}>
-          <div>
-            <NumberFormat
-              className={classes.balanceText}
-              value={props.expense.toFixed(2)}
-              displayType={"text"}
-            />
-            <span className={classes.currency}>{props.currency}</span>
-          </div>
+          <Typography variant="subtitle2">{props.cardID}</Typography>
           <div className={classes.activity}>
-            <RadialBarChart
-              chartRef={chartRef}
-              data={{percentage: expensePercent, name:"Expense"}}
-              diameter={80}
-            />
+            <div>
+              <NumberFormat
+                className={classes.expenseText}
+                value={props.expense.toFixed(2)}
+                displayType={"text"}
+              />
+              <span className={classes.currency}>{props.currency}</span>
+            </div>
+            <div className={classes.activity}>
+              <RadialBarChart
+                chartRef={chartRef}
+                data={{ percentage: expensePercent, name: "Expense" }}
+                diameter={80}
+              />
+            </div>
           </div>
-        </div>
+        </CardContent>
       </CardActionArea>
     </Card>
   );

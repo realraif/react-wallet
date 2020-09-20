@@ -18,13 +18,11 @@ const useStyles = makeStyles((theme) => ({
   },
   balance: {
     display: "flex",
+    alignItems: "center",
     justifyContent: "space-between",
   },
-  balanceId: {
-    color: "#9191af",
-  },
   balanceText: {
-    fontSize: 30,
+    fontSize: "1.9rem",
     fontWeight: 500,
     marginRight: 12,
   },
@@ -32,10 +30,6 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 12,
     color: "#9191af",
     textTransform: "capitalize",
-  },
-  account: {
-    color: "#9191af",
-    margin: "14px 30px",
   },
 }));
 
@@ -54,7 +48,7 @@ const BalanceCard = (props) => {
     <Card elevation={elevation ? 5 : 0}>
       <CardActionArea onClick={selectCard}>
         <CardContent>
-          <Typography gutterBottom className={classes.balanceID}>
+          <Typography variant="subtitle1">
             {props.accountID}
           </Typography>
 
@@ -75,7 +69,7 @@ const BalanceCard = (props) => {
           <SplineChart
             chartRef={chartRef}
             data={props.balanceTrend}
-            height="50"
+            height="40"
             color={props.color}
           />
         </div>
