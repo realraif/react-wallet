@@ -19,8 +19,15 @@ export const ColorLuminance = (hex, lum) => {
   return rgb;
 };
 
-
 export const getPercentDiff = (startValue, endValue) => {
   const percentageChange = ((endValue - startValue) / startValue) * 100;
   return parseInt(percentageChange);
-}
+};
+
+export const loopIndexValue = (index, maxValue) => {
+  if (index === maxValue) {
+    index = 0;
+  } else {
+    index++;
+  }
+};

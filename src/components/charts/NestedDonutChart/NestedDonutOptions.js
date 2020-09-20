@@ -1,3 +1,5 @@
+import { loopIndexValue } from "utils";
+
 const defaultDiameter = 200;
 
 export default (data, callBackMethods, styles) => {
@@ -77,16 +79,12 @@ const setEvents = (options, callBackMethods) => {
 };
 
 const setColors = (data, colors) => {
-  let index = 0;
+  let colorIndex = 0;
 
   data.forEach((slice) => {
     if (!slice.parent) {
-      slice.color = colors[index];
-
-      index++;
-      if (index === colors.length) {
-        index = 0;
-      }
+      slice.color = colors[colorIndex];
+      loopIndexValue(colorIndex, colors.length - 1);
     }
   });
 };

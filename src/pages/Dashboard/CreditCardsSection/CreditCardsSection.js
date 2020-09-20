@@ -8,7 +8,7 @@ import CreditCard from "./CreditCard/CreditCard";
 const CreditCardsSection = (props) => {
 
   return (
-    <Grid container justify="space-between" spacing={6} alignItems="center">
+    <Grid container justify="space-between" spacing={4} alignItems="center">
       {data.map((card, index) => (
         <Grid item xs={12} md={6} lg={3} key={card.id}>
           <CreditCard cardID={card.id} />
