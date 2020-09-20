@@ -84,7 +84,7 @@ const setColors = (data, colors) => {
   data.forEach((slice) => {
     if (!slice.parent) {
       slice.color = colors[colorIndex];
-      loopIndexValue(colorIndex, colors.length - 1);
+      colorIndex = loopIndexValue(colorIndex, colors.length - 1);
     }
   });
 };

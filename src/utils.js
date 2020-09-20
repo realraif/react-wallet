@@ -30,4 +30,5 @@ export const loopIndexValue = (index, maxValue) => {
   } else {
     index++;
   }
+  return index;
 };

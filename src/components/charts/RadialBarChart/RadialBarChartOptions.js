@@ -37,12 +37,14 @@ const getGenericOptions = () => ({
     minorTickWidth: 1,
     minorTickColor: "pink",
     minorTickLength: 2,
-    tickPositions: [100],
+    labels: {
+      enabled: false,
+    },
   },
 
   plotOptions: {
     solidgauge: {
-      borderWidth: "40px",
+      borderWidth: "8px",
       dataLabels: {
         enabled: false,
       },
@@ -56,15 +58,35 @@ const getGenericOptions = () => ({
     enabled: false,
   },
 
+  tooltip: {
+    borderWidth: 0,
+    backgroundColor: "none",
+    shadow: false,
+    style: {
+      fontSize: "5px",
+    },
+    pointFormatter: function () {
+      var color = this.series.chart.series[0].points[0].color;
+      return `<span 
+          style="text-align: center; font-size:0.8rem; color: ${color}; font-weight: bold">
+            ${this.y}%
+          </span>`;
+    },
+    positioner: function (labelWidth, labelHeight) {
+      return {
+        x: (this.chart.chartWidth - labelWidth) / 2,
+        y: (this.chart.chartHeight - labelHeight) * 0.5,
+      };
+    },
+  },
+
   series: [
     {
       name: "Move",
-
       borderColor: "pink",
-      borderWidth: "5px",
       data: [
         {
-          color: "green",
+          color: "pink",
           radius: "100%",
           innerRadius: "100%",
           y: 80,
