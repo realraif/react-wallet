@@ -7,8 +7,9 @@ import getChartOptions from "./USMapOptions";
 
 maps(Highcharts);
 
-const USMapChart = ({ data, height }) => {
-  const options = getChartOptions(data, { height });
+const USMapChart = ({ data, mapClicked, height }) => {
+  const callBackMethods = { mapClicked };
+  const options = getChartOptions(data, callBackMethods, { height });
 
   return (
     <div>

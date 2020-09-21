@@ -7,14 +7,14 @@ sunburst(Highcharts);
 
 const NestedDonutChart = ({
   data,
-  setSelectedSlices,
+  sliceClicked,
   colors,
   borderColor,
   diameter,
   chartRef,
 }) => {
   const styles = { colors, borderColor, diameter };
-  const callBackMethods = { setSelectedSlices };
+  const callBackMethods = { sliceClicked };
   const options = getChartOptions(data, callBackMethods, styles);
 
   return (

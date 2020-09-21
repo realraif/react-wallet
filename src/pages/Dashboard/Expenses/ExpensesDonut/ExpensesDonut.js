@@ -25,7 +25,7 @@ const ExpensesDonut = (props) => {
         diameter={250}
         colors={colors}
         borderColor={borderColor}
-        setSelectedSlices={setSelectedSlices}
+        sliceClicked={setSelectedSlices}
       />
       <div>{selectedPoints}</div>
     </WithBox>

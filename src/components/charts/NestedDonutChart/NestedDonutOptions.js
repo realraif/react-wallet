@@ -73,7 +73,7 @@ const setEvents = (options, callBackMethods) => {
   options.plotOptions.series.point.events.select = function (event) {
     setTimeout(() => {
       const selectedSlices = this.series.chart.getSelectedPoints();
-      callBackMethods.setSelectedSlices(selectedSlices);
+      callBackMethods.sliceClicked(selectedSlices);
     });
   };
 };
