@@ -2,6 +2,7 @@ import React from "react";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 import maps from "highcharts/modules/map";
+import styles from "./USMapChart.module.css";
 
 import getChartOptions from "./USMapOptions";
 
@@ -12,7 +13,7 @@ const USMapChart = ({ data, mapClicked, height }) => {
   const options = getChartOptions(data, callBackMethods, { height });
 
   return (
-    <div>
+    <div className={styles.MapWrapper}>
       <HighchartsReact
         options={options}
         constructorType={"mapChart"}
