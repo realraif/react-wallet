@@ -13,54 +13,52 @@ const getGenericOptions = () => ({
     margin: [0, 0, 0, 0],
     map: mapData,
   },
-  title: {
-    text: "HighMap Test"
-  },
   plotOptions: {
-    map: {
-      states: {
-        hover: {
-          color: "#EEDD66"
-        }
-      }
-    }
+    series: {
+      events: {
+        click: function () {
+          debugger;
+        },
+      },
+      allowPointSelect: true,
+      dataLabels: {
+        enabled: false,
+      },
+    },
   },
-  colorAxis: {
-    min: 0,
-    minColor: "#E6E7E8",
-    maxColor: "#005645"
+  tooltip: false,
+  colorAxis: [
+    {
+      minColor: "#000fb0",
+      maxColor: "#e3e5ff",
+    },
+  ],
+  credits: {
+    enabled: false,
+  },
+  title: {
+    text: "",
   },
   legend: {
-    layout: "vertical",
-    align: "right",
-    verticalAlign: "middle"
-  },
-
-  subtitle: {
-    text: "USA",
-    floating: true,
-    align: "right",
-    y: 50,
-    style: {
-      fontSize: "16px"
-    }
+    enabled: false,
   },
   series: [
     {
-      mapData: mapData,
       name: "USA",
-      dataLabels: {
-        enabled: true,
-        format: "{point.name}"
-      }
-    }
+      mapData: mapData,
+      borderColor: "#FFC3BA",
+      borderWidth: 0.5,
+      nullColor: "#FFEAE4",
+      showInLegend: false,
+      allowPointSelect: true,
+      states: {
+        select: {
+          borderColor: "#B5ACFF",
+          color: "#7A77FF",
+        },
+      },
+    },
   ],
-  mapNavigation: {
-    enabled: true,
-    buttonOptions: {
-      verticalAlign: "bottom"
-    }
-  }
 });
 
 const customiseOptions = (options, data, styles) => {
