@@ -7,7 +7,9 @@ import GroupedBarChart from "components/charts/GroupedBarChart/GroupedBarChart";
 const ExpensesBarChart = (props) => {
   return (
     <WithBox>
-      <GroupedBarChart data={data} />
+      <div style={{ height: "300px" }}>
+        <GroupedBarChart data={data} />
+      </div>
     </WithBox>
   );
 };
