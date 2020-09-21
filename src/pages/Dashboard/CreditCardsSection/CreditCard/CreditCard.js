@@ -25,6 +25,12 @@ const useStyles = makeStyles((theme) => ({
     color: "#9191af",
     textTransform: "capitalize",
   },
+  cardNumber: {
+    backgroundColor: "#9191af",
+    marginLeft: -16,
+    marginRight: -16,
+    padding: "0 16px",
+  },
 }));
 
 const CreditCard = (props) => {
@@ -42,7 +48,9 @@ const CreditCard = (props) => {
     <Card elevation={elevation ? 5 : 0}>
       <CardActionArea onClick={selectCard}>
         <CardContent>
-          <Typography variant="subtitle2">{props.cardID}</Typography>
+          <Typography variant="subtitle2" className={classes.cardNumber}>
+            {props.cardID}
+          </Typography>
           <div className={classes.activity}>
             <div>
               <NumberFormat
