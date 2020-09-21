@@ -54,8 +54,11 @@ const CreditCard = (props) => {
           <div className={classes.activity}>
             <div>
               <NumberFormat
+                thousandSeparator={true}
+                fixedDecimalScale={true}
+                decimalScale={2}
                 className={classes.expenseText}
-                value={props.expense.toFixed(2)}
+                value={props.expense}
                 displayType={"text"}
               />
               <span className={classes.currency}>{props.currency}</span>

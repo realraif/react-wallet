@@ -18,7 +18,7 @@ const withSection = (WrappedComponent, sectionName) => {
 
     return (
       <div className={classes.sectionWrapper}>
-        <Typography color="primary" variant="subtitle2" className={classes.sectionTitle}>
+        <Typography color="default" variant="caption" className={classes.sectionTitle}>
           {sectionName}
         </Typography>
         <WrappedComponent {...props} />

@@ -48,15 +48,16 @@ const BalanceCard = (props) => {
     <Card elevation={elevation ? 5 : 0}>
       <CardActionArea onClick={selectCard}>
         <CardContent>
-          <Typography variant="subtitle1">
-            {props.accountID}
-          </Typography>
+          <Typography variant="subtitle1">{props.accountID}</Typography>
 
           <div className={classes.balance}>
             <div>
               <NumberFormat
+                thousandSeparator={true}
+                fixedDecimalScale={true}
+                decimalScale={2}
                 className={classes.balanceText}
-                value={currentBalance.toFixed(2)}
+                value={currentBalance}
                 displayType={"text"}
               />
               <span className={classes.currency}>{props.currency}</span>

@@ -69,7 +69,7 @@ export default {
   customSpacing: {
     pageTop: 20,
     pageSides: 30,
-    sectionTitle: 30,
+    sectionTitle: 20,
   },
   charts: {
     colors: ["#a275d0", "#559e55", "#75bad0"],
