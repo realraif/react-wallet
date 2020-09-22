@@ -9,14 +9,14 @@ import ExpensesBarChart from "./ExpensesBarChart/ExpensesBarChart";
 const ExpensesSection = (props) => {
   return (
     <Grid container justify="space-between" spacing={4} alignItems="center">
-      <Grid item xs={12}>
-        <ExpensesBarChart />
+      <Grid item xs={12} lg={6}>
+        <ExpensesMap />
       </Grid>
       <Grid item xs={12} lg={6}>
         <Donut />
       </Grid>
-      <Grid item xs={12} lg={6}>
-        <ExpensesMap />
+      <Grid item xs={12}>
+        <ExpensesBarChart />
       </Grid>
     </Grid>
   );
