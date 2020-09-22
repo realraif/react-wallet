@@ -76,6 +76,13 @@ export default {
     bars: ["#a275d0", "#559e55", "#75bad0"],
     pieBorder: "#fff"
   },
+  sections: {
+    overview: {
+      expenses: {
+        height: 250
+      }
+    }
+  },
   shape: {
     borderRadius: 2,
   },

@@ -1,6 +1,5 @@
 import { BsPieChart, BsBriefcase } from "react-icons/bs";
 import { AiOutlineBarChart, AiOutlineCreditCard } from "react-icons/ai";
-import { IoIosTrendingUp } from "react-icons/io";
 
 import Dashboard from "./pages/Dashboard/Dashboard";
 import Balances from "./pages/BalancesScreen/BalancesScreen";

@@ -5,7 +5,7 @@ import WithBox from "HOC/withBox";
 import DonutChart from "components/charts/NestedDonutChart/NestedDonutChart";
 import data from "./mockdata";
 
-const ExpensesDonut = (props) => {
+const ExpensesDonut = ({ height }) => {
   const [selectedPoints, setSelectedPoints] = useState([]);
   const theme = useTheme();
   const colors = theme.charts.colors;
@@ -19,10 +19,10 @@ const ExpensesDonut = (props) => {
   }, []);
 
   return (
-    <WithBox>
+    <WithBox height={height}>
       <DonutChart
         data={data}
-        diameter={250}
+        diameter={height * 0.9}
         colors={colors}
         borderColor={borderColor}
         sliceClicked={sliceClicked}

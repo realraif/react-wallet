@@ -4,20 +4,19 @@ import WithBox from "HOC/withBox";
 import USMapChart from "components/charts/USMapChart/USMapChart";
 import data from "./mockdata";
 
-const ExpensesMap = (props) => {
+const ExpensesMap = ({ height }) => {
   const [selectedState, setSelectedStates] = useState();
 
   const stateSelected = useCallback((state) => {
     setSelectedStates(state.name);
   }, []);
 
-
   return (
-    <WithBox>
+    <WithBox height={height}>
       <USMapChart
         data={data}
         mapClicked={stateSelected}
-        height={250}
+        height={height * 0.9}
       />
       <div>{selectedState}</div>
     </WithBox>
