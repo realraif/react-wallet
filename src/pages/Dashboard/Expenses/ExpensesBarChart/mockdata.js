@@ -1,6 +1,6 @@
 export const data = [
   {
-    time: "AD",
+    time: "april",
     card1: 62,
     card1Color: "hsl(165, 70%, 50%)",
     card2: 59,
@@ -15,7 +15,7 @@ export const data = [
     card6Color: "hsl(100, 70%, 50%)",
   },
   {
-    time: "AE",
+    time: "may",
     card1: 144,
     card1Color: "hsl(289, 70%, 50%)",
     card2: 64,
@@ -30,7 +30,7 @@ export const data = [
     card6Color: "hsl(271, 70%, 50%)",
   },
   {
-    time: "AF",
+    time: "june",
     card1: 90,
     card1Color: "hsl(156, 70%, 50%)",
     card2: 124,
@@ -45,7 +45,7 @@ export const data = [
     card6Color: "hsl(80, 70%, 50%)",
   },
   {
-    time: "AG",
+    time: "july",
     card1: 197,
     card1Color: "hsl(119, 70%, 50%)",
     card2: 144,
@@ -60,7 +60,7 @@ export const data = [
     card6Color: "hsl(191, 70%, 50%)",
   },
   {
-    time: "AI",
+    time: "august",
     card1: 58,
     card1Color: "hsl(141, 70%, 50%)",
     card2: 136,
@@ -75,7 +75,7 @@ export const data = [
     card6Color: "hsl(80, 70%, 50%)",
   },
   {
-    time: "AL",
+    time: "september",
     card1: 138,
     card1Color: "hsl(105, 70%, 50%)",
     card2: 107,
@@ -90,7 +90,7 @@ export const data = [
     card6Color: "hsl(176, 70%, 50%)",
   },
   {
-    time: "AM",
+    time: "october",
     card1: 78,
     card1Color: "hsl(56, 70%, 50%)",
     card2: 55,

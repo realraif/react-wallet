@@ -2,10 +2,10 @@ import React from "react";
 import { ResponsiveBar } from "@nivo/bar";
 import styles from "./GroupedBarChart.module.css";
 
-const GroupedBarChart = ({ data, bars, indexName, height }) => {
+const GroupedBarChart = ({ data, bars, indexName, barClicked, height }) => {
   const dynamicStyle = {
-    height: height
-  }
+    height: height,
+  };
 
   return (
     <div className={styles.ChartWrapper} style={dynamicStyle}>
@@ -13,6 +13,7 @@ const GroupedBarChart = ({ data, bars, indexName, height }) => {
         data={data}
         keys={bars}
         indexBy={indexName}
+        onClick={barClicked}
         margin={{ top: 20, right: 20, bottom: 30, left: 40 }}
         padding={0.15}
         innerPadding={1}
@@ -74,4 +75,4 @@ const GroupedBarChart = ({ data, bars, indexName, height }) => {
   );
 };
 
-export default GroupedBarChart;
+export default React.memo(GroupedBarChart);

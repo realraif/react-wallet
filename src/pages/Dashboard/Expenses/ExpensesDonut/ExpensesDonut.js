@@ -11,7 +11,7 @@ const ExpensesDonut = (props) => {
   const colors = theme.charts.colors;
   const borderColor = theme.charts.pieBorder;
 
-  const setSelectedSlices = useCallback((sp) => {
+  const sliceClicked = useCallback((sp) => {
     let points = sp.map((slice) => {
       return slice.name;
     });
@@ -25,7 +25,7 @@ const ExpensesDonut = (props) => {
         diameter={250}
         colors={colors}
         borderColor={borderColor}
-        sliceClicked={setSelectedSlices}
+        sliceClicked={sliceClicked}
       />
       <div>{selectedPoints}</div>
     </WithBox>
