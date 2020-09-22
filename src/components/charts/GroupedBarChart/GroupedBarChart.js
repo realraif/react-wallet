@@ -10,12 +10,15 @@ const GroupedBarChart = ({
   barClicked,
   height,
   isStacked,
+  colors,
 }) => {
+
   return (
     <div className={styles.ChartWrapper} style={{ height: height }}>
       <ResponsiveBar
         data={data}
         keys={bars}
+        // colors={(bar) => colors[bar.id]}
         indexBy={indexName}
         onClick={barClicked}
         groupMode={isStacked ? "stacked" : "grouped"}
