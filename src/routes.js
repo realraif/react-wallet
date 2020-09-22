@@ -1,8 +1,10 @@
-import { BsPieChart, BsBriefcase } from 'react-icons/bs';
-import { AiOutlineBarChart, AiOutlineCreditCard } from 'react-icons/ai';
-import { IoIosTrendingUp } from 'react-icons/io';
+import { BsPieChart, BsBriefcase } from "react-icons/bs";
+import { AiOutlineBarChart, AiOutlineCreditCard } from "react-icons/ai";
+import { IoIosTrendingUp } from "react-icons/io";
 
 import Dashboard from "./pages/Dashboard/Dashboard";
+import Balances from "./pages/BalancesScreen/BalancesScreen";
+import CreditCards from './pages/CreditCardsScreen/CreditCardsScreen';
 
 const routes = [
   {
@@ -15,24 +17,18 @@ const routes = [
     path: "/app/balances",
     title: "Balances",
     icon: AiOutlineBarChart,
-    component: Dashboard,
+    component: Balances,
   },
   {
     path: "/app/ccards",
     title: "Credit Cards",
     icon: AiOutlineCreditCard,
-    component: Dashboard,
+    component: CreditCards,
   },
   {
     path: "/app/loans",
     title: "Loans",
     icon: BsBriefcase,
-    component: Dashboard,
-  },
-  {
-    path: "/app/trades",
-    title: "Trades",
-    icon: IoIosTrendingUp,
     component: Dashboard,
   },
 ];
