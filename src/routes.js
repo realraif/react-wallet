@@ -3,7 +3,9 @@ import { AiOutlineBarChart, AiOutlineCreditCard } from "react-icons/ai";
 
 import Dashboard from "./pages/Dashboard/Dashboard";
 import Balances from "./pages/BalancesScreen/BalancesScreen";
-import CreditCards from './pages/CreditCardsScreen/CreditCardsScreen';
+import CreditCards from "./pages/CreditCardsScreen/CreditCardsScreen";
+
+export const defaultRoute = "dashboard";
 
 const routes = [
   {
