@@ -9,6 +9,9 @@ const useStyles = makeStyles((theme) => ({
   sectionTitle: {
     textTransform: "uppercase",
     lineHeight: `${theme.customSpacing.sectionTitle}px`,
+    '&::before': {
+      content: "\"\\200b\""
+    }
   },
 }));
 
