@@ -1,24 +1,23 @@
 import React, { useState, useCallback } from "react";
 
-import MultiSplineChart from "components/charts/MultiSplineChart/MultiSplineChart";
-import { dataSeries, labels } from "./mockdata";
+import MultiSplineChart from "components/charts/MultiSplineHighcharts/MultiSplineHighcharts";
+import data from "./mockdata";
 
 const BalanceSplineChart = (props) => {
-  const [selectedPoints, setSelectedPoints] = useState([]);
+  const [selectedPoint, setSelectedPoint] = useState([]);
 
-  const pointSelected = useCallback((points, clickEvent) => {
-    setSelectedPoints(points);
+  const pointSelected = useCallback((serie) => {
+    setSelectedPoint(serie);
   }, []);
 
   return (
     <>
       <MultiSplineChart
-        dataSeries={dataSeries}
-        labels={labels}
-        pointClickedHandler={pointSelected}
+        data={data}
+        serieClickedHandler={pointSelected}
       />
 
-      <div>{selectedPoints.map((point) => point._datasetIndex)}</div>
+      <div>{selectedPoint.name}</div>
     </>
   );
 };

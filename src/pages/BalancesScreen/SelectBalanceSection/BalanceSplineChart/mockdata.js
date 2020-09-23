@@ -1,4 +1,4 @@
-export const dataSeries = [
+const dataSeries = [
   {
     name: "balance1",
     data: [-12, 19, 3, 5, 2, 3, 2],
@@ -13,7 +13,7 @@ export const dataSeries = [
   },
 ];
 
-export const labels = [
+const labels = [
   "January",
   "February",
   "March",
@@ -22,3 +22,5 @@ export const labels = [
   "June",
   "July",
 ];
+
+export default { dataSeries, labels };
