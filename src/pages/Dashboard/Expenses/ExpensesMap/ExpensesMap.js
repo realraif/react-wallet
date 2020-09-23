@@ -7,8 +7,8 @@ import data from "./mockdata";
 const ExpensesMap = ({ height }) => {
   const [selectedState, setSelectedStates] = useState();
 
-  const stateSelected = useCallback((state) => {
-    setSelectedStates(state.name);
+  const stateSelected = useCallback((usState) => {
+    setSelectedStates(usState.name);
   }, []);
 
   return (
