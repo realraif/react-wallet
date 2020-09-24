@@ -25,13 +25,15 @@ const getGenericOptions = () => ({
     ],
   },
   yAxis: {
+    crosshair: true,
+    gridLineDashStyle: "longdash",
     title: {
       text: "",
     },
   },
   tooltip: {
     shared: true,
-    enabled: false
+    enabled: false,
   },
   credits: {
     enabled: false,
@@ -39,6 +41,7 @@ const getGenericOptions = () => ({
   plotOptions: {
     series: {
       pointPlacement: "on",
+      lineWidth: 0,
       marker: {
         enabled: false,
         states: {
@@ -54,7 +57,11 @@ const getGenericOptions = () => ({
 });
 
 const customiseOptions = (options, data, styles) => {
-  options.series = data.series;
+  options.series = data.series.map((serie, i) => {
+    serie.color = styles.colors[i];
+    return serie;
+  });
+  options.chart.height = styles.height;
 };
 
 const setEvents = (options, callBackMethods) => {

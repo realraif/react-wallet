@@ -7,9 +7,10 @@ const MultiSplineChart = ({
   data,
   serieClickedHandler,
   colors,
+  height,
   chartRef,
 }) => {
-  const styles = { colors };
+  const styles = { colors, height };
   const callBackMethods = { serieClickedHandler };
   const options = getChartOptions(data, callBackMethods, styles);
 

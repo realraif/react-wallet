@@ -12,12 +12,13 @@ const SelectBalanceSection = (props) => {
   const height = theme.sections.overview.expenses.height;
 
   return (
-    <WithBox>
-    <Grid container justify="space-between" spacing={4} alignItems="center">
-      <Grid item xs={12} md={6}>
-        <BalanceSplineChart height={height} />
+    <WithBox height={height}>
+      <Grid container spacing={0} alignItems="stretch">
+        <Grid item xs={12} md={6}></Grid>
+        <Grid item xs={12} md={6}>
+          <BalanceSplineChart height={height} />
+        </Grid>
       </Grid>
-    </Grid>
     </WithBox>
   );
 };
