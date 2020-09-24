@@ -5,6 +5,7 @@ import { useTheme } from "@material-ui/styles";
 import withSection from "HOC/withSection";
 import WithBox from "HOC/withBox";
 import BalanceSplineChart from "./BalanceSplineChart/BalanceSplineChart";
+import BalanceTable from "./BalancesTable/BalancesTable";
 
 const SelectBalanceSection = (props) => {
   const theme = useTheme();
@@ -14,7 +15,9 @@ const SelectBalanceSection = (props) => {
   return (
     <WithBox height={height}>
       <Grid container spacing={0} alignItems="stretch">
-        <Grid item xs={12} md={6}></Grid>
+        <Grid item xs={12} md={6}>
+          <BalanceTable />
+        </Grid>
         <Grid item xs={12} md={6}>
           <BalanceSplineChart height={height} />
         </Grid>
