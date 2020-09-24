@@ -7,7 +7,6 @@ import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
-import TablePagination from "@material-ui/core/TablePagination";
 import TableRow from "@material-ui/core/TableRow";
 import TableSortLabel from "@material-ui/core/TableSortLabel";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -190,10 +189,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function EnhancedTable({ rows, rowsPerPage = 4 }) {
+export default function EnhancedTable({ rows }) {
   const classes = useStyles();
   const [selected, setSelected] = React.useState([]);
-  const [page, setPage] = React.useState(0);
 
   const handleClick = (event, name) => {
     const selectedIndex = selected.indexOf(name);
@@ -215,14 +213,8 @@ export default function EnhancedTable({ rows, rowsPerPage = 4 }) {
     setSelected(newSelected);
   };
 
-  const handleChangePage = (event, newPage) => {
-    setPage(newPage);
-  };
-
   const isSelected = (name) => selected.indexOf(name) !== -1;
 
-  const emptyRows =
-    rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
 
   return (
     <div className={classes.root}>
@@ -236,7 +228,6 @@ export default function EnhancedTable({ rows, rowsPerPage = 4 }) {
           >
             <TableBody>
               {rows
-                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row, index) => {
                   const isItemSelected = isSelected(row.name);
                   const labelId = `enhanced-table-checkbox-${index}`;
@@ -272,22 +263,9 @@ export default function EnhancedTable({ rows, rowsPerPage = 4 }) {
                     </TableRow>
                   );
                 })}
-              {emptyRows > 0 && (
-                <TableRow style={{ height: 53 * emptyRows }}>
-                  <TableCell colSpan={6} />
-                </TableRow>
-              )}
             </TableBody>
           </Table>
         </TableContainer>
-        <TablePagination
-          component="div"
-          count={rows.length}
-          rowsPerPageOptions={false}
-          rowsPerPage={rowsPerPage}
-          page={page}
-          onChangePage={handleChangePage}
-        />
       </Paper>
     </div>
   );
