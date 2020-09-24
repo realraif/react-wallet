@@ -1,4 +1,4 @@
-const dataSeries = [
+const series = [
   {
     name: "balance1",
     data: [-12, 19, 3, 5, 2, 3, 2],
@@ -23,4 +23,4 @@ const labels = [
   "July",
 ];
 
-export default { dataSeries, labels };
+export default { series, labels };

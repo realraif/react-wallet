@@ -13,17 +13,9 @@ const getGenericOptions = () => ({
   title: {
     text: "",
   },
-  legend: {
-    layout: "vertical",
-    align: "left",
-    verticalAlign: "top",
-    x: 150,
-    y: 100,
-    floating: true,
-    borderWidth: 1,
-    backgroundColor: "transparent",
-  },
+  legend: { enabled: false },
   xAxis: {
+    crosshair: true,
     plotBands: [
       {
         from: 4.5,
@@ -34,18 +26,25 @@ const getGenericOptions = () => ({
   },
   yAxis: {
     title: {
-      text: "Fruit units",
+      text: "",
     },
   },
   tooltip: {
     shared: true,
-    valueSuffix: " units",
+    enabled: false
   },
   credits: {
     enabled: false,
   },
   plotOptions: {
     series: {
+      pointPlacement: "on",
+      marker: {
+        enabled: false,
+        states: {
+          hover: { enabled: true },
+        },
+      },
       fillOpacity: 0.5,
       trackByArea: true,
       events: {},
@@ -55,8 +54,7 @@ const getGenericOptions = () => ({
 });
 
 const customiseOptions = (options, data, styles) => {
-  options.series = data.dataSeries;
-  options.xAxis.categories = data.labels;
+  options.series = data.series;
 };
 
 const setEvents = (options, callBackMethods) => {
@@ -65,8 +63,8 @@ const setEvents = (options, callBackMethods) => {
       x: event.point.x,
       y: event.point.y,
       label: event.point.category,
-      name: event.point.series.name
-    }
+      name: event.point.series.name,
+    };
     callBackMethods.serieClickedHandler(serie);
   };
 };
