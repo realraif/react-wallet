@@ -6,7 +6,6 @@ import TableCell from "@material-ui/core/TableCell";
 import TableContainer from "@material-ui/core/TableContainer";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
-import Checkbox from "@material-ui/core/Checkbox";
 
 const useStyles = (height) =>
   makeStyles((theme) => ({
@@ -24,44 +23,17 @@ const useStyles = (height) =>
       minWidth: 750,
       cursor: "pointer",
     },
-    visuallyHidden: {
-      border: 0,
-      clip: "rect(0 0 0 0)",
-      height: 1,
-      margin: -1,
-      overflow: "hidden",
-      padding: 0,
-      position: "absolute",
-      top: 20,
-      width: 1,
-    },
   }));
 
 const RadioTable = ({ rows, height }) => {
   const classes = useStyles(height)();
-  const [selected, setSelected] = React.useState([]);
+  const [selected, setSelected] = React.useState();
 
   const handleClick = (event, name) => {
-    const selectedIndex = selected.indexOf(name);
-    let newSelected = [];
-
-    if (selectedIndex === -1) {
-      newSelected = newSelected.concat(selected, name);
-    } else if (selectedIndex === 0) {
-      newSelected = newSelected.concat(selected.slice(1));
-    } else if (selectedIndex === selected.length - 1) {
-      newSelected = newSelected.concat(selected.slice(0, -1));
-    } else if (selectedIndex > 0) {
-      newSelected = newSelected.concat(
-        selected.slice(0, selectedIndex),
-        selected.slice(selectedIndex + 1)
-      );
-    }
-
-    setSelected(newSelected);
+    setSelected(name);
   };
 
-  const isSelected = (name) => selected.indexOf(name) !== -1;
+  const isSelected = (name) => name === selected;
 
   return (
     <div className={classes.root}>
@@ -76,7 +48,6 @@ const RadioTable = ({ rows, height }) => {
             <TableBody>
               {rows.map((row, index) => {
                 const isItemSelected = isSelected(row.name);
-                const labelId = `enhanced-table-checkbox-${index}`;
 
                 return (
                   <TableRow
@@ -88,18 +59,7 @@ const RadioTable = ({ rows, height }) => {
                     key={row.name}
                     selected={isItemSelected}
                   >
-                    <TableCell padding="checkbox">
-                      <Checkbox
-                        checked={isItemSelected}
-                        inputProps={{ "aria-labelledby": labelId }}
-                      />
-                    </TableCell>
-                    <TableCell
-                      component="th"
-                      id={labelId}
-                      scope="row"
-                      padding="none"
-                    >
+                    <TableCell component="th" scope="row">
                       {row.name}
                     </TableCell>
                     <TableCell align="right">{row.calories}</TableCell>
