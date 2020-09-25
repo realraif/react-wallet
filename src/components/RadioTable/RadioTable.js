@@ -20,20 +20,19 @@ const useStyles = (height) =>
       overflowX: "hidden",
     },
     table: {
-      minWidth: 750,
       cursor: "pointer",
     },
   }));
 
-const RadioTable = ({ rows, height }) => {
+const RadioTable = ({ columns, rows, height }) => {
   const classes = useStyles(height)();
   const [selected, setSelected] = React.useState();
 
-  const handleClick = (event, name) => {
-    setSelected(name);
+  const handleClick = (event, id) => {
+    setSelected(id);
   };
 
-  const isSelected = (name) => name === selected;
+  const isSelected = (id) => id === selected;
 
   return (
     <div className={classes.root}>
@@ -47,25 +46,21 @@ const RadioTable = ({ rows, height }) => {
           >
             <TableBody>
               {rows.map((row, index) => {
-                const isItemSelected = isSelected(row.name);
+                const isItemSelected = isSelected(row.id);
 
                 return (
                   <TableRow
                     hover
-                    onClick={(event) => handleClick(event, row.name)}
+                    onClick={(event) => handleClick(event, row.id)}
                     role="radio"
                     aria-checked={isItemSelected}
                     tabIndex={-1}
-                    key={row.name}
+                    key={row.id}
                     selected={isItemSelected}
                   >
-                    <TableCell component="th" scope="row">
-                      {row.name}
-                    </TableCell>
-                    <TableCell align="right">{row.calories}</TableCell>
-                    <TableCell align="right">{row.fat}</TableCell>
-                    <TableCell align="right">{row.carbs}</TableCell>
-                    <TableCell align="right">{row.protein}</TableCell>
+                    {columns.map((column) => (
+                      <TableCell>{row[column]}</TableCell>
+                    ))}
                   </TableRow>
                 );
               })}
