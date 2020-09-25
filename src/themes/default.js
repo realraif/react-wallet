@@ -74,14 +74,14 @@ export default {
   charts: {
     colors: ["#a275d0", "#559e55", "#75bad0"],
     bars: ["#a275d0", "#559e55", "#75bad0"],
-    pieBorder: "#fff"
+    pieBorder: "#fff",
   },
   sections: {
     overview: {
       expenses: {
-        height: 250
-      }
-    }
+        height: 250,
+      },
+    },
   },
   shape: {
     borderRadius: 2,
@@ -133,6 +133,13 @@ export default {
       elevation5: {
         boxShadow:
           "0px 3px 5px -1px #7877de33, 0px 5px 8px 0px #7877de33, 0px 1px 14px 0px #7877de33",
+      },
+    },
+    MuiTableCell: {
+      root: {
+        lineHeight: 1.43,
+        fontSize: 14,
+        padding: 16,
       },
     },
   },

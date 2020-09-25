@@ -8,7 +8,7 @@ import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import Checkbox from "@material-ui/core/Checkbox";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = (height) => makeStyles((theme) => ({
   root: {
     width: "100%",
   },
@@ -16,7 +16,8 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
   },
   tableContainer: {
-    overflow: "hidden",
+    height: height,
+    overflowX: "hidden",
   },
   table: {
     minWidth: 750,
@@ -34,8 +35,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const EnhancedTable = ({ rows, setRowsPerPage }) => {
-  const classes = useStyles();
+const EnhancedTable = ({ rows, height }) => {
+  const classes = useStyles(height)();
   const [selected, setSelected] = React.useState([]);
 
   const handleClick = (event, name) => {
