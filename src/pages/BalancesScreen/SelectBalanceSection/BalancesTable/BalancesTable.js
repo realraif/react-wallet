@@ -13,8 +13,8 @@ const rows = [
   createData("Gingerbread", 356, 16.0, 49, 3.9),
 ];
 
-const BalanceTable = (props) => {
-  return <RadioTable rows={rows} />;
+const BalanceTable = ({ setRowsPerPage }) => {
+  return <RadioTable rows={rows} setRowsPerPage={setRowsPerPage} />;
 };
 
 export default BalanceTable;

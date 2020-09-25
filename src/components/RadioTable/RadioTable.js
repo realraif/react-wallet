@@ -14,7 +14,9 @@ const useStyles = makeStyles((theme) => ({
   },
   paper: {
     width: "100%",
-    marginBottom: theme.spacing(2),
+  },
+  tableContainer: {
+    overflow: "hidden",
   },
   table: {
     minWidth: 750,
@@ -32,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const EnhancedTable = ({ rows }) => {
+const EnhancedTable = ({ rows, setRowsPerPage }) => {
   const classes = useStyles();
   const [selected, setSelected] = React.useState([]);
 
@@ -60,8 +62,8 @@ const EnhancedTable = ({ rows }) => {
 
   return (
     <div className={classes.root}>
-      <Paper className={classes.paper}>
-        <TableContainer>
+      <Paper className={classes.paper} elevation={0}>
+        <TableContainer className={classes.tableContainer}>
           <Table
             className={classes.table}
             aria-labelledby="tableTitle"
