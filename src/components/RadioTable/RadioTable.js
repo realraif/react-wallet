@@ -8,34 +8,36 @@ import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import Checkbox from "@material-ui/core/Checkbox";
 
-const useStyles = (height) => makeStyles((theme) => ({
-  root: {
-    width: "100%",
-  },
-  paper: {
-    width: "100%",
-  },
-  tableContainer: {
-    height: height,
-    overflowX: "hidden",
-  },
-  table: {
-    minWidth: 750,
-  },
-  visuallyHidden: {
-    border: 0,
-    clip: "rect(0 0 0 0)",
-    height: 1,
-    margin: -1,
-    overflow: "hidden",
-    padding: 0,
-    position: "absolute",
-    top: 20,
-    width: 1,
-  },
-}));
+const useStyles = (height) =>
+  makeStyles((theme) => ({
+    root: {
+      width: "100%",
+    },
+    paper: {
+      width: "100%",
+    },
+    tableContainer: {
+      height: height,
+      overflowX: "hidden",
+    },
+    table: {
+      minWidth: 750,
+      cursor: "pointer",
+    },
+    visuallyHidden: {
+      border: 0,
+      clip: "rect(0 0 0 0)",
+      height: 1,
+      margin: -1,
+      overflow: "hidden",
+      padding: 0,
+      position: "absolute",
+      top: 20,
+      width: 1,
+    },
+  }));
 
-const EnhancedTable = ({ rows, height }) => {
+const RadioTable = ({ rows, height }) => {
   const classes = useStyles(height)();
   const [selected, setSelected] = React.useState([]);
 
@@ -69,7 +71,7 @@ const EnhancedTable = ({ rows, height }) => {
             className={classes.table}
             aria-labelledby="tableTitle"
             size="medium"
-            aria-label="enhanced table"
+            aria-label="radio table"
           >
             <TableBody>
               {rows.map((row, index) => {
@@ -115,4 +117,4 @@ const EnhancedTable = ({ rows, height }) => {
   );
 };
 
-export default EnhancedTable;
+export default RadioTable;
