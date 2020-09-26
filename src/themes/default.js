@@ -67,9 +67,9 @@ export default {
     borderColor: "#ececec",
   },
   customSpacing: {
-    pageTop: 20,
+    pageTop: 10,
     pageSides: 30,
-    sectionTitle: 20,
+    sectionTitle: 40,
   },
   charts: {
     colors: ["#a275d0", "#559e55", "#75bad0"],

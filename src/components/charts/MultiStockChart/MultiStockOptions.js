@@ -1,9 +1,17 @@
+import React from "react";
+import ReactDOM from "react-dom";
+
 export default (data, callBackMethods, styles) => {
   const options = getGenericOptions();
   customiseOptions(options, data, styles);
-  setEvents(options, callBackMethods);
   return options;
 };
+
+const Tooltip = ({ name, value }) => (
+  <>
+    {name}: {value}
+  </>
+);
 
 const getGenericOptions = () => ({
   credits: {
@@ -19,6 +27,8 @@ const getGenericOptions = () => ({
     panning: false,
     spacingRight: 1,
     spacingLeft: -32,
+    height: 400,
+    backgroundColor: "transparent",
   },
   navigator: {
     enabled: true,
@@ -39,7 +49,6 @@ const getGenericOptions = () => ({
       borderColor: "rgb(1, 173, 238)",
     },
     xAxis: {
-      // navigator xAxis
       startOnTick: true,
       showLastLabel: false,
       tickPixelInterval: 120,
@@ -59,7 +68,6 @@ const getGenericOptions = () => ({
       },
     },
     yAxis: {
-      // navigator yAxis
       reversed: false,
     },
   },
@@ -90,10 +98,10 @@ const getGenericOptions = () => ({
         font: "12px Roboto",
         fontWeight: "normal",
       },
-      formatter: function () {},
+      // formatter: function () {},
     },
     events: {
-      setExtremes: function (e) {}, // on navigator moved
+      setExtremes: function (e) {}, // on navigation move
     },
   },
   yAxis: [
@@ -141,7 +149,14 @@ const getGenericOptions = () => ({
       margin: 0,
     },
     shared: false,
-    formatter: function () {},
+    formatter: function (e) {
+      const container = document.createElement("div");
+      ReactDOM.render(
+        <Tooltip name={this.series.name} value={this.y} />,
+        container
+      );
+      return container.innerHTML;
+    },
   },
   plotOptions: {
     series: {
@@ -171,7 +186,7 @@ const getGenericOptions = () => ({
       point: {
         events: {
           mouseOver: function (e) {},
-          mouseOut: function () {},
+          mouseOut: function (e) {},
         },
       },
     },

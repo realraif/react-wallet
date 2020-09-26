@@ -8,10 +8,9 @@ const useStyles = makeStyles((theme) => ({
   },
   sectionTitle: {
     textTransform: "uppercase",
-    lineHeight: `${theme.customSpacing.sectionTitle}px`,
-    '&::before': {
-      content: "\"\\200b\""
-    }
+    height: `${theme.customSpacing.sectionTitle}px`,
+    display: "flex",
+    alignItems: "flex-end",
   },
 }));
 
