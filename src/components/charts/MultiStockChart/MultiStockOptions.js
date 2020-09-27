@@ -29,6 +29,17 @@ const getGenericOptions = () => ({
     spacingLeft: -32,
     height: 400,
     backgroundColor: "transparent",
+
+    events: {
+      load: function () {
+        this.navigator.handles.forEach((handle) => {
+          handle.attr({
+            "stroke-linejoin": "round",
+            "stroke-linecap": "round",
+          });
+        })
+      },
+    },
   },
   navigator: {
     enabled: true,
@@ -45,6 +56,10 @@ const getGenericOptions = () => ({
     maskFill: "rgba(129, 197, 223, 0.34902)",
     adaptToUpdatedData: true,
     handles: {
+      height: 10,
+      width: 2,
+      lineWidth: 5,
+      linecap: 3,
       backgroundColor: "rgb(1, 173, 238)",
       borderColor: "rgb(1, 173, 238)",
     },

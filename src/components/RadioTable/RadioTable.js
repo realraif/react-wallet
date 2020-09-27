@@ -59,7 +59,7 @@ const RadioTable = ({ columns, rows, height }) => {
                     selected={isItemSelected}
                   >
                     {columns.map((column) => (
-                      <TableCell>{row[column]}</TableCell>
+                      <TableCell key={column}>{row[column]}</TableCell>
                     ))}
                   </TableRow>
                 );
