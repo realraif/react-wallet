@@ -81,34 +81,8 @@ const getGenericOptions = () => ({
 });
 
 const customiseOptions = (options, data, styles) => {
-  options.series = [
-    {
-      name: "John",
-      data: [5, 3, 4, 7, 2, 2, 1, 3, 4, 5, 2, 2],
-    },
-    {
-      name: "Jane",
-      data: [2, 2, 3, 2, 1, 3, 4, 4, 2, 2, 5, 2],
-    },
-    {
-      name: "Joe",
-      data: [3, 4, 4, 2, 5, 2, 3, 2, 1, 3, 4, 7],
-    },
-  ];
-  options.xAxis.categories = [
-    "Jan",
-    "Fab",
-    "March",
-    "April",
-    "May",
-    "June",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec",
-  ];
+  options.series = data.series;
+  options.xAxis.categories = data.categories;
   options.yAxis.labels.style = {
     textOutline: "1px contrast",
     color: "white",
