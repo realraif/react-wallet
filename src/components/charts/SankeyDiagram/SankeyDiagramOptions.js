@@ -1,0 +1,42 @@
+export default {
+  margin: { top: 40, right: 160, bottom: 40, left: 50 },
+  align: "start",
+  sort: "ascending",
+  colors: { scheme: "pink_yellowGreen" },
+  nodeOpacity: 1,
+  nodeThickness: 18,
+  nodeSpacing: 60,
+  nodeBorderColor: { theme: "grid.line.stroke" },
+  linkOpacity: 0.6,
+  linkHoverOpacity: 1,
+  linkHoverOthersOpacity: 0.1,
+  linkBlendMode: "normal",
+  labelPosition: "outside",
+  labelPadding: 10,
+  labelTextColor: "black",
+  animate: true,
+  motionStiffness: 190,
+  motionDamping: 20,
+  isInteractive: false,
+  legends: [
+    {
+      anchor: "bottom-right",
+      direction: "column",
+      translateX: 130,
+      itemWidth: 100,
+      itemHeight: 14,
+      itemDirection: "right-to-left",
+      itemsSpacing: 2,
+      itemTextColor: "#999",
+      symbolSize: 14,
+      effects: [
+        {
+          on: "hover",
+          style: {
+            itemTextColor: "#000",
+          },
+        },
+      ],
+    },
+  ],
+};
