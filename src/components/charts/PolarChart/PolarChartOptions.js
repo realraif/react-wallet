@@ -1,11 +1,8 @@
-import { loopIndexValue } from "utils";
-
 const defaultDiameter = 200;
 
-export default (data, callBackMethods, styles) => {
+export default (data, styles) => {
   const options = getGenericOptions();
-  // customiseOptions(options, data, styles);
-  // setEvents(options, callBackMethods);
+  customiseOptions(options, data, styles);
   return options;
 };
 
@@ -18,14 +15,8 @@ const getGenericOptions = () => ({
   title: {
     text: "",
   },
-  xAxis: {
-    labels: {
-      enabled: false,
-    },
-    visible: false,
-    categories: ["Apples", "Oranges", "Pears", "Grapes", "Bananas"],
-  },
   yAxis: {
+    maxPadding: 0,
     plotLines: [
       {
         zIndex: 4,
@@ -34,24 +25,16 @@ const getGenericOptions = () => ({
         value: 8,
       },
     ],
-    tickInterval: 2,
+    tickInterval: 1,
     gridZIndex: 4,
     min: 0,
     title: {
       text: "",
     },
-    labels: {
-      style: {
-        textOutline: "1px contrast",
-        color: "white",
-      },
-    },
+    labels: {},
     stackLabels: {
       enabled: false,
     },
-  },
-  legend: {
-    enabled: false,
   },
   tooltip: {
     headerFormat: "<b>{point.x}</b><br/>",
@@ -62,6 +45,7 @@ const getGenericOptions = () => ({
       pointPadding: 0,
       groupPadding: 0,
       borderWidth: 0.5,
+      borderColor: "blue",
       shadow: true,
     },
     column: {
@@ -70,6 +54,15 @@ const getGenericOptions = () => ({
         enabled: false,
       },
     },
+  },
+  credits: {
+    enabled: false,
+  },
+  legend: {
+    enabled: false,
+  },
+  xAxis: {
+    visible: false,
   },
   series: [
     {
@@ -88,35 +81,38 @@ const getGenericOptions = () => ({
 });
 
 const customiseOptions = (options, data, styles) => {
-  options.series = [{ data: data, allowDrillToNode: true }];
-
-  if (styles.colors) {
-    setColors(options.series[0].data, styles.colors);
-  }
-  if (styles.borderColor) {
-    options.plotOptions.series.borderColor = styles.borderColor;
-  }
-
+  options.series = [
+    {
+      name: "John",
+      data: [5, 3, 4, 7, 2, 2, 1, 3, 4, 5, 2, 2],
+    },
+    {
+      name: "Jane",
+      data: [2, 2, 3, 2, 1, 3, 4, 4, 2, 2, 5, 2],
+    },
+    {
+      name: "Joe",
+      data: [3, 4, 4, 2, 5, 2, 3, 2, 1, 3, 4, 7],
+    },
+  ];
+  options.xAxis.categories = [
+    "Jan",
+    "Fab",
+    "March",
+    "April",
+    "May",
+    "June",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+  options.yAxis.labels.style = {
+    textOutline: "1px contrast",
+    color: "white",
+  };
   options.chart.height = styles.diameter || defaultDiameter;
   options.chart.width = styles.diameter || defaultDiameter;
-};
-
-const setEvents = (options, callBackMethods) => {
-  options.plotOptions.series.point.events.select = function (event) {
-    setTimeout(() => {
-      const selectedSlices = this.series.chart.getSelectedPoints();
-      callBackMethods.sliceClicked(selectedSlices);
-    });
-  };
-};
-
-const setColors = (data, colors) => {
-  let colorIndex = 0;
-
-  data.forEach((slice) => {
-    if (!slice.parent) {
-      slice.color = colors[colorIndex];
-      colorIndex = loopIndexValue(colorIndex, colors.length - 1);
-    }
-  });
 };
