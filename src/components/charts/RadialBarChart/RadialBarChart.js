@@ -15,7 +15,7 @@ const RadialBarChart = ({ data, diameter, color, chartRef }) => {
   return (
     <div className={styles.ChartWeapper}>
       <div className={styles.TextWrapper}>
-        <span className={styles.Text}>{data.percentage.toFixed(1)}%</span>
+        <span className={styles.Text}>{data[0].percent.toFixed(1)}%</span>
       </div>
       <HighchartsReact
         ref={chartRef}

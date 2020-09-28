@@ -66,7 +66,13 @@ const CreditCard = (props) => {
             <div className={classes.activity}>
               <RadialBarChart
                 chartRef={chartRef}
-                data={{ percentage: expensePercent, name: "Expense" }}
+                data={[
+                  {
+                    name: "Expenses",
+                    percent: expensePercent,
+                    color: "#20657b",
+                  },
+                ]}
                 diameter={80}
               />
             </div>

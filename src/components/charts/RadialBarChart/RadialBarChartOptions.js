@@ -6,6 +6,18 @@ export default (data, styles) => {
   return options;
 };
 
+const getSerie = ({ name, percent, color }) => ({
+  name: name,
+  borderColor: color,
+  data: [
+    {
+      radius: "100%",
+      innerRadius: "100%",
+      y: percent,
+    },
+  ],
+});
+
 const getGenericOptions = () => ({
   chart: {
     spacing: [0, 0, 0, 0],
@@ -52,38 +64,40 @@ const getGenericOptions = () => ({
       dataLabels: {
         enabled: false,
       },
-
-      linecap: "round",
       stickyTracking: false,
+      linecap: "round",
       rounded: true,
     },
   },
   credits: {
     enabled: false,
   },
-
   tooltip: {
+    enabled: false,
     borderWidth: 0,
     backgroundColor: "none",
     shadow: false,
     style: {
-      fontSize: "5px",
+      fontSize: "12px",
     },
-    pointFormatter: function () {}
-  },
+    pointFormatter: function () {
+      var index = this.series.index;
+      var color = this.series.chart.series[index - 1].points[0].color;
 
-  series: [
-    {
-      borderColor: "#20657b",
-      data: [
-        {
-          color: "#20657b",
-          radius: "100%",
-          innerRadius: "100%",
-          y: 80,
-        },
-      ],
+      return (
+        `${this.series.name}<br>
+        <span style="text-align: center; font-size:0.8rem; font-weight: bold;
+        color: ${color};">${this.y}%</span>`
+      );
     },
+    positioner: function (labelWidth, lebelHeight) {
+      return {
+        x: (this.chart.chartWidth - labelWidth) / 2,
+        y: (this.chart.plotHeight - lebelHeight) / 2,
+      };
+    },
+  },
+  series: [
     {
       name: "gaugeTube",
       borderWidth: "4px",
@@ -91,7 +105,6 @@ const getGenericOptions = () => ({
       borderColor: "#20657b38",
       data: [
         {
-          color: "#20657b38",
           radius: "100%",
           innerRadius: "100%",
           y: 100,
@@ -102,9 +115,14 @@ const getGenericOptions = () => ({
 });
 
 const customiseOptions = (options, data, styles) => {
-  let serie = options.series[0].data[0];
-  serie.y = data.percentage;
-  serie.name = data.name;
+  data.sort((a, b) => {
+    return b.percent - a.percent;
+  });
+
+  data.forEach((dataSeries) => {
+    const serie = getSerie(dataSeries);
+    options.series.push(serie);
+  });
 
   if (styles.color) {
     options.plotOptions.series.borderColor = styles.borderColor;
