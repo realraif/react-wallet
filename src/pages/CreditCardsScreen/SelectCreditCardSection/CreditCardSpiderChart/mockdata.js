@@ -1,32 +1,46 @@
-export default [
+export const data = [
   {
-    taste: "fruity",
-    chardonay: 82,
-    carmenere: 64,
-    syrah: 76,
+    category: "food",
+    leumi1: 82,
+    leumi2: 70,
+    boa: 10,
   },
   {
-    taste: "bitter",
-    chardonay: 30,
-    carmenere: 83,
-    syrah: 71,
+    category: "rent",
+    leumi1: 300,
+    leumi2: 0,
+    boa: 0,
   },
   {
-    taste: "heavy",
-    chardonay: 63,
-    carmenere: 45,
-    syrah: 104,
+    category: "transportaion",
+    leumi1: 50,
+    leumi2: 20,
+    boa: 30,
   },
   {
-    taste: "strong",
-    chardonay: 100,
-    carmenere: 73,
-    syrah: 73,
+    category: "business",
+    leumi1: 30,
+    leumi2: 10,
+    boa: 120,
   },
   {
-    taste: "sunny",
-    chardonay: 64,
-    carmenere: 112,
-    syrah: 72,
+    category: "workout",
+    leumi1: 20,
+    leumi2: 320,
+    boa: 130,
+  },
+  {
+    category: "personal",
+    leumi1: 30,
+    leumi2: 230,
+    boa: 200,
+  },
+  {
+    category: "bills",
+    leumi1: 20,
+    leumi2: 100,
+    boa: 12,
   },
 ];
+
+export const keys = ["leumi1", "leumi2", "boa"];

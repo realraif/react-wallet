@@ -1,19 +1,22 @@
 import React from "react";
 import { Radar } from "@nivo/radar";
-import theme from './SpiderChartTheme';
+import theme from "./SpiderChartTheme";
 
-const SpiderChart = ({data}) => {
+const SpiderChart = ({ data, indexBy, keys, colors }) => {
+
   return (
     <Radar
-      width={500}
-      height={500}
-      margin={{ top: 60, right: 60, bottom: 60, left: 60 }}
+      width={400}
+      height={250}
+      margin={{ top: 10, right: 80, bottom: 10, left: 80 }}
       data={data}
-      indexBy="taste"
-      keys={["chardonay", "carmenere"]}
-      colors={["#ddcb38", "#2b70e2"]}
+      indexBy={indexBy}
+      keys={keys}
       theme={theme}
-      dotSize={30}
+      borderColor={{ theme: 'background' }}
+      colors={{ scheme: 'category10' }}
+      // colors={(item) => colors[item.id]}
+      enableDots={false}
       enableDotLabel={true}
       dotLabelYOffset={4}
       gridShape="linear"

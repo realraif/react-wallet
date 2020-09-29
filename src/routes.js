@@ -6,7 +6,7 @@ import Balances from "./pages/BalancesScreen/BalancesScreen";
 import CreditCards from "./pages/CreditCardsScreen/CreditCardsScreen";
 import BudgetScreen from "./pages/BudgetScreen/BudgetScreen";
 
-export const defaultRoute = "ccards";
+export const defaultRoute = "dashboard";
 
 const routes = [
   {

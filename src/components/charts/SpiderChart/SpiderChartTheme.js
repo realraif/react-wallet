@@ -2,7 +2,7 @@ export default {
   axis: {
     ticks: {
       text: {
-        fill: "rgba(255, 255, 255, .35)",
+        fill: "gray",
       },
     },
   },
@@ -10,13 +10,6 @@ export default {
     line: {
       stroke: "gray",
       strokeDasharray: "6 4",
-    },
-  },
-  dots: {
-    text: {
-      fill: "#2d374d",
-      fontSize: 12,
-      fontWeight: 800,
     },
   },
   crosshair: {
