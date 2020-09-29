@@ -25,15 +25,23 @@ const useStyles = (height) =>
     },
   }));
 
-const ExpandedRow = ({ collapsedArray, rowId, handleClick, isSelected, isCollapsed }) => {
-  const collapsedRows = collapsedArray.map((cc, index) => {
-    const isItemSelected = isSelected(rowId + "." + cc.id);
+const CollapsedRows = ({
+  collapsedArray,
+  rowId,
+  handleClick,
+  isSelected,
+  isCollapsed,
+}) => {
+  const rowKey = (id) => rowId + "." + id
+
+  return collapsedArray.map((subRow) => {
+    const isItemSelected = isSelected(rowKey(subRow.id));
     return (
       <TableRow
-        key={rowId + "." + cc.id}
+        key={subRow.id}
         aria-checked={isItemSelected}
         selected={isItemSelected}
-        onClick={(event) => handleClick(event, rowId + "." + cc.id)}
+        onClick={(event) => handleClick(event, rowKey(subRow.id))}
       >
         <TableCell padding={"none"} colSpan={12}>
           <Collapse in={isCollapsed}>text</Collapse>
@@ -41,14 +49,12 @@ const ExpandedRow = ({ collapsedArray, rowId, handleClick, isSelected, isCollaps
       </TableRow>
     );
   });
-
-  return collapsedRows;
 };
 
-const AccordionTable = ({ columns, rows, height }) => {
+const AccordionTable = ({ columns, rows, accordionIndex, height }) => {
   const classes = useStyles(height)();
   const [selected, setSelected] = React.useState();
-  const [collapedRows, setCollapedRows] = React.useState({
+  const [areRowsCollapsed, setAreRowsCollapsed] = React.useState({
     [rows[0].id]: true,
   });
 
@@ -69,47 +75,34 @@ const AccordionTable = ({ columns, rows, height }) => {
             aria-label="radio table"
           >
             <TableBody>
-              {rows.map((row, index) => {
-                return (
-                  <>
-                    <TableRow
-                      hover
-                      role="radio"
-                      tabIndex={-1}
-                      key={row.id}
-                      onClick={() => {
-                        setCollapedRows({
-                          ...collapedRows,
-                          [row.id]: !collapedRows[row.id],
-                        });
-                      }}
-                    >
-                      {columns.map((column) => (
-                        <TableCell colSpan={3} key={column}>
-                          {row[column]}
-                        </TableCell>
-                      ))}
-                    </TableRow>
-                    {row.cc.map((cc, index) => {
-                      const isItemSelected = isSelected(row.id + "." + cc.id);
-                      return (
-                        <TableRow
-                          key={row.id + "." + cc.id}
-                          aria-checked={isItemSelected}
-                          selected={isItemSelected}
-                          onClick={(event) =>
-                            handleClick(event, row.id + "." + cc.id)
-                          }
-                        >
-                          <TableCell padding={"none"} colSpan={12}>
-                            <Collapse in={collapedRows[row.id]}>text</Collapse>
-                          </TableCell>
-                        </TableRow>
-                      );
-                    })}
-                  </>
-                );
-              })}
+              {rows.map((row) => [
+                <TableRow
+                  hover
+                  role="radio"
+                  tabIndex={-1}
+                  key={row.id}
+                  onClick={() => {
+                    setAreRowsCollapsed({
+                      ...areRowsCollapsed,
+                      [row.id]: !areRowsCollapsed[row.id],
+                    });
+                  }}
+                >
+                  {columns.map((column) => (
+                    <TableCell colSpan={3} key={column}>
+                      {row[column]}
+                    </TableCell>
+                  ))}
+                </TableRow>,
+                <CollapsedRows
+                  key={row.id + "."}
+                  collapsedArray={row[accordionIndex]}
+                  rowId={row.id}
+                  handleClick={handleClick}
+                  isSelected={isSelected}
+                  isCollapsed={areRowsCollapsed[row.id]}
+                />,
+              ])}
             </TableBody>
           </Table>
         </TableContainer>
