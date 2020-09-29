@@ -28,7 +28,9 @@ const useStyles = (height) =>
 const AccordionTable = ({ columns, rows, height }) => {
   const classes = useStyles(height)();
   const [selected, setSelected] = React.useState();
-  const [collapedRows, setCollapedRows] = React.useState({});
+  const [collapedRows, setCollapedRows] = React.useState({
+    [rows[0].id]: true,
+  });
 
   const handleClick = (event, id) => {
     setSelected(id);
@@ -52,16 +54,16 @@ const AccordionTable = ({ columns, rows, height }) => {
 
                 return [
                   <TableRow
-                    key={1}
                     hover
-                    // onClick={(event) => handleClick(event, row.id)}
                     role="radio"
                     aria-checked={isItemSelected}
                     tabIndex={-1}
                     key={row.id}
-                    selected={isItemSelected}
                     onClick={() => {
-                      setCollapedRows({ [row.id]: !collapedRows[row.id] });
+                      setCollapedRows({
+                        ...collapedRows,
+                        [row.id]: !collapedRows[row.id],
+                      });
                     }}
                   >
                     {columns.map((column) => (
@@ -70,7 +72,11 @@ const AccordionTable = ({ columns, rows, height }) => {
                       </TableCell>
                     ))}
                   </TableRow>,
-                  <TableRow key={2}>
+                  <TableRow
+                    key={row.id + ".1"}
+                    selected={isItemSelected}
+                    onClick={(event) => handleClick(event, row.id)}
+                  >
                     <TableCell padding={"none"} colSpan={12}>
                       <Collapse in={collapedRows[row.id]}>text</Collapse>
                     </TableCell>
