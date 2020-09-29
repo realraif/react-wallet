@@ -25,6 +25,26 @@ const useStyles = (height) =>
     },
   }));
 
+const ExpandedRow = ({ collapsedArray, rowId, handleClick, isSelected, isCollapsed }) => {
+  const collapsedRows = collapsedArray.map((cc, index) => {
+    const isItemSelected = isSelected(rowId + "." + cc.id);
+    return (
+      <TableRow
+        key={rowId + "." + cc.id}
+        aria-checked={isItemSelected}
+        selected={isItemSelected}
+        onClick={(event) => handleClick(event, rowId + "." + cc.id)}
+      >
+        <TableCell padding={"none"} colSpan={12}>
+          <Collapse in={isCollapsed}>text</Collapse>
+        </TableCell>
+      </TableRow>
+    );
+  });
+
+  return collapsedRows;
+};
+
 const AccordionTable = ({ columns, rows, height }) => {
   const classes = useStyles(height)();
   const [selected, setSelected] = React.useState();
@@ -50,38 +70,45 @@ const AccordionTable = ({ columns, rows, height }) => {
           >
             <TableBody>
               {rows.map((row, index) => {
-                const isItemSelected = isSelected(row.id);
-
-                return [
-                  <TableRow
-                    hover
-                    role="radio"
-                    aria-checked={isItemSelected}
-                    tabIndex={-1}
-                    key={row.id}
-                    onClick={() => {
-                      setCollapedRows({
-                        ...collapedRows,
-                        [row.id]: !collapedRows[row.id],
-                      });
-                    }}
-                  >
-                    {columns.map((column) => (
-                      <TableCell colSpan={3} key={column}>
-                        {row[column]}
-                      </TableCell>
-                    ))}
-                  </TableRow>,
-                  <TableRow
-                    key={row.id + ".1"}
-                    selected={isItemSelected}
-                    onClick={(event) => handleClick(event, row.id)}
-                  >
-                    <TableCell padding={"none"} colSpan={12}>
-                      <Collapse in={collapedRows[row.id]}>text</Collapse>
-                    </TableCell>
-                  </TableRow>,
-                ];
+                return (
+                  <>
+                    <TableRow
+                      hover
+                      role="radio"
+                      tabIndex={-1}
+                      key={row.id}
+                      onClick={() => {
+                        setCollapedRows({
+                          ...collapedRows,
+                          [row.id]: !collapedRows[row.id],
+                        });
+                      }}
+                    >
+                      {columns.map((column) => (
+                        <TableCell colSpan={3} key={column}>
+                          {row[column]}
+                        </TableCell>
+                      ))}
+                    </TableRow>
+                    {row.cc.map((cc, index) => {
+                      const isItemSelected = isSelected(row.id + "." + cc.id);
+                      return (
+                        <TableRow
+                          key={row.id + "." + cc.id}
+                          aria-checked={isItemSelected}
+                          selected={isItemSelected}
+                          onClick={(event) =>
+                            handleClick(event, row.id + "." + cc.id)
+                          }
+                        >
+                          <TableCell padding={"none"} colSpan={12}>
+                            <Collapse in={collapedRows[row.id]}>text</Collapse>
+                          </TableCell>
+                        </TableRow>
+                      );
+                    })}
+                  </>
+                );
               })}
             </TableBody>
           </Table>

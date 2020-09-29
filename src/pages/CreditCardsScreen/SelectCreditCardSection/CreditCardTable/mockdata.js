@@ -1,17 +1,35 @@
-const createData = (icon, bank, balance, status, id) => ({
+const createData = (icon, bank, id, cc) => ({
   icon,
   bank,
-  balance,
-  status,
   id,
+  cc,
 });
 
-export const columns = ["icon", "bank", "balance", "status"];
+const createCardData = (name, expenses, id) => ({
+  name, expenses, id
+});
+
+export const columns = ["icon", "bank"];
 
 export default [
-  createData("icon", "BOA", 305, 3.7, 67),
-  createData("icon", "Leumi", 452, 25.0, 51),
-  createData("icon", "Dic", 262, 16.0, 24),
-  createData("icon", "Miz", 159, 6.0, 4),
-  createData("icon", "Som", 356, 16.0, 49),
+  createData("icon", "BOA", 67, [
+    createCardData("BOA1", 50, 1),
+    createCardData("BOA2", 300, 2),
+  ]),
+  createData("icon", "Leumi", 51, [
+    createCardData("Leumi1", 50, 1),
+    createCardData("Leumi2", 300, 2),
+  ]),
+  createData("icon", "Dic", 24, [
+    createCardData("Dic1", 50, 1),
+    createCardData("Dic2", 300, 2),
+  ]),
+  createData("icon", "Miz", 4, [
+    createCardData("Miz1", 50, 1),
+    createCardData("Miz2", 300, 2),
+  ]),
+  createData("icon", "Som", 49, [
+    createCardData("Som1", 50, 1),
+    createCardData("Som2", 300, 2),
+  ]),
 ];
