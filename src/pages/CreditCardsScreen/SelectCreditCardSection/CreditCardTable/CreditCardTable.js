@@ -1,6 +1,6 @@
 import React from "react";
 
-import AccordionTable from "components/AccordionTable/AccordionTable";
+import AccordionTable from "components/tables/AccordionTable/AccordionTable";
 import rows, { columns } from "./mockdata";
 
 const CreditCardTable = ({ height }) => {

@@ -1,5 +1,5 @@
 import React from "react";
-import RadioTable from "components/RadioTable/RadioTable";
+import RadioTable from "components/tables/RadioTable/RadioTable";
 import rows, { columns } from "./mockdata";
 
 const BalanceTable = ({ height }) => {
