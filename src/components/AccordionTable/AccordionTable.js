@@ -31,10 +31,40 @@ const useStylesSub = makeStyles((theme) => ({
   },
 }));
 
+const AccordionRow = ({
+  rowId,
+  handleRowClick,
+  handleSubRowClick,
+  isSelected,
+  isCollapsed,
+  collapsedArray,
+  children,
+}) => {
+  return (
+    <>
+      <TableRow
+        hover
+        role="radio"
+        tabIndex={-1}
+        onClick={(event) => handleRowClick(event, rowId)}
+      >
+        {children}
+      </TableRow>
+      <CollapsedRows
+        collapsedArray={collapsedArray}
+        rowId={rowId}
+        handleSubRowClick={handleSubRowClick}
+        isSelected={isSelected}
+        isCollapsed={isCollapsed}
+      />
+    </>
+  );
+};
+
 const CollapsedRows = ({
   collapsedArray,
   rowId,
-  handleClick,
+  handleSubRowClick,
   isSelected,
   isCollapsed,
 }) => {
@@ -50,7 +80,7 @@ const CollapsedRows = ({
         className={classes.subRow}
         aria-checked={isItemSelected}
         selected={isItemSelected}
-        onClick={(event) => handleClick(event, rowKey(subRow.id))}
+        onClick={(event) => handleSubRowClick(event, rowKey(subRow.id))}
       >
         {["name", "expenses"].map((column) => (
           <TableCell key={column}>{subRow[column]}</TableCell>
@@ -63,7 +93,9 @@ const CollapsedRows = ({
     <TableRow>
       <TableCell padding="none" colSpan="100%" style={{ border: 0 }}>
         <Collapse in={isCollapsed}>
-          <Table size="small">{tableSubRows}</Table>
+          <Table size="small">
+            <TableBody>{tableSubRows}</TableBody>
+          </Table>
         </Collapse>
       </TableCell>
     </TableRow>
@@ -77,7 +109,14 @@ const AccordionTable = ({ columns, rows, accordionIndex, height }) => {
     [rows[0].id]: true,
   });
 
-  const handleClick = (event, id) => {
+  const handleRowClick = (event, rowId) => {
+    setAreRowsCollapsed({
+      ...areRowsCollapsed,
+      [rowId]: !areRowsCollapsed[rowId],
+    });
+  };
+
+  const handleSubRowClick = (event, id) => {
     setSelected(id);
   };
 
@@ -94,32 +133,21 @@ const AccordionTable = ({ columns, rows, accordionIndex, height }) => {
             aria-label="radio table"
           >
             <TableBody>
-              {rows.map((row) => [
-                <TableRow
-                  hover
-                  role="radio"
-                  tabIndex={-1}
+              {rows.map((row) => (
+                <AccordionRow
                   key={row.id}
-                  onClick={() => {
-                    setAreRowsCollapsed({
-                      ...areRowsCollapsed,
-                      [row.id]: !areRowsCollapsed[row.id],
-                    });
-                  }}
+                  rowId={row.id}
+                  handleRowClick={handleRowClick}
+                  handleSubRowClick={handleSubRowClick}
+                  isSelected={isSelected}
+                  isCollapsed={areRowsCollapsed[row.id]}
+                  collapsedArray={row[accordionIndex]}
                 >
                   {columns.map((column) => (
                     <TableCell key={column}>{row[column]}</TableCell>
                   ))}
-                </TableRow>,
-                <CollapsedRows
-                  key={row.id + "."}
-                  collapsedArray={row[accordionIndex]}
-                  rowId={row.id}
-                  handleClick={handleClick}
-                  isSelected={isSelected}
-                  isCollapsed={areRowsCollapsed[row.id]}
-                />,
-              ])}
+                </AccordionRow>
+              ))}
             </TableBody>
           </Table>
         </TableContainer>
