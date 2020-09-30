@@ -5,6 +5,7 @@ import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import TableRow from "@material-ui/core/TableRow";
 import Collapse from "@material-ui/core/Collapse";
+import Checkbox from "@material-ui/core/Checkbox";
 
 const useStyles = (rowColor) =>
   makeStyles((theme) => ({
@@ -35,6 +36,9 @@ const CollapsedRows = ({
         selected={isItemSelected}
         onClick={(event) => handleSubRowClick(event, rowKey(subRow.id))}
       >
+        <TableCell padding="checkbox">
+          <Checkbox checked={isItemSelected} />
+        </TableCell>
         {["name", "expenses"].map((column) => (
           <TableCell key={column}>{subRow[column]}</TableCell>
         ))}
