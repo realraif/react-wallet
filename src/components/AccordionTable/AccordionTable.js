@@ -34,7 +34,7 @@ const CollapsedRows = ({
 }) => {
   const rowKey = (id) => rowId + "." + id;
 
-  return collapsedArray.map((subRow) => {
+  const tableSubRows = collapsedArray.map((subRow) => {
     const isItemSelected = isSelected(rowKey(subRow.id));
     return (
       <TableRow
@@ -44,16 +44,20 @@ const CollapsedRows = ({
         selected={isItemSelected}
         onClick={(event) => handleClick(event, rowKey(subRow.id))}
       >
-        <TableCell padding={"none"} colspan="100%">
-          <Collapse in={isCollapsed}>
-            <TableRow>
-              <TableCell>text</TableCell>
-            </TableRow>
-          </Collapse>
-        </TableCell>
+        <TableCell>text</TableCell>
+        <TableCell>text</TableCell>
       </TableRow>
     );
   });
+  return (
+    <TableRow>
+      <TableCell padding="none" colspan="100%">
+        <Collapse in={isCollapsed}>
+          <Table>{tableSubRows}</Table>
+        </Collapse>
+      </TableCell>
+    </TableRow>
+  );
 };
 
 const AccordionTable = ({ columns, rows, accordionIndex, height }) => {
