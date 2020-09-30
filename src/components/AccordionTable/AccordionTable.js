@@ -25,6 +25,12 @@ const useStyles = (height) =>
     },
   }));
 
+const useStylesSub = makeStyles((theme) => ({
+  subRow: {
+    backgroundColor: "black",
+  },
+}));
+
 const CollapsedRows = ({
   collapsedArray,
   rowId,
@@ -32,6 +38,7 @@ const CollapsedRows = ({
   isSelected,
   isCollapsed,
 }) => {
+  const classes = useStylesSub();
   const rowKey = (id) => rowId + "." + id;
 
   const tableSubRows = collapsedArray.map((subRow) => {
@@ -40,20 +47,23 @@ const CollapsedRows = ({
       <TableRow
         hover
         key={subRow.id}
+        className={classes.subRow}
         aria-checked={isItemSelected}
         selected={isItemSelected}
         onClick={(event) => handleClick(event, rowKey(subRow.id))}
       >
-        <TableCell>text</TableCell>
-        <TableCell>text</TableCell>
+        {["name", "expenses"].map((column) => (
+          <TableCell key={column}>{subRow[column]}</TableCell>
+        ))}
       </TableRow>
     );
   });
+
   return (
     <TableRow>
-      <TableCell padding="none" colspan="100%">
+      <TableCell padding="none" colSpan="100%" style={{ border: 0 }}>
         <Collapse in={isCollapsed}>
-          <Table>{tableSubRows}</Table>
+          <Table size="small">{tableSubRows}</Table>
         </Collapse>
       </TableCell>
     </TableRow>
