@@ -24,8 +24,8 @@ const useStyles = (height) =>
     },
   }));
 
-const AccordionTable = ({ columns, rows, accordionIndex, height }) => {
-  const classes = useStyles(height)();
+const AccordionTable = ({ columns, rows, accordionIndex, styles }) => {
+  const classes = useStyles(styles.height)();
   const [selected, setSelected] = React.useState();
   const [areRowsCollapsed, setAreRowsCollapsed] = React.useState({
     [rows[0].id]: true,
@@ -64,6 +64,8 @@ const AccordionTable = ({ columns, rows, accordionIndex, height }) => {
                   isSelected={isSelected}
                   isCollapsed={areRowsCollapsed[row.id]}
                   collapsedArray={row[accordionIndex]}
+                  rowColor={styles.rowColor}
+                  subRowColor={styles.subRowColor}
                 >
                   {columns.map((column) => (
                     <TableCell key={column}>{row[column]}</TableCell>

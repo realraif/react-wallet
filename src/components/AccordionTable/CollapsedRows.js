@@ -6,11 +6,12 @@ import TableCell from "@material-ui/core/TableCell";
 import TableRow from "@material-ui/core/TableRow";
 import Collapse from "@material-ui/core/Collapse";
 
-const useStylesSub = makeStyles((theme) => ({
-  subRow: {
-    backgroundColor: "black",
-  },
-}));
+const useStyles = (rowColor) =>
+  makeStyles((theme) => ({
+    subRow: {
+      backgroundColor: rowColor,
+    },
+  }));
 
 const CollapsedRows = ({
   collapsedArray,
@@ -18,8 +19,9 @@ const CollapsedRows = ({
   handleSubRowClick,
   isSelected,
   isCollapsed,
+  subRowColor,
 }) => {
-  const classes = useStylesSub();
+  const classes = useStyles(subRowColor)();
   const rowKey = (id) => rowId + "." + id;
 
   const tableSubRows = collapsedArray.map((subRow) => {

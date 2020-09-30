@@ -8,8 +8,8 @@ const CreditCardTable = ({ height }) => {
     <AccordionTable
       columns={columns}
       rows={rows}
-      height={height}
       accordionIndex="cc"
+      styles={{ height, rowColor: "pink", subRowColor: "white" }}
     />
   );
 };
