@@ -2,13 +2,13 @@ import React from "react";
 import { Radar } from "@nivo/radar";
 import theme from "./SpiderChartTheme";
 
-const SpiderChart = ({ data, indexBy, keys, colors }) => {
+const SpiderChart = ({ data, indexBy, keys, colors, height }) => {
 
   return (
     <Radar
       width={400}
-      height={250}
-      margin={{ top: 10, right: 80, bottom: 10, left: 80 }}
+      height={height}
+      margin={{ top: 30, right: 80, bottom: 30, left: 80 }}
       data={data}
       indexBy={indexBy}
       keys={keys}

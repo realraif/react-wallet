@@ -4,16 +4,9 @@ import { useTheme } from "@material-ui/styles";
 
 import withSection from "HOC/withSection";
 import WithBox from "HOC/withBox";
+import { getTableRowHeight } from "themes/utils";
 import BalanceSplineChart from "./BalanceSplineChart/BalanceSplineChart";
 import BalanceTable from "./BalancesTable/BalancesTable";
-
-const getTableRowHeight = (theme) => {
-  const tableCell = theme.overrides.MuiTableCell.root;
-  const lineHeight = tableCell.lineHeight * tableCell.fontSize;
-  const padding = tableCell.padding;
-  const borderWidth = 1;
-  return padding * 2 + borderWidth + lineHeight;
-};
 
 const SelectBalanceSection = (props) => {
   const theme = useTheme();
