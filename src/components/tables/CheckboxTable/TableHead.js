@@ -6,19 +6,6 @@ import TableRow from "@material-ui/core/TableRow";
 import TableSortLabel from "@material-ui/core/TableSortLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 
-const headCells = [
-  {
-    id: "name",
-    numeric: false,
-    disablePadding: true,
-    label: "Dessert (100g serving)",
-  },
-  { id: "calories", numeric: true, disablePadding: false, label: "Calories" },
-  { id: "fat", numeric: true, disablePadding: false, label: "Fat (g)" },
-  { id: "carbs", numeric: true, disablePadding: false, label: "Carbs (g)" },
-  { id: "protein", numeric: true, disablePadding: false, label: "Protein (g)" },
-];
-
 const EnhancedTableHead = (props) => {
   const {
     classes,
@@ -28,6 +15,7 @@ const EnhancedTableHead = (props) => {
     numSelected,
     rowCount,
     onRequestSort,
+    headCells,
   } = props;
   const createSortHandler = (property) => (event) => {
     onRequestSort(event, property);
@@ -79,6 +67,5 @@ EnhancedTableHead.propTypes = {
   orderBy: PropTypes.string.isRequired,
   rowCount: PropTypes.number.isRequired,
 };
-
 
 export default EnhancedTableHead;
