@@ -32,19 +32,24 @@ const CollapsedRows = ({
   isSelected,
   isCollapsed,
 }) => {
-  const rowKey = (id) => rowId + "." + id
+  const rowKey = (id) => rowId + "." + id;
 
   return collapsedArray.map((subRow) => {
     const isItemSelected = isSelected(rowKey(subRow.id));
     return (
       <TableRow
+        hover
         key={subRow.id}
         aria-checked={isItemSelected}
         selected={isItemSelected}
         onClick={(event) => handleClick(event, rowKey(subRow.id))}
       >
-        <TableCell padding={"none"} colSpan={12}>
-          <Collapse in={isCollapsed}>text</Collapse>
+        <TableCell padding={"none"} colspan="100%">
+          <Collapse in={isCollapsed}>
+            <TableRow>
+              <TableCell>text</TableCell>
+            </TableRow>
+          </Collapse>
         </TableCell>
       </TableRow>
     );
@@ -89,9 +94,7 @@ const AccordionTable = ({ columns, rows, accordionIndex, height }) => {
                   }}
                 >
                   {columns.map((column) => (
-                    <TableCell colSpan={3} key={column}>
-                      {row[column]}
-                    </TableCell>
+                    <TableCell key={column}>{row[column]}</TableCell>
                   ))}
                 </TableRow>,
                 <CollapsedRows
