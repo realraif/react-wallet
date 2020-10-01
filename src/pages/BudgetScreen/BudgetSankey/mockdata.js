@@ -1,80 +1,125 @@
-export default {
+const data = {
   nodes: [
     {
-      id: "John",
-      color: "hsl(69, 70%, 50%)",
+      id: "Salary",
     },
     {
-      id: "Raoul",
-      color: "hsl(50, 70%, 50%)",
+      id: "Bonus",
     },
     {
-      id: "Jane",
-      color: "hsl(218, 70%, 50%)",
+      id: "Investment",
     },
     {
-      id: "Marcel",
-      color: "hsl(352, 70%, 50%)",
+      id: "Interest",
     },
     {
-      id: "Ibrahim",
-      color: "hsl(88, 70%, 50%)",
+      id: "Income",
     },
     {
-      id: "Junko",
-      color: "hsl(250, 70%, 50%)",
+      id: "Deductions",
+    },
+    {
+      id: "Tax",
+    },
+    {
+      id: "Net",
+    },
+    {
+      id: "Savings",
+    },
+    {
+      id: "Expenses",
+    },
+    {
+      id: "Home",
+    },
+    {
+      id: "Food",
+    },
+    {
+      id: "Bills",
+    },
+    {
+      id: "Other",
     },
   ],
   links: [
     {
-      source: "Marcel",
-      target: "Ibrahim",
-      value: 129,
+      source: "Salary",
+      target: "Income",
+      value: 100000,
     },
     {
-      source: "Marcel",
-      target: "Jane",
-      value: 82,
+      source: "Bonus",
+      target: "Income",
+      value: 50000,
     },
     {
-      source: "Marcel",
-      target: "Junko",
-      value: 200,
+      source: "Investment",
+      target: "Income",
+      value: 40000,
     },
     {
-      source: "Junko",
-      target: "Raoul",
-      value: 48,
+      source: "Interest",
+      target: "Income",
+      value: 30000,
     },
     {
-      source: "Junko",
-      target: "John",
-      value: 131,
+      source: "Income",
+      target: "Deductions",
+      value: 15000,
     },
     {
-      source: "John",
-      target: "Ibrahim",
-      value: 55,
+      source: "Income",
+      target: "Tax",
+      value: 40000,
     },
     {
-      source: "John",
-      target: "Jane",
-      value: 125,
+      source: "Income",
+      target: "Net",
+      value: 175000,
     },
     {
-      source: "John",
-      target: "Raoul",
-      value: 115,
+      source: "Net",
+      target: "Expenses",
+      value: 150000,
     },
     {
-      source: "Raoul",
-      target: "Jane",
-      value: 153,
+      source: "Net",
+      target: "Savings",
+      value: 10000,
     },
     {
-      source: "Ibrahim",
-      target: "Raoul",
-      value: 104,
+      source: "Deductions",
+      target: "Savings",
+      value: 10000,
+    },
+    {
+      source: "Deductions",
+      target: "Tax",
+      value: 3000,
+    },
+    {
+      source: "Expenses",
+      target: "Home",
+      value: 10000,
+    },
+    {
+      source: "Expenses",
+      target: "Food",
+      value: 5000,
+    },
+    {
+      source: "Expenses",
+      target: "Bills",
+      value: 5000,
+    },
+    {
+      source: "Expenses",
+      target: "Other",
+      value: 100000,
     },
   ],
 };
+
+export default data;

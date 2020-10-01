@@ -1,7 +1,6 @@
 export default {
-  margin: { top: 40, right: 160, bottom: 40, left: 50 },
-  align: "start",
-  sort: "ascending",
+  margin: { top: 10, right: 160, bottom: 10, left: 10 },
+  sort: "input",
   colors: { scheme: "pink_yellowGreen" },
   nodeOpacity: 1,
   nodeThickness: 18,
@@ -11,13 +10,12 @@ export default {
   linkHoverOpacity: 1,
   linkHoverOthersOpacity: 0.1,
   linkBlendMode: "normal",
-  labelPosition: "outside",
+  labelPosition: "inside",
   labelPadding: 10,
   labelTextColor: "black",
   animate: true,
   motionStiffness: 190,
   motionDamping: 20,
-  isInteractive: false,
   legends: [
     {
       anchor: "bottom-right",
