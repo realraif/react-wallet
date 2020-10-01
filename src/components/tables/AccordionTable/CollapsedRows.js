@@ -1,17 +1,9 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import TableRow from "@material-ui/core/TableRow";
 import Collapse from "@material-ui/core/Collapse";
-
-const useStyles = (rowColor) =>
-  makeStyles((theme) => ({
-    subRow: {
-      backgroundColor: rowColor,
-    },
-  }));
 
 const CollapsedRows = ({
   collapsedArray,
@@ -19,9 +11,8 @@ const CollapsedRows = ({
   handleSubRowClick,
   isSelected,
   isCollapsed,
-  subRowColor,
+  classes,
 }) => {
-  const classes = useStyles(subRowColor)();
 
   const tableSubRows = collapsedArray.map((subRow) => {
     const rowKey = rowId + "." + subRow.id;

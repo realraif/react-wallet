@@ -8,7 +8,7 @@ import Paper from "@material-ui/core/Paper";
 import AccordionRow from "./AccordionRow";
 import Checkbox from "@material-ui/core/Checkbox";
 
-const useStyles = (height) =>
+const useStyles = ({ height, rowColor, subRowColor }) =>
   makeStyles((theme) => ({
     root: {
       width: "100%",
@@ -23,10 +23,23 @@ const useStyles = (height) =>
     table: {
       cursor: "pointer",
     },
+    row: {
+      backgroundColor: rowColor,
+    },
+    Disabledrow: {
+      backgroundColor: "rgba(0, 0, 0, 0.04)",
+      "& $tableCell": {
+        color: "#b7b5b5",
+      },
+    },
+    tableCell: {},
+    subRow: {
+      backgroundColor: subRowColor,
+    },
   }));
 
 const AccordionTable = ({ columns, rows, accordionIndex, styles }) => {
-  const classes = useStyles(styles.height)();
+  const classes = useStyles(styles)();
   const [selected, setSelected] = React.useState();
   const [checkedRows, setChecked] = React.useState([]);
   const [areRowsCollapsed, setAreRowsCollapsed] = React.useState({
@@ -83,9 +96,9 @@ const AccordionTable = ({ columns, rows, accordionIndex, styles }) => {
                     handleSubRowClick={handleSubRowClick}
                     isSelected={isSelected}
                     isCollapsed={areRowsCollapsed[row.id]}
+                    isChecked={isRowChecked}
                     collapsedArray={row[accordionIndex]}
-                    rowColor={styles.rowColor}
-                    subRowColor={styles.subRowColor}
+                    classes={classes}
                   >
                     <TableCell padding="checkbox">
                       <Checkbox
@@ -94,7 +107,9 @@ const AccordionTable = ({ columns, rows, accordionIndex, styles }) => {
                       />
                     </TableCell>
                     {columns.map((column) => (
-                      <TableCell key={column}>{row[column]}</TableCell>
+                      <TableCell key={column} className={classes.tableCell}>
+                        {row[column]}
+                      </TableCell>
                     ))}
                   </AccordionRow>
                 );

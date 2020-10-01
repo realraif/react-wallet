@@ -1,14 +1,7 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
+import clsx from "clsx";
 import TableRow from "@material-ui/core/TableRow";
 import CollapsedRows from "./CollapsedRows";
-
-const useStyles = (rowColor) =>
-  makeStyles((theme) => ({
-    row: {
-      backgroundColor: rowColor,
-    },
-  }));
 
 const AccordionRow = ({
   rowId,
@@ -16,18 +9,18 @@ const AccordionRow = ({
   handleSubRowClick,
   isSelected,
   isCollapsed,
+  isChecked,
   collapsedArray,
-  rowColor,
-  subRowColor,
+  classes,
   children,
 }) => {
-
-  const classes = useStyles(rowColor)();
   return (
     <>
       <TableRow
         hover
-        className={classes.row}
+        className={clsx(classes.row, {
+          [classes.Disabledrow]: !isChecked,
+        })}
         role="radio"
         tabIndex={-1}
         onClick={() => handleRowClick(rowId)}
@@ -35,7 +28,7 @@ const AccordionRow = ({
         {children}
       </TableRow>
       <CollapsedRows
-        subRowColor={subRowColor}
+        classes={classes}
         collapsedArray={collapsedArray}
         rowId={rowId}
         handleSubRowClick={handleSubRowClick}
