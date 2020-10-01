@@ -5,7 +5,6 @@ import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import TableRow from "@material-ui/core/TableRow";
 import Collapse from "@material-ui/core/Collapse";
-import Checkbox from "@material-ui/core/Checkbox";
 
 const useStyles = (rowColor) =>
   makeStyles((theme) => ({
@@ -23,22 +22,19 @@ const CollapsedRows = ({
   subRowColor,
 }) => {
   const classes = useStyles(subRowColor)();
-  const rowKey = (id) => rowId + "." + id;
 
   const tableSubRows = collapsedArray.map((subRow) => {
-    const isItemSelected = isSelected(rowKey(subRow.id));
+    const rowKey = rowId + "." + subRow.id;
+    const isItemSelected = isSelected(rowKey);
+    
     return (
       <TableRow
         hover
-        key={subRow.id}
+        key={rowKey}
         className={classes.subRow}
-        aria-checked={isItemSelected}
         selected={isItemSelected}
-        onClick={(event) => handleSubRowClick(event, rowKey(subRow.id))}
+        onClick={() => handleSubRowClick(rowKey)}
       >
-        <TableCell padding="checkbox">
-          <Checkbox checked={isItemSelected} />
-        </TableCell>
         {["name", "expenses"].map((column) => (
           <TableCell key={column}>{subRow[column]}</TableCell>
         ))}

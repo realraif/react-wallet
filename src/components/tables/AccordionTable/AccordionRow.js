@@ -30,7 +30,7 @@ const AccordionRow = ({
         className={classes.row}
         role="radio"
         tabIndex={-1}
-        onClick={(event) => handleRowClick(event, rowId)}
+        onClick={() => handleRowClick(rowId)}
       >
         {children}
       </TableRow>
