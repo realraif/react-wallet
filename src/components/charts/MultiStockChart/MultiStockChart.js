@@ -2,6 +2,7 @@ import React from "react";
 import Highcharts from "highcharts/highstock";
 import HighchartsReact from "highcharts-react-official";
 import getChartOptions from "./MultiStockOptions";
+import "./MultiStockChart.css";
 
 const MultiStockChart = ({
   data,
@@ -10,12 +11,11 @@ const MultiStockChart = ({
   height,
   chartRef,
 }) => {
-  const styles = { colors, height };
   const callBackMethods = { serieClickedHandler };
-  const options = getChartOptions(data, callBackMethods, styles);
+  const options = getChartOptions(data, callBackMethods, { colors, height });
 
   return (
-    <div>
+    <div className="ChartContainer">
       <HighchartsReact
         ref={chartRef}
         highcharts={Highcharts}

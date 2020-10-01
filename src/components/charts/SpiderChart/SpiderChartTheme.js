@@ -23,7 +23,6 @@ export default {
       position: "absolute",
       left: "50%",
       transform: "translateX(-50%)",
-      "margin-top": 25,
       background: "#2d374d",
       color: "inherit",
       boxShadow: "0 3px 9px rgba(0, 0, 0, 0.5)",

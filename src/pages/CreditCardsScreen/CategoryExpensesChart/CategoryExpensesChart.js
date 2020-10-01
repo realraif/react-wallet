@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useRef } from "react";
 
 import MultiStockChart from "components/charts/MultiStockChart/MultiStockChart";
 import WithBox from "HOC/withBox";
@@ -8,6 +8,7 @@ import data from "./mockdata";
 
 const CategoryExpensesChart = ({ height }) => {
   const [selectedPoint, setSelectedPoint] = useState([]);
+  const chartRef = useRef();
 
   const pointSelected = useCallback((serie) => {
     setSelectedPoint(serie);
@@ -19,8 +20,8 @@ const CategoryExpensesChart = ({ height }) => {
         data={data}
         height={height}
         serieClickedHandler={pointSelected}
+        chartRef={chartRef}
       />
-
       <div>{selectedPoint.name}</div>
     </WithBox>
   );
