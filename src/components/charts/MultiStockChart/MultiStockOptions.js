@@ -152,8 +152,6 @@ const getGenericOptions = () => ({
     },
   ],
   tooltip: {
-    zIndex: 99999,
-    crosshairs: false,
     useHTML: true,
     enabled: true,
     backgroundColor: "#FFF",
@@ -180,15 +178,14 @@ const getGenericOptions = () => ({
         legendItemClick: function (e) {},
       },
       marker: {
+        enabled: false,
         symbol: "circle",
         radius: 3,
-        fillColor: null, // inherit from series
-        lineColor: null,
+        lineColor: null, // inherit from series
         lineWidth: 0,
       },
       cursor: "pointer",
-      lineColor: "rgb(0, 173, 238)",
-      lineWidth: 2,
+      lineWidth: 0,
       animation: {
         duration: 900,
       },
@@ -221,7 +218,15 @@ const getGenericOptions = () => ({
   },
 });
 
+const getSerie = ({ name, data, color }) => ({
+  name: name,
+  data: data,
+  color: color,
+  lineWidth: 0,
+});
+
 const customiseOptions = (options, data, styles) => {
-  options.series = data;
-  // options.chart.height = styles.height;
+  options.series = data.map((serie) => {
+    return getSerie(serie);
+  });
 };
