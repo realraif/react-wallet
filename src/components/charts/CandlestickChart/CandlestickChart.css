@@ -1,0 +1,4 @@
+.ChartContainer, .ChartContainer .highcharts-container  , .ChartContainer svg {
+  overflow: visible !important;
+  width: 100% !important;
+}
