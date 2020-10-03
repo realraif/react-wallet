@@ -8,7 +8,7 @@ export default (data, styles) => {
 
 const getGenericOptions = () => ({
   chart: {
-    type: "column",
+    type: "area",
     polar: true,
     spacing: [0, 0, 0, 0],
     margin: [0, 0, 0, 0],
@@ -18,15 +18,8 @@ const getGenericOptions = () => ({
     text: "",
   },
   yAxis: {
+    gridLineInterpolation: "polygon",
     maxPadding: 0,
-    plotLines: [
-      {
-        zIndex: 4,
-        color: "red",
-        width: 1,
-        value: 8,
-      },
-    ],
     tickInterval: 1,
     gridZIndex: 4,
     min: 0,
@@ -38,17 +31,22 @@ const getGenericOptions = () => ({
       enabled: false,
     },
   },
-  tooltip: {
-    headerFormat: "<b>{point.x}</b><br/>",
-    pointFormat: "{series.name}: {point.y}<br/>Total: {point.stackTotal}",
-  },
+  tooltip: false,
   plotOptions: {
     series: {
       pointPadding: 0,
       groupPadding: 0,
       borderWidth: 0.5,
-      borderColor: "blue",
-      shadow: true,
+      lineWidth: 0,
+      marker: {
+        enabled: false,
+
+        states: {
+          hover: {
+            enabled: false,
+          },
+        },
+      },
     },
     column: {
       stacking: "normal",
@@ -66,11 +64,25 @@ const getGenericOptions = () => ({
   xAxis: {
     visible: false,
   },
+  series: [
+    {
+      name: "John",
+      data: [5, 3, 4, 7, 2],
+    },
+    {
+      name: "Jane",
+      data: [2, 2, 3, 2, 1],
+    },
+    {
+      name: "Joe",
+      data: [3, 4, 4, 2, 5],
+    },
+  ],
 });
 
 const customiseOptions = (options, data, styles) => {
-  options.series = data.series;
-  options.xAxis.categories = data.categories;
+  // options.series = data.series;
+  // options.xAxis.categories = data.categories;
   options.yAxis.labels.style = {
     textOutline: "1px contrast",
     color: "white",
