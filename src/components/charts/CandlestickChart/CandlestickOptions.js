@@ -1,6 +1,7 @@
 export default (data, callBackMethods, styles) => {
   const options = getGenericOptions();
   customiseOptions(options, data, styles);
+  setEvents(options, callBackMethods);
   return options;
 };
 
@@ -15,6 +16,9 @@ const getGenericOptions = () => ({
     text: "AAPL Historical",
   },
   plotOptions: {
+    series: {
+      events: {},
+    },
     candlestick: {
       color: "#7cb5ec",
       lineColor: "#2f7ed8",
@@ -89,4 +93,16 @@ const getSeries = ({ candlestick, column }) => {
 
 const customiseOptions = (options, data, styles) => {
   options.series = getSeries(data);
+};
+
+const setEvents = (options, callBackMethods) => {
+  options.plotOptions.series.events.click = function (event) {
+    const serie = {
+      x: event.point.x,
+      y: event.point.y,
+      label: event.point.category,
+      name: event.point.series.name,
+    };
+    callBackMethods.candleClickedHandler(serie);
+  };
 };

@@ -1,19 +1,17 @@
 import React from "react";
 import Highcharts from "highcharts/highstock";
 import HighchartsReact from "highcharts-react-official";
-import stock from "highcharts/modules/stock.js";
 import getChartOptions from "./CandlestickOptions";
 import "./CandlestickChart.css";
-stock(Highcharts);
 
 const CandlestickChart = ({
   data,
-  serieClickedHandler,
+  candleClickedHandler,
   colors,
   height,
   chartRef,
 }) => {
-  const callBackMethods = { serieClickedHandler };
+  const callBackMethods = { candleClickedHandler };
   const options = getChartOptions(data, callBackMethods, { colors, height });
 
   return (

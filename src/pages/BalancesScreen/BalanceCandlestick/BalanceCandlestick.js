@@ -10,8 +10,8 @@ const BalanceCandlestick = ({ height }) => {
   const chartRef = useRef();
   const data = getData();
 
-  const pointSelected = useCallback((serie) => {
-    setSelectedPoint(serie);
+  const pointSelected = useCallback((candle) => {
+    setSelectedPoint(candle);
   }, []);
 
   return (
@@ -19,7 +19,7 @@ const BalanceCandlestick = ({ height }) => {
       <CandlestickChart
         data={data}
         height={height}
-        serieClickedHandler={pointSelected}
+        candleClickedHandler={pointSelected}
         chartRef={chartRef}
       />
       <div>{selectedPoint.name}</div>
