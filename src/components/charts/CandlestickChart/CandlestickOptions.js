@@ -5,14 +5,23 @@ export default (data, callBackMethods, styles) => {
 };
 
 const getGenericOptions = () => ({
+  chart: {
+    zoomType: "x",
+  },
   rangeSelector: {
     selected: 1,
   },
-
   title: {
     text: "AAPL Historical",
   },
-
+  plotOptions: {
+    candlestick: {
+      color: "#7cb5ec",
+      lineColor: "#2f7ed8",
+      upLineColor: "silver",
+      upColor: "silver",
+    },
+  },
   yAxis: [
     {
       labels: {
@@ -70,6 +79,7 @@ const getSeries = ({ candlestick, column }) => {
       name: column.name,
       data: column.data,
       yAxis: 1,
+      color: "silver",
       dataGrouping: {
         units: groupingUnits,
       },
