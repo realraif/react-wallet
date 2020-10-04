@@ -527,9 +527,9 @@ const getCandlestickData = (data) => {
 };
 
 const getAppleData = () => {
-  const { holc, volume } = getCandlestickData(data);
+  const { ohlc, volume } = getCandlestickData(data);
   const candlestick = {
-    data: holc,
+    data: ohlc,
     name: "AAple",
   };
   const column = {
