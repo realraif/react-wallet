@@ -8,7 +8,7 @@ import { AiOutlineClockCircle } from "react-icons/ai";
 import { MdMenu } from "react-icons/md";
 
 import firebase from "firebase.js";
-import Dropdown from 'components/Dropdown/Dropdown';
+import Dropdown from "components/Dropdown/Dropdown";
 import { useHeaderStyles } from "../Layout/styles";
 import { UserContext } from "context/UserContext";
 import { LayoutContext } from "context/LayoutContext";
@@ -19,6 +19,7 @@ const Header = ({
   setDataTimeFrame,
   isSmallScreen,
   timeFrames,
+  isLoading,
 }) => {
   const { currentUser } = useContext(UserContext);
   const { toggleSidebar, isSidebarOpen } = useContext(LayoutContext);
@@ -56,6 +57,16 @@ const Header = ({
     </div>
   );
 
+  const getUserControls = () => (
+    <>
+      <div className={classes.headerItem}>{currentUser.email}</div>
+      <Dropdown className={classes.headerItem} />
+      <Button onClick={logout} color="primary" className={classes.headerItem}>
+        Log out
+      </Button>
+    </>
+  );
+
   return (
     <AppBar
       position="fixed"
@@ -74,7 +85,6 @@ const Header = ({
         })}
       >
         <div className={clsx(classes.headerItem, classes.title)}>{title}</div>
-        
         <Select
           options={timeFrames}
           defaultValue={timeFrames[0]}
@@ -82,13 +92,8 @@ const Header = ({
           components={{ SingleValue: CustomSelectValue }}
           className={classes.selectBox}
         />
-
         <div className={classes.grow}></div>
-        <div className={classes.headerItem}>{currentUser.email}</div>
-        <Dropdown className={classes.headerItem} />
-        <Button onClick={logout} color="primary" className={classes.headerItem}>
-          Log out
-        </Button>
+        {!isLoading ? getUserControls() : null}
       </Toolbar>
     </AppBar>
   );

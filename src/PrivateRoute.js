@@ -6,21 +6,15 @@ const PrivateRoute = ({ component: RouteComponent, ...rest }) => {
   const { currentUser, isPending } = useContext(UserContext);
 
   const renderRoute = (routeProps) => {
-    return !!currentUser ? (
-      <RouteComponent {...routeProps} />
-    ) : (
-      <Redirect to={"/login"} />
-    );
+    if (isPending) {
+      return <RouteComponent isLoading {...routeProps} />;
+    } else if (!!currentUser) {
+      return <RouteComponent {...routeProps} />;
+    }
+    return <Redirect to={"/login"} />;
   };
 
-  return (
-    <Route
-      {...rest}
-      render={(routeProps) =>
-        isPending ? "loading..." : renderRoute(routeProps)
-      }
-    />
-  );
+  return <Route {...rest} render={renderRoute} />;
 };
 
 export default PrivateRoute;

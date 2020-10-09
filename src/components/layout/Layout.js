@@ -15,7 +15,7 @@ const timeFrames = [
   { value: 24 * 30, label: "past 30 days" },
 ];
 
-const Layout = (props) => {
+const Layout = ({ location, isLoading }) => {
   var [screenSize, setScreenSize] = useState(true);
   const [timeFrame, setTimeFrame] = useState(timeFrames[0]);
   const { openSideBar } = useContext(LayoutContext);
@@ -43,16 +43,11 @@ const Layout = (props) => {
     return "Wallet";
   };
 
-  return (
-    <div className={classes.layout}>
-      <Header
-        timeFrames={timeFrames}
-        isSmallScreen={screenSize === "sm"}
-        title={getPageTitle(props.location.pathname)}
-        setDataTimeFrame={setDataTimeFrame}
-      />
-      <Sidebar routes={routes} isSmallScreen={screenSize === "sm"} />
-      <main className={classes.content}>
+  const renderRoutes = () => {
+    if (isLoading) {
+      return <span>Loading...</span>;
+    } else {
+      return (
         <Switch>
           {routes.map((prop, key) => {
             return (
@@ -66,6 +61,22 @@ const Layout = (props) => {
             );
           })}
         </Switch>
+      );
+    }
+  };
+
+  return (
+    <div className={classes.layout}>
+      <Header
+        timeFrames={timeFrames}
+        isSmallScreen={screenSize === "sm"}
+        title={getPageTitle(location.pathname)}
+        setDataTimeFrame={setDataTimeFrame}
+        isLoading={isLoading}
+      />
+      <Sidebar routes={routes} isSmallScreen={screenSize === "sm"} />
+      <main className={classes.content}>
+        {renderRoutes()}
       </main>
     </div>
   );
