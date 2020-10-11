@@ -9,8 +9,6 @@ export default (state = {}, action) => {
   switch (action.type) {
     case DASHBOARD_LOADED:
       return { ...state, balances: action.payload[2].balances };
-    case DASHBOARD_DESTROYED:
-      return {};
     case BALANCES_SCREEN_LOADED:
       return {
         ...state,
@@ -20,6 +18,7 @@ export default (state = {}, action) => {
           return { balanceId, current: trend[trend.length - 1] };
         }),
       };
+    case DASHBOARD_DESTROYED:
     case BALANCES_SCREEN_DESTROYED:
       return {};
     default:
