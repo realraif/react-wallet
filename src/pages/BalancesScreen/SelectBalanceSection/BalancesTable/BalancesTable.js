@@ -1,9 +1,8 @@
 import React from "react";
 import RadioTable from "components/tables/RadioTable/RadioTable";
-import rows, { columns } from "./mockdata";
 
-const BalanceTable = ({ height }) => {
-  return <RadioTable columns={columns} rows={rows} height={height} />;
+const BalanceTable = ({ data, height }) => {
+  return <RadioTable columns={data.columns} rows={data.rows} height={height} />;
 };
 
 export default BalanceTable;

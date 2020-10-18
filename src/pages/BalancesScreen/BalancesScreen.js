@@ -20,7 +20,9 @@ const Balances = ({ timeFrame, ...props }) => {
         <SelectBalanceSection />
       </Grid>
       <Grid item>
-        <BalanceCandlestick />
+        {balances.candlestick ? (
+          <BalanceCandlestick data={balances.candlestick} />
+        ) : null}
       </Grid>
     </Grid>
   );
