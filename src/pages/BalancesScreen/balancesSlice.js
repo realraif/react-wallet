@@ -2,11 +2,11 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import balancesAgent from "./balancesAgent";
 
 export const fetchBalances = createAsyncThunk(
-  "users/fetchUsers",
+  "balances/fetchBalances",
   async (timeFrame) => {
     try {
       const response = await balancesAgent.fetchBalances(timeFrame);
-      return response.data;
+      return response;
     } catch (error) {
       return error;
     }
