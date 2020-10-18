@@ -5,17 +5,14 @@ import * as serviceWorker from "./serviceWorker";
 import { CssBaseline } from "@material-ui/core";
 import { ThemeProvider } from "@material-ui/core/styles";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { createStore } from "redux";
 import { Provider } from "react-redux";
 
 import "./index.css";
-import reducer from "./reducers";
 import Themes from "./themes";
 import { LayoutProvider } from "./context/LayoutContext";
 import { UserProvider } from "./context/UserContext";
 import App from "./App";
-
-const store = createStore(reducer);
+import store from './store';
 
 ReactDOM.render(
   <Provider store={store}>
