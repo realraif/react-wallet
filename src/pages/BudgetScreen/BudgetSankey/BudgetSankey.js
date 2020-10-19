@@ -4,9 +4,8 @@ import WithBox from "HOC/withBox";
 import withSection from "HOC/withSection";
 import SankeyDiagram from "components/charts/SankeyDiagram/SankeyDiagram";
 
-import data from "./mockdata";
-
-const BudgetSankey = ({ height }) => {
+const BudgetSankey = ({ data, height }) => {
+  if (!data) return null;
 
   return (
     <WithBox>

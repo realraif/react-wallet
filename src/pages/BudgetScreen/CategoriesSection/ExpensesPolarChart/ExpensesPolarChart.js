@@ -2,9 +2,10 @@ import React from "react";
 import WithBox from "HOC/withBox";
 
 import PolarChart from "components/charts/PolarChart/PolarChart";
-import data from './mockdata';
 
-const ExpensesPolarChart = ({ height }) => {
+const ExpensesPolarChart = ({ data, height }) => {
+  if (!data) return null;
+
   return (
     <WithBox height={height}>
       <PolarChart data={data} diameter={height} />

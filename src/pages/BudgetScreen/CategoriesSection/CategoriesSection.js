@@ -5,7 +5,7 @@ import { useTheme } from "@material-ui/styles";
 import withSection from "HOC/withSection";
 import ExpensesPolarChart from "./ExpensesPolarChart/ExpensesPolarChart";
 
-const CategoriesSection = (props) => {
+const CategoriesSection = ({budgetData}) => {
   const theme = useTheme();
 
   const height = theme.sections.overview.expenses.height;
@@ -15,7 +15,7 @@ const CategoriesSection = (props) => {
       <Grid item xs={12} lg={6}>
       </Grid>
       <Grid item xs={12} lg={6}>
-        <ExpensesPolarChart height={height} />
+        <ExpensesPolarChart data={budgetData.budgetPolarChart} height={height} />
       </Grid>
     </Grid>
   );
