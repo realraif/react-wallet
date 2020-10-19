@@ -5,8 +5,8 @@ import { useTheme } from "@material-ui/styles";
 import withSection from "HOC/withSection";
 import WithBox from "HOC/withBox";
 import { getTableRowHeight } from "themes/utils";
-import BalanceSplineChart from "./BalanceSplineChart/BalanceSplineChart";
-import BalanceTable from "./BalancesTable/BalancesTable";
+import BalanceSplineChart from "./BalanceSplineChart";
+import BalanceTable from "./BalancesTable";
 
 const SelectBalanceSection = ({ balancesData }) => {
   const theme = useTheme();

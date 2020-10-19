@@ -4,7 +4,7 @@ import { Grid } from "@material-ui/core";
 
 import { fetchBalances } from "./balancesSlice";
 import SelectBalanceSection from "./SelectBalanceSection/SelectBalanceSection";
-import BalanceCandlestick from "./BalanceCandlestick/BalanceCandlestick";
+import BalanceCandlestick from "./BalanceCandlestick";
 
 const Balances = ({ timeFrame, ...props }) => {
   const dispatch = useDispatch();
