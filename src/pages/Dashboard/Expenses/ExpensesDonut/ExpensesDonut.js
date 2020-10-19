@@ -3,9 +3,8 @@ import { useTheme } from "@material-ui/styles";
 import WithBox from "HOC/withBox";
 
 import DonutChart from "components/charts/NestedDonutChart/NestedDonutChart";
-import data from "./mockdata";
 
-const ExpensesDonut = ({ height }) => {
+const ExpensesDonut = ({ data, height }) => {
   const [selectedPoints, setSelectedPoints] = useState([]);
   const theme = useTheme();
   const colors = theme.charts.colors;
@@ -17,6 +16,8 @@ const ExpensesDonut = ({ height }) => {
     });
     setSelectedPoints(points);
   }, []);
+
+  if (!data) return null;
 
   return (
     <WithBox height={height}>

@@ -1,6 +1,4 @@
-import { loopIndexValue } from "utils";
-
-export const data = [
+const seriesData = [
   {
     time: "april",
     card1: 62,
@@ -66,15 +64,6 @@ export const data = [
   },
 ];
 
-export const bars = ["card1", "card2", "card3", "card4", "card5", "card6"];
+const bars = ["card1", "card2", "card3", "card4", "card5", "card6"];
 
-export const getBarColors = (colors) => {
-  let colorIndex = 0;
-  let colorDict = {};
-
-  bars.forEach((bar) => {
-    colorDict[bar] = colors[colorIndex];
-    colorIndex = loopIndexValue(colorIndex, colors.length - 1);
-  });
-  return colorDict;
-};
+export default { seriesData, bars };

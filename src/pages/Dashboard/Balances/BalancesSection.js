@@ -2,19 +2,20 @@ import React from "react";
 import { Grid } from "@material-ui/core";
 import { useTheme } from "@material-ui/styles";
 
-import balancesData from './mockdata';
 import BalanceCard from "./BalanceCard/BalanceCard";
-import withSection from 'HOC/withSection';
+import withSection from "HOC/withSection";
 
 const tempTimeFrame = "this week";
 
-const Balances = (props) => {
+const Balances = ({ data }) => {
   const theme = useTheme();
   const colors = theme.charts.colors;
 
+  if (!data) return null;
+
   return (
     <Grid container justify="space-between" spacing={6} alignItems="center">
-      {balancesData.map((balance, index) => (
+      {data.map((balance, index) => (
         <Grid item xs={12} md={6} lg={4} key={balance.id}>
           <BalanceCard
             balanceTrend={balance.trend}

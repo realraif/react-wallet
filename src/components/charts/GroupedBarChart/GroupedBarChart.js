@@ -1,7 +1,7 @@
 import React from "react";
 import { ResponsiveBar } from "@nivo/bar";
 import styles from "./GroupedBarChart.module.css";
-import options from "./GroupedBarOptions";
+import options, { getBarColors } from "./GroupedBarOptions";
 
 const GroupedBarChart = ({
   data,
@@ -10,8 +10,9 @@ const GroupedBarChart = ({
   barClicked,
   height,
   isStacked,
-  colors,
+  themeColors,
 }) => {
+  const colors = getBarColors(bars, themeColors);
 
   return (
     <div className={styles.ChartWrapper} style={{ height: height }}>
@@ -19,6 +20,7 @@ const GroupedBarChart = ({
         data={data}
         keys={bars}
         // colors={(bar) => colors[bar.id]}
+        tempColors={colors}
         indexBy={indexName}
         onClick={barClicked}
         groupMode={isStacked ? "stacked" : "grouped"}

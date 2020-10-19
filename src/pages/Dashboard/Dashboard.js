@@ -1,25 +1,27 @@
-import React from "react";
-import { connect } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Grid } from "@material-ui/core";
 
+import { fetchDashboard } from "./dashboardSlice";
 import Balances from "./Balances/BalancesSection";
 import CreditCards from "./CreditCardsSection/CreditCardsSection";
 import ExpensesSection from "./Expenses/ExpensesSection";
-import { DASHBOARD_LOADED, DASHBOARD_DESTROYED } from "constants/actionTypes";
-
-const mapDispatchToProps = (dispatch) => ({
-  onLoad: (payload) => dispatch({ type: DASHBOARD_LOADED, payload }),
-  onDestroy: () => dispatch({ type: DASHBOARD_DESTROYED }),
-});
 
 const Dashboard = ({ timeFrame, ...props }) => {
+  const dispatch = useDispatch();
+  const dashboard = useSelector((state) => state.dashboard);
+
+  useEffect(() => {
+    dispatch(fetchDashboard());
+  }, [dispatch]);
+
   return (
     <Grid container direction="column" alignItems="stretch">
       <Grid item>
-        <Balances />
+        <Balances data={dashboard.balancesTrend} />
       </Grid>
       <Grid item>
-        <CreditCards />
+        <CreditCards data={dashboard.creditCards} />
       </Grid>
       <Grid item>
         <ExpensesSection />
@@ -28,4 +30,4 @@ const Dashboard = ({ timeFrame, ...props }) => {
   );
 };
 
-export default connect(null, mapDispatchToProps)(Dashboard);
+export default Dashboard;

@@ -61,7 +61,7 @@ const getGenericOptions = () => ({
 
 const customiseOptions = (options, data, styles) => {
   options.chart.height = styles.height || 200;
-  options.series[0].data = data;
+  options.series[0].data = [...data];
 };
 
 const setEvents = (options, callBackMethods) => {

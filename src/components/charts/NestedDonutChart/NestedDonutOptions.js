@@ -56,15 +56,13 @@ const getGenericOptions = () => ({
 });
 
 const customiseOptions = (options, data, styles) => {
-  options.series = [{ data: data, allowDrillToNode: true }];
+  const seriesData = getSeriesData(data, styles.colors);
 
-  if (styles.colors) {
-    setColors(options.series[0].data, styles.colors);
-  }
+  options.series = [{ data: seriesData, allowDrillToNode: true }];
+
   if (styles.borderColor) {
     options.plotOptions.series.borderColor = styles.borderColor;
   }
-
   options.chart.height = styles.diameter || defaultDiameter;
   options.chart.width = styles.diameter || defaultDiameter;
 };
@@ -78,13 +76,16 @@ const setEvents = (options, callBackMethods) => {
   };
 };
 
-const setColors = (data, colors) => {
+const getSeriesData = (data, colors) => {
+  if (!colors) return [...data];
   let colorIndex = 0;
 
-  data.forEach((slice) => {
-    if (!slice.parent) {
+  return data.map((sliceData) => {
+    let slice = { ...sliceData };
+    if (!sliceData.parent) {
       slice.color = colors[colorIndex];
       colorIndex = loopIndexValue(colorIndex, colors.length - 1);
     }
+    return slice;
   });
 };

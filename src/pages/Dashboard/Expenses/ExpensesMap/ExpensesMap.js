@@ -2,14 +2,15 @@ import React, { useState, useCallback } from "react";
 import WithBox from "HOC/withBox";
 
 import USMapChart from "components/charts/USMapChart/USMapChart";
-import data from "./mockdata";
 
-const ExpensesMap = ({ height }) => {
+const ExpensesMap = ({ data, height }) => {
   const [selectedState, setSelectedStates] = useState();
 
   const stateSelected = useCallback((usState) => {
     setSelectedStates(usState.name);
   }, []);
+
+  if (!data) return null;
 
   return (
     <WithBox height={height}>
