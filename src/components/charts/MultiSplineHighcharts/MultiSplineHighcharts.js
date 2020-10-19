@@ -2,6 +2,7 @@ import React from "react";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 import getChartOptions from "./MultiSplineOptions";
+import "./MultiSplineChart.css";
 
 const MultiSplineChart = ({
   data,
@@ -15,7 +16,7 @@ const MultiSplineChart = ({
   const options = getChartOptions(data, callBackMethods, styles);
 
   return (
-    <div>
+    <div className="ChartContainer">
       <HighchartsReact
         ref={chartRef}
         highcharts={Highcharts}
