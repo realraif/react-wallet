@@ -1,10 +1,10 @@
 import { BsPieChart, BsBriefcase } from "react-icons/bs";
 import { AiOutlineBarChart, AiOutlineCreditCard } from "react-icons/ai";
 
-import Dashboard from "./pages/Dashboard/Dashboard";
-import Balances from "./pages/BalancesScreen/BalancesScreen";
-import CreditCards from "./pages/CreditCardsScreen/CreditCardsScreen";
-import BudgetScreen from "./pages/BudgetScreen/BudgetScreen";
+import Dashboard from "./pages/Dashboard";
+import Balances from "./pages/BalancesScreen";
+import CreditCards from "./pages/CreditCardsScreen";
+import BudgetScreen from "./pages/BudgetScreen";
 
 export const defaultRoute = "dashboard";
 
