@@ -8,12 +8,13 @@ export default (data, callBackMethods, styles) => {
 const getGenericOptions = () => ({
   chart: {
     zoomType: "x",
+    backgroundColor: "transparent",
   },
   rangeSelector: {
     selected: 1,
   },
   title: {
-    text: "AAPL Historical",
+    text: "",
   },
   plotOptions: {
     series: {
@@ -68,22 +69,12 @@ const groupingUnits = [
   ["month", [1, 2, 3, 4, 6]],
 ];
 
-const getSeries = ({ candlestick, column }) => {
+const getSeries = (candlestickData) => {
   return [
     {
       type: "candlestick",
-      name: candlestick.name,
-      data: candlestick.data,
-      dataGrouping: {
-        units: groupingUnits,
-      },
-    },
-    {
-      type: "column",
-      name: column.name,
-      data: column.data,
-      yAxis: 1,
-      color: "silver",
+      name: "OHLC",
+      data: candlestickData,
       dataGrouping: {
         units: groupingUnits,
       },

@@ -13,14 +13,14 @@ export const fetchBalances = createAsyncThunk(
   }
 );
 
-const getChartsData = ([balances, candlestick]) => {
+const getChartsData = (balances, selectedIndex) => {
   const balancesTable = balances.data.map(({ name, status, data, id }) => {
     return { name, status, id, balance: data[data.length - 1], icon: "icon" };
   });
   return {
     balancesTable,
     balancesMultiSpline: balances.data,
-    candlestick: candlestick.data,
+    candlestick: balances.data[selectedIndex].candleStickData,
   };
 };
 
@@ -34,11 +34,14 @@ const balancesSlice = createSlice({
       state.error = false;
     },
     [fetchBalances.fulfilled]: (state, { payload }) => {
-      const chartsData = getChartsData(payload);
+      const selectedIndex = 0;
+      const chartsData = getChartsData(payload, selectedIndex);
 
       state.balancesTable = chartsData.balancesTable;
       state.balancesMultiSpline = chartsData.balancesMultiSpline;
       state.candlestick = chartsData.candlestick;
+
+      state.selectedIndex = selectedIndex;
       state.loading = false;
       state.error = false;
     },

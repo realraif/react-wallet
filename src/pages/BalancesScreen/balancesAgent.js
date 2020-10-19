@@ -1,19 +1,11 @@
-import balancesTrendsMock from "pages/Dashboard/Balances/mockdata";
-import getCandleStickMock from "./BalanceCandlestick/mockdata";
+import getBalancesDataWithCandleStick from "./mockdata";
 
 const fetchBalancesMultiSplineData = (timeframe) => {
-  return Promise.resolve({ data: balancesTrendsMock });
-};
-
-const fetchBalancesCandlestickData = (timeframe) => {
-  return Promise.resolve({ data: getCandleStickMock() });
+  return Promise.resolve({ data: getBalancesDataWithCandleStick() });
 };
 
 const fetchBalances = (timeframe) => {
-  return Promise.all([
-    fetchBalancesMultiSplineData(timeframe),
-    fetchBalancesCandlestickData(timeframe),
-  ]);
+  return fetchBalancesMultiSplineData(timeframe);
 };
 
 export default { fetchBalances };
