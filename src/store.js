@@ -1,5 +1,4 @@
 import {
-  combineReducers,
   configureStore,
   getDefaultMiddleware,
 } from "@reduxjs/toolkit";
@@ -9,12 +8,12 @@ import balances from "./pages/BalancesScreen/balancesSlice";
 import creditCards from "./pages/CreditCardsScreen/creditCardsSlice";
 import budget from "./pages/BudgetScreen/budgetSlice";
 
-const reducer = combineReducers({
+const reducer = {
   dashboard,
   balances,
   creditCards,
   budget,
-});
+};
 
 const middleware = [...getDefaultMiddleware(), logger];
 export default configureStore({
