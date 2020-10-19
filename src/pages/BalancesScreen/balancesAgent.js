@@ -1,13 +1,8 @@
-import balancesTableMock from "./SelectBalanceSection/BalancesTable/mockdata";
-import multisplineMock from "./SelectBalanceSection/BalanceSplineChart/mockdata";
+import balancesTrendsMock from "pages/Dashboard/Balances/mockdata";
 import getCandleStickMock from "./BalanceCandlestick/mockdata";
 
-const fetchBalancesTableData = (timeframe) => {
-  return Promise.resolve({ data: balancesTableMock });
-};
-
 const fetchBalancesMultiSplineData = (timeframe) => {
-  return Promise.resolve({ data: multisplineMock });
+  return Promise.resolve({ data: balancesTrendsMock });
 };
 
 const fetchBalancesCandlestickData = (timeframe) => {
@@ -16,7 +11,6 @@ const fetchBalancesCandlestickData = (timeframe) => {
 
 const fetchBalances = (timeframe) => {
   return Promise.all([
-    fetchBalancesTableData(timeframe),
     fetchBalancesMultiSplineData(timeframe),
     fetchBalancesCandlestickData(timeframe),
   ]);

@@ -13,6 +13,17 @@ export const fetchBalances = createAsyncThunk(
   }
 );
 
+const getChartsData = ([balances, candlestick]) => {
+  const balancesTable = balances.data.map(({ name, status, data, id }) => {
+    return { name, status, id, balance: data[data.length - 1], icon: "icon" };
+  });
+  return {
+    balancesTable,
+    balancesMultiSpline: balances.data,
+    candlestick: candlestick.data,
+  };
+};
+
 const balancesSlice = createSlice({
   name: "balances",
   initialState: { loading: true },
@@ -23,16 +34,13 @@ const balancesSlice = createSlice({
       state.error = false;
     },
     [fetchBalances.fulfilled]: (state, { payload }) => {
-      const chartsData = {
-        balancesTable: payload[0].data,
-        balancesMultiSpline: payload[1].data,
-        candlestick: payload[2].data,
-      };
-      state.loading = false;
-      state.error = false;
+      const chartsData = getChartsData(payload);
+
       state.balancesTable = chartsData.balancesTable;
       state.balancesMultiSpline = chartsData.balancesMultiSpline;
       state.candlestick = chartsData.candlestick;
+      state.loading = false;
+      state.error = false;
     },
     [fetchBalances.rejected]: (state) => {
       state.loading = false;

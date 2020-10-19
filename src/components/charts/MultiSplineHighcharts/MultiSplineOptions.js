@@ -57,7 +57,7 @@ const getGenericOptions = () => ({
 });
 
 const customiseOptions = (options, data, styles) => {
-  options.series = data.series.map((serie, i) => {
+  options.series = data.map((serie, i) => {
     const color = styles.colors[i];
     return { ...serie, color };
   });

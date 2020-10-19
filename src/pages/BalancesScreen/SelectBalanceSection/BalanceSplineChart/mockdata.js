@@ -13,14 +13,4 @@ const series = [
   },
 ];
 
-const labels = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-];
-
-export default { series, labels };
+export default series;
