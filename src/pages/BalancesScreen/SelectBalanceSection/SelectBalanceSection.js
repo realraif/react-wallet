@@ -21,17 +21,13 @@ const SelectBalanceSection = (props) => {
     <WithBox>
       <Grid container spacing={0} alignItems="stretch">
         <Grid item xs={12} md={6}>
-          {balances.balancesTable ? (
-            <BalanceTable height={height} data={balances.balancesTable} />
-          ) : null}
+          <BalanceTable height={height} data={balances.balancesTable} />
         </Grid>
         <Grid item xs={12} md={6}>
-          {balances.balancesMultiSpline ? (
-            <BalanceSplineChart
-              height={height}
-              data={balances.balancesMultiSpline}
-            />
-          ) : null}
+          <BalanceSplineChart
+            height={height}
+            data={balances.balancesMultiSpline}
+          />
         </Grid>
       </Grid>
     </WithBox>

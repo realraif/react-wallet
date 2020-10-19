@@ -12,6 +12,8 @@ const BalanceCandlestick = ({ data, height }) => {
     setSelectedPoint(candle);
   }, []);
 
+  if (!data) return null;
+
   return (
     <WithBox>
       <CandlestickChart

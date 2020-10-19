@@ -12,6 +12,8 @@ const BalanceSplineChart = ({ data, height }) => {
     setSelectedPoint(serie);
   }, []);
 
+  if (!data) return null;
+
   return (
     <>
       <MultiSplineChart
