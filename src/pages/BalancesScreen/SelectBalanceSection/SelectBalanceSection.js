@@ -8,7 +8,7 @@ import { getTableRowHeight } from "themes/utils";
 import BalanceSplineChart from "./BalanceSplineChart";
 import BalanceTable from "./BalancesTable";
 
-const SelectBalanceSection = ({ balancesData }) => {
+const SelectBalanceSection = ({ data }) => {
   const theme = useTheme();
   const rowHeight = getTableRowHeight(theme);
 
@@ -19,13 +19,14 @@ const SelectBalanceSection = ({ balancesData }) => {
     <WithBox>
       <Grid container spacing={0} alignItems="stretch">
         <Grid item xs={12} md={6}>
-          <BalanceTable height={height} data={balancesData.balancesTable} />
+          <BalanceTable
+            height={height}
+            data={data.balancesTable}
+            selectedId={data.selectedId}
+          />
         </Grid>
         <Grid item xs={12} md={6}>
-          <BalanceSplineChart
-            height={height}
-            data={balancesData.balancesMultiSpline}
-          />
+          <BalanceSplineChart height={height} data={data.balancesData} />
         </Grid>
       </Grid>
     </WithBox>

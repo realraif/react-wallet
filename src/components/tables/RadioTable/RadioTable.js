@@ -24,12 +24,13 @@ const useStyles = (height) =>
     },
   }));
 
-const RadioTable = ({ columns, rows, height }) => {
+const RadioTable = ({ columns, rows, height, rowSelectedHandler, selectedId }) => {
   const classes = useStyles(height)();
-  const [selected, setSelected] = React.useState();
+  const [selected, setSelected] = React.useState(selectedId);
 
   const handleClick = (event, id) => {
     setSelected(id);
+    rowSelectedHandler(id);
   };
 
   const isSelected = (id) => id === selected;

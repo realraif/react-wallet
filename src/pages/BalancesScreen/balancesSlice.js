@@ -13,35 +13,37 @@ export const fetchBalances = createAsyncThunk(
   }
 );
 
-const getChartsData = (balances, selectedIndex) => {
+const getChartsData = (balances) => {
   const balancesTable = balances.data.map(({ name, status, data, id }) => {
     return { name, status, id, balance: data[data.length - 1], icon: "icon" };
   });
   return {
+    balancesData: balances.data,
     balancesTable,
-    balancesMultiSpline: balances.data,
-    candlestick: balances.data[selectedIndex].candleStickData,
   };
 };
 
 const balancesSlice = createSlice({
   name: "balances",
   initialState: { loading: true },
-  reducers: {},
+  reducers: {
+    balanceSelected: (state, { payload }) => {
+      state.selectedId = payload.id;
+    },
+  },
   extraReducers: {
     [fetchBalances.pending]: (state) => {
       state.loading = true;
       state.error = false;
     },
     [fetchBalances.fulfilled]: (state, { payload }) => {
-      const selectedIndex = 0;
-      const chartsData = getChartsData(payload, selectedIndex);
+      const chartsData = getChartsData(payload);
 
+      state.balancesData = chartsData.balancesData;
       state.balancesTable = chartsData.balancesTable;
-      state.balancesMultiSpline = chartsData.balancesMultiSpline;
       state.candlestick = chartsData.candlestick;
 
-      state.selectedIndex = selectedIndex;
+      state.selectedId = chartsData.balancesData.length ? chartsData.balancesData[0].id : null;
       state.loading = false;
       state.error = false;
     },
@@ -51,5 +53,7 @@ const balancesSlice = createSlice({
     },
   },
 });
+
+export const { balanceSelected } = balancesSlice.actions;
 
 export default balancesSlice.reducer;
