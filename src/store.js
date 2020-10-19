@@ -4,12 +4,14 @@ import {
   getDefaultMiddleware,
 } from "@reduxjs/toolkit";
 import logger from "redux-logger";
+import dashboard from "./pages/Dashboard/dashboardSlice";
 import balances from "./pages/BalancesScreen/balancesSlice";
-import dashboard from './pages/Dashboard/dashboardSlice';
+import creditCards from "./pages/CreditCardsScreen/creditCardsSlice";
 
 const reducer = combineReducers({
   dashboard,
   balances,
+  creditCards,
 });
 
 const middleware = [...getDefaultMiddleware(), logger];

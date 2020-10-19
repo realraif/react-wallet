@@ -1,5 +1,4 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import { Grid } from "@material-ui/core";
 import { useTheme } from "@material-ui/styles";
 
@@ -9,8 +8,7 @@ import { getTableRowHeight } from "themes/utils";
 import BalanceSplineChart from "./BalanceSplineChart/BalanceSplineChart";
 import BalanceTable from "./BalancesTable/BalancesTable";
 
-const SelectBalanceSection = (props) => {
-  const balances = useSelector((state) => state.balances);
+const SelectBalanceSection = ({ balancesData }) => {
   const theme = useTheme();
   const rowHeight = getTableRowHeight(theme);
 
@@ -21,12 +19,12 @@ const SelectBalanceSection = (props) => {
     <WithBox>
       <Grid container spacing={0} alignItems="stretch">
         <Grid item xs={12} md={6}>
-          <BalanceTable height={height} data={balances.balancesTable} />
+          <BalanceTable height={height} data={balancesData.balancesTable} />
         </Grid>
         <Grid item xs={12} md={6}>
           <BalanceSplineChart
             height={height}
-            data={balances.balancesMultiSpline}
+            data={balancesData.balancesMultiSpline}
           />
         </Grid>
       </Grid>

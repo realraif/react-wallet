@@ -17,7 +17,7 @@ const Balances = ({ timeFrame, ...props }) => {
   return (
     <Grid container direction="column" alignItems="stretch">
       <Grid item>
-        <SelectBalanceSection />
+        <SelectBalanceSection balancesData={balances} />
       </Grid>
       <Grid item>
         <BalanceCandlestick data={balances.candlestick} />

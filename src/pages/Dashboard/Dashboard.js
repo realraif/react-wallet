@@ -24,7 +24,7 @@ const Dashboard = ({ timeFrame, ...props }) => {
         <CreditCards data={dashboard.creditCards} />
       </Grid>
       <Grid item>
-        <ExpensesSection />
+        <ExpensesSection dashboardData={dashboard} />
       </Grid>
     </Grid>
   );

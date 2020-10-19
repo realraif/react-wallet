@@ -1,4 +1,4 @@
-export const data = [
+const dataSeries = [
   {
     category: "food",
     leumi1: 82,
@@ -43,4 +43,6 @@ export const data = [
   },
 ];
 
-export const keys = ["leumi1", "leumi2", "boa"];
+const keys = ["leumi1", "leumi2", "boa"];
+
+export default { dataSeries, keys };
