@@ -6,12 +6,14 @@ const createData = (icon, bank, id, cc) => ({
 });
 
 const createCardData = (name, expenses, id) => ({
-  name, expenses, id
+  name,
+  expenses,
+  id,
 });
 
-export const columns = ["icon", "bank"];
+const columns = ["icon", "bank"];
 
-export default [
+const rows = [
   createData("icon", "BOA", 67, [
     createCardData("BOA1", 50, 1),
     createCardData("BOA2", 300, 2),
@@ -33,3 +35,5 @@ export default [
     createCardData("Som2", 300, 2),
   ]),
 ];
+
+export default { rows, columns };

@@ -17,7 +17,7 @@ const CreditCards = ({ timeFrame, ...props }) => {
   return (
     <Grid container direction="column" alignItems="stretch">
       <Grid item>
-        <SelectCreditCardSection />
+        <SelectCreditCardSection creditCardsData={creditCardsData} />
       </Grid>
       <Grid item>
         <CategoryExpensesChart data={creditCardsData.categoryExpensesChart} />

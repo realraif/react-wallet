@@ -8,7 +8,7 @@ import { getTableRowHeight } from "themes/utils";
 import CreditCardSpiderChart from "./CreditCardSpiderChart/CreditCardSpiderChart";
 import CreditCardTable from "./CreditCardTable/CreditCardTable";
 
-const SelectBalanceSection = (props) => {
+const SelectBalanceSection = ({ creditCardsData }) => {
   const theme = useTheme();
   const rowHeight = getTableRowHeight(theme);
 
@@ -19,10 +19,10 @@ const SelectBalanceSection = (props) => {
     <WithBox>
       <Grid container spacing={0} alignItems="stretch">
         <Grid item xs={12} md={6}>
-          <CreditCardTable height={height} />
+          <CreditCardTable data={creditCardsData.creditCardsTable} height={height} />
         </Grid>
         <Grid item xs={12} md={6} style={{ textAlign: "right" }}>
-          <CreditCardSpiderChart height={height} />
+          <CreditCardSpiderChart data={creditCardsData.spiderChart} height={height} />
         </Grid>
       </Grid>
     </WithBox>

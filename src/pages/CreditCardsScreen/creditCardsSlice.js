@@ -24,13 +24,13 @@ const creditCardsSlice = createSlice({
     },
     [fetchCreditCards.fulfilled]: (state, { payload }) => {
       const chartsData = {
-        creditCardTable: payload[0].data,
+        creditCardsTable: payload[0].data,
         spiderChart: payload[1].data,
         categoryExpensesChart: payload[2].data,
       };
       state.loading = false;
       state.error = false;
-      state.creditCardTable = chartsData.creditCardTable;
+      state.creditCardsTable = chartsData.creditCardsTable;
       state.spiderChart = chartsData.spiderChart;
       state.categoryExpensesChart = chartsData.categoryExpensesChart;
     },
