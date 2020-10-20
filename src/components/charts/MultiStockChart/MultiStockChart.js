@@ -12,6 +12,7 @@ const MultiStockChart = ({
   chartRef,
 }) => {
   const callBackMethods = { serieClickedHandler };
+  removeAllSeries(chartRef.current);
   const options = getChartOptions(data, callBackMethods, { colors, height });
 
   return (
@@ -23,6 +24,14 @@ const MultiStockChart = ({
       />
     </div>
   );
+};
+
+const removeAllSeries = (chartComponent) => {
+  if (!chartComponent) return;
+  const series = chartComponent.chart.series;
+  while (series.length) {
+    series[0].remove();
+  }
 };
 
 export default React.memo(MultiStockChart);
