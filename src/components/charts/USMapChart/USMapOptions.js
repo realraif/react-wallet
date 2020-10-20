@@ -66,11 +66,8 @@ const customiseOptions = (options, data, styles) => {
 
 const setEvents = (options, callBackMethods) => {
   options.plotOptions.series.events.click = function (event) {
-    const state = {
-      value: event.point.value,
-      name: event.point.name,
-      code: event.point["hc-key"],
-    };
+    const { value, name, data } = event.point;
+    const state = { value, name, data, code: event.point["hc-key"] };
     setTimeout(() => {
       callBackMethods.mapClicked(state);
     });

@@ -1,7 +1,7 @@
 import balancesMock from "pages/mockdata/balancesMock";
 import getBarChartMock from "pages/mockdata/barChartMock";
 import getDonutChartMock from "pages/mockdata/donutChartMock";
-import mapChartMock from "./Expenses/ExpensesMap/mockdata";
+import getMapChartMock from "pages/mockdata/mapChartMock";
 
 const fetchBalancesData = (timeframe) => {
   return Promise.resolve({ data: balancesMock });
@@ -16,7 +16,7 @@ const fetchDonatChartData = (timeframe) => {
 };
 
 const fetchMapChartData = (timeframe) => {
-  return Promise.resolve({ data: mapChartMock });
+  return Promise.resolve({ data: getMapChartMock() });
 };
 
 const fetchDashboardData = (timeframe) => {
