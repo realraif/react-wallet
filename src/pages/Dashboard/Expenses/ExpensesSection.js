@@ -4,7 +4,7 @@ import { useTheme } from "@material-ui/styles";
 
 import withSection from "HOC/withSection";
 import Donut from "./ExpensesDonut";
-import ExpensesMap from "./ExpensesMap/ExpensesMap";
+import ExpensesMap from "./ExpensesMap";
 import ExpensesBarChart from "./ExpensesBarChart";
 
 const ExpensesSection = ({ dashboardData }) => {

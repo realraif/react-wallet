@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 
-import { cardSelected } from "../../creditCardsSlice";
+import { cardSelected } from "../creditCardsSlice";
 import AccordionTable from "components/tables/AccordionTable/AccordionTable";
 
 const CreditCardTable = ({ data, height }) => {

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { fetchCreditCards, onDestroy } from "./creditCardsSlice";
 import { Grid } from "@material-ui/core";
-import CategoryExpensesChart from "./CategoryExpensesChart/CategoryExpensesChart";
+import CategoryExpensesChart from "./CategoryExpensesChart";
 import SelectCreditCardSection from "./SelectCreditCardSection/SelectCreditCardSection";
 
 const getCategoriesTrendData = ({ selectedId, balancesData }) => {
