@@ -3,7 +3,7 @@ import { Grid } from "@material-ui/core";
 import { useTheme } from "@material-ui/styles";
 
 import withSection from "HOC/withSection";
-import Donut from "./ExpensesDonut/ExpensesDonut";
+import Donut from "./ExpensesDonut";
 import ExpensesMap from "./ExpensesMap/ExpensesMap";
 import ExpensesBarChart from "./ExpensesBarChart/ExpensesBarChart";
 

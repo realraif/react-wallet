@@ -2,7 +2,7 @@ import React from "react";
 import { Grid } from "@material-ui/core";
 
 import withSection from "HOC/withSection";
-import CreditCard from "./CreditCard/CreditCard";
+import CreditCard from "./CreditCard";
 
 const CreditCardsSection = ({ data }) => {
   if (!data) return null;
