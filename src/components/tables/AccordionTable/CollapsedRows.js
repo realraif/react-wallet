@@ -12,12 +12,12 @@ const CollapsedRows = ({
   isSelected,
   isCollapsed,
   classes,
+  columns
 }) => {
-
   const tableSubRows = collapsedArray.map((subRow) => {
     const rowKey = rowId + "." + subRow.id;
     const isItemSelected = isSelected(rowKey);
-    
+
     return (
       <TableRow
         hover
@@ -26,7 +26,7 @@ const CollapsedRows = ({
         selected={isItemSelected}
         onClick={() => handleSubRowClick(rowKey)}
       >
-        {["name", "expenses"].map((column) => (
+        {columns.map((column) => (
           <TableCell key={column}>{subRow[column]}</TableCell>
         ))}
       </TableRow>

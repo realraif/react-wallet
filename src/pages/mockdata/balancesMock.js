@@ -9,13 +9,13 @@ export default [
       {
         id: "DE89 3704 0044 0532 0130 01",
         creditLimit: 600,
-        expense: 23,
+        expenses: 23,
         chargeDate: "23",
       },
       {
         id: "DE89 3704 0044 0532 0130 02",
         creditLimit: 500,
-        expense: 133,
+        expenses: 133,
         chargeDate: "23",
       },
     ],
@@ -30,7 +30,7 @@ export default [
       {
         id: "DE89 3704 0044 0532 0130 12",
         creditLimit: 200,
-        expense: 200.0,
+        expenses: 200.0,
         chargeDate: "23",
       },
     ],
@@ -45,7 +45,7 @@ export default [
       {
         id: "DE89 3704 0044 0532 0130 13",
         creditLimit: 5000,
-        expense: 145.0,
+        expenses: 145.0,
         chargeDate: "23",
       },
     ],

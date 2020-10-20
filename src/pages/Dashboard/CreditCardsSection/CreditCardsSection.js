@@ -17,7 +17,7 @@ const CreditCardsSection = ({ data }) => {
               currency={balance.currency}
               bank={balance.id}
               creditLimit={card.creditLimit}
-              expense={card.expense}
+              expenses={card.expenses}
             />
           </Grid>
         ));

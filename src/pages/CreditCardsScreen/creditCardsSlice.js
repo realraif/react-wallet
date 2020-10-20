@@ -13,6 +13,17 @@ export const fetchCreditCards = createAsyncThunk(
   }
 );
 
+const getChartsData = (payload) => {
+  const creditCardsTable = payload[0].data.map((balance) => {
+    return { ...balance, icon: "icon" };
+  });
+  return {
+    creditCardsTable: creditCardsTable,
+    spiderChart: payload[1].data,
+    categoryExpensesChart: payload[2].data,
+  };
+};
+
 const creditCardsSlice = createSlice({
   name: "creditCards",
   initialState: { loading: true },
@@ -23,16 +34,10 @@ const creditCardsSlice = createSlice({
       state.error = false;
     },
     [fetchCreditCards.fulfilled]: (state, { payload }) => {
-      const chartsData = {
-        creditCardsTable: payload[0].data,
-        spiderChart: payload[1].data,
-        categoryExpensesChart: payload[2].data,
-      };
+      const chartsData = getChartsData(payload);
+      Object.assign(state, chartsData);
       state.loading = false;
       state.error = false;
-      state.creditCardsTable = chartsData.creditCardsTable;
-      state.spiderChart = chartsData.spiderChart;
-      state.categoryExpensesChart = chartsData.categoryExpensesChart;
     },
     [fetchCreditCards.rejected]: (state) => {
       state.loading = false;

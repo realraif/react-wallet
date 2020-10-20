@@ -99,6 +99,7 @@ const AccordionTable = ({ columns, rows, accordionIndex, styles }) => {
                     isChecked={isRowChecked}
                     collapsedArray={row[accordionIndex]}
                     classes={classes}
+                    subColumns={columns.child}
                   >
                     <TableCell padding="checkbox">
                       <Checkbox
@@ -106,7 +107,7 @@ const AccordionTable = ({ columns, rows, accordionIndex, styles }) => {
                         onClick={(event) => handleCheck(event, row.id)}
                       />
                     </TableCell>
-                    {columns.map((column) => (
+                    {columns.parent.map((column) => (
                       <TableCell key={column} className={classes.tableCell}>
                         {row[column]}
                       </TableCell>

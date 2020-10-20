@@ -13,6 +13,7 @@ const AccordionRow = ({
   collapsedArray,
   classes,
   children,
+  subColumns,
 }) => {
   return (
     <>
@@ -28,6 +29,7 @@ const AccordionRow = ({
         {children}
       </TableRow>
       <CollapsedRows
+        columns={subColumns}
         classes={classes}
         collapsedArray={collapsedArray}
         rowId={rowId}

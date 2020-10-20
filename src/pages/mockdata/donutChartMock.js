@@ -9,7 +9,7 @@ export default () => {
       const creditCard = {
         name,
         id: credit.id,
-        value: credit.expense,
+        value: credit.expenses,
         parent: id,
       };
       donutData.push(creditCard);

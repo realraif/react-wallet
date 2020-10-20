@@ -3,13 +3,13 @@ import AccordionTable from "components/tables/AccordionTable/AccordionTable";
 
 const CreditCardTable = ({ data, height }) => {
   if (!data) return null;
-  
-  const columns = ["icon", "name"];
+
+  const columns = { parent: ["icon", "name"], child: ["id", "expenses"] };
 
   return (
     <AccordionTable
       columns={columns}
-      rows={data.rows}
+      rows={data}
       accordionIndex="cc"
       styles={{ height, rowColor: "pink", subRowColor: "white" }}
     />

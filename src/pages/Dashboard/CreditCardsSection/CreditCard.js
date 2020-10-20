@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     justifyContent: "space-between",
   },
-  expenseText: {
+  expensesText: {
     fontSize: "1.4rem",
     fontWeight: 500,
     marginRight: 4,
@@ -42,7 +42,7 @@ const CreditCard = (props) => {
     setElevation((oldElevation) => !oldElevation);
   };
 
-  const expensePercent = (props.expense * 100) / props.creditLimit;
+  const expensesPercent = (props.expenses * 100) / props.creditLimit;
 
   return (
     <Card elevation={elevation ? 5 : 0}>
@@ -57,8 +57,8 @@ const CreditCard = (props) => {
                 thousandSeparator={true}
                 fixedDecimalScale={true}
                 decimalScale={2}
-                className={classes.expenseText}
-                value={props.expense}
+                className={classes.expensesText}
+                value={props.expenses}
                 displayType={"text"}
               />
               <span className={classes.currency}>{props.currency}</span>
@@ -69,7 +69,7 @@ const CreditCard = (props) => {
                 data={[
                   {
                     name: "Expenses",
-                    percent: expensePercent,
+                    percent: expensesPercent,
                     color: "#20657b",
                   },
                 ]}
