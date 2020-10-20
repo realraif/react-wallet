@@ -22,7 +22,7 @@ const mockCandleStickData = (data) => {
 };
 
 const randomNumber = (min, max) => {
-  return Math.random() * (max - min) + min;
+  return Math.floor(Math.random() * (max - min) + min);
 };
 
 const getRandomHighLowValues = (candleEdges) => {

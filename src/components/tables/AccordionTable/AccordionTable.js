@@ -38,7 +38,13 @@ const useStyles = ({ height, rowColor, subRowColor }) =>
     },
   }));
 
-const AccordionTable = ({ columns, rows, accordionIndex, styles }) => {
+const AccordionTable = ({
+  columns,
+  rows,
+  accordionIndex,
+  rowSelectedHandler,
+  styles,
+}) => {
   const classes = useStyles(styles)();
   const [selected, setSelected] = React.useState();
   const [checkedRows, setChecked] = React.useState([]);
@@ -55,6 +61,7 @@ const AccordionTable = ({ columns, rows, accordionIndex, styles }) => {
 
   const handleSubRowClick = (subRowId) => {
     setSelected(subRowId);
+    rowSelectedHandler(subRowId);
   };
 
   const handleCheck = (event, rowId) => {

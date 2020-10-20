@@ -32,7 +32,6 @@ const AccordionRow = ({
         columns={subColumns}
         classes={classes}
         collapsedArray={collapsedArray}
-        rowId={rowId}
         handleSubRowClick={handleSubRowClick}
         isSelected={isSelected}
         isCollapsed={isCollapsed}

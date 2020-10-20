@@ -24,7 +24,13 @@ const useStyles = (height) =>
     },
   }));
 
-const RadioTable = ({ columns, rows, height, rowSelectedHandler, selectedId }) => {
+const RadioTable = ({
+  columns,
+  rows,
+  height,
+  rowSelectedHandler,
+  selectedId,
+}) => {
   const classes = useStyles(height)();
   const [selected, setSelected] = React.useState(selectedId);
 

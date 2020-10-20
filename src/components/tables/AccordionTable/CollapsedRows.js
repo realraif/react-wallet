@@ -7,7 +7,6 @@ import Collapse from "@material-ui/core/Collapse";
 
 const CollapsedRows = ({
   collapsedArray,
-  rowId,
   handleSubRowClick,
   isSelected,
   isCollapsed,
@@ -15,16 +14,15 @@ const CollapsedRows = ({
   columns
 }) => {
   const tableSubRows = collapsedArray.map((subRow) => {
-    const rowKey = rowId + "." + subRow.id;
-    const isItemSelected = isSelected(rowKey);
+    const isItemSelected = isSelected(subRow.id);
 
     return (
       <TableRow
         hover
-        key={rowKey}
+        key={subRow.id}
         className={classes.subRow}
         selected={isItemSelected}
-        onClick={() => handleSubRowClick(rowKey)}
+        onClick={() => handleSubRowClick(subRow.id)}
       >
         {columns.map((column) => (
           <TableCell key={column}>{subRow[column]}</TableCell>

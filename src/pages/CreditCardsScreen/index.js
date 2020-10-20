@@ -6,9 +6,20 @@ import { Grid } from "@material-ui/core";
 import CategoryExpensesChart from "./CategoryExpensesChart/CategoryExpensesChart";
 import SelectCreditCardSection from "./SelectCreditCardSection/SelectCreditCardSection";
 
+const getCategoriesTrendData = ({ selectedId, creditCardsTable }) => {
+  if (!creditCardsTable || !selectedId) return null;
+  let selectedCard = { categories: [] };
+  creditCardsTable.some((balance) => {
+    selectedCard = balance.cc.find((credit) => credit.id === selectedId);
+    return !!selectedCard;
+  });
+  return selectedCard.categories;
+};
+
 const CreditCards = ({ timeFrame, ...props }) => {
   const dispatch = useDispatch();
   const creditCardsData = useSelector((state) => state.creditCards);
+  const categoriesTrendData = getCategoriesTrendData(creditCardsData);
 
   useEffect(() => {
     dispatch(fetchCreditCards());
@@ -20,7 +31,7 @@ const CreditCards = ({ timeFrame, ...props }) => {
         <SelectCreditCardSection creditCardsData={creditCardsData} />
       </Grid>
       <Grid item>
-        <CategoryExpensesChart data={creditCardsData.categoryExpensesChart} />
+        <CategoryExpensesChart data={categoriesTrendData} />
       </Grid>
     </Grid>
   );
