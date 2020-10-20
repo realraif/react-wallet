@@ -1,9 +1,9 @@
-import balancesData from "pages/Dashboard/Balances/mockdata";
+import balancesData from "./balancesMock";
 
 export default () => {
-  return balancesData.map((balance) => ({
-    ...balance,
-    candleStickData: mockCandleStickData(balance.data),
+  return balancesData.map(({ id, name, status, data }) => ({
+    id, name, status, data,
+    candleStickData: mockCandleStickData(data),
   }));
 };
 

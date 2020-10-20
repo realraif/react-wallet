@@ -1,15 +1,10 @@
-import balancesTrendsMock from "./Balances/mockdata";
-import creditCardsMock from "./CreditCardsSection/mockdata";
+import balancesMock from "pages/mockdata/balancesMock";
 import barChartMock from "./Expenses/ExpensesBarChart/mockdata";
-import donatChartMock from "./Expenses/ExpensesDonut/mockdata";
+import getDonutChartMock from "pages/mockdata/donutChartMock";
 import mapChartMock from "./Expenses/ExpensesMap/mockdata";
 
-const fetchBalancesTrendsData = (timeframe) => {
-  return Promise.resolve({ data: balancesTrendsMock });
-};
-
-const fetchCreditCardsData = (timeframe) => {
-  return Promise.resolve({ data: creditCardsMock });
+const fetchBalancesData = (timeframe) => {
+  return Promise.resolve({ data: balancesMock });
 };
 
 const fetchBarChartData = (timeframe) => {
@@ -17,7 +12,7 @@ const fetchBarChartData = (timeframe) => {
 };
 
 const fetchDonatChartData = (timeframe) => {
-  return Promise.resolve({ data: donatChartMock });
+  return Promise.resolve({ data: getDonutChartMock() });
 };
 
 const fetchMapChartData = (timeframe) => {
@@ -26,8 +21,7 @@ const fetchMapChartData = (timeframe) => {
 
 const fetchDashboardData = (timeframe) => {
   return Promise.all([
-    fetchBalancesTrendsData(timeframe),
-    fetchCreditCardsData(timeframe),
+    fetchBalancesData(timeframe),
     fetchBarChartData(timeframe),
     fetchDonatChartData(timeframe),
     fetchMapChartData(timeframe),

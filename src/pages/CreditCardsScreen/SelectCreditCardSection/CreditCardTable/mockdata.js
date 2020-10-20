@@ -1,6 +1,6 @@
-const createData = (icon, bank, id, cc) => ({
+const createData = (icon, name, id, cc) => ({
   icon,
-  bank,
+  name,
   id,
   cc,
 });
@@ -11,7 +11,7 @@ const createCardData = (name, expenses, id) => ({
   id,
 });
 
-const columns = ["icon", "bank"];
+const columns = ["icon", "name"];
 
 const rows = [
   createData("icon", "BOA", 67, [

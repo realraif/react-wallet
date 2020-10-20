@@ -18,10 +18,10 @@ const Dashboard = ({ timeFrame, ...props }) => {
   return (
     <Grid container direction="column" alignItems="stretch">
       <Grid item>
-        <Balances data={dashboard.balancesTrend} />
+        <Balances data={dashboard.balances} />
       </Grid>
       <Grid item>
-        <CreditCards data={dashboard.creditCards} />
+        <CreditCards data={dashboard.balances} />
       </Grid>
       <Grid item>
         <ExpensesSection dashboardData={dashboard} />

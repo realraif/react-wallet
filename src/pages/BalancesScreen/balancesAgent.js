@@ -1,4 +1,4 @@
-import getBalancesWithCandleStickMock from "./mockdata";
+import getBalancesWithCandleStickMock from "pages/mockdata/balancesWithCandleStick";
 
 const fetchBalancesMultiSplineData = (timeframe) => {
   return Promise.resolve({ data: getBalancesWithCandleStickMock() });

@@ -13,6 +13,13 @@ export const fetchDashboard = createAsyncThunk(
   }
 );
 
+const getChartsData = (payload) => ({
+  balances: payload[0].data,
+  barChart: payload[1].data,
+  donutChart: payload[2].data,
+  mapChart: payload[3].data,
+});
+
 const dashboardSlice = createSlice({
   name: "dashboard",
   initialState: { loading: true },
@@ -23,20 +30,10 @@ const dashboardSlice = createSlice({
       state.error = false;
     },
     [fetchDashboard.fulfilled]: (state, { payload }) => {
-      const chartsData = {
-        balancesTrend: payload[0].data,
-        creditCards: payload[1].data,
-        barChart: payload[2].data,
-        donutChart: payload[3].data,
-        mapChart: payload[4].data,
-      };
+      const chartsData = getChartsData(payload);
+      Object.assign(state, chartsData);
       state.loading = false;
       state.error = false;
-      state.balancesTrend = chartsData.balancesTrend;
-      state.creditCards = chartsData.creditCards;
-      state.barChart = chartsData.barChart;
-      state.donutChart = chartsData.donutChart;
-      state.mapChart = chartsData.mapChart;
     },
     [fetchDashboard.rejected]: (state) => {
       state.loading = false;

@@ -9,17 +9,19 @@ const CreditCardsSection = ({ data }) => {
 
   return (
     <Grid container justify="space-between" spacing={4} alignItems="center">
-      {data.map((card, index) => (
-        <Grid item xs={12} md={6} lg={3} key={card.id}>
-          <CreditCard
-            cardID={card.id}
-            currency={card.currency}
-            bank={card.bankId}
-            creditLimit={card.creditLimit}
-            expense={card.expense}
-          />
-        </Grid>
-      ))}
+      {data.map((balance) => {
+        return balance.cc.map((card) => (
+          <Grid item xs={12} md={6} lg={3} key={card.id}>
+            <CreditCard
+              cardID={card.id}
+              currency={balance.currency}
+              bank={balance.id}
+              creditLimit={card.creditLimit}
+              expense={card.expense}
+            />
+          </Grid>
+        ));
+      })}
     </Grid>
   );
 };
