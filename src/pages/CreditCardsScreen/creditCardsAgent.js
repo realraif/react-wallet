@@ -1,8 +1,8 @@
-import getCreditCardTableMock from "pages/mockdata/creditCardsCategoriesMock";
+import creditCardsCategoriesMock from "pages/mockdata/creditCardsCategoriesMock";
 import spiderChartMock from "./SelectCreditCardSection/CreditCardSpiderChart/mockdata";
 
 const fetchCreditCardTableData = (timeframe) => {
-  return Promise.resolve({ data: getCreditCardTableMock() });
+  return Promise.resolve({ data: creditCardsCategoriesMock() });
 };
 const fetchSpiderChartMockData = (timeframe) => {
   return Promise.resolve({ data: spiderChartMock });

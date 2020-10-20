@@ -6,10 +6,10 @@ import { Grid } from "@material-ui/core";
 import CategoryExpensesChart from "./CategoryExpensesChart/CategoryExpensesChart";
 import SelectCreditCardSection from "./SelectCreditCardSection/SelectCreditCardSection";
 
-const getCategoriesTrendData = ({ selectedId, creditCardsTable }) => {
-  if (!creditCardsTable || !selectedId) return null;
+const getCategoriesTrendData = ({ selectedId, balancesData }) => {
+  if (!balancesData || !selectedId) return null;
   let selectedCard = { categories: [] };
-  creditCardsTable.some((balance) => {
+  balancesData.some((balance) => {
     selectedCard = balance.cc.find((credit) => credit.id === selectedId);
     return !!selectedCard;
   });

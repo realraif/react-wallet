@@ -14,11 +14,13 @@ export const fetchCreditCards = createAsyncThunk(
 );
 
 const getChartsData = (payload) => {
-  const creditCardsTable = payload[0].data.map((balance) => {
-    return { ...balance, icon: "icon" };
+  const creditCardsTable = payload[0].data.map(({ id, name, cc }) => {
+    const creditCards = cc.map(({ id, expenses }) => ({ id, expenses }));
+    return { id, name, cc: creditCards, icon: "icon" };
   });
   return {
     creditCardsTable: creditCardsTable,
+    balancesData: payload[0].data,
     spiderChart: payload[1].data,
   };
 };
