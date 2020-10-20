@@ -20,7 +20,6 @@ const getChartsData = (payload) => {
   return {
     creditCardsTable: creditCardsTable,
     spiderChart: payload[1].data,
-    categoryExpensesChart: payload[2].data,
   };
 };
 
