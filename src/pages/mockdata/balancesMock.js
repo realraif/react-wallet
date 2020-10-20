@@ -37,7 +37,7 @@ export default [
   },
   {
     id: "DE89-3704-0044-0532-0130-20",
-    name: "Leumi2",
+    name: "Disc",
     currency: "USD",
     status: 3.3,
     data: [1, 2, 1, 4, 3, 1, 2, 1, 2, 1, 3, 4, 6],

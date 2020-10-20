@@ -20,10 +20,16 @@ const getChartsData = (payload) => ({
   mapChart: payload[3].data,
 });
 
+const initialState = { loading: true };
+
 const dashboardSlice = createSlice({
   name: "dashboard",
-  initialState: { loading: true },
-  reducers: {},
+  initialState,
+  reducers: {
+    onDestroy: (state) => {
+      return initialState;
+    },
+  },
   extraReducers: {
     [fetchDashboard.pending]: (state) => {
       state.loading = true;
@@ -41,5 +47,7 @@ const dashboardSlice = createSlice({
     },
   },
 });
+
+export const { onDestroy } = dashboardSlice.actions;
 
 export default dashboardSlice.reducer;

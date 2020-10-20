@@ -25,12 +25,17 @@ const getChartsData = (payload) => {
   };
 };
 
+const initialState = { loading: true };
+
 const creditCardsSlice = createSlice({
   name: "creditCards",
-  initialState: { loading: true },
+  initialState,
   reducers: {
     cardSelected: (state, { payload }) => {
       state.selectedId = payload.id;
+    },
+    onDestroy: (state) => {
+      return initialState;
     },
   },
   extraReducers: {
@@ -51,6 +56,6 @@ const creditCardsSlice = createSlice({
   },
 });
 
-export const { cardSelected } = creditCardsSlice.actions;
+export const { cardSelected, onDestroy } = creditCardsSlice.actions;
 
 export default creditCardsSlice.reducer;

@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Grid } from "@material-ui/core";
 
-import { fetchBalances } from "./balancesSlice";
+import { fetchBalances, onDestroy } from "./balancesSlice";
 import SelectBalanceSection from "./SelectBalanceSection/SelectBalanceSection";
 import BalanceCandlestick from "./BalanceCandlestick";
 
@@ -19,6 +19,9 @@ const Balances = ({ timeFrame, ...props }) => {
 
   useEffect(() => {
     dispatch(fetchBalances());
+    return () => {
+      dispatch(onDestroy());
+    }
   }, [dispatch]);
 
   return (

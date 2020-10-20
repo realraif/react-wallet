@@ -1,48 +1,48 @@
 const dataSeries = [
   {
     category: "food",
-    leumi1: 82,
-    leumi2: 70,
+    leumi: 82,
+    disc: 70,
     boa: 10,
   },
   {
     category: "rent",
-    leumi1: 300,
-    leumi2: 0,
+    leumi: 300,
+    disc: 0,
     boa: 0,
   },
   {
     category: "transportaion",
-    leumi1: 50,
-    leumi2: 20,
+    leumi: 50,
+    disc: 20,
     boa: 30,
   },
   {
     category: "business",
-    leumi1: 30,
-    leumi2: 10,
+    leumi: 30,
+    disc: 10,
     boa: 120,
   },
   {
     category: "workout",
-    leumi1: 20,
-    leumi2: 320,
+    leumi: 20,
+    disc: 320,
     boa: 130,
   },
   {
     category: "personal",
-    leumi1: 30,
-    leumi2: 230,
+    leumi: 30,
+    disc: 230,
     boa: 200,
   },
   {
     category: "bills",
-    leumi1: 20,
-    leumi2: 100,
+    leumi: 20,
+    disc: 100,
     boa: 12,
   },
 ];
 
-const keys = ["leumi1", "leumi2", "boa"];
+const keys = ["leumi", "disc", "boa"];
 
 export default { dataSeries, keys };

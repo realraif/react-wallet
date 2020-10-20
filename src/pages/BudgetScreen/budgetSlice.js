@@ -13,10 +13,16 @@ export const fetchBudget = createAsyncThunk(
   }
 );
 
+const initialState = { loading: true };
+
 const budgetSlice = createSlice({
   name: "budget",
-  initialState: { loading: true },
-  reducers: {},
+  initialState,
+  reducers: {
+    onDestroy: (state) => {
+      return initialState;
+    },
+  },
   extraReducers: {
     [fetchBudget.pending]: (state) => {
       state.loading = true;
@@ -38,5 +44,7 @@ const budgetSlice = createSlice({
     },
   },
 });
+
+export const { onDestroy } = budgetSlice.actions;
 
 export default budgetSlice.reducer;

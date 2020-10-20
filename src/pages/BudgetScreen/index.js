@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { fetchBudget } from "./budgetSlice";
+import { fetchBudget, onDestroy } from "./budgetSlice";
 import { Grid } from "@material-ui/core";
 import BudgetSankey from "./BudgetSankey/BudgetSankey";
 import CategoriesSection from "./CategoriesSection/CategoriesSection";
@@ -12,6 +12,9 @@ const BudgetScreen = ({ timeFrame, ...props }) => {
 
   useEffect(() => {
     dispatch(fetchBudget());
+    return () => {
+      dispatch(onDestroy());
+    }
   }, [dispatch]);
 
   return (

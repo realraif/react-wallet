@@ -25,14 +25,19 @@ const getChartsData = (balances) => {
 
 const selectFirstId = (balancesArray) => {
   return balancesArray.length ? balancesArray[0].id : null;
-}
+};
+
+const initialState = { loading: true };
 
 const balancesSlice = createSlice({
   name: "balances",
-  initialState: { loading: true },
+  initialState,
   reducers: {
     balanceSelected: (state, { payload }) => {
       state.selectedId = payload.id;
+    },
+    onDestroy: (state) => {
+      return initialState;
     },
   },
   extraReducers: {
@@ -43,7 +48,7 @@ const balancesSlice = createSlice({
     [fetchBalances.fulfilled]: (state, { payload }) => {
       const chartsData = getChartsData(payload);
       Object.assign(state, chartsData);
-      
+
       state.selectedId = selectFirstId(state.balancesData);
       state.loading = false;
       state.error = false;
@@ -55,6 +60,6 @@ const balancesSlice = createSlice({
   },
 });
 
-export const { balanceSelected } = balancesSlice.actions;
+export const { balanceSelected, onDestroy } = balancesSlice.actions;
 
 export default balancesSlice.reducer;

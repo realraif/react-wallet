@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { fetchCreditCards } from "./creditCardsSlice";
+import { fetchCreditCards, onDestroy } from "./creditCardsSlice";
 import { Grid } from "@material-ui/core";
 import CategoryExpensesChart from "./CategoryExpensesChart/CategoryExpensesChart";
 import SelectCreditCardSection from "./SelectCreditCardSection/SelectCreditCardSection";
@@ -23,6 +23,9 @@ const CreditCards = ({ timeFrame, ...props }) => {
 
   useEffect(() => {
     dispatch(fetchCreditCards());
+    return () => {
+      dispatch(onDestroy());
+    }
   }, [dispatch]);
 
   return (
