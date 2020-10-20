@@ -1,5 +1,5 @@
 import balancesMock from "pages/mockdata/balancesMock";
-import barChartMock from "./Expenses/ExpensesBarChart/mockdata";
+import getBarChartMock from "pages/mockdata/barChartMock";
 import getDonutChartMock from "pages/mockdata/donutChartMock";
 import mapChartMock from "./Expenses/ExpensesMap/mockdata";
 
@@ -8,7 +8,7 @@ const fetchBalancesData = (timeframe) => {
 };
 
 const fetchBarChartData = (timeframe) => {
-  return Promise.resolve({ data: barChartMock });
+  return Promise.resolve({ data: getBarChartMock() });
 };
 
 const fetchDonatChartData = (timeframe) => {
