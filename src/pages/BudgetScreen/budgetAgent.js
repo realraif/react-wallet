@@ -1,5 +1,5 @@
-import budgetSankeyMock from "./BudgetSankey/mockdata";
-import polarChartMock from "./CategoriesSection/ExpensesPolarChart/mockdata";
+import budgetSankeyMock from "pages/mockdata/sankeyMock";
+import polarChartMock from "pages/mockdata/polarChartMock";
 
 const fetchBudgetSankeyData = (timeframe) => {
   return Promise.resolve({ data: budgetSankeyMock });

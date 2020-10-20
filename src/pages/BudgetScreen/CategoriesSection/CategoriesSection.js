@@ -3,7 +3,7 @@ import { Grid } from "@material-ui/core";
 import { useTheme } from "@material-ui/styles";
 
 import withSection from "HOC/withSection";
-import ExpensesPolarChart from "./ExpensesPolarChart/ExpensesPolarChart";
+import ExpensesPolarChart from "./ExpensesPolarChart";
 
 const CategoriesSection = ({budgetData}) => {
   const theme = useTheme();

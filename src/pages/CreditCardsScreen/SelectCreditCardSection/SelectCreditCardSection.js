@@ -5,7 +5,7 @@ import { useTheme } from "@material-ui/styles";
 import withSection from "HOC/withSection";
 import WithBox from "HOC/withBox";
 import { getTableRowHeight } from "themes/utils";
-import CreditCardSpiderChart from "./CreditCardSpiderChart/CreditCardSpiderChart";
+import CreditCardSpiderChart from "./CreditCardSpiderChart";
 import CreditCardTable from "./CreditCardTable";
 
 const SelectBalanceSection = ({ creditCardsData }) => {

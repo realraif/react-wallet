@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { fetchBudget, onDestroy } from "./budgetSlice";
 import { Grid } from "@material-ui/core";
-import BudgetSankey from "./BudgetSankey/BudgetSankey";
+import BudgetSankey from "./BudgetSankey";
 import CategoriesSection from "./CategoriesSection/CategoriesSection";
 
 const BudgetScreen = ({ timeFrame, ...props }) => {
