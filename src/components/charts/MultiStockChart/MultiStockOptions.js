@@ -4,6 +4,7 @@ import ReactDOM from "react-dom";
 export default (data, callBackMethods, styles) => {
   const options = getGenericOptions();
   customiseOptions(options, data, styles);
+  setEvents(options, callBackMethods);
   return options;
 };
 
@@ -229,4 +230,10 @@ const customiseOptions = (options, data, styles) => {
   options.series = data.map((serie) => {
     return getSerie(serie);
   });
+};
+
+const setEvents = (options, callBackMethods) => {
+  options.plotOptions.series.events.mouseOver = function (event) {
+    callBackMethods.serieClickedHandler(event.target.name);
+  };
 };

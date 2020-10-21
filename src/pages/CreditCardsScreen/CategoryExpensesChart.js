@@ -1,5 +1,7 @@
 import React, { useState, useCallback, useRef } from "react";
+import { useDispatch } from "react-redux";
 
+import { categorySelected } from "./creditCardsSlice";
 import MultiStockChart from "components/charts/MultiStockChart/MultiStockChart";
 import WithBox from "HOC/withBox";
 import withSection from "HOC/withSection";
@@ -7,9 +9,10 @@ import withSection from "HOC/withSection";
 const CategoryExpensesChart = ({ data, height }) => {
   const [selectedPoint, setSelectedPoint] = useState([]);
   const chartRef = useRef();
+  const dispatch = useDispatch();
 
-  const pointSelected = useCallback((serie) => {
-    setSelectedPoint(serie);
+  const pointSelected = useCallback((category) => {
+    dispatch(categorySelected({ category }));
   }, []);
 
   if (!data) return null;

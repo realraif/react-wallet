@@ -1,13 +1,19 @@
 import React, { useState, useRef, useCallback } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
 import SpiderChart from "components/charts/SpiderChartHighcharts/SpiderChartHighcharts";
 
 const CreditCardSpiderChart = ({ data, height }) => {
   const [selectedPoint, setSelectedPoint] = useState([]);
   const chartRef = useRef();
+  const creditCardsData = useSelector((state) => state.creditCards);
+  const category =  creditCardsData.selectedCategory;
+  if (category) {
+    chartRef.current.chart.get(category).onMouseOver();
+  }
 
   const pointSelected = useCallback(({ name, value, category }) => {
     setSelectedPoint({ bank: name, expenses: value, category });
-    chartRef.current.chart.get("food").onMouseOver();
   }, []);
 
   const hoverHandler = useCallback((category) => {

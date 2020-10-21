@@ -33,9 +33,10 @@ const creditCardsSlice = createSlice({
   reducers: {
     cardSelected: (state, { payload }) => {
       state.selectedId = payload.id;
+      state.selectedCategory = null;
     },
     categorySelected: (state, { payload }) => {
-      state.selectedCategory = payload.name;
+      state.selectedCategory = payload.category;
     },
     onDestroy: (state) => {
       return initialState;
@@ -45,20 +46,27 @@ const creditCardsSlice = createSlice({
     [fetchCreditCards.pending]: (state) => {
       state.loading = true;
       state.error = false;
+      state.selectedCategory = null;
     },
     [fetchCreditCards.fulfilled]: (state, { payload }) => {
       const chartsData = getChartsData(payload);
       Object.assign(state, chartsData);
       state.loading = false;
       state.error = false;
+      state.selectedCategory = null;
     },
     [fetchCreditCards.rejected]: (state) => {
       state.loading = false;
       state.error = true;
+      state.selectedCategory = null;
     },
   },
 });
 
-export const { cardSelected, onDestroy } = creditCardsSlice.actions;
+export const {
+  cardSelected,
+  categorySelected,
+  onDestroy,
+} = creditCardsSlice.actions;
 
 export default creditCardsSlice.reducer;
