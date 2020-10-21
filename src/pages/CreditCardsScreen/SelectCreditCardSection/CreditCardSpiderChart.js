@@ -1,35 +1,53 @@
 import React, { useState, useRef, useCallback } from "react";
 import { useSelector } from "react-redux";
+import { makeStyles } from "@material-ui/styles";
 
 import SpiderChart from "components/charts/SpiderChartHighcharts/SpiderChartHighcharts";
 
+const useStyles = makeStyles((theme) => ({
+  container: {
+    display: "flex",
+    justifyContent: "space-between",
+  },
+}));
+
 const CreditCardSpiderChart = ({ data, height }) => {
-  const [selectedPoint, setSelectedPoint] = useState([]);
+  const [selectedPoints, setSelectedPoints] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState();
+  const creditCardsData = useSelector((state) => state.creditCards);  
   const chartRef = useRef();
-  const creditCardsData = useSelector((state) => state.creditCards);
-  const category =  creditCardsData.selectedCategory;
-  if (category) {
-    chartRef.current.chart.get(category).onMouseOver();
-  }
+  const classes = useStyles();
 
-  const pointSelected = useCallback(({ name, value, category }) => {
-    setSelectedPoint({ bank: name, expenses: value, category });
-  }, []);
-
-  const hoverHandler = useCallback((category) => {
-    console.log(category);
-  }, []);
+  const hoverHandler = useCallback(
+    ({ category, points }) => {
+      setSelectedPoints(points);
+      setSelectedCategory(category);
+    },
+    []
+  );
 
   if (!data) return null;
 
+  const expensesInfo = selectedCategory ? (
+    <>
+      {selectedCategory} Expenses:
+      {selectedPoints.map((point) => (
+        <div key={point.name}>{`${point.name}: ${point.value}`}</div>
+      ))}
+    </>
+  ) : null;
+
   return (
-    <SpiderChart
-      chartRef={chartRef}
-      data={data}
-      diameter={height}
-      hoverHandler={hoverHandler}
-      serieClickedHandler={pointSelected}
-    />
+    <div className={classes.container}>
+      <div>{expensesInfo}</div>
+      <SpiderChart
+        chartRef={chartRef}
+        data={data}
+        diameter={height}
+        pointRef={creditCardsData.selectedCategory}
+        hoverHandler={hoverHandler}
+      />
+    </div>
   );
 };
 

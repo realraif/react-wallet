@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 import HighchartsMore from "highcharts/highcharts-more";
@@ -13,11 +13,17 @@ const SpiderChart = ({
   data,
   diameter,
   chartRef,
-  serieClickedHandler,
   hoverHandler,
+  pointRef,
 }) => {
-  const callBackMethods = { serieClickedHandler, hoverHandler };
+  const callBackMethods = { hoverHandler };
   const options = getChartOptions(data, callBackMethods, { diameter });
+
+  useEffect(() => {
+    if (!!pointRef) {
+      chartRef.current.chart.get(pointRef).onMouseOver();
+    }
+  });
 
   return (
     <div>
@@ -30,4 +36,6 @@ const SpiderChart = ({
   );
 };
 
-export default React.memo(SpiderChart);
+export default React.memo(SpiderChart, (prevProps, props) => {
+  return prevProps.pointRef === props.pointRef;
+});

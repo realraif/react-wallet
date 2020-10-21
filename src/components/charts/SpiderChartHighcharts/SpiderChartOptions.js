@@ -33,10 +33,12 @@ const getGenericOptions = () => ({
     },
   },
   tooltip: {
-    xDateFormat: "%d/%m/%Y",
     shared: true,
-    split: false,
+    split: true,
     enabled: true,
+    formatter: () => {
+      return false;
+    },
   },
   plotOptions: {
     series: {
@@ -48,9 +50,13 @@ const getGenericOptions = () => ({
       lineWidth: 0,
       marker: {
         enabled: false,
+        symbol: "circle",
+        radius: 3,
+        lineColor: null,
+        lineWidth: 0,
         states: {
           hover: {
-            enabled: false,
+            enabled: true,
           },
         },
       },
@@ -72,6 +78,7 @@ const getGenericOptions = () => ({
     visible: false,
     crosshair: {
       enabled: true,
+      zIndex: 99
     },
   },
   series: [],
@@ -89,30 +96,24 @@ const customiseOptions = (options, data, styles) => {
 };
 
 const setEvents = (options, callBackMethods) => {
-  options.plotOptions.series.events.click = function (event) {
-    const serie = {
-      name: event.point.series.name,
-      value: event.point.y,
-      category: event.point.category,
-    };
-    callBackMethods.serieClickedHandler(serie);
-  };
-
   options.xAxis.crosshairHoveredHandler = function (category) {
     callBackMethods.hoverHandler(category);
   };
 };
 
-let crosshairTimeout;
+const getPointsData = (points) => {
+  return points.map((point) => ({
+    name: point.series.name,
+    value: point.y,
+  }));
+};
 
 export const handleCrosshairHover = function (proceed, e) {
   const axis = this;
   proceed.apply(axis, Array.prototype.slice.call(arguments, 1));
   if (!!axis.options.crosshairHoveredHandler) {
     const category = axis.chart.hoverPoint.category;
-    clearTimeout(crosshairTimeout);
-    crosshairTimeout = setTimeout(() => {
-      axis.options.crosshairHoveredHandler(category);
-    }, 100);
+    const points = getPointsData(axis.chart.hoverPoints);
+    axis.options.crosshairHoveredHandler({ category, points });
   }
 };
