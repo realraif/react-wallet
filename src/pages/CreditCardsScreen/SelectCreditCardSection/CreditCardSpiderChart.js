@@ -1,15 +1,22 @@
-import React from "react";
-import SpiderChart from "components/charts/SpiderChart/SpiderChart";
+import React, { useState, useRef, useCallback } from "react";
+import SpiderChart from "components/charts/SpiderChartHighcharts/SpiderChartHighcharts";
 
 const CreditCardSpiderChart = ({ data, height }) => {
+  const [selectedPoint, setSelectedPoint] = useState([]);
+  const chartRef = useRef();
+
+  const pointSelected = useCallback(({name, value, category}) => {
+    setSelectedPoint({bank: name, expenses: value, category});
+  }, []);
+
   if (!data) return null;
 
   return (
     <SpiderChart
-      data={data.dataSeries}
-      keys={data.keys}
-      height={height}
-      indexBy="category"
+      chartRef={chartRef}
+      data={data}
+      diameter={height}
+      serieClickedHandler={pointSelected}
     />
   );
 };

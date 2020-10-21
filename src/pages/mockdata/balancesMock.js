@@ -55,3 +55,13 @@ export default [
     ],
   },
 ];
+
+export const categories = [
+  "food",
+  "rent",
+  "transportaion",
+  "business",
+  "workout",
+  "personal",
+  "bills",
+];

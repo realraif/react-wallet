@@ -1,48 +1,15 @@
-const dataSeries = [
-  {
-    category: "food",
-    leumi: 82,
-    disc: 70,
-    boa: 10,
-  },
-  {
-    category: "rent",
-    leumi: 300,
-    disc: 0,
-    boa: 0,
-  },
-  {
-    category: "transportaion",
-    leumi: 50,
-    disc: 20,
-    boa: 30,
-  },
-  {
-    category: "business",
-    leumi: 30,
-    disc: 10,
-    boa: 120,
-  },
-  {
-    category: "workout",
-    leumi: 20,
-    disc: 320,
-    boa: 130,
-  },
-  {
-    category: "personal",
-    leumi: 30,
-    disc: 230,
-    boa: 200,
-  },
-  {
-    category: "bills",
-    leumi: 20,
-    disc: 100,
-    boa: 12,
-  },
-];
+import balancesData, { categories } from "./balancesMock";
 
-const keys = ["leumi", "disc", "boa"];
+export default () => {
+  const series = balancesData.map(({ id, name }) => ({
+    id,
+    name,
+    data: categories.map((category) => [category, randomNumber(1, 5)]),
+  }));
 
-export default { dataSeries, keys };
+  return { series, categories };
+};
+
+const randomNumber = (min, max) => {
+  return Math.floor(Math.random() * (max - min) + min);
+};

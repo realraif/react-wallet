@@ -1,4 +1,4 @@
-import balancesData from "./balancesMock";
+import balancesData, { categories } from "./balancesMock";
 
 export default () => {
   return balancesData.map(({ id, name, cc }) => ({
@@ -14,16 +14,6 @@ export default () => {
     })),
   }));
 };
-
-const categories = [
-  "food",
-  "rent",
-  "transportaion",
-  "business",
-  "workout",
-  "personal",
-  "bills",
-];
 
 const mockExpensesData = () => {
   const trendRange = 30;

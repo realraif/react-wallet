@@ -5,8 +5,9 @@ import HighchartsMore from "highcharts/highcharts-more";
 import getChartOptions from "./SpiderChartOptions";
 HighchartsMore(Highcharts);
 
-const SpiderChart = ({ data, diameter, chartRef }) => {
-  const options = getChartOptions(data, { diameter });
+const SpiderChart = ({ data, diameter, chartRef, serieClickedHandler }) => {
+  const callBackMethods = { serieClickedHandler };
+  const options = getChartOptions(data, callBackMethods, { diameter });
 
   return (
     <div>
