@@ -34,6 +34,9 @@ const creditCardsSlice = createSlice({
     cardSelected: (state, { payload }) => {
       state.selectedId = payload.id;
     },
+    categorySelected: (state, { payload }) => {
+      state.selectedCategory = payload.name;
+    },
     onDestroy: (state) => {
       return initialState;
     },

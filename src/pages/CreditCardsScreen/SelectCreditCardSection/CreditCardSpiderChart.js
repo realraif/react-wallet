@@ -5,8 +5,13 @@ const CreditCardSpiderChart = ({ data, height }) => {
   const [selectedPoint, setSelectedPoint] = useState([]);
   const chartRef = useRef();
 
-  const pointSelected = useCallback(({name, value, category}) => {
-    setSelectedPoint({bank: name, expenses: value, category});
+  const pointSelected = useCallback(({ name, value, category }) => {
+    setSelectedPoint({ bank: name, expenses: value, category });
+    chartRef.current.chart.get("food").onMouseOver();
+  }, []);
+
+  const hoverHandler = useCallback((category) => {
+    console.log(category);
   }, []);
 
   if (!data) return null;
@@ -16,6 +21,7 @@ const CreditCardSpiderChart = ({ data, height }) => {
       chartRef={chartRef}
       data={data}
       diameter={height}
+      hoverHandler={hoverHandler}
       serieClickedHandler={pointSelected}
     />
   );

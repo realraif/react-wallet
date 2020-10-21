@@ -32,7 +32,12 @@ const getGenericOptions = () => ({
       enabled: false,
     },
   },
-  tooltip: false,
+  tooltip: {
+    xDateFormat: "%d/%m/%Y",
+    shared: true,
+    split: false,
+    enabled: true,
+  },
   plotOptions: {
     series: {
       events: {},
@@ -65,6 +70,9 @@ const getGenericOptions = () => ({
   },
   xAxis: {
     visible: false,
+    crosshair: {
+      enabled: true,
+    },
   },
   series: [],
 });
@@ -89,4 +97,22 @@ const setEvents = (options, callBackMethods) => {
     };
     callBackMethods.serieClickedHandler(serie);
   };
+
+  options.xAxis.crosshairHoveredHandler = function (category) {
+    callBackMethods.hoverHandler(category);
+  };
+};
+
+let crosshairTimeout;
+
+export const handleCrosshairHover = function (proceed, e) {
+  const axis = this;
+  proceed.apply(axis, Array.prototype.slice.call(arguments, 1));
+  if (!!axis.options.crosshairHoveredHandler) {
+    const category = axis.chart.hoverPoint.category;
+    clearTimeout(crosshairTimeout);
+    crosshairTimeout = setTimeout(() => {
+      axis.options.crosshairHoveredHandler(category);
+    }, 100);
+  }
 };

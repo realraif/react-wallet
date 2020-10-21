@@ -4,7 +4,11 @@ export default () => {
   const series = balancesData.map(({ id, name }) => ({
     id,
     name,
-    data: categories.map((category) => [category, randomNumber(1, 5)]),
+    data: categories.map((category) => ({
+      category,
+      id: category,
+      y: randomNumber(1, 5),
+    })),
   }));
 
   return { series, categories };
