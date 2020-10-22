@@ -6,9 +6,9 @@ import { fetchBalances, onDestroy } from "./balancesSlice";
 import SelectBalanceSection from "./SelectBalanceSection/SelectBalanceSection";
 import BalanceCandlestick from "./BalanceCandlestick";
 
-const getCandleStickData = ({selectedId, balancesData}) => {
-  if (!balancesData || !selectedId) return null;
-  const selectedBalance = balancesData.find(b => b.id === selectedId);
+const getCandleStickData = ({selectedBalanceId, balancesData}) => {
+  if (!balancesData || !selectedBalanceId) return null;
+  const selectedBalance = balancesData.find(b => b.id === selectedBalanceId);
   return selectedBalance.candleStickData;
 }
 

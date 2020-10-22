@@ -27,6 +27,9 @@ const getGenericOptions = () => ({
       upColor: "silver",
     },
   },
+  xAxis: {
+    events: {},
+  },
   yAxis: [
     {
       labels: {
@@ -69,6 +72,14 @@ const customiseOptions = (options, data, styles) => {
   options.series = getSeries(data);
 };
 
+const hasRangeChanged = ({ min, max, oldMin, oldMax }) => {
+  return min !== oldMin || max !== oldMax;
+};
+
+const isEqualFullRange = ({ min, max, dataMin, dataMax }) => {
+  return min === dataMin && max === dataMax;
+};
+
 const setEvents = (options, callBackMethods) => {
   options.plotOptions.series.events.click = function (event) {
     const serie = {
@@ -78,5 +89,17 @@ const setEvents = (options, callBackMethods) => {
       name: event.point.series.name,
     };
     callBackMethods.candleClickedHandler(serie);
+  };
+  options.xAxis.events.afterSetExtremes = function (event) {
+    const axis = this;
+    if (!hasRangeChanged(axis)) return;
+    const isFullRange = isEqualFullRange(axis);
+    const range = {
+      trigger: event.trigger,
+      min: axis.min,
+      max: axis.max,
+      isFullRange,
+    };
+    callBackMethods.zoomEventHandler(range);
   };
 };

@@ -78,7 +78,7 @@ const getGenericOptions = () => ({
     visible: false,
     crosshair: {
       enabled: true,
-      zIndex: 99
+      zIndex: 99,
     },
   },
   series: [],

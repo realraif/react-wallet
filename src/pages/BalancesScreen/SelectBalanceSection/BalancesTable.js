@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { balanceSelected } from "../balancesSlice";
 import RadioTable from "components/tables/RadioTable/RadioTable";
 
-const BalanceTable = ({ data, height, selectedId }) => {
+const BalanceTable = ({ data, height, selectedBalanceId }) => {
   const dispatch = useDispatch();
   if (!data) return null;
 
@@ -19,7 +19,7 @@ const BalanceTable = ({ data, height, selectedId }) => {
       columns={columns}
       rows={data}
       height={height}
-      selectedId={selectedId}
+      selectedId={selectedBalanceId}
       rowSelectedHandler={balanceSelectedHandler}
     />
   );

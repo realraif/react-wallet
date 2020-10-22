@@ -1,16 +1,29 @@
-import React, { useState, useCallback, useRef } from "react";
+import React, { useCallback, useRef } from "react";
+import { useDispatch } from "react-redux";
+import { setZoomRange } from "./balancesSlice";
 
 import CandlestickChart from "components/charts/CandlestickChart/CandlestickChart";
 import WithBox from "HOC/withBox";
 import withSection from "HOC/withSection";
 
 const BalanceCandlestick = ({ data, height }) => {
-  const [selectedPoint, setSelectedPoint] = useState([]);
+  const dispatch = useDispatch();
   const chartRef = useRef();
 
   const pointSelected = useCallback((candle) => {
-    setSelectedPoint(candle);
+    console.log(candle);
   }, []);
+
+  const zoomEventHandler = useCallback(
+    ({ isFullRange, min, max }) => {
+      let zoomRange = { min, max };
+      if (isFullRange) {
+        zoomRange = null;
+      }
+      dispatch(setZoomRange({ zoomRange }));
+    },
+    [dispatch]
+  );
 
   if (!data) return null;
 
@@ -20,9 +33,9 @@ const BalanceCandlestick = ({ data, height }) => {
         data={data}
         height={height}
         candleClickedHandler={pointSelected}
+        zoomEventHandler={zoomEventHandler}
         chartRef={chartRef}
       />
-      <div>{selectedPoint.name}</div>
     </WithBox>
   );
 };

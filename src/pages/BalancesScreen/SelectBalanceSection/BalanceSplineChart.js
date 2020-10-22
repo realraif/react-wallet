@@ -4,7 +4,7 @@ import { useTheme } from "@material-ui/core";
 
 import MultiSplineChart from "components/charts/MultiSplineHighcharts/MultiSplineHighcharts";
 
-const BalanceSplineChart = ({ data, selectedId, height }) => {
+const BalanceSplineChart = ({ data, selectedBalanceId, height }) => {
   const balances = useSelector((state) => state.balances);
   const [selectedPoint, setSelectedPoint] = useState([]);
   const chartRef = useRef();
@@ -21,10 +21,11 @@ const BalanceSplineChart = ({ data, selectedId, height }) => {
     <>
       <MultiSplineChart
         data={data}
+        plotRange={balances.zoomRange}
         height={height}
         chartRef={chartRef}
         serieClickedHandler={pointSelected}
-        selectedId={selectedId}
+        selectedId={selectedBalanceId}
         selectedColor={selectedColor}
       />
 

@@ -34,7 +34,12 @@ const balancesSlice = createSlice({
   initialState,
   reducers: {
     balanceSelected: (state, { payload }) => {
-      state.selectedId = payload.id;
+      state.selectedBalanceId = payload.id;
+      state.zoomRange = null;
+    },
+    setZoomRange: (state, { payload }) => {
+      console.log(payload);
+      state.zoomRange = payload.zoomRange;
     },
     onDestroy: (state) => {
       return initialState;
@@ -49,7 +54,7 @@ const balancesSlice = createSlice({
       const chartsData = getChartsData(payload);
       Object.assign(state, chartsData);
 
-      state.selectedId = selectFirstId(state.balancesData);
+      state.selectedBalanceId = selectFirstId(state.balancesData);
       state.loading = false;
       state.error = false;
     },
@@ -60,6 +65,10 @@ const balancesSlice = createSlice({
   },
 });
 
-export const { balanceSelected, onDestroy } = balancesSlice.actions;
+export const {
+  balanceSelected,
+  setZoomRange,
+  onDestroy,
+} = balancesSlice.actions;
 
 export default balancesSlice.reducer;

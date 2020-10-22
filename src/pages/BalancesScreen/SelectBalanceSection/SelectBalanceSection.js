@@ -22,14 +22,14 @@ const SelectBalanceSection = ({ data }) => {
           <BalanceTable
             height={height}
             data={data.balancesTable}
-            selectedId={data.selectedId}
+            selectedBalanceId={data.selectedBalanceId}
           />
         </Grid>
         <Grid item xs={12} md={6}>
           <BalanceSplineChart
             height={height}
             data={data.balancesData}
-            selectedId={data.selectedId}
+            selectedBalanceId={data.selectedBalanceId}
           />
         </Grid>
       </Grid>

@@ -18,13 +18,6 @@ const getGenericOptions = () => ({
   legend: { enabled: false },
   xAxis: {
     crosshair: true,
-    plotBands: [
-      {
-        from: 4.5,
-        to: 5.5,
-        color: "rgba(68, 170, 213, .2)",
-      },
-    ],
   },
   yAxis: {
     crosshair: true,
@@ -71,7 +64,6 @@ const customiseOptions = (options, data, selectedId, styles) => {
     }
     return { ...serie, ...serieOptions };
   });
-  debugger;
   options.chart.height = styles.height;
 };
 
