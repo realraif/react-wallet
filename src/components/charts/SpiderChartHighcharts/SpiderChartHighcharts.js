@@ -13,17 +13,15 @@ const SpiderChart = ({
   data,
   diameter,
   chartRef,
-  hoverHandler,
-  pointRef,
+  onHoverHandler,
+  updateChartState,
 }) => {
-  const callBackMethods = { hoverHandler };
+  const callBackMethods = { onHoverHandler };
   const options = getChartOptions(data, callBackMethods, { diameter });
 
   useEffect(() => {
-    if (!!pointRef) {
-      chartRef.current.chart.get(pointRef).onMouseOver();
-    }
-  });
+    updateChartState();
+  }, [updateChartState]);
 
   return (
     <div>
@@ -36,6 +34,4 @@ const SpiderChart = ({
   );
 };
 
-export default React.memo(SpiderChart, (prevProps, props) => {
-  return prevProps.pointRef === props.pointRef;
-});
+export default React.memo(SpiderChart);

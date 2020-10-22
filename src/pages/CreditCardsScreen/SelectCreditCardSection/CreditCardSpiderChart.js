@@ -14,17 +14,26 @@ const useStyles = makeStyles((theme) => ({
 const CreditCardSpiderChart = ({ data, height }) => {
   const [selectedPoints, setSelectedPoints] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState();
-  const creditCardsData = useSelector((state) => state.creditCards);  
+  const creditCardsData = useSelector((state) => state.creditCards);
   const chartRef = useRef();
   const classes = useStyles();
 
-  const hoverHandler = useCallback(
-    ({ category, points }) => {
-      setSelectedPoints(points);
-      setSelectedCategory(category);
-    },
-    []
-  );
+  const onHoverHandler = useCallback(({ category, points }) => {
+    setSelectedPoints(points);
+    setSelectedCategory(category);
+  }, []);
+
+  const updateCategoryHover = () => {
+    if (!!creditCardsData.selectedCategory) {
+      chartRef.current.chart
+        .get(creditCardsData.selectedCategory)
+        .onMouseOver();
+    }
+  };
+
+  const updateCategoryHoverOnChange = useCallback(updateCategoryHover, [
+    creditCardsData.categoryChangedCounter,
+  ]);
 
   if (!data) return null;
 
@@ -44,8 +53,8 @@ const CreditCardSpiderChart = ({ data, height }) => {
         chartRef={chartRef}
         data={data}
         diameter={height}
-        pointRef={creditCardsData.selectedCategory}
-        hoverHandler={hoverHandler}
+        onHoverHandler={onHoverHandler}
+        updateChartState={updateCategoryHoverOnChange}
       />
     </div>
   );

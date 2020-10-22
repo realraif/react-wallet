@@ -25,7 +25,7 @@ const getChartsData = (payload) => {
   };
 };
 
-const initialState = { loading: true };
+const initialState = { loading: true, categoryChangedCounter: 0 };
 
 const creditCardsSlice = createSlice({
   name: "creditCards",
@@ -37,6 +37,7 @@ const creditCardsSlice = createSlice({
     },
     categorySelected: (state, { payload }) => {
       state.selectedCategory = payload.category;
+      state.categoryChangedCounter++;
     },
     onDestroy: (state) => {
       return initialState;

@@ -97,7 +97,7 @@ const customiseOptions = (options, data, styles) => {
 
 const setEvents = (options, callBackMethods) => {
   options.xAxis.crosshairHoveredHandler = function (category) {
-    callBackMethods.hoverHandler(category);
+    callBackMethods.onHoverHandler(category);
   };
 };
 
