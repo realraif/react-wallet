@@ -2,7 +2,6 @@ import React from "react";
 import Highcharts from "highcharts/highstock";
 import HighchartsReact from "highcharts-react-official";
 
-import { removeAllSeries } from "../chartUtils";
 import getChartOptions from "./CandlestickOptions";
 import "./CandlestickChart.css";
 
@@ -13,9 +12,10 @@ const CandlestickChart = ({
   colors,
   height,
   chartRef,
+  updateChartState,
 }) => {
   const callBackMethods = { candleClickedHandler, zoomEventHandler };
-  removeAllSeries(chartRef.current);
+  updateChartState();
   const options = getChartOptions(data, callBackMethods, { colors, height });
 
   return (

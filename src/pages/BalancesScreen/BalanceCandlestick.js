@@ -25,6 +25,14 @@ const BalanceCandlestick = ({ data, height }) => {
     [dispatch]
   );
 
+  const initExtremes = () => {
+    if (!chartRef.current) return;
+    const xAxis = chartRef.current.chart.xAxis[0];
+    xAxis.setExtremes();
+  };
+
+  const initExtremesOnDataChange = useCallback(initExtremes, [data]);
+
   if (!data) return null;
 
   return (
@@ -35,6 +43,7 @@ const BalanceCandlestick = ({ data, height }) => {
         candleClickedHandler={pointSelected}
         zoomEventHandler={zoomEventHandler}
         chartRef={chartRef}
+        updateChartState={initExtremesOnDataChange}
       />
     </WithBox>
   );

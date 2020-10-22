@@ -72,13 +72,11 @@ const customiseOptions = (options, data, styles) => {
   options.series = getSeries(data);
 };
 
-const hasRangeChanged = ({ min, max, oldMin, oldMax }) => {
-  return min !== oldMin || max !== oldMax;
-};
-
 const isEqualFullRange = ({ min, max, dataMin, dataMax }) => {
   return min === dataMin && max === dataMax;
 };
+
+let setExtremesTimeout;
 
 const setEvents = (options, callBackMethods) => {
   options.plotOptions.series.events.click = function (event) {
@@ -92,14 +90,16 @@ const setEvents = (options, callBackMethods) => {
   };
   options.xAxis.events.afterSetExtremes = function (event) {
     const axis = this;
-    if (!hasRangeChanged(axis)) return;
-    const isFullRange = isEqualFullRange(axis);
-    const range = {
-      trigger: event.trigger,
-      min: axis.min,
-      max: axis.max,
-      isFullRange,
-    };
-    callBackMethods.zoomEventHandler(range);
+    clearTimeout(setExtremesTimeout);
+    setExtremesTimeout = setTimeout(() => {
+      const isFullRange = isEqualFullRange(axis);
+      const range = {
+        trigger: event.trigger,
+        min: axis.min,
+        max: axis.max,
+        isFullRange,
+      };
+      callBackMethods.zoomEventHandler(range);
+    }, 300)
   };
 };

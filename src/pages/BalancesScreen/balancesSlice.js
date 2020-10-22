@@ -38,7 +38,6 @@ const balancesSlice = createSlice({
       state.zoomRange = null;
     },
     setZoomRange: (state, { payload }) => {
-      console.log(payload);
       state.zoomRange = payload.zoomRange;
     },
     onDestroy: (state) => {
