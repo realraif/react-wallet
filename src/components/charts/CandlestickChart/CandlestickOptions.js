@@ -9,6 +9,16 @@ const getGenericOptions = () => ({
   chart: {
     zoomType: "x",
     backgroundColor: "transparent",
+    events: {
+      load: function () {
+        this.navigator.handles.forEach((handle) => {
+          handle.attr({
+            "stroke-linejoin": "round",
+            "stroke-linecap": "round",
+          });
+        });
+      },
+    },
   },
   rangeSelector: {
     selected: 1,
@@ -21,17 +31,28 @@ const getGenericOptions = () => ({
       events: {},
     },
     candlestick: {
-      color: "#7cb5ec",
-      lineColor: "#2f7ed8",
-      upLineColor: "silver",
-      upColor: "silver",
+      color: "silver",
+      lineColor: "silver",
+      upColor: "#7cb5ec",
+      upLineColor: "#2f7ed8",
     },
   },
-
   navigator: {
+    series: { type: "spline" },
     xAxis: {
       labels: false,
     },
+    handles: {
+      height: 10,
+      width: 2,
+      lineWidth: 5,
+      linecap: 3,
+      backgroundColor: "rgb(1, 173, 238)",
+      borderColor: "rgb(1, 173, 238)",
+    },
+  },
+  scrollbar: {
+    enabled: false,
   },
   xAxis: {
     events: {},

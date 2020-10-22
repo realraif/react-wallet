@@ -30,7 +30,6 @@ const getGenericOptions = () => ({
     spacingLeft: -32,
     height: 400,
     backgroundColor: "transparent",
-
     events: {
       load: function () {
         this.navigator.handles.forEach((handle) => {
