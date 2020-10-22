@@ -3,17 +3,20 @@ import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 import getChartOptions from "./MultiSplineOptions";
 import "./MultiSplineChart.css";
+import { removeAllSeries } from "../chartUtils";
 
 const MultiSplineChart = ({
   data,
   serieClickedHandler,
-  colors,
-  height,
   chartRef,
+  height,
+  selectedColor,
+  selectedId,
 }) => {
-  const styles = { colors, height };
+  const styles = { selectedColor, height };
   const callBackMethods = { serieClickedHandler };
-  const options = getChartOptions(data, callBackMethods, styles);
+  removeAllSeries(chartRef.current);
+  const options = getChartOptions(data, selectedId, callBackMethods, styles);
 
   return (
     <div className="ChartContainer">
@@ -25,5 +28,6 @@ const MultiSplineChart = ({
     </div>
   );
 };
+
 
 export default React.memo(MultiSplineChart);

@@ -1,13 +1,15 @@
-export default (data, callBackMethods, styles) => {
+export default (data, selectedId, callBackMethods, styles) => {
   const options = getGenericOptions();
-  customiseOptions(options, data, styles);
+  customiseOptions(options, data, selectedId, styles);
   setEvents(options, callBackMethods);
   return options;
 };
 
+const defaultColor = "rgb(185 184 184 / 23%)";
+
 const getGenericOptions = () => ({
   chart: {
-    type: "areaspline",
+    type: "spline",
     backgroundColor: "transparent",
   },
   title: {
@@ -33,17 +35,18 @@ const getGenericOptions = () => ({
   },
   tooltip: {
     shared: true,
-    enabled: false,
+    enabled: true,
   },
   credits: {
     enabled: false,
   },
   plotOptions: {
     series: {
+      color: defaultColor,
       pointPlacement: "on",
-      lineWidth: 0,
       marker: {
         enabled: false,
+        symbol: "circle",
         states: {
           hover: { enabled: true },
         },
@@ -56,21 +59,28 @@ const getGenericOptions = () => ({
   series: [],
 });
 
-const customiseOptions = (options, data, styles) => {
+const customiseOptions = (options, data, selectedId, styles) => {
   options.series = data.map((serie, i) => {
-    const color = styles.colors[i];
-    return { ...serie, color };
+    let serieOptions = {};
+    if (serie.id === selectedId) {
+      serieOptions = {
+        color: styles.selectedColor,
+        type: "areaspline",
+        lineWidth: 0,
+      };
+    }
+    return { ...serie, ...serieOptions };
   });
+  debugger;
   options.chart.height = styles.height;
 };
 
 const setEvents = (options, callBackMethods) => {
   options.plotOptions.series.events.click = function (event) {
     const serie = {
-      x: event.point.x,
-      y: event.point.y,
-      label: event.point.category,
       name: event.point.series.name,
+      time: event.point.x,
+      value: event.point.y,
     };
     callBackMethods.serieClickedHandler(serie);
   };

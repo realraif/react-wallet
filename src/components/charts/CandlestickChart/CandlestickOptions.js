@@ -42,9 +42,6 @@ const getGenericOptions = () => ({
       },
     },
   ],
-  tooltip: {
-    split: true,
-  },
 });
 
 const groupingUnits = [

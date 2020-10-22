@@ -26,7 +26,11 @@ const SelectBalanceSection = ({ data }) => {
           />
         </Grid>
         <Grid item xs={12} md={6}>
-          <BalanceSplineChart height={height} data={data.balancesData} />
+          <BalanceSplineChart
+            height={height}
+            data={data.balancesData}
+            selectedId={data.selectedId}
+          />
         </Grid>
       </Grid>
     </WithBox>

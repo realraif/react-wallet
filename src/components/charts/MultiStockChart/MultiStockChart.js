@@ -3,6 +3,7 @@ import Highcharts from "highcharts/highstock";
 import HighchartsReact from "highcharts-react-official";
 import getChartOptions from "./MultiStockOptions";
 import "./MultiStockChart.css";
+import { removeAllSeries } from "../chartUtils";
 
 const MultiStockChart = ({
   data,
@@ -24,14 +25,6 @@ const MultiStockChart = ({
       />
     </div>
   );
-};
-
-const removeAllSeries = (chartComponent) => {
-  if (!chartComponent) return;
-  const series = chartComponent.chart.series;
-  while (series.length) {
-    series[0].remove();
-  }
 };
 
 export default React.memo(MultiStockChart);
