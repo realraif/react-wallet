@@ -6,11 +6,11 @@ import { Grid } from "@material-ui/core";
 import CategoryExpensesChart from "./CategoryExpensesChart";
 import SelectCreditCardSection from "./SelectCreditCardSection/SelectCreditCardSection";
 
-const getCategoriesTrendData = ({ selectedId, balancesData }) => {
-  if (!balancesData || !selectedId) return null;
+const getCategoriesTrendData = ({ selectedCardId, balancesData }) => {
+  if (!balancesData || !selectedCardId) return null;
   let selectedCard = { categories: [] };
   balancesData.some((balance) => {
-    selectedCard = balance.cc.find((credit) => credit.id === selectedId);
+    selectedCard = balance.cc.find((credit) => credit.id === selectedCardId);
     return !!selectedCard;
   });
   return selectedCard.categories;

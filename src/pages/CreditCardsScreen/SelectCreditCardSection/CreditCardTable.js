@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { cardSelected } from "../creditCardsSlice";
 import AccordionTable from "components/tables/AccordionTable/AccordionTable";
 
-const CreditCardTable = ({ data, height }) => {
+const CreditCardTable = ({ data, selectedCardId, height }) => {
   const dispatch = useDispatch();
   const columns = { parent: ["icon", "name"], child: ["id", "expenses"] };
   const cardSelectedHandler = (id) => {
@@ -18,6 +18,7 @@ const CreditCardTable = ({ data, height }) => {
       columns={columns}
       rows={data}
       accordionIndex="cc"
+      selectedId={selectedCardId}
       rowSelectedHandler={cardSelectedHandler}
       styles={{ height, rowColor: "pink", subRowColor: "white" }}
     />

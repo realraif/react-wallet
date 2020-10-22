@@ -25,6 +25,14 @@ const getChartsData = (payload) => {
   };
 };
 
+const selectFirstId = (balancesArray) => {
+  return balancesArray.length
+    ? balancesArray[0].cc.length
+      ? balancesArray[0].cc[0].id
+      : null
+    : null;
+};
+
 const initialState = { loading: true, categoryChangedCounter: 0 };
 
 const creditCardsSlice = createSlice({
@@ -32,7 +40,7 @@ const creditCardsSlice = createSlice({
   initialState,
   reducers: {
     cardSelected: (state, { payload }) => {
-      state.selectedId = payload.id;
+      state.selectedCardId = payload.id;
       state.selectedCategory = null;
     },
     categorySelected: (state, { payload }) => {
@@ -52,6 +60,8 @@ const creditCardsSlice = createSlice({
     [fetchCreditCards.fulfilled]: (state, { payload }) => {
       const chartsData = getChartsData(payload);
       Object.assign(state, chartsData);
+
+      state.selectedCardId = selectFirstId(state.creditCardsTable);
       state.loading = false;
       state.error = false;
       state.selectedCategory = null;

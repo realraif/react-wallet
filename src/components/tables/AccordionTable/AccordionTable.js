@@ -43,10 +43,11 @@ const AccordionTable = ({
   rows,
   accordionIndex,
   rowSelectedHandler,
+  selectedId,
   styles,
 }) => {
   const classes = useStyles(styles)();
-  const [selected, setSelected] = React.useState();
+  const [selected, setSelected] = React.useState(selectedId);
   const [checkedRows, setChecked] = React.useState([]);
   const [areRowsCollapsed, setAreRowsCollapsed] = React.useState({
     [rows[0].id]: true,

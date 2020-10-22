@@ -19,10 +19,17 @@ const SelectBalanceSection = ({ creditCardsData }) => {
     <WithBox>
       <Grid container spacing={0} alignItems="stretch">
         <Grid item xs={12} md={6}>
-          <CreditCardTable data={creditCardsData.creditCardsTable} height={height} />
+          <CreditCardTable
+            data={creditCardsData.creditCardsTable}
+            selectedCardId={creditCardsData.selectedCardId}
+            height={height}
+          />
         </Grid>
         <Grid item xs={12} md={6} style={{ textAlign: "right" }}>
-          <CreditCardSpiderChart data={creditCardsData.spiderChart} height={height} />
+          <CreditCardSpiderChart
+            data={creditCardsData.spiderChart}
+            height={height}
+          />
         </Grid>
       </Grid>
     </WithBox>
