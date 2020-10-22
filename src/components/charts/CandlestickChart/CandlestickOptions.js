@@ -27,8 +27,27 @@ const getGenericOptions = () => ({
       upColor: "silver",
     },
   },
+
+  navigator: {
+    xAxis: {
+      labels: false,
+    },
+  },
   xAxis: {
     events: {},
+    type: "datetime",
+    dateTimeLabelFormats: {
+      month: "%b",
+      day: "%b %e",
+    },
+    labels: {
+      align: "left",
+      x: 0,
+      y: 11,
+      style: {
+        fontFamily: "Roboto",
+      },
+    },
   },
   yAxis: [
     {
@@ -100,6 +119,6 @@ const setEvents = (options, callBackMethods) => {
         isFullRange,
       };
       callBackMethods.zoomEventHandler(range);
-    }, 300)
+    }, 0);
   };
 };

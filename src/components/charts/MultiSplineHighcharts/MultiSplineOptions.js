@@ -18,6 +18,19 @@ const getGenericOptions = () => ({
   legend: { enabled: false },
   xAxis: {
     crosshair: true,
+    type: "datetime",
+    dateTimeLabelFormats: {
+      month: "%b",
+      day: "%b %e",
+    },
+    labels: {
+      align: "left",
+      x: 0,
+      y: 11,
+      style: {
+        fontFamily: "Roboto",
+      },
+    },
   },
   yAxis: {
     crosshair: true,
