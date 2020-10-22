@@ -36,24 +36,10 @@ const getGenericOptions = () => ({
       title: {
         text: "OHLC",
       },
-      height: "60%",
       lineWidth: 2,
       resize: {
         enabled: true,
       },
-    },
-    {
-      labels: {
-        align: "right",
-        x: -3,
-      },
-      title: {
-        text: "Volume",
-      },
-      top: "65%",
-      height: "35%",
-      offset: 0,
-      lineWidth: 2,
     },
   ],
   tooltip: {
