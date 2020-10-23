@@ -27,8 +27,7 @@ const BalanceCandlestick = ({ data, height }) => {
 
   const initExtremes = () => {
     if (!chartRef.current) return;
-    const xAxis = chartRef.current.chart.xAxis[0];
-    xAxis.setExtremes();
+    chartRef.current.chart.xAxis[0].setExtremes();
   };
 
   const initExtremesOnDataChange = useCallback(initExtremes, [data]);

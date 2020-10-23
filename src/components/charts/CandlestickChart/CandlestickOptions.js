@@ -61,6 +61,7 @@ const getGenericOptions = () => ({
   },
   xAxis: {
     events: {},
+    ordinal: false,
     type: "datetime",
     dateTimeLabelFormats: {
       month: "%b",
