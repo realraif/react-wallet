@@ -12,12 +12,14 @@ export default () => {
 const getBalanceTrend = (trendLength) => {
   const trend = [];
   const startDate = getStartDate(trendLength);
+  let initialBalance = randomNumber(-100, 1300);
 
   const daysInterval = 1;
   let index = 0;
   while (index < trendLength) {
     const x = startDate.setDate(startDate.getDate() + daysInterval);
-    const y = randomNumber(-200, 1000);
+    const y = randomNumber(initialBalance - 100, initialBalance + 100);
+    initialBalance = y;
     trend.push({ x, y });
     index++;
   }

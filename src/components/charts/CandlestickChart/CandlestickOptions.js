@@ -38,7 +38,11 @@ const getGenericOptions = () => ({
     },
   },
   navigator: {
-    series: { type: "line" },
+    series: {
+      type: "area",
+      fillColor: "rgba(227, 230, 230, 0.9)",
+      lineWidth: 0,
+    },
     outlineWidth: 0,
     xAxis: {
       labels: false,

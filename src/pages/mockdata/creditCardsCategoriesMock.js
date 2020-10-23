@@ -19,10 +19,12 @@ const mockExpensesData = () => {
   const trendRange = 30;
   const now = new Date();
   const startDate = new Date(now.setDate(now.getDate() - trendRange));
+  let expensesAround = randomNumber(0, 500);
 
   return [...Array(trendRange).keys()].map((index) => {
     const time = startDate.setDate(startDate.getDate() + index);
-    const expenses = randomNumber(0, 500);
+    const expenses = randomNumber(expensesAround - 50, expensesAround + 50);
+    expensesAround = expenses;
     return [time, expenses];
   });
 };
