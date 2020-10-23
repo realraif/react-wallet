@@ -44,16 +44,13 @@ const getGenericOptions = () => ({
   navigator: {
     enabled: true,
     outlineWidth: 0,
-    height: 29,
     series: {
       id: "nav",
-      data: [],
       type: "area",
       fillColor: "rgba(227, 230, 230, 0.9)",
       lineWidth: 0,
     },
     margin: 10,
-    maskFill: "rgba(129, 197, 223, 0.34902)",
     adaptToUpdatedData: true,
     handles: {
       height: 10,
@@ -223,6 +220,7 @@ const getSerie = ({ name, data, color }) => ({
   data: data,
   color: color,
   lineWidth: 0,
+  showInNavigator: true,
 });
 
 const customiseOptions = (options, data, styles) => {

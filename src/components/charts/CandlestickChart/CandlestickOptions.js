@@ -38,7 +38,8 @@ const getGenericOptions = () => ({
     },
   },
   navigator: {
-    series: { type: "spline" },
+    series: { type: "line" },
+    outlineWidth: 0,
     xAxis: {
       labels: false,
     },
