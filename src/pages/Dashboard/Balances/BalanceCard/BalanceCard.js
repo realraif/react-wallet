@@ -70,7 +70,7 @@ const BalanceCard = (props) => {
           <SplineChart
             chartRef={chartRef}
             data={props.balanceTrend}
-            height="40"
+            height={40}
             color={props.color}
           />
         </div>

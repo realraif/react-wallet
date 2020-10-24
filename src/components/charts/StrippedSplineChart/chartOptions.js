@@ -13,7 +13,7 @@ const getGenericOptions = () => ({
   chart: {
     spacing: [0, 0, 0, 0],
     margin: [0, 40, 0, 0],
-    backgroundColor: 'rgba(0,0,0,0)',
+    backgroundColor: "rgba(0,0,0,0)",
   },
   credits: {
     enabled: false,
@@ -36,6 +36,7 @@ const getGenericOptions = () => ({
   },
   plotOptions: {
     series: {
+      softThreshold: false,
       lineWidth: 3,
       marker: {
         lineWidth: 3,
@@ -55,10 +56,20 @@ const getGenericOptions = () => ({
 
 const customiseOptions = (options, data, styles) => {
   options.series[0].data = confuigureSeries(data);
+  handleNegativeValues(data, options);
   setChartColors(options, styles.color);
-  if (styles.height) {
-    options.chart.height = styles.height;
-  }
+  options.chart.height = styles.height || 80;
+};
+
+const handleNegativeValues = (data, options) => {
+  const lowestValue = Math.min(...data);
+  if (lowestValue > 0) return;
+
+  const highestValue = Math.max(...data);
+  const tenPercent = (highestValue - lowestValue) / 10;
+  options.plotOptions.series.threshold = lowestValue - tenPercent;
+  options.plotOptions.series.softThreshold = true;
+  options.yAxis.startOnTick = false;
 };
 
 const confuigureSeries = (data) => {

@@ -27,7 +27,7 @@ export default [
     name: "Leumi",
     currency: "USD",
     status: 3.3,
-    data: [6, 5, 1, 1, 3, 2, 4, 6, 2, 2, 1, 4, 1],
+    data: [6, 5, 1, 1, 3, 2, 4, 6, 0, 2, 1, 4, 1],
     cc: [
       {
         id: "DE89-3704-0044-0532-0130-12",
