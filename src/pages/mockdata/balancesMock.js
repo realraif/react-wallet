@@ -4,7 +4,7 @@ export default [
     name: "BOA",
     currency: "USD",
     status: 3.3,
-    data: [10, 3, 4, 5, 2, 7, 2, 1, 4, -5, 3, 1, 6],
+    trend: [10, 3, 4, 5, 2, 7, 2, 1, 4, -5, 3, 1, 6],
     cc: [
       {
         id: "DE89-3704-0044-0532-0130-01",
@@ -27,7 +27,7 @@ export default [
     name: "Leumi",
     currency: "USD",
     status: 3.3,
-    data: [6, 5, 1, 1, 3, 2, 4, 6, 0, 2, 1, 4, 1],
+    trend: [6, 5, 1, 1, 3, 2, 4, 6, 0, 2, 1, 4, 1],
     cc: [
       {
         id: "DE89-3704-0044-0532-0130-12",
@@ -43,7 +43,7 @@ export default [
     name: "Disc",
     currency: "USD",
     status: 3.3,
-    data: [1, 2, 1, 4, 3, 1, 2, 1, 2, 1, 3, 4, 6],
+    trend: [1, 2, 1, 4, 3, 1, 2, 1, 2, 1, 3, 4, 6],
     cc: [
       {
         id: "DE89-3704-0044-0532-0130-13",

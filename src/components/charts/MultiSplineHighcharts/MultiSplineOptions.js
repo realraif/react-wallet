@@ -66,16 +66,16 @@ const getGenericOptions = () => ({
 });
 
 const customiseOptions = (options, data, selectedId, styles) => {
-  options.series = data.map((serie, i) => {
+  options.series = data.map(({ name, id, trend }, i) => {
     let serieOptions = {};
-    if (serie.id === selectedId) {
+    if (id === selectedId) {
       serieOptions = {
         color: styles.selectedColor,
         type: "areaspline",
         lineWidth: 0,
       };
     }
-    return { ...serie, ...serieOptions };
+    return { name, id, data: trend, ...serieOptions };
   });
   options.chart.height = styles.height;
 };

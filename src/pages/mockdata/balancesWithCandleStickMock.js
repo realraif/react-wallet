@@ -1,19 +1,19 @@
 import getBalancesData from "./balancWithTrendMock";
 
 export default () => {
-  return getBalancesData().map(({ id, name, status, data }) => {
+  return getBalancesData().map(({ id, name, status, trend }) => {
     return {
       id,
       name,
       status,
-      data,
-      candleStickData: mockCandleStickData(data),
+      trend,
+      candleStickData: mockCandleStickData(trend),
     };
   });
 };
 
-const mockCandleStickData = (data) => {
-  return data.map((item, index, elements) => {
+const mockCandleStickData = (trend) => {
+  return trend.map((item, index, elements) => {
     const time = item.x;
     const open = item.y;
     const close =

@@ -14,8 +14,8 @@ export const fetchBalances = createAsyncThunk(
 );
 
 const getChartsData = (balances) => {
-  const balancesTable = balances.data.map(({ name, status, data, id }) => {
-    return { name, status, id, balance: data[data.length - 1].y, icon: "icon" };
+  const balancesTable = balances.data.map(({ name, status, trend, id }) => {
+    return { name, status, id, balance: trend[trend.length - 1].y, icon: "icon" };
   });
   return {
     balancesData: balances.data,

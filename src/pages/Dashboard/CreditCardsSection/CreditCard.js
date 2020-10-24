@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import NumberFormat from "react-number-format";
 
 import { Typography } from "@material-ui/core";
@@ -36,13 +36,10 @@ const useStyles = makeStyles((theme) => ({
 const CreditCard = (props) => {
   const [elevation, setElevation] = useState(false);
   const classes = useStyles();
-  const chartRef = useRef();
 
   const selectCard = () => {
     setElevation((oldElevation) => !oldElevation);
   };
-
-  const expensesPercent = (props.expenses * 100) / props.creditLimit;
 
   return (
     <Card elevation={elevation ? 5 : 0}>

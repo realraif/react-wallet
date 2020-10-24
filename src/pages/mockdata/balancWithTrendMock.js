@@ -4,7 +4,7 @@ export default () => {
   return balancesData.map((balance) => {
     return {
       ...balance,
-      data: getBalanceTrend(100),
+      trend: getBalanceTrend(100),
     };
   });
 };

@@ -18,7 +18,7 @@ const Balances = ({ data }) => {
       {data.map((balance, index) => (
         <Grid item xs={12} md={6} lg={4} key={balance.id}>
           <BalanceCard
-            balanceTrend={balance.data}
+            balanceTrend={balance.trend}
             accountID={balance.id}
             currency={balance.currency}
             color={color}
