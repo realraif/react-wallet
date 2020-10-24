@@ -6,7 +6,6 @@ import { makeStyles } from "@material-ui/styles";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardContent from "@material-ui/core/CardContent";
-import RadialBarChart from "components/charts/RadialBarChart/RadialBarChart";
 
 const useStyles = makeStyles((theme) => ({
   chart: {},
@@ -26,10 +25,11 @@ const useStyles = makeStyles((theme) => ({
     textTransform: "capitalize",
   },
   cardNumber: {
-    backgroundColor: "#9191af",
+    backgroundColor: "#f9f9f9",
     marginLeft: -16,
     marginRight: -16,
-    padding: "0 16px",
+    marginBottom: 7,
+    padding: "4px 16px",
   },
 }));
 
@@ -62,19 +62,6 @@ const CreditCard = (props) => {
                 displayType={"text"}
               />
               <span className={classes.currency}>{props.currency}</span>
-            </div>
-            <div className={classes.activity}>
-              <RadialBarChart
-                chartRef={chartRef}
-                data={[
-                  {
-                    name: "Expenses",
-                    percent: expensesPercent,
-                    color: "#20657b",
-                  },
-                ]}
-                diameter={80}
-              />
             </div>
           </div>
         </CardContent>

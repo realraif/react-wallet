@@ -9,7 +9,7 @@ const tempTimeFrame = "this week";
 
 const Balances = ({ data }) => {
   const theme = useTheme();
-  const colors = theme.charts.colors;
+  const color = theme.charts.colors[2];
 
   if (!data) return null;
 
@@ -21,7 +21,7 @@ const Balances = ({ data }) => {
             balanceTrend={balance.data}
             accountID={balance.id}
             currency={balance.currency}
-            color={colors[index]}
+            color={color}
             timeFrameText={tempTimeFrame}
           />
         </Grid>

@@ -4,7 +4,7 @@ export default [
     name: "BOA",
     currency: "USD",
     status: 3.3,
-    data: [1, 3, 4, 5, 2, 7, 2, 1, 4, 3, -1, 3, 4],
+    data: [10, 3, 4, 5, 2, 7, 2, 1, 4, -5, 3, 1, 6],
     cc: [
       {
         id: "DE89-3704-0044-0532-0130-01",
@@ -18,7 +18,7 @@ export default [
         creditLimit: 500,
         expenses: 133,
         chargeDate: "23",
-        states: ["us-wi","us-wa" ],
+        states: ["us-wi", "us-wa"],
       },
     ],
   },
@@ -34,7 +34,7 @@ export default [
         creditLimit: 200,
         expenses: 200.0,
         chargeDate: "23",
-        states: ["us-in","us-wa","us-ok"],
+        states: ["us-in", "us-wa", "us-ok"],
       },
     ],
   },
