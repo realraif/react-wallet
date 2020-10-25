@@ -26,8 +26,14 @@ const getGenericOptions = () => ({
   tooltip: false,
   plotOptions: {
     series: {
+      slicedOffset: 10,
       allowPointSelect: true,
       cursor: "pointer",
+      states: {
+        select: {
+          borderWidth: 3,
+        },
+      },
       levels: [
         {
           level: 1,
@@ -50,7 +56,11 @@ const getGenericOptions = () => ({
         },
       },
       point: {
-        events: {},
+        events: {
+          unselect: function (e) {
+            this.update({ sliced: false });
+          },
+        },
       },
     },
   },
@@ -73,6 +83,9 @@ const customiseOptions = (options, data, styles) => {
 
 const setEvents = (options, callBackMethods) => {
   options.plotOptions.series.point.events.select = function (event) {
+    if (this.parent) {
+      this.update({ sliced: true });
+    }
     setTimeout(() => {
       const selectedSlices = this.series.chart.getSelectedPoints();
       const slicesData = selectedSlices.map((slice) => getSliceData(slice));
@@ -88,12 +101,14 @@ const getSliceData = ({ value, parent, name, id, series }) => {
       .map((p) => p.options.value || 0)
       .reduce((a, b) => a + b));
 
-  const percentage = ((value / chartTotal) * 100).toFixed(1);
-  const group = parent && series.chart.get(parent);
-  const total = group ? group.value : chartTotal;
-  let percentageFromParent = ((value / total) * 100).toFixed(1);
+  const percentageFromTotal = ((value / chartTotal) * 100).toFixed(1);
+  let percentageFromParent;
+  if (parent) {
+    const parentValue = series.chart.get(parent).value;
+    percentageFromParent = ((value / parentValue) * 100).toFixed(1);
+  }
 
-  return { value, parent, name, id, percentage, percentageFromParent };
+  return { value, parent, name, id, percentageFromTotal, percentageFromParent };
 };
 
 const getSeriesData = (data, colors) => {

@@ -5,9 +5,9 @@ export default () => {
   balancesData.forEach(({ id, name, cc }) => {
     const balance = { id, name };
     donutData.push(balance);
-    cc.forEach((credit) => {
+    cc.forEach((credit, index) => {
       const creditCard = {
-        name,
+        name: `${name}.${index}`,
         id: credit.id,
         value: credit.expenses,
         parent: id,
