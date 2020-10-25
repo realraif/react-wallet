@@ -31,7 +31,7 @@ const getGenericOptions = () => ({
       cursor: "pointer",
       states: {
         select: {
-          borderWidth: 3,
+          // color: "pink",
         },
       },
       levels: [
@@ -72,7 +72,7 @@ const getGenericOptions = () => ({
 
 const customiseOptions = (options, data, styles) => {
   const seriesData = getSeriesData(data, styles.colors);
-  options.series = [{ data: seriesData, allowDrillToNode: true }];
+  options.series = [{ data: seriesData, allowDrillToNode: false }];
 
   if (styles.borderColor) {
     options.plotOptions.series.borderColor = styles.borderColor;
@@ -81,14 +81,47 @@ const customiseOptions = (options, data, styles) => {
   options.chart.width = styles.diameter || defaultDiameter;
 };
 
+const filterChildren = (allSelectedPoints, { id, parentId }) => {
+  const hasChildren = !parentId;
+  if (hasChildren) {
+    unselectAllChildren(allSelectedPoints, id);
+  } else {
+    unselectParent(allSelectedPoints, parentId);
+  }
+};
+
+const unselectAllChildren = (selectedSlices, parentId) => {
+  selectedSlices.forEach((slice) => {
+    if (slice.parent === parentId) {
+      slice.select(false, true);
+      slice.update({ sliced: false });
+    }
+  });
+};
+
+const unselectParent = (allSelectedPoints, parentId) => {
+  allSelectedPoints.some((slice) => {
+    const isParent = slice.id === parentId;
+    if (isParent) {
+      slice.select(false, true);
+      slice.update({ sliced: false });
+    }
+    return isParent;
+  });
+};
+
 const setEvents = (options, callBackMethods) => {
   options.plotOptions.series.point.events.select = function (event) {
-    if (this.parent) {
-      this.update({ sliced: true });
-    }
+    filterChildren(this.series.chart.getSelectedPoints(), {
+      id: this.id,
+      parentId: this.parent,
+    });
     setTimeout(() => {
       const selectedSlices = this.series.chart.getSelectedPoints();
-      const slicesData = selectedSlices.map((slice) => getSliceData(slice));
+      const slicesData = selectedSlices.map((slice) => {
+        slice.update({ sliced: true });
+        return getSliceData(slice);
+      });
       callBackMethods.sliceClicked(slicesData);
     });
   };
