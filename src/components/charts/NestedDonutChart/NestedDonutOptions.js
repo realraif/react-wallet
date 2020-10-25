@@ -56,11 +56,7 @@ const getGenericOptions = () => ({
         },
       },
       point: {
-        events: {
-          unselect: function (e) {
-            this.update({ sliced: false });
-          },
-        },
+        events: {},
       },
     },
   },
@@ -111,6 +107,12 @@ const unselectParent = (allSelectedPoints, parentId) => {
 };
 
 const setEvents = (options, callBackMethods) => {
+  options.plotOptions.series.point.events.unselect = function (e) {
+    this.update({ sliced: false });
+    if (!this.series.chart.getSelectedPoints().length) {
+      callBackMethods.sliceClicked([]);
+    }
+  };
   options.plotOptions.series.point.events.select = function (event) {
     filterChildren(this.series.chart.getSelectedPoints(), {
       id: this.id,
