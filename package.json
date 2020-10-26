@@ -32,6 +32,7 @@
     "tinycolor2": "^1.4.1"
   },
   "scripts": {
+    "start-debug": "react-scripts --inspect start --no-cache --runInBand",
     "start": "react-scripts start --no-cache",
     "build": "react-scripts build",
     "test": "react-scripts test",
