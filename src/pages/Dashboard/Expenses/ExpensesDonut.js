@@ -16,7 +16,7 @@ const ExpensesDonut = ({ data, height }) => {
   const sliceClicked = useCallback((slices) => {
     setSelectedSlices(slices);
     dispatch(cardsSelected({ cards: slices }));
-  }, []);
+  }, [dispatch]);
 
   if (!data) return null;
 

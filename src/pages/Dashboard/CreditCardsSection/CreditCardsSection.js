@@ -4,7 +4,9 @@ import { Grid } from "@material-ui/core";
 import withSection from "HOC/withSection";
 import CreditCard from "./CreditCard";
 
-const CreditCardsSection = ({ data }) => {
+const CreditCardsSection = ({ data, selectedCards }) => {
+  const isSelected = selectedCards.map((card) => card.id);
+
   if (!data) return null;
 
   return (
@@ -18,6 +20,9 @@ const CreditCardsSection = ({ data }) => {
               bank={balance.id}
               creditLimit={card.creditLimit}
               expenses={card.expenses}
+              isSelected={
+                isSelected.includes(card.id) || isSelected.includes(balance.id)
+              }
             />
           </Grid>
         ));

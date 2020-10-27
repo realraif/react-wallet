@@ -15,16 +15,22 @@ const Dashboard = ({ timeFrame, ...props }) => {
     dispatch(fetchDashboard());
     return () => {
       dispatch(onDestroy());
-    }
+    };
   }, [dispatch]);
 
   return (
     <Grid container direction="column" alignItems="stretch">
       <Grid item>
-        <Balances data={dashboard.balances} />
+        <Balances
+          data={dashboard.balances}
+          selectedCards={dashboard.selectedCards}
+        />
       </Grid>
       <Grid item>
-        <CreditCards data={dashboard.balances} />
+        <CreditCards
+          data={dashboard.balances}
+          selectedCards={dashboard.selectedCards}
+        />
       </Grid>
       <Grid item>
         <ExpensesSection dashboardData={dashboard} />

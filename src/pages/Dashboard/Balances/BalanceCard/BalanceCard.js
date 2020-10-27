@@ -33,22 +33,29 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const BalanceCard = (props) => {
-  const [elevation, setElevation] = useState(false);
+const BalanceCard = ({
+  balanceTrend,
+  accountID,
+  currency,
+  isSelected,
+  color,
+  timeFrameText,
+}) => {
+  const [elevation, setElevation] = useState(isSelected);
   const classes = useStyles();
   const chartRef = useRef();
-  const currentBalance = props.balanceTrend[props.balanceTrend.length - 1];
-  const status = getPercentDiff(props.balanceTrend[0], currentBalance);
+  const currentBalance = balanceTrend[balanceTrend.length - 1];
+  const status = getPercentDiff(balanceTrend[0], currentBalance);
 
   const selectCard = () => {
     setElevation((oldElevation) => !oldElevation);
   };
 
   return (
-    <Card elevation={elevation ? 5 : 0}>
+    <Card elevation={isSelected ? 5 : 0}>
       <CardActionArea onClick={selectCard}>
         <CardContent>
-          <Typography variant="subtitle1">{props.accountID}</Typography>
+          <Typography variant="subtitle1">{accountID}</Typography>
 
           <div className={classes.balance}>
             <div>
@@ -60,18 +67,18 @@ const BalanceCard = (props) => {
                 value={currentBalance}
                 displayType={"text"}
               />
-              <span className={classes.currency}>{props.currency}</span>
+              <span className={classes.currency}>{currency}</span>
             </div>
-            <Status status={status} timeFrameText={props.timeFrameText} />
+            <Status status={status} timeFrameText={timeFrameText} />
           </div>
         </CardContent>
 
         <div className={classes.chart}>
           <SplineChart
             chartRef={chartRef}
-            data={props.balanceTrend}
+            data={balanceTrend}
             height={40}
-            color={props.color}
+            color={color}
           />
         </div>
       </CardActionArea>

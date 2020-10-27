@@ -129,23 +129,24 @@ const setEvents = (options, callBackMethods) => {
   };
 };
 
-const getSliceData = ({ value, parent, name, id, info, series }) => {
+const getSliceData = ({ parent, value, name, id, info, series }) => {
   const chartTotal =
     series.__myTotal ||
     (series.__myTotal = series.data
       .map((p) => p.options.value || 0)
       .reduce((a, b) => a + b));
+  const parentId = parent;
 
   const percentageFromTotal = ((value / chartTotal) * 100).toFixed(1);
   let percentageFromParent;
-  if (parent) {
-    const parentValue = series.chart.get(parent).value;
+  if (parentId) {
+    const parentValue = series.chart.get(parentId).value;
     percentageFromParent = ((value / parentValue) * 100).toFixed(1);
   }
 
   return {
     value,
-    parent,
+    parentId,
     name,
     id,
     info,

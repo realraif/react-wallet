@@ -7,10 +7,11 @@ import withSection from "HOC/withSection";
 
 const tempTimeFrame = "this week";
 
-const Balances = ({ data }) => {
+const Balances = ({ data, selectedCards }) => {
   const theme = useTheme();
   const color = theme.charts.colors[2];
-
+  const isSelected = selectedCards.map((card) => card.parentId || card.id);
+  
   if (!data) return null;
 
   return (
@@ -21,6 +22,7 @@ const Balances = ({ data }) => {
             balanceTrend={balance.trend}
             accountID={balance.id}
             currency={balance.currency}
+            isSelected={isSelected.includes(balance.id)}
             color={color}
             timeFrameText={tempTimeFrame}
           />

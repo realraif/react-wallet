@@ -41,7 +41,6 @@ const getGenericOptions = () => ({
   series: [
     {
       name: "USA",
-      mapData: mapData,
       borderColor: "#dcdcdc",
       borderWidth: 0.5,
       showInLegend: false,

@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const CreditCard = (props) => {
+const CreditCard = ({cardID,expenses, currency, isSelected}) => {
   const [elevation, setElevation] = useState(false);
   const classes = useStyles();
 
@@ -42,11 +42,11 @@ const CreditCard = (props) => {
   };
 
   return (
-    <Card elevation={elevation ? 5 : 0}>
+    <Card elevation={isSelected ? 5 : 0}>
       <CardActionArea onClick={selectCard}>
         <CardContent>
           <Typography variant="subtitle2" className={classes.cardNumber}>
-            {props.cardID}
+            {cardID}
           </Typography>
           <div className={classes.activity}>
             <div>
@@ -55,10 +55,10 @@ const CreditCard = (props) => {
                 fixedDecimalScale={true}
                 decimalScale={2}
                 className={classes.expensesText}
-                value={props.expenses}
+                value={expenses}
                 displayType={"text"}
               />
-              <span className={classes.currency}>{props.currency}</span>
+              <span className={classes.currency}>{currency}</span>
             </div>
           </div>
         </CardContent>

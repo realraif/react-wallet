@@ -20,7 +20,7 @@ const getChartsData = (payload) => ({
   mapChart: payload[3].data,
 });
 
-const initialState = { loading: true };
+const initialState = { selectedCards: [], loading: true };
 
 const dashboardSlice = createSlice({
   name: "dashboard",
