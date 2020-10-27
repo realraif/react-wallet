@@ -129,7 +129,7 @@ const setEvents = (options, callBackMethods) => {
   };
 };
 
-const getSliceData = ({ value, parent, name, id, series }) => {
+const getSliceData = ({ value, parent, name, id, info, series }) => {
   const chartTotal =
     series.__myTotal ||
     (series.__myTotal = series.data
@@ -143,7 +143,15 @@ const getSliceData = ({ value, parent, name, id, series }) => {
     percentageFromParent = ((value / parentValue) * 100).toFixed(1);
   }
 
-  return { value, parent, name, id, percentageFromTotal, percentageFromParent };
+  return {
+    value,
+    parent,
+    name,
+    id,
+    info,
+    percentageFromTotal,
+    percentageFromParent,
+  };
 };
 
 const getSeriesData = (data, colors) => {

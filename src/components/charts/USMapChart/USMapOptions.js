@@ -18,19 +18,17 @@ const getGenericOptions = () => ({
     series: {
       events: {},
       cursor: "pointer",
-      allowPointSelect: true,
       dataLabels: {
         enabled: false,
       },
     },
   },
-  tooltip: false,
-  colorAxis: [
-    {
-      minColor: "#000fb0",
-      maxColor: "#e3e5ff",
-    },
-  ],
+  tooltip: true,
+  // colorAxis: {
+  //   maxColor: "#000fb0",
+  //   minColor: "#e3e5ff",
+  // },
+
   credits: {
     enabled: false,
   },
@@ -44,15 +42,15 @@ const getGenericOptions = () => ({
     {
       name: "USA",
       mapData: mapData,
-      borderColor: "#FFC3BA",
+      borderColor: "#dcdcdc",
       borderWidth: 0.5,
-      nullColor: "#FFEAE4",
       showInLegend: false,
       allowPointSelect: true,
       states: {
+        hover: { color: null, brightness: 0 },
         select: {
           borderColor: "#B5ACFF",
-          color: "#7A77FF",
+          color: "#B5ACFF",
         },
       },
     },

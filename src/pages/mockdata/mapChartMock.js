@@ -4,11 +4,12 @@ export default () => {
   const statesExpenses = getStatesExpenses(balancesData);
   const mapData = [];
 
-  for (const [stateCode, { value, data }] of Object.entries(statesExpenses)) {
+  for (const [stateCode, { value, info }] of Object.entries(statesExpenses)) {
     mapData.push({
       "hc-key": stateCode,
+      id: stateCode,
       value,
-      data,
+      info,
     });
   }
 
@@ -23,10 +24,10 @@ const getStatesExpenses = (balances) => {
       const cardInfo = { id, bankName: name, bankId: id };
       states.forEach((stateCode) => {
         if (!statesExpenses[stateCode]) {
-          statesExpenses[stateCode] = { value: 0, data: [] };
+          statesExpenses[stateCode] = { value: 0, info: [] };
         }
         statesExpenses[stateCode].value += expenses;
-        statesExpenses[stateCode].data.push(cardInfo);
+        statesExpenses[stateCode].info.push(cardInfo);
       });
     });
   });

@@ -15,7 +15,11 @@ const ExpensesSection = ({ dashboardData }) => {
   return (
     <Grid container justify="space-between" spacing={4} alignItems="center">
       <Grid item xs={12} lg={6}>
-        <ExpensesMap data={dashboardData.mapChart} height={height} />
+        <ExpensesMap
+          mapData={dashboardData.mapChart}
+          selectedCards={dashboardData.selectedCards}
+          height={height}
+        />
       </Grid>
       <Grid item xs={12} lg={6}>
         <Donut data={dashboardData.donutChart} height={height} />

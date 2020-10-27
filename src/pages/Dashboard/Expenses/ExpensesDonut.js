@@ -1,10 +1,13 @@
 import React, { useState, useCallback } from "react";
+import { useDispatch } from "react-redux";
 import { useTheme } from "@material-ui/styles";
 import WithBox from "HOC/withBox";
 
 import DonutChart from "components/charts/NestedDonutChart/NestedDonutChart";
+import { cardsSelected } from "../dashboardSlice";
 
 const ExpensesDonut = ({ data, height }) => {
+  const dispatch = useDispatch();
   const [selectedSlices, setSelectedSlices] = useState([]);
   const theme = useTheme();
   const colors = theme.charts.colors;
@@ -12,6 +15,7 @@ const ExpensesDonut = ({ data, height }) => {
 
   const sliceClicked = useCallback((slices) => {
     setSelectedSlices(slices);
+    dispatch(cardsSelected({ cards: slices }));
   }, []);
 
   if (!data) return null;
