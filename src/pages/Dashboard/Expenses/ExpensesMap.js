@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useRef } from "react";
+import React, { useState, useCallback, useRef, useEffect } from "react";
 import WithBox from "HOC/withBox";
 
 import USMapChart from "components/charts/USMapChart/USMapChart";
@@ -22,10 +22,11 @@ const ExpensesMap = ({ mapData, selectedCards, height }) => {
     setSelectedStates(usState.name);
   }, []);
 
-  const updateMapState = useCallback(() => {
-    if (!chartRef.current || !selectedCards) return;
+  useEffect(() => {
+    if (!chartRef.current) return;
 
     const statesCodes = getStatesCodes(selectedCards);
+    chartRef.current.chart.series[0].update({color: null});
     statesCodes.forEach((code) => {
       updateStateColor(chartRef.current.chart, code);
     });
@@ -38,7 +39,6 @@ const ExpensesMap = ({ mapData, selectedCards, height }) => {
       <USMapChart
         data={mapData}
         chartRef={chartRef}
-        updateMapState={updateMapState}
         mapClicked={stateSelected}
         height={height * 0.9}
       />
