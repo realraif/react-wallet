@@ -1,19 +1,7 @@
 import mapData from "@highcharts/map-collection/countries/us/us-all.geo.json";
 import React from "react";
 import ReactDOM from "react-dom";
-
-const Tooltip = ({ stateName, totalExpenses, cards }) => (
-  <div>
-    <div style={{fontSize: 16}}>
-      {stateName}: ${totalExpenses}
-    </div>
-    {cards.map(({ bankName, id, expenses }) => (
-      <div>
-        {bankName}-{id.slice(-2)}: ${expenses}
-      </div>
-    ))}
-  </div>
-);
+import Tooltip from "./USMapTooltip";
 
 export default (data, callBackMethods, styles) => {
   const options = getGenericOptions();

@@ -42,7 +42,6 @@ const ExpensesMap = ({ mapData, selectedCards, height }) => {
         mapClicked={stateSelected}
         height={height * 0.9}
       />
-      <div>{selectedState}</div>
     </WithBox>
   );
 };
