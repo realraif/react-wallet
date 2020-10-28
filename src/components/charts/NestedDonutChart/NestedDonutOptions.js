@@ -1,6 +1,7 @@
 import { loopIndexValue } from "utils";
 
 const defaultDiameter = 200;
+let isDonutClicked = false;
 
 export default (data, callBackMethods, styles) => {
   const options = getGenericOptions();
@@ -113,20 +114,32 @@ const setEvents = (options, callBackMethods) => {
       callBackMethods.sliceClicked([]);
     }
   };
+
+  options.plotOptions.series.point.events.click = function (event) {
+    isDonutClicked = true
+  };
+
   options.plotOptions.series.point.events.select = function (event) {
     filterChildren(this.series.chart.getSelectedPoints(), {
       id: this.id,
       parentId: this.parent,
     });
+    if (!isDonutClicked) return;
     setTimeout(() => {
-      const selectedSlices = this.series.chart.getSelectedPoints();
-      const slicesData = selectedSlices.map((slice) => {
-        slice.update({ sliced: true });
-        return getSliceData(slice);
-      });
+      const slicesData = getSelectedSlices(this.series.chart);
       callBackMethods.sliceClicked(slicesData);
+      isDonutClicked = false;
     });
   };
+};
+
+const getSelectedSlices = (chart) => {
+  const selectedSlices = chart.getSelectedPoints();
+  const slicesData = selectedSlices.map((slice) => {
+    slice.update({ sliced: true });
+    return getSliceData(slice);
+  });
+  return slicesData;
 };
 
 const getSliceData = ({ parent, value, name, id, info, series }) => {

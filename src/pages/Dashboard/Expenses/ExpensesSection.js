@@ -22,7 +22,11 @@ const ExpensesSection = ({ dashboardData }) => {
         />
       </Grid>
       <Grid item xs={12} lg={6}>
-        <Donut data={dashboardData.donutChart} height={height} />
+        <Donut
+          data={dashboardData.donutChart}
+          selectedCards={dashboardData.selectedCards}
+          height={height}
+        />
       </Grid>
 
       <Grid item xs={12}>
