@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import NumberFormat from "react-number-format";
 
 import { Typography } from "@material-ui/core";
@@ -37,12 +37,16 @@ const CreditCard = ({cardID,expenses, currency, isSelected}) => {
   const [elevation, setElevation] = useState(false);
   const classes = useStyles();
 
+  useEffect(() => {
+    setElevation(isSelected);
+  }, [isSelected])
+
   const selectCard = () => {
     setElevation((oldElevation) => !oldElevation);
   };
 
   return (
-    <Card elevation={isSelected ? 5 : 0}>
+    <Card elevation={elevation ? 5 : 0}>
       <CardActionArea onClick={selectCard}>
         <CardContent>
           <Typography variant="subtitle2" className={classes.cardNumber}>
