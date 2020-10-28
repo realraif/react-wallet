@@ -1,15 +1,17 @@
 import balancesData from "./balancesMock";
 
 export default () => {
-  const statesExpenses = getStatesExpenses(balancesData);
+  const statesData = getStatesExpenses(balancesData);
   const mapData = [];
 
-  for (const [stateCode, { value, info }] of Object.entries(statesExpenses)) {
+  for (const [stateCode, { totalExpenses, creditCards }] of Object.entries(
+    statesData
+  )) {
     mapData.push({
       "hc-key": stateCode,
       id: stateCode,
-      value,
-      info,
+      value: totalExpenses,
+      info: creditCards,
     });
   }
 
@@ -17,20 +19,30 @@ export default () => {
 };
 
 const getStatesExpenses = (balances) => {
-  const statesExpenses = {};
+  const statesData = {};
 
-  balances.forEach(({ cc, name, id }) => {
-    cc.forEach(({ states, id, expenses }) => {
-      const cardInfo = { id, bankName: name, bankId: id };
-      states.forEach((stateCode) => {
-        if (!statesExpenses[stateCode]) {
-          statesExpenses[stateCode] = { value: 0, info: [] };
-        }
-        statesExpenses[stateCode].value += expenses;
-        statesExpenses[stateCode].info.push(cardInfo);
+  balances.forEach((balance) => {
+    balance.cc.forEach(({ states, id }) => {
+      const cardInfo = {
+        id,
+        bankName: balance.name,
+        bankId: balance.id,
+        expenses: 0,
+      };
+
+      states.forEach(({ code, expenses }) => {
+        statesData[code] = getStateData(statesData[code], expenses, cardInfo);
+        cardInfo.expenses += expenses;
       });
     });
   });
 
-  return statesExpenses;
+  return statesData;
+};
+
+const getStateData = (state, expenses, cardInfo) => {
+  let stateData = state || { totalExpenses: 0, creditCards: [] };
+  stateData.totalExpenses += expenses;
+  stateData.creditCards.push(cardInfo);
+  return stateData;
 };

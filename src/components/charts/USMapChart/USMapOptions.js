@@ -1,4 +1,19 @@
 import mapData from "@highcharts/map-collection/countries/us/us-all.geo.json";
+import React from "react";
+import ReactDOM from "react-dom";
+
+const Tooltip = ({ stateName, totalExpenses, cards }) => (
+  <div>
+    <div style={{fontSize: 16}}>
+      {stateName}: ${totalExpenses}
+    </div>
+    {cards.map(({ bankName, id, expenses }) => (
+      <div>
+        {bankName}-{id.slice(-2)}: ${expenses}
+      </div>
+    ))}
+  </div>
+);
 
 export default (data, callBackMethods, styles) => {
   const options = getGenericOptions();
@@ -23,7 +38,24 @@ const getGenericOptions = () => ({
       },
     },
   },
-  tooltip: true,
+  tooltip: {
+    enabled: true,
+    useHTML: true,
+    formatter: function (e) {
+      const expense = this.point.value;
+
+      const container = document.createElement("div");
+      ReactDOM.render(
+        <Tooltip
+          stateName={this.point.name}
+          totalExpenses={expense}
+          cards={this.point.info}
+        />,
+        container
+      );
+      return container.innerHTML;
+    },
+  },
   // colorAxis: {
   //   maxColor: "#000fb0",
   //   minColor: "#e3e5ff",
@@ -44,7 +76,7 @@ const getGenericOptions = () => ({
       borderColor: "#dcdcdc",
       borderWidth: 0.5,
       showInLegend: false,
-      allowPointSelect: true,
+      allowPointSelect: false,
       states: {
         hover: { color: null, brightness: 0 },
         select: {
@@ -63,8 +95,8 @@ const customiseOptions = (options, data, styles) => {
 
 const setEvents = (options, callBackMethods) => {
   options.plotOptions.series.events.click = function (event) {
-    const { value, name, data } = event.point;
-    const state = { value, name, data, code: event.point["hc-key"] };
+    const { value, name, info } = event.point;
+    const state = { value, name, info, code: event.point["hc-key"] };
     setTimeout(() => {
       callBackMethods.mapClicked(state);
     });

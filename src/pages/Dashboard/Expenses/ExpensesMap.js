@@ -18,16 +18,16 @@ const ExpensesMap = ({ mapData, selectedCards, height }) => {
   const [selectedState, setSelectedStates] = useState();
   const chartRef = useRef();
 
-  const stateSelected = useCallback((usState) => {
-    setSelectedStates(usState.name);
+  const stateSelected = useCallback((selectedState) => {
+    setSelectedStates(selectedState.name);
   }, []);
 
   useEffect(() => {
     if (!chartRef.current) return;
 
     const statesCodes = getStatesCodes(selectedCards);
-    chartRef.current.chart.series[0].update({color: null});
-    statesCodes.forEach((code) => {
+    chartRef.current.chart.series[0].update({ color: null });
+    statesCodes.forEach(({ code }) => {
       updateStateColor(chartRef.current.chart, code);
     });
   }, [selectedCards]);

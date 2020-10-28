@@ -9,16 +9,22 @@ export default [
       {
         id: "DE89-3704-0044-0532-0130-01",
         creditLimit: 600,
-        expenses: 23,
+        expenses: 230,
         chargeDate: "23",
-        states: ["us-wa", "us-or", "us-ne", "us-tn", "us-mn"],
+        states: [
+          { code: "us-wa", expenses: 50 },
+          { code: "us-or", expenses: 100 },
+        ],
       },
       {
         id: "DE89-3704-0044-0532-0130-02",
         creditLimit: 500,
-        expenses: 133,
+        expenses: 830,
         chargeDate: "23",
-        states: ["us-wi", "us-wa"],
+        states: [
+          { code: "us-wi", expenses: 150 },
+          { code: "us-wa", expenses: 510 },
+        ],
       },
     ],
   },
@@ -32,9 +38,13 @@ export default [
       {
         id: "DE89-3704-0044-0532-0130-12",
         creditLimit: 200,
-        expenses: 200.0,
+        expenses: 2000.0,
         chargeDate: "23",
-        states: ["us-in", "us-wa", "us-ok"],
+        states: [
+          { code: "us-in", expenses: 10 },
+          { code: "us-wa", expenses: 100 },
+          { code: "us-ok", expenses: 50 },
+        ],
       },
     ],
   },
@@ -48,9 +58,12 @@ export default [
       {
         id: "DE89-3704-0044-0532-0130-13",
         creditLimit: 5000,
-        expenses: 145.0,
+        expenses: 1045.0,
         chargeDate: "23",
-        states: ["us-oh", "us-sc"],
+        states: [
+          { code: "us-sc", expenses: 70 },
+          { code: "us-oh", expenses: 150 },
+        ],
       },
     ],
   },
