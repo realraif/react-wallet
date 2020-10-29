@@ -15,12 +15,7 @@ const updateStateColor = (chart, stateCode) => {
 };
 
 const ExpensesMap = ({ mapData, selectedCards, height }) => {
-  const [selectedState, setSelectedStates] = useState();
   const chartRef = useRef();
-
-  const stateSelected = useCallback((selectedState) => {
-    setSelectedStates(selectedState.name);
-  }, []);
 
   useEffect(() => {
     if (!chartRef.current) return;
@@ -39,7 +34,6 @@ const ExpensesMap = ({ mapData, selectedCards, height }) => {
       <USMapChart
         data={mapData}
         chartRef={chartRef}
-        mapClicked={stateSelected}
         height={height * 0.9}
       />
     </WithBox>

@@ -66,7 +66,7 @@ const getGenericOptions = () => ({
       showInLegend: false,
       allowPointSelect: false,
       states: {
-        hover: { color: null, brightness: 0 },
+        hover: { color: "blue", brightness: 0 },
         select: {
           borderColor: "#B5ACFF",
           color: "#B5ACFF",
@@ -83,6 +83,8 @@ const customiseOptions = (options, data, styles) => {
 
 const setEvents = (options, callBackMethods) => {
   options.plotOptions.series.events.click = function (event) {
+    if (!callBackMethods.mapClicked) return;
+
     const { value, name, info } = event.point;
     const state = { value, name, info, code: event.point["hc-key"] };
     setTimeout(() => {

@@ -1,6 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import dashboardAgent from "./dashboardAgent";
 
+const initialState = { selectedCards: [], loading: true };
+
 export const fetchDashboard = createAsyncThunk(
   "dashboard/fetchDashboard",
   async (timeFrame) => {
@@ -20,7 +22,17 @@ const getChartsData = (payload) => ({
   mapChart: payload[3].data,
 });
 
-const initialState = { selectedCards: [], loading: true };
+const getCreditCardSiblings = (parentId, balances, selectedCards) => {
+  const isParentSelected = selectedCards.some(
+    (selectedCard) => selectedCard.id === parentId
+  );
+  if (isParentSelected) {
+    const parentBalance = balances.find((balance) => balance.id === parentId);
+    return parentBalance.cc;
+  } else {
+    return [];
+  }
+};
 
 const dashboardSlice = createSlice({
   name: "dashboard",
@@ -35,24 +47,21 @@ const dashboardSlice = createSlice({
     removeFromSelectedCards: (state, { payload }) => {
       const isParent = !payload.card.parentId;
       const childIds = isParent ? payload.card.cc.map((card) => card.id) : [];
-      const isParentSelected =
-        !isParent &&
-        state.selectedCards.some(
-          (selectedCard) => selectedCard.id === payload.card.parentId
-        );
-      const siblings = isParentSelected
-        ? state.balances.find((balance) => balance.id === payload.card.parentId)
-            .cc
-        : [];
-      siblings.forEach((card) => {
-        card.parentId = payload.card.parentId;
-      });
 
-      state.selectedCards = [...state.selectedCards, ...siblings];
+      if (!isParent) {
+        const siblings = getCreditCardSiblings(
+          payload.card.parentId,
+          state.balances,
+          state.selectedCards
+        );
+        Object.assign(state.selectedCards, siblings);
+      }
+
       state.selectedCards = state.selectedCards.filter((selectedCard) => {
         const isUnselectedCard = payload.card.id === selectedCard.id;
         const isParent = payload.card.parentId === selectedCard.id;
         const isChild = childIds.includes(selectedCard.id);
+
         return !isUnselectedCard && !isParent && !isChild;
       });
     },

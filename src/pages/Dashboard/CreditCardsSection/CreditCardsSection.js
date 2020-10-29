@@ -24,7 +24,7 @@ const CreditCardsSection = ({ data, selectedCards, toggleSelection }) => {
                 isSelected.includes(card.id) || isSelected.includes(balance.id)
               }
               toggleSelection={(isSelected) => {
-                toggleSelection(isSelected, { ...card, parentId: balance.id });
+                toggleSelection(isSelected, { ...card });
               }}
             />
           </Grid>
