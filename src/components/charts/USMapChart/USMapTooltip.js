@@ -1,12 +1,12 @@
 import React from "react";
 
-const Tooltip = ({ stateName, totalExpenses, cards }) => {
+const Tooltip = ({ stateName, totalExpenses, creditCards }) => {
   return (
     <div>
       <div style={{ fontSize: 16 }}>
         {stateName}: ${totalExpenses}
       </div>
-      {cards.map(({ bankName, id, expenses }) => (
+      {creditCards.map(({ bankName, id, expenses }) => (
         <div key={id}>
           {bankName}-{id.slice(-2)}: ${expenses}
         </div>

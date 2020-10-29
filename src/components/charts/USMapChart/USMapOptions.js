@@ -37,7 +37,7 @@ const getGenericOptions = () => ({
         <Tooltip
           stateName={this.point.name}
           totalExpenses={expense}
-          cards={this.point.info}
+          creditCards={this.point.info}
         />,
         container
       );

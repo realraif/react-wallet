@@ -23,16 +23,14 @@ const getStatesExpenses = (balances) => {
 
   balances.forEach((balance) => {
     balance.cc.forEach(({ states, id }) => {
-      const cardInfo = {
-        id,
-        bankName: balance.name,
-        bankId: balance.id,
-        expenses: 0,
-      };
-
       states.forEach(({ code, expenses }) => {
-        statesData[code] = getStateData(statesData[code], expenses, cardInfo);
-        cardInfo.expenses += expenses;
+        const creditInfo = {
+          id,
+          bankName: balance.name,
+          bankId: balance.id,
+          expenses,
+        };
+        statesData[code] = getStateData(statesData[code], expenses, creditInfo);
       });
     });
   });
@@ -40,9 +38,9 @@ const getStatesExpenses = (balances) => {
   return statesData;
 };
 
-const getStateData = (state, expenses, cardInfo) => {
+const getStateData = (state, expenses, creditInfo) => {
   let stateData = state || { totalExpenses: 0, creditCards: [] };
   stateData.totalExpenses += expenses;
-  stateData.creditCards.push(cardInfo);
+  stateData.creditCards.push(creditInfo);
   return stateData;
 };
