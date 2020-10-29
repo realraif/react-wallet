@@ -38,7 +38,7 @@ const dashboardSlice = createSlice({
   name: "dashboard",
   initialState,
   reducers: {
-    cardsSelected: (state, { payload }) => {
+    setSelectedCards: (state, { payload }) => {
       state.selectedCards = payload.cards;
     },
     addToSelectedCards: (state, { payload }) => {
@@ -88,7 +88,7 @@ const dashboardSlice = createSlice({
 });
 
 export const {
-  cardsSelected,
+  setSelectedCards,
   addToSelectedCards,
   removeFromSelectedCards,
   onDestroy,

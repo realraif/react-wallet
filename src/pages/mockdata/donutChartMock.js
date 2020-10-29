@@ -14,7 +14,7 @@ export default () => {
     donutData.push(balance);
     cc.forEach((credit, index) => {
       const creditCard = {
-        name: `${name}.${index}`,
+        name: `${name}-${credit.id.slice(-2)}`,
         id: credit.id,
         value: credit.expenses,
         parent: id,

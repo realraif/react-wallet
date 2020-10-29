@@ -4,36 +4,43 @@ import { useTheme } from "@material-ui/styles";
 import WithBox from "HOC/withBox";
 
 import DonutChart from "components/charts/NestedDonutChart/NestedDonutChart";
-import { cardsSelected } from "../dashboardSlice";
+import { setSelectedCards } from "../dashboardSlice";
 
 const ExpensesDonut = ({ data, selectedCards, height }) => {
+  const [slicesInfo, setSlicesInfo] = useState([]);
   const dispatch = useDispatch();
-  const [selectedSlices, setSelectedSlices] = useState([]);
   const chartRef = useRef();
   const theme = useTheme();
   const colors = theme.charts.colors;
   const borderColor = theme.charts.pieBorder;
 
   const sliceClicked = useCallback(
-    (slices) => {
-      setSelectedSlices(slices);
-      dispatch(cardsSelected({ cards: slices }));
+    (slices, isDonutClicked) => {
+      setSlicesInfo(slices);
+      if (isDonutClicked) {
+        dispatch(setSelectedCards({ cards: slices }));
+      }
     },
     [dispatch]
   );
 
   useEffect(() => {
     if (!chartRef.current) return;
+
     clearUnselectSlices(chartRef.current.chart, selectedCards);
     selectSlices(chartRef.current.chart, selectedCards);
+
+    if (!selectedCards.length) {
+      setSlicesInfo([]);
+    }
   }, [selectedCards]);
 
   if (!data) return null;
 
-  const expensesInfo = selectedSlices ? (
+  const expensesInfo = slicesInfo ? (
     <>
-      {selectedSlices.map((slice) => (
-        <div key={slice.name}>
+      {slicesInfo.map((slice) => (
+        <div key={slice.id}>
           <div>{slice.name}</div>
           {`${slice.percentageFromTotal}% of expenses`}
         </div>

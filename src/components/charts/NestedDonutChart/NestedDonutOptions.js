@@ -115,7 +115,7 @@ const setEvents = (options, callBackMethods) => {
     setTimeout(() => {
       const hasSelectePoints = this.series.chart.getSelectedPoints().length;
       if (!hasSelectePoints) {
-        callBackMethods.sliceClicked([]);
+        callBackMethods.sliceClicked([], true);
         isDonutClicked = false;
       }
     })
@@ -128,9 +128,8 @@ const setEvents = (options, callBackMethods) => {
     });
 
     setTimeout(() => {
-      if (!isDonutClicked) return;
       const slicesData = getSelectedSlices(this.series.chart);
-      callBackMethods.sliceClicked(slicesData);
+      callBackMethods.sliceClicked(slicesData, isDonutClicked);
       isDonutClicked = false;
     });
   };
