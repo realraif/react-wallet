@@ -4,7 +4,7 @@ import { Grid } from "@material-ui/core";
 import withSection from "HOC/withSection";
 import CreditCard from "./CreditCard";
 
-const CreditCardsSection = ({ data, selectedCards }) => {
+const CreditCardsSection = ({ data, selectedCards, toggleSelection }) => {
   const isSelected = selectedCards.map((card) => card.id);
 
   if (!data) return null;
@@ -23,6 +23,9 @@ const CreditCardsSection = ({ data, selectedCards }) => {
               isSelected={
                 isSelected.includes(card.id) || isSelected.includes(balance.id)
               }
+              toggleSelection={(isSelected) => {
+                toggleSelection(isSelected, { ...card, parentId: balance.id });
+              }}
             />
           </Grid>
         ));

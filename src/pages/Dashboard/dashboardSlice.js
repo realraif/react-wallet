@@ -29,6 +29,33 @@ const dashboardSlice = createSlice({
     cardsSelected: (state, { payload }) => {
       state.selectedCards = payload.cards;
     },
+    addToSelectedCards: (state, { payload }) => {
+      state.selectedCards.push(payload.card);
+    },
+    removeFromSelectedCards: (state, { payload }) => {
+      const isParent = !payload.card.parentId;
+      const childIds = isParent ? payload.card.cc.map((card) => card.id) : [];
+      const isParentSelected =
+        !isParent &&
+        state.selectedCards.some(
+          (selectedCard) => selectedCard.id === payload.card.parentId
+        );
+      const siblings = isParentSelected
+        ? state.balances.find((balance) => balance.id === payload.card.parentId)
+            .cc
+        : [];
+      siblings.forEach((card) => {
+        card.parentId = payload.card.parentId;
+      });
+
+      state.selectedCards = [...state.selectedCards, ...siblings];
+      state.selectedCards = state.selectedCards.filter((selectedCard) => {
+        const isUnselectedCard = payload.card.id === selectedCard.id;
+        const isParent = payload.card.parentId === selectedCard.id;
+        const isChild = childIds.includes(selectedCard.id);
+        return !isUnselectedCard && !isParent && !isChild;
+      });
+    },
     onDestroy: (state) => {
       return initialState;
     },
@@ -51,6 +78,11 @@ const dashboardSlice = createSlice({
   },
 });
 
-export const { cardsSelected, onDestroy } = dashboardSlice.actions;
+export const {
+  cardsSelected,
+  addToSelectedCards,
+  removeFromSelectedCards,
+  onDestroy,
+} = dashboardSlice.actions;
 
 export default dashboardSlice.reducer;

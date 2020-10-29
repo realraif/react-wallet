@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useRef } from "react";
 import NumberFormat from "react-number-format";
 
 import { Typography } from "@material-ui/core";
@@ -40,24 +40,20 @@ const BalanceCard = ({
   isSelected,
   color,
   timeFrameText,
+  toggleSelection,
 }) => {
-  const [elevation, setElevation] = useState(false);
   const classes = useStyles();
   const chartRef = useRef();
   const currentBalance = balanceTrend[balanceTrend.length - 1];
   const status = getPercentDiff(balanceTrend[0], currentBalance);
 
-  useEffect(() => {
-    setElevation(isSelected);
-  }, [isSelected]);
-
-  const selectCard = () => {
-    setElevation((oldElevation) => !oldElevation);
+  const handleCardClick = () => {
+    toggleSelection(isSelected);
   };
 
   return (
-    <Card elevation={elevation ? 5 : 0}>
-      <CardActionArea onClick={selectCard}>
+    <Card elevation={isSelected ? 5 : 0}>
+      <CardActionArea onClick={handleCardClick}>
         <CardContent>
           <Typography variant="subtitle1">{accountID}</Typography>
 

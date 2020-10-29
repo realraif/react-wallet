@@ -7,7 +7,7 @@ const Tooltip = ({ stateName, totalExpenses, cards }) => {
         {stateName}: ${totalExpenses}
       </div>
       {cards.map(({ bankName, id, expenses }) => (
-        <div>
+        <div key={id}>
           {bankName}-{id.slice(-2)}: ${expenses}
         </div>
       ))}

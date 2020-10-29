@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import NumberFormat from "react-number-format";
 
 import { Typography } from "@material-ui/core";
@@ -33,21 +33,22 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const CreditCard = ({cardID,expenses, currency, isSelected}) => {
-  const [elevation, setElevation] = useState(false);
+const CreditCard = ({
+  cardID,
+  expenses,
+  currency,
+  isSelected,
+  toggleSelection,
+}) => {
   const classes = useStyles();
 
-  useEffect(() => {
-    setElevation(isSelected);
-  }, [isSelected])
-
-  const selectCard = () => {
-    setElevation((oldElevation) => !oldElevation);
+  const handleCardClick = () => {
+    toggleSelection(isSelected);
   };
 
   return (
-    <Card elevation={elevation ? 5 : 0}>
-      <CardActionArea onClick={selectCard}>
+    <Card elevation={isSelected ? 5 : 0}>
+      <CardActionArea onClick={handleCardClick}>
         <CardContent>
           <Typography variant="subtitle2" className={classes.cardNumber}>
             {cardID}

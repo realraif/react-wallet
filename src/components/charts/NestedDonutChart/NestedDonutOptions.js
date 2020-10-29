@@ -91,7 +91,6 @@ const unselectAllChildren = (selectedSlices, parentId) => {
   selectedSlices.forEach((slice) => {
     if (slice.parent === parentId) {
       slice.select(false, true);
-      slice.update({ sliced: false });
     }
   });
 };
@@ -101,7 +100,6 @@ const unselectParent = (allSelectedPoints, parentId) => {
     const isParent = slice.id === parentId;
     if (isParent) {
       slice.select(false, true);
-      slice.update({ sliced: false });
     }
     return isParent;
   });
@@ -110,13 +108,17 @@ const unselectParent = (allSelectedPoints, parentId) => {
 const setEvents = (options, callBackMethods) => {
   options.plotOptions.series.point.events.unselect = function (e) {
     this.update({ sliced: false });
-    if (!this.series.chart.getSelectedPoints().length) {
-      callBackMethods.sliceClicked([]);
-    }
   };
 
   options.plotOptions.series.point.events.click = function (event) {
-    isDonutClicked = true
+    isDonutClicked = true;
+    setTimeout(() => {
+      const hasSelectePoints = this.series.chart.getSelectedPoints().length;
+      if (!hasSelectePoints) {
+        callBackMethods.sliceClicked([]);
+        isDonutClicked = false;
+      }
+    })
   };
 
   options.plotOptions.series.point.events.select = function (event) {
@@ -124,8 +126,9 @@ const setEvents = (options, callBackMethods) => {
       id: this.id,
       parentId: this.parent,
     });
-    if (!isDonutClicked) return;
+
     setTimeout(() => {
+      if (!isDonutClicked) return;
       const slicesData = getSelectedSlices(this.series.chart);
       callBackMethods.sliceClicked(slicesData);
       isDonutClicked = false;

@@ -7,11 +7,14 @@ import withSection from "HOC/withSection";
 
 const tempTimeFrame = "this week";
 
-const Balances = ({ data, selectedCards }) => {
+const Balances = ({ data, selectedCards, toggleSelection }) => {
   const theme = useTheme();
   const color = theme.charts.colors[2];
-  const isSelected = selectedCards.map((card) => card.parentId || card.id);
-  
+
+  const areCardsSelected = selectedCards.map(
+    (card) => card.parentId || card.id
+  );
+
   if (!data) return null;
 
   return (
@@ -22,9 +25,12 @@ const Balances = ({ data, selectedCards }) => {
             balanceTrend={balance.trend}
             accountID={balance.id}
             currency={balance.currency}
-            isSelected={isSelected.includes(balance.id)}
+            isSelected={areCardsSelected.includes(balance.id)}
             color={color}
             timeFrameText={tempTimeFrame}
+            toggleSelection={(isSelected) => {
+              toggleSelection(isSelected, balance);
+            }}
           />
         </Grid>
       ))}

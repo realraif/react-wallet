@@ -24,12 +24,8 @@ const ExpensesDonut = ({ data, selectedCards, height }) => {
 
   useEffect(() => {
     if (!chartRef.current) return;
-
-    selectedCards.forEach((card) => {
-      const slice = chartRef.current.chart.get(card.id);
-      slice.select(true, true);
-      // slice.update({ sliced: true });
-    });
+    clearUnselectSlices(chartRef.current.chart, selectedCards);
+    selectSlices(chartRef.current.chart, selectedCards);
   }, [selectedCards]);
 
   if (!data) return null;
@@ -60,6 +56,25 @@ const ExpensesDonut = ({ data, selectedCards, height }) => {
       </div>
     </WithBox>
   );
+};
+
+const clearUnselectSlices = (chart, selectedCards) => {
+  const points = chart.getSelectedPoints();
+  const selectedCardsIds = selectedCards.map((c) => c.id);
+
+  points.forEach((point) => {
+    const isSelected = selectedCardsIds.includes(point.id);
+    if (isSelected) return;
+    point.select(false, true);
+  });
+};
+
+const selectSlices = (chart, selectedCards) => {
+  selectedCards.forEach((card) => {
+    const slice = chart.get(card.id);
+    slice.select(true, true);
+    slice.update({ sliced: true });
+  });
 };
 
 export default ExpensesDonut;

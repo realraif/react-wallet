@@ -6,6 +6,7 @@ import { fetchDashboard, onDestroy } from "./dashboardSlice";
 import Balances from "./Balances/BalancesSection";
 import CreditCards from "./CreditCardsSection/CreditCardsSection";
 import ExpensesSection from "./Expenses/ExpensesSection";
+import { addToSelectedCards, removeFromSelectedCards } from "./dashboardSlice";
 
 const Dashboard = ({ timeFrame, ...props }) => {
   const dispatch = useDispatch();
@@ -18,16 +19,26 @@ const Dashboard = ({ timeFrame, ...props }) => {
     };
   }, [dispatch]);
 
+  const toggleSelection = (isSelected, card) => {
+    if (isSelected) {
+      dispatch(removeFromSelectedCards({ card }));
+    } else {
+      dispatch(addToSelectedCards({ card }));
+    }
+  };
+
   return (
     <Grid container direction="column" alignItems="stretch">
       <Grid item>
         <Balances
+          toggleSelection={toggleSelection}
           data={dashboard.balances}
           selectedCards={dashboard.selectedCards}
         />
       </Grid>
       <Grid item>
         <CreditCards
+          toggleSelection={toggleSelection}
           data={dashboard.balances}
           selectedCards={dashboard.selectedCards}
         />

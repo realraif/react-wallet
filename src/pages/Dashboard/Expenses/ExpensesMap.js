@@ -5,7 +5,7 @@ import USMapChart from "components/charts/USMapChart/USMapChart";
 
 const getStatesCodes = (cardsData) => {
   const codes = cardsData.reduce((arr, obj) => {
-    return [...arr, ...obj.info.states];
+    return [...arr, ...obj.states || obj.info.states];
   }, []);
   return [...new Set(codes)];
 };
