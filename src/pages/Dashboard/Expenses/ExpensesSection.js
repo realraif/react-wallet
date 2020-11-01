@@ -5,7 +5,6 @@ import { useTheme } from "@material-ui/styles";
 import withSection from "HOC/withSection";
 import Donut from "./ExpensesDonut";
 import ExpensesMap from "./ExpensesMap";
-import ExpensesBarChart from "./ExpensesBarChart";
 
 const ExpensesSection = ({ dashboardData }) => {
   const theme = useTheme();
@@ -27,10 +26,6 @@ const ExpensesSection = ({ dashboardData }) => {
           selectedCards={dashboardData.selectedCards}
           height={height}
         />
-      </Grid>
-
-      <Grid item xs={12}>
-        <ExpensesBarChart data={dashboardData.barChart} />
       </Grid>
     </Grid>
   );

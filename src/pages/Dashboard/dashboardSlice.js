@@ -17,9 +17,8 @@ export const fetchDashboard = createAsyncThunk(
 
 const getChartsData = (payload) => ({
   balances: payload[0].data,
-  barChart: payload[1].data,
-  donutChart: payload[2].data,
-  mapChart: payload[3].data,
+  donutChart: payload[1].data,
+  mapChart: payload[2].data,
 });
 
 const getCreditCardSiblings = (parentId, balances, selectedCards) => {

@@ -13,6 +13,12 @@ export const fetchBudget = createAsyncThunk(
   }
 );
 
+const getChartsData = (payload) => ({
+  budgetSankey: payload[0].data,
+  budgetPolarChart: payload[1].data,
+  barChart: payload[2].data,
+});
+
 const initialState = { loading: true };
 
 const budgetSlice = createSlice({
@@ -29,14 +35,11 @@ const budgetSlice = createSlice({
       state.error = false;
     },
     [fetchBudget.fulfilled]: (state, { payload }) => {
-      const chartsData = {
-        budgetSankey: payload[0].data,
-        budgetPolarChart: payload[1].data,
-      };
+      const chartsData = getChartsData(payload);
+      Object.assign(state, chartsData);
+      
       state.loading = false;
       state.error = false;
-      state.budgetSankey = chartsData.budgetSankey;
-      state.budgetPolarChart = chartsData.budgetPolarChart;
     },
     [fetchBudget.rejected]: (state) => {
       state.loading = false;
