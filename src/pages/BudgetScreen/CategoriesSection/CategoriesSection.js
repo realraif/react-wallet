@@ -14,7 +14,7 @@ const CategoriesSection = ({ budgetData }) => {
   return (
     <Grid container justify="space-between" spacing={4} alignItems="center">
       <Grid item xs={12} lg={6}>
-        <ExpensesBarChart data={budgetData.barChart} />
+        <ExpensesBarChart data={budgetData.barChart} height={height} />
       </Grid>
       <Grid item xs={12} lg={6}>
         <ExpensesPolarChart
