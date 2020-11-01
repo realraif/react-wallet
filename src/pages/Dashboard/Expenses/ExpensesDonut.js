@@ -50,8 +50,15 @@ const ExpensesDonut = ({ data, selectedCards, height }) => {
 
   return (
     <WithBox height={height}>
-      <div style={{ display: "flex", justifyContent: "space-between" }}>
-        <div>{expensesInfo}</div>
+      <div
+        style={{
+          alignItems: "center",
+          display: "flex",
+          justifyContent: "space-between",
+          height: "100%",
+        }}
+      >
+        <div style={{ height: "100%" }}>{expensesInfo}</div>
         <DonutChart
           data={data}
           diameter={height * 0.9}

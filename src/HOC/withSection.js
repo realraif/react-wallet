@@ -4,7 +4,7 @@ import { Typography } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   sectionWrapper: {
-    marginBottom: 10,
+    marginBottom: 2,
   },
   sectionTitle: {
     textTransform: "uppercase",

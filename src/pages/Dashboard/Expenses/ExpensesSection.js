@@ -12,7 +12,7 @@ const ExpensesSection = ({ dashboardData }) => {
   const height = theme.sections.overview.expenses.height;
 
   return (
-    <Grid container justify="space-between" spacing={4} alignItems="center">
+    <Grid container justify="space-between" spacing={2} alignItems="center">
       <Grid item xs={12} lg={6}>
         <ExpensesMap
           mapData={dashboardData.mapChart}

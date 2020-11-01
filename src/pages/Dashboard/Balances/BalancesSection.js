@@ -18,7 +18,7 @@ const Balances = ({ data, selectedCards, toggleSelection }) => {
   if (!data) return null;
 
   return (
-    <Grid container justify="space-between" spacing={6} alignItems="center">
+    <Grid container justify="space-between" spacing={2} alignItems="center">
       {data.map((balance, index) => (
         <Grid item xs={12} md={6} lg={4} key={balance.id}>
           <BalanceCard

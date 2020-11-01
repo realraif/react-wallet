@@ -1,15 +1,16 @@
 import balancesData from "./balancesMock";
 
+const labels = [
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+];
+
 export default () => {
-  const labels = [
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-  ];
   const creditIds = getCreditIds();
   const series = labels.map((label) => {
     return creditIds.reduce(

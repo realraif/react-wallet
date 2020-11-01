@@ -10,7 +10,7 @@ const CreditCardsSection = ({ data, selectedCards, toggleSelection }) => {
   if (!data) return null;
 
   return (
-    <Grid container justify="space-between" spacing={4} alignItems="center">
+    <Grid container justify="space-between" spacing={2} alignItems="center">
       {data.map((balance) => {
         return balance.cc.map((card) => (
           <Grid item xs={12} md={6} lg={3} key={card.id}>
