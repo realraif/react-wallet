@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useRef, useEffect } from "react";
+import React, { useRef, useEffect } from "react";
 import WithBox from "HOC/withBox";
 
 import USMapChart from "components/charts/USMapChart/USMapChart";

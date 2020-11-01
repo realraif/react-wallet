@@ -1,125 +1,49 @@
-const data = {
-  nodes: [
-    {
-      id: "Salary",
-    },
-    {
-      id: "Bonus",
-    },
-    {
-      id: "Investment",
-    },
-    {
-      id: "Interest",
-    },
-    {
-      id: "Income",
-    },
-    {
-      id: "Deductions",
-    },
-    {
-      id: "Tax",
-    },
-    {
-      id: "Net",
-    },
-    {
-      id: "Savings",
-    },
-    {
-      id: "Expenses",
-    },
-    {
-      id: "Home",
-    },
-    {
-      id: "Food",
-    },
-    {
-      id: "Bills",
-    },
-    {
-      id: "Other",
-    },
-  ],
-  links: [
-    {
-      source: "Salary",
-      target: "Income",
-      value: 100000,
-    },
-    {
-      source: "Bonus",
-      target: "Income",
-      value: 50000,
-    },
-    {
-      source: "Investment",
-      target: "Income",
-      value: 40000,
-    },
-    {
-      source: "Interest",
-      target: "Income",
-      value: 30000,
-    },
-    {
-      source: "Income",
-      target: "Deductions",
-      value: 15000,
-    },
-    {
-      source: "Income",
-      target: "Tax",
-      value: 40000,
-    },
-    {
-      source: "Income",
-      target: "Net",
-      value: 175000,
-    },
-    {
-      source: "Net",
-      target: "Expenses",
-      value: 150000,
-    },
-    {
-      source: "Net",
-      target: "Savings",
-      value: 10000,
-    },
-    {
-      source: "Deductions",
-      target: "Savings",
-      value: 10000,
-    },
-    {
-      source: "Deductions",
-      target: "Tax",
-      value: 3000,
-    },
-    {
-      source: "Expenses",
-      target: "Home",
-      value: 10000,
-    },
-    {
-      source: "Expenses",
-      target: "Food",
-      value: 5000,
-    },
-    {
-      source: "Expenses",
-      target: "Bills",
-      value: 5000,
-    },
-    {
-      source: "Expenses",
-      target: "Other",
-      value: 100000,
-    },
-  ],
+const data = [
+  ["Salary", "Income", 150000],
+  ["Bonus", "Income", 50000],
+  ["Investment", "Income", 40000],
+  ["Interest", "Income", 30000],
+  ["Income", "Deductions", 15000],
+  ["Income", "Tax", 40000],
+  ["Income", "Net", 175000],
+  ["Net", "Expenses", 150000],
+  ["Net", "Savings", 10000],
+  ["Deductions", "Savings", 10000],
+  ["Deductions", "Tax", 30000],
+  ["Expenses", "Home", 10000],
+  ["Expenses", "Food", 50000],
+  ["Expenses", "Bills", 50000],
+  ["Expenses", "Other", 100000],
+];
+
+const getLinks = (data) => {
+  return data.map((link) => {
+    return { source: link[0], target: link[1], value: link[2] };
+  });
 };
 
-export default data;
+const getNodes = (data) => {
+  const nodes = [];
+  data.forEach((link) => {
+    for (let i = 0; i < 2; i++) {
+      if (!nodes.includes(link[i])) {
+        nodes.push(link[i]);
+      }
+    }
+  });
+
+  return nodes.map((node) => ({ id: node }));
+};
+
+export const getData = () => {
+  const links = getLinks(data);
+  const nodes = getNodes(data);
+
+  return { links, nodes };
+};
+
+export const getPlainData = () => {
+  return data;
+};
+
+export default getPlainData;

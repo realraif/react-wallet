@@ -1,8 +1,8 @@
-import budgetSankeyMock from "pages/mockdata/sankeyMock";
+import getBudgetSankeyMock from "pages/mockdata/sankeyMock";
 import polarChartMock from "pages/mockdata/polarChartMock";
 
 const fetchBudgetSankeyData = (timeframe) => {
-  return Promise.resolve({ data: budgetSankeyMock });
+  return Promise.resolve({ data: getBudgetSankeyMock() });
 };
 const fetchPolarChartData = (timeframe) => {
   return Promise.resolve({ data: polarChartMock });
