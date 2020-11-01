@@ -42,8 +42,4 @@ export const getData = () => {
   return { links, nodes };
 };
 
-export const getPlainData = () => {
-  return data;
-};
-
-export default getPlainData;
+export default getData;

@@ -2,7 +2,7 @@ import React from "react";
 
 import WithBox from "HOC/withBox";
 import withSection from "HOC/withSection";
-import SankeyDiagram from "components/charts/SankeyDiagramHighcharts/SankeyDiagramHighcharts";
+import SankeyDiagram from "components/charts/SankeyDiagram/SankeyDiagram";
 
 const BudgetSankey = ({ data, height }) => {
   if (!data) return null;
