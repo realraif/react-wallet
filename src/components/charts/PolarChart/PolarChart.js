@@ -5,8 +5,8 @@ import HighchartsMore from "highcharts/highcharts-more";
 import getChartOptions from "./PolarChartOptions";
 HighchartsMore(Highcharts);
 
-const PolarChart = ({ data, diameter, chartRef }) => {
-  const options = getChartOptions(data, { diameter });
+const PolarChart = ({ data, diameter, chartRef, colors }) => {
+  const options = getChartOptions(data, { diameter, colors });
 
   return (
     <div>

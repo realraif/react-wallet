@@ -74,6 +74,15 @@ export default {
   charts: {
     colors: ["#a275d0", "#559e55", "#75bad0"],
     bars: ["#a275d0", "#559e55", "#75bad0"],
+    polar: [
+      "#6c5b9f",
+      "#396fbc",
+      "#37c0a7",
+      "#8fe1a1",
+      "#88aedc",
+      "#f7d3e9",
+      "#2e8a60",
+    ],
     pieBorder: "#fff",
   },
   sections: {
