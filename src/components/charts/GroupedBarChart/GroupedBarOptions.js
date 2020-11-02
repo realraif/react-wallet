@@ -26,4 +26,14 @@ export default {
   animate: true,
   motionStiffness: 50,
   motionDamping: 8,
+  onMouseEnter: (data, event) => {
+    event.currentTarget.style.cursor = "pointer";
+    event.currentTarget.style.strokeWidth = "5";
+    event.currentTarget.style.opacity = "0.8";
+  },
+  onMouseLeave: (data, event) => {
+    event.currentTarget.style.cursor = "auto";
+    event.currentTarget.style.strokeWidth = "0";
+    event.currentTarget.style.opacity = "1";
+  },
 };

@@ -40,6 +40,7 @@ const getGenericOptions = () => ({
   },
   plotOptions: {
     series: {
+      cursor: "pointer",
       pointPadding: 0,
       groupPadding: 0,
       borderWidth: 1.5,
