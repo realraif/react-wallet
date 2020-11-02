@@ -4,14 +4,14 @@ import WithBox from "HOC/withBox";
 import withSection from "HOC/withSection";
 import SankeyDiagram from "components/charts/SankeyDiagram/SankeyDiagram";
 
-const BudgetSankey = ({ data, height }) => {
+const BudgetSankey = ({ data }) => {
   if (!data) return null;
 
   return (
     <WithBox>
       <SankeyDiagram
         data={data}
-        height={400}
+        height={350}
       />
     </WithBox>
   );

@@ -1,5 +1,5 @@
 export default {
-  margin: { top: 10, right: 160, bottom: 10, left: 10 },
+  margin: { top: 10, right: 10, bottom: 10, left: 10 },
   sort: "input",
   colors: { scheme: "pink_yellowGreen" },
   nodeOpacity: 1,
@@ -16,25 +16,4 @@ export default {
   animate: true,
   motionStiffness: 190,
   motionDamping: 20,
-  legends: [
-    {
-      anchor: "bottom-right",
-      direction: "column",
-      translateX: 130,
-      itemWidth: 100,
-      itemHeight: 14,
-      itemDirection: "right-to-left",
-      itemsSpacing: 2,
-      itemTextColor: "#999",
-      symbolSize: 14,
-      effects: [
-        {
-          on: "hover",
-          style: {
-            itemTextColor: "#000",
-          },
-        },
-      ],
-    },
-  ],
 };

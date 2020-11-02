@@ -18,7 +18,7 @@ const ExpensesBarChart = ({ data, height }) => {
   if (!data) return null;
 
   return (
-    <WithBox>
+    <WithBox height={height}>
       <GroupedBarChart
         data={data.seriesData}
         bars={data.bars}
