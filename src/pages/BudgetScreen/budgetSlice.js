@@ -25,6 +25,9 @@ const budgetSlice = createSlice({
   name: "budget",
   initialState,
   reducers: {
+    categorySelected: (state, { payload }) => {
+      state.selectedCategory = payload.category;
+    },
     onDestroy: (state) => {
       return initialState;
     },
@@ -37,7 +40,7 @@ const budgetSlice = createSlice({
     [fetchBudget.fulfilled]: (state, { payload }) => {
       const chartsData = getChartsData(payload);
       Object.assign(state, chartsData);
-      
+
       state.loading = false;
       state.error = false;
     },
@@ -48,6 +51,6 @@ const budgetSlice = createSlice({
   },
 });
 
-export const { onDestroy } = budgetSlice.actions;
+export const { categorySelected, onDestroy } = budgetSlice.actions;
 
 export default budgetSlice.reducer;
