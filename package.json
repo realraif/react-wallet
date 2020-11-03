@@ -29,6 +29,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
     "react-select": "^3.1.0",
+    "redux-logger": "^3.0.6",
     "tinycolor2": "^1.4.1"
   },
   "scripts": {
@@ -52,8 +53,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "redux-logger": "^3.0.6"
   }
 }
