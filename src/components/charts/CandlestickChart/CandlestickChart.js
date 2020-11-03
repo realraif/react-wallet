@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Highcharts from "highcharts/highstock";
 import HighchartsReact from "highcharts-react-official";
 
@@ -12,14 +12,9 @@ const CandlestickChart = ({
   colors,
   height,
   chartRef,
-  updateChartState,
 }) => {
   const callBackMethods = { candleClickedHandler, zoomEventHandler };
   const options = getChartOptions(data, callBackMethods, { colors, height });
-
-  useEffect(() => {
-    updateChartState();
-  }, [updateChartState]);
 
   return (
     <div className="ChartContainer">

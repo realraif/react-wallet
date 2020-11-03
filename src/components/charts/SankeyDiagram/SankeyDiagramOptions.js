@@ -7,6 +7,7 @@ export default {
   nodeSpacing: 60,
   nodeBorderColor: { theme: "grid.line.stroke" },
   linkOpacity: 0.6,
+  isInteractive: true,
   linkHoverOpacity: 1,
   linkHoverOthersOpacity: 0.1,
   linkBlendMode: "normal",

@@ -1,4 +1,4 @@
-import React, { useCallback, useRef } from "react";
+import React, { useCallback, useRef, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setZoomRange } from "./balancesSlice";
 
@@ -30,7 +30,7 @@ const BalanceCandlestick = ({ data, height }) => {
     chartRef.current.chart.xAxis[0].setExtremes();
   };
 
-  const initExtremesOnDataChange = useCallback(initExtremes, [data]);
+  useEffect(initExtremes, [data]);
 
   if (!data) return null;
 
@@ -42,7 +42,6 @@ const BalanceCandlestick = ({ data, height }) => {
         candleClickedHandler={pointSelected}
         zoomEventHandler={zoomEventHandler}
         chartRef={chartRef}
-        updateChartState={initExtremesOnDataChange}
       />
     </WithBox>
   );

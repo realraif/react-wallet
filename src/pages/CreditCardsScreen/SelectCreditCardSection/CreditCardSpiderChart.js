@@ -1,4 +1,4 @@
-import React, { useState, useRef, useCallback } from "react";
+import React, { useState, useRef, useCallback, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { makeStyles } from "@material-ui/styles";
 
@@ -23,17 +23,13 @@ const CreditCardSpiderChart = ({ data, height }) => {
     setSelectedCategory(category);
   }, []);
 
-  const updateCategoryHover = () => {
+  useEffect(() => {
     if (!!creditCardsData.selectedCategory) {
       chartRef.current.chart
         .get(creditCardsData.selectedCategory)
         .onMouseOver();
     }
-  };
-
-  const updateCategoryHoverOnChange = useCallback(updateCategoryHover, [
-    creditCardsData.categoryChangedCounter,
-  ]);
+  }, [creditCardsData.categoryChangedCounter]);
 
   if (!data) return null;
 
@@ -54,7 +50,6 @@ const CreditCardSpiderChart = ({ data, height }) => {
         data={data}
         diameter={height}
         onHoverHandler={onHoverHandler}
-        updateChartState={updateCategoryHoverOnChange}
       />
     </div>
   );

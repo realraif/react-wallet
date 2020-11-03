@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 import HighchartsMore from "highcharts/highcharts-more";
@@ -14,14 +14,9 @@ const SpiderChart = ({
   diameter,
   chartRef,
   onHoverHandler,
-  updateChartState,
 }) => {
   const callBackMethods = { onHoverHandler };
   const options = getChartOptions(data, callBackMethods, { diameter });
-
-  useEffect(() => {
-    updateChartState();
-  }, [updateChartState]);
 
   return (
     <div>
