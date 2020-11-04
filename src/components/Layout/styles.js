@@ -94,7 +94,7 @@ export const useHeaderStyles = makeStyles((theme) => {
     },
     dropDown: hover,
   };
-});
+}, {index: 1});
 
 export const useSidebarStyles = makeStyles((theme) => {
   const drawerThemeColor = theme.palette.background.drawer[theme.palette.type];
@@ -227,4 +227,4 @@ export const useSidebarStyles = makeStyles((theme) => {
       opacity: 1,
     },
   };
-});
+}, {index: 1});
