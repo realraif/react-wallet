@@ -5,7 +5,7 @@ import USMapChart from "components/charts/USMapChart/USMapChart";
 
 const getStatesCodes = (cardsData) => {
   const codes = cardsData.reduce((arr, obj) => {
-    return [...arr, ...obj.states || obj.info.states];
+    return [...arr, ...(obj.states || obj.info.states)];
   }, []);
   return [...new Set(codes)];
 };
@@ -31,11 +31,7 @@ const ExpensesMap = ({ mapData, selectedCards, height }) => {
 
   return (
     <WithBox height={height}>
-      <USMapChart
-        data={mapData}
-        chartRef={chartRef}
-        height={height * 0.9}
-      />
+      <USMapChart data={mapData} chartRef={chartRef} height={height * 0.9} />
     </WithBox>
   );
 };
