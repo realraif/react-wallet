@@ -23,13 +23,15 @@ const CreditCardSpiderChart = ({ data, height }) => {
     setSelectedCategory(category);
   }, []);
 
-  useEffect(() => {
+  const hoverSpiderCategory = () => {
     if (!!creditCardsData.selectedCategory) {
       chartRef.current.chart
         .get(creditCardsData.selectedCategory)
         .onMouseOver();
     }
-  }, [creditCardsData.categoryChangedCounter]);
+  };
+
+  useEffect(hoverSpiderCategory, [creditCardsData.categoryChangedCounter]);
 
   if (!data) return null;
 
