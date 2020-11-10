@@ -20,10 +20,10 @@ const BudgetScreen = ({ timeFrame, ...props }) => {
   return (
     <Grid container direction="column" alignItems="stretch">
       <Grid item>
-        <BudgetSankey data={budgetData.budgetSankey} selectedCategory={budgetData.selectedCategory} />
+        <CategoriesSection budgetData={budgetData} />
       </Grid>
       <Grid item>
-        <CategoriesSection budgetData={budgetData} />
+        <BudgetSankey data={budgetData.budgetSankey} selectedCategory={budgetData.selectedCategory} />
       </Grid>
     </Grid>
   );

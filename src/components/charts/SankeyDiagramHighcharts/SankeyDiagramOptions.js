@@ -14,6 +14,12 @@ const getGenericOptions = () => ({
         "{index}. {point.from} to {point.to}, {point.weight}.",
     },
   },
+  plotOptions: {
+    series: {
+      allowPointSelect: true,
+      cursor: "pointer",
+    },
+  },
   series: [
     {
       keys: ["from", "to", "weight"],
