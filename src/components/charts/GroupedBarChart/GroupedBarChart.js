@@ -5,20 +5,19 @@ import options, { getBarColors } from "./GroupedBarOptions";
 
 const GroupedBarChart = ({
   data,
-  bars,
   indexName,
   barClicked,
   height,
   isStacked,
   themeColors,
 }) => {
-  const colors = getBarColors(bars, themeColors);
+  const colors = getBarColors(data.bars, themeColors);
 
   return (
     <div className={styles.ChartWrapper} style={{ height: height }}>
       <ResponsiveBar
-        data={data}
-        keys={bars}
+        data={data.seriesData}
+        keys={data.bars}
         // colors={(bar) => colors[bar.id]}
         tempColors={colors}
         indexBy={indexName}

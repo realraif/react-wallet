@@ -5,6 +5,7 @@ export const removeAllSeries = (chartComponent) => {
     series[0].remove();
   }
 };
+
 export const removePlotband = (chartComponent, id, range) => {
   if (!chartComponent) return;
   chartComponent.chart.xAxis[0].removePlotBand(id);

@@ -36,12 +36,17 @@ const CategoriesSection = ({ budgetData }) => {
           </Tabs>
         </Grid>
         <Grid item xs={12} lg={9}>
-          <ExpensesBarChart data={budgetData.barChart} height={height} />
+          <ExpensesBarChart
+            data={budgetData.barChart}
+            height={height}
+            category={categoriesType}
+          />
         </Grid>
         <Grid item xs={12} lg={3}>
           <ExpensesPolarChart
             data={budgetData.budgetPolarChart}
             height={height}
+            category={categoriesType}
           />
         </Grid>
       </Grid>

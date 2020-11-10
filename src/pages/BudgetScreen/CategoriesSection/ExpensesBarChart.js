@@ -6,7 +6,7 @@ import { useTheme } from "@material-ui/styles";
 import { categorySelected } from "../budgetSlice";
 import GroupedBarChart from "components/charts/GroupedBarChart/GroupedBarChart";
 
-const ExpensesBarChart = ({ data, height }) => {
+const ExpensesBarChart = ({ data, height, category }) => {
   const dispatch = useDispatch();
   const isSmallScreen = useMediaQuery((theme) => theme.breakpoints.down("md"));
 
@@ -23,8 +23,7 @@ const ExpensesBarChart = ({ data, height }) => {
 
   return (
     <GroupedBarChart
-      data={data.seriesData}
-      bars={data.bars}
+      data={data[category]}
       isStacked={isSmallScreen}
       barClicked={barClicked}
       indexName="time"
