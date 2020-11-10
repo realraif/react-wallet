@@ -65,7 +65,7 @@ const getGenericOptions = () => ({
 });
 
 const customiseOptions = (options, data) => {
-  options.series = data.series;
+  options.series = [data.series];
   options.xAxis.categories = data.categories;
 };
 
