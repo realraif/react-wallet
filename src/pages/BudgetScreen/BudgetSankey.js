@@ -10,7 +10,7 @@ const BudgetSankey = ({ data, selectedCategory, selectedCategoryType }) => {
   return (
     <WithBox>
       <SankeyDiagram
-        selectedCategory={selectedCategory}
+        selectedLink={selectedCategory}
         selectedCategoryType={selectedCategoryType}
         data={data}
         height={350}

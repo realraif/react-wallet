@@ -6,11 +6,12 @@ import options from "./SankeyDiagramOptions";
 const SankeyDiagram = ({
   data,
   height,
-  selectedCategory,
+  selectedLink,
   selectedCategoryType,
 }) => {
   const [sankeyLinks, setSankeyLinks] = useState({});
   const chartRef = useRef();
+  const isTarget = selectedCategoryType === "expenses";
 
   const clickAllSankeyLinks = () => {
     const paths = chartRef.current.getElementsByTagName("path");
@@ -23,7 +24,12 @@ const SankeyDiagram = ({
 
   const hoverSelectedPath = () => {
     if (!sankeyLinks[selectedCategoryType]) return;
-    const element = sankeyLinks[selectedCategoryType][selectedCategory];
+    let element ;
+    if (isTarget) {
+      element = sankeyLinks[selectedCategoryType][selectedLink];
+    } else {
+      element = sankeyLinks[selectedLink][selectedCategoryType];
+    }
     const mouseEvent = document.createEvent("SVGEvents");
     mouseEvent.initEvent("mouseover", true, true);
     element.dispatchEvent(mouseEvent);
@@ -33,7 +39,7 @@ const SankeyDiagram = ({
     setTimeout(clickAllSankeyLinks);
   }, []);
 
-  useEffect(hoverSelectedPath, [selectedCategory]);
+  useEffect(hoverSelectedPath, [selectedLink]);
 
   return (
     <div
