@@ -5,3 +5,7 @@
 .ChartWrapper path {
   cursor: pointer;
 }
+
+.ChartWrapper > div > div > div {
+  display: none;
+}
