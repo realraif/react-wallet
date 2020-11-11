@@ -10,16 +10,10 @@ const SankeyDiagram = ({
   selectedCategoryType,
 }) => {
   const [sankeyLinks, setSankeyLinks] = useState({});
-  const chartRef = useRef();
+  const containerRef = useRef();
+  const { current } = containerRef;
   const prevElement = useRef();
   const isTarget = selectedCategoryType === "expenses";
-
-  const clickAllSankeyLinks = () => {
-    const paths = chartRef.current.getElementsByTagName("path");
-    [...paths].forEach((path) => {
-      path.dispatchEvent(getMouseEvent("click"));
-    });
-  };
 
   const getSelectedElement = () => {
     let element;
@@ -41,15 +35,21 @@ const SankeyDiagram = ({
     }
   };
 
-  useEffect(() => {
-    setTimeout(clickAllSankeyLinks);
-  }, []);
+  const setLinksData = () => {
+    setTimeout(() => {
+      if (containerRef.current) {
+        clickAllPaths(containerRef.current);
+      }
+    });
+  };
+
+  useEffect(setLinksData, [current]);
 
   useEffect(hoverSelectedPath, [selectedLink]);
 
   return (
     <div
-      ref={chartRef}
+      ref={containerRef}
       className={styles.ChartWrapper}
       style={{ height: height }}
     >
@@ -74,6 +74,13 @@ const getMouseEvent = (eventType) => {
   const mouseEvent = document.createEvent("SVGEvents");
   mouseEvent.initEvent(eventType, true, true);
   return mouseEvent;
+};
+
+const clickAllPaths = (container) => {
+  const paths = container.getElementsByTagName("path");
+  [...paths].forEach((path) => {
+    path.dispatchEvent(getMouseEvent("click"));
+  });
 };
 
 export default SankeyDiagram;
