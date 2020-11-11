@@ -11,6 +11,7 @@ const SankeyDiagram = ({
 }) => {
   const [sankeyLinks, setSankeyLinks] = useState({});
   const chartRef = useRef();
+  const prevElement = useRef();
   const isTarget = selectedCategoryType === "expenses";
 
   const clickAllSankeyLinks = () => {
@@ -31,9 +32,13 @@ const SankeyDiagram = ({
   };
 
   const hoverSelectedPath = () => {
-    if (!selectedLink) return;
-    const element = getSelectedElement();
-    element.dispatchEvent(getMouseEvent("mouseover"));
+    if (selectedLink) {
+      const element = getSelectedElement();
+      element.dispatchEvent(getMouseEvent("mouseover"));
+      prevElement.current = element;
+    } else if (prevElement.current) {
+      prevElement.current.dispatchEvent(getMouseEvent("mouseout"));
+    }
   };
 
   useEffect(() => {
