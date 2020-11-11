@@ -3,7 +3,7 @@ import { useTheme } from "@material-ui/core";
 
 import PolarChart from "components/charts/PolarChart/PolarChart";
 
-const ExpensesPolarChart = ({ data, height, category }) => {
+const ExpensesPolarChart = ({ data, height, categoryType }) => {
   const chartRef = useRef();
   const theme = useTheme();
   const colorScheme = theme.charts.polar;
@@ -12,7 +12,7 @@ const ExpensesPolarChart = ({ data, height, category }) => {
 
   return (
     <PolarChart
-      data={data[category]}
+      data={data[categoryType]}
       diameter={height}
       colors={colorScheme}
       chartRef={chartRef}

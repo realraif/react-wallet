@@ -26,6 +26,9 @@ export default {
   animate: true,
   motionStiffness: 50,
   motionDamping: 8,
+};
+
+export const chartMethods = {
   onMouseEnter: (data, event) => {
     event.currentTarget.style.cursor = "pointer";
     event.currentTarget.style.strokeWidth = "5";

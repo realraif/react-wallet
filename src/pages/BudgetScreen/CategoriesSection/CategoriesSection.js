@@ -34,14 +34,14 @@ const CategoriesSection = ({ budgetData, selectedCategoryType, handleTabChange }
           <ExpensesBarChart
             data={budgetData.barChart}
             height={height}
-            category={selectedCategoryType}
+            categoryType={selectedCategoryType}
           />
         </Grid>
         <Grid item xs={12} lg={3}>
           <ExpensesPolarChart
             data={budgetData.budgetPolarChart}
             height={height}
-            category={selectedCategoryType}
+            categoryType={selectedCategoryType}
           />
         </Grid>
       </Grid>

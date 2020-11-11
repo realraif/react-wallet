@@ -16,23 +16,24 @@ const SankeyDiagram = ({
   const clickAllSankeyLinks = () => {
     const paths = chartRef.current.getElementsByTagName("path");
     [...paths].forEach((path) => {
-      const clickEvent = document.createEvent("SVGEvents");
-      clickEvent.initEvent("click", true, true);
-      path.dispatchEvent(clickEvent);
+      path.dispatchEvent(getMouseEvent("click"));
     });
   };
 
-  const hoverSelectedPath = () => {
-    if (!sankeyLinks[selectedCategoryType]) return;
-    let element ;
+  const getSelectedElement = () => {
+    let element;
     if (isTarget) {
       element = sankeyLinks[selectedCategoryType][selectedLink];
     } else {
       element = sankeyLinks[selectedLink][selectedCategoryType];
     }
-    const mouseEvent = document.createEvent("SVGEvents");
-    mouseEvent.initEvent("mouseover", true, true);
-    element.dispatchEvent(mouseEvent);
+    return element;
+  };
+
+  const hoverSelectedPath = () => {
+    if (!selectedLink) return;
+    const element = getSelectedElement();
+    element.dispatchEvent(getMouseEvent("mouseover"));
   };
 
   useEffect(() => {
@@ -62,6 +63,12 @@ const SankeyDiagram = ({
       />
     </div>
   );
+};
+
+const getMouseEvent = (eventType) => {
+  const mouseEvent = document.createEvent("SVGEvents");
+  mouseEvent.initEvent(eventType, true, true);
+  return mouseEvent;
 };
 
 export default SankeyDiagram;
