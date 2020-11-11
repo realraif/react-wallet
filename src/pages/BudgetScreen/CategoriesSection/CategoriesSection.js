@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Grid, Tabs, Tab } from "@material-ui/core";
 import { useTheme } from "@material-ui/styles";
 
@@ -8,13 +8,8 @@ import WithBox from "HOC/withBox";
 import ExpensesPolarChart from "./ExpensesPolarChart";
 import ExpensesBarChart from "./ExpensesBarChart";
 
-const CategoriesSection = ({ budgetData }) => {
+const CategoriesSection = ({ budgetData, selectedCategoryType, handleTabChange }) => {
   const theme = useTheme();
-  const [categoriesType, setcategoriesType] = useState("incomes");
-
-  const handleTabChange = (event, tabValue) => {
-    setcategoriesType(tabValue);
-  };
 
   const height = theme.sections.overview.expenses.height;
 
@@ -23,8 +18,8 @@ const CategoriesSection = ({ budgetData }) => {
       <Grid container justify="space-between" spacing={0} alignItems="center">
         <Grid item xs={12}>
           <Tabs
-            value={categoriesType}
-            onChange={handleTabChange}
+            value={selectedCategoryType}
+            onChange={(event, tabValue) => handleTabChange(tabValue)}
             indicatorColor="primary"
             textColor="primary"
             variant="scrollable"
@@ -39,14 +34,14 @@ const CategoriesSection = ({ budgetData }) => {
           <ExpensesBarChart
             data={budgetData.barChart}
             height={height}
-            category={categoriesType}
+            category={selectedCategoryType}
           />
         </Grid>
         <Grid item xs={12} lg={3}>
           <ExpensesPolarChart
             data={budgetData.budgetPolarChart}
             height={height}
-            category={categoriesType}
+            category={selectedCategoryType}
           />
         </Grid>
       </Grid>

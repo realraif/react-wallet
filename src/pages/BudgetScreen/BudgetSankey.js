@@ -2,15 +2,16 @@ import React from "react";
 
 import WithBox from "HOC/withBox";
 import withSection from "HOC/withSection";
-import SankeyDiagram from "components/charts/SankeyDiagramHighcharts/SankeyDiagramHighcharts";
+import SankeyDiagram from "components/charts/SankeyDiagram/SankeyDiagram";
 
-const BudgetSankey = ({ data, selectedCategory }) => {
+const BudgetSankey = ({ data, selectedCategory, selectedCategoryType }) => {
   if (!data) return null;
 
   return (
     <WithBox>
       <SankeyDiagram
         selectedCategory={selectedCategory}
+        selectedCategoryType={selectedCategoryType}
         data={data}
         height={350}
       />

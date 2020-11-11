@@ -13,8 +13,8 @@ const ExpensesBarChart = ({ data, height, category }) => {
   const theme = useTheme();
 
   const barClicked = useCallback(
-    (bar) => {
-      dispatch(categorySelected({ bar }));
+    (bar, element) => {
+      dispatch(categorySelected({ category: bar.id.toLowerCase() }));
     },
     [dispatch]
   );

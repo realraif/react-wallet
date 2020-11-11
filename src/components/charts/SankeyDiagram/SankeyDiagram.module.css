@@ -1,3 +1,7 @@
 .ChartWrapper svg {
   width: 100%;
 }
+
+.ChartWrapper path {
+  cursor: pointer;
+}
