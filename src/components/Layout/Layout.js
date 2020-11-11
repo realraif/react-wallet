@@ -22,13 +22,15 @@ const Layout = ({ location, isLoading }) => {
   const theme = useTheme();
   const classes = useStyles();
 
-  useEffect(function () {
+  const onInit = () => {
     window.addEventListener("resize", handleWindowWidthChange);
     handleWindowWidthChange();
-    return function cleanup() {
+    return function cleanUp() {
       window.removeEventListener("resize", handleWindowWidthChange);
     };
-  });
+  };
+
+  useEffect(onInit, []);
 
   const setDataTimeFrame = (timeFrame) => {
     setTimeFrame(timeFrame);
@@ -75,9 +77,7 @@ const Layout = ({ location, isLoading }) => {
         isLoading={isLoading}
       />
       <Sidebar routes={routes} isSmallScreen={screenSize === "sm"} />
-      <main className={classes.content}>
-        {renderRoutes()}
-      </main>
+      <main className={classes.content}>{renderRoutes()}</main>
     </div>
   );
 

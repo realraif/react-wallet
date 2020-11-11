@@ -34,9 +34,9 @@ const getGenericOptions = () => ({
     },
   },
   tooltip: {
-    enabled: false,
+    enabled: true,
     headerFormat: "<b>{point.x}</b><br/>",
-    pointFormat: "{series.name}: {point.y}<br/>Total: {point.stackTotal}",
+    pointFormat: "Total {series.name}: {point.y}",
   },
   plotOptions: {
     series: {
