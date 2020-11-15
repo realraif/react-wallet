@@ -1,4 +1,4 @@
-import creditCardsSlice, { categorySelected } from "./creditCardsSlice";
+import creditCardsSlice, { cardSelected, categorySelected } from "./creditCardsSlice";
 
 describe("credit card reducer", () => {
   it("should increase the category selection", () => {
@@ -8,5 +8,14 @@ describe("credit card reducer", () => {
     );
 
     expect(state.categoryChangedCounter).toEqual(1);
+  });
+
+  it("should change selected card", () => {
+    const state = creditCardsSlice(
+      {},
+      { type: cardSelected.type, payload: { id: "test" } }
+    );
+
+    expect(state.selectedCardId).toEqual("test");
   });
 });
