@@ -12,6 +12,7 @@ const BudgetSankey = ({ data, selectedCategory, selectedCategoryType }) => {
       <SankeyDiagram
         selectedLink={selectedCategory}
         selectedCategoryType={selectedCategoryType}
+        isTarget={selectedCategoryType === "expenses"}
         data={data}
         height={350}
       />

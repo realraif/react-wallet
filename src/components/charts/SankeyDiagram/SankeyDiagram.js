@@ -8,12 +8,12 @@ const SankeyDiagram = ({
   height,
   selectedLink,
   selectedCategoryType,
+  isTarget
 }) => {
   const [sankeyLinks, setSankeyLinks] = useState({});
   const containerRef = useRef();
   const { current } = containerRef;
   const prevElement = useRef();
-  const isTarget = selectedCategoryType === "expenses";
 
   const getSelectedElement = () => {
     let element;
