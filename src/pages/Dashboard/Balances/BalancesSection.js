@@ -7,7 +7,7 @@ import withSection from "HOC/withSection";
 
 const tempTimeFrame = "this week";
 
-const Balances = ({ data, selectedCards, toggleSelection }) => {
+export const Balances = ({ data, selectedCards, toggleSelection }) => {
   const theme = useTheme();
   const color = theme.charts.colors[2];
 
