@@ -21,18 +21,6 @@ const getChartsData = (payload) => ({
   mapChart: payload[2].data,
 });
 
-const getCreditCardSiblings = (parentId, balances, selectedCards) => {
-  const isParentSelected = selectedCards.some(
-    (selectedCard) => selectedCard.id === parentId
-  );
-  if (isParentSelected) {
-    const parentBalance = balances.find((balance) => balance.id === parentId);
-    return parentBalance.cc;
-  } else {
-    return [];
-  }
-};
-
 const dashboardSlice = createSlice({
   name: "dashboard",
   initialState,
@@ -46,13 +34,15 @@ const dashboardSlice = createSlice({
     removeFromSelectedCards: (state, { payload }) => {
       const isParent = !payload.card.parentId;
       const childIds = isParent ? payload.card.cc.map((card) => card.id) : [];
+      const isParentSelected = state.selectedCards.some(
+        (selectedCard) => selectedCard.id === payload.card.parentId
+      );
 
-      if (!isParent) {
-        const siblings = getCreditCardSiblings(
-          payload.card.parentId,
-          state.balances,
-          state.selectedCards
+      if (isParentSelected) {
+        const cardParent = state.balances.find(
+          (balance) => balance.id === payload.card.parentId
         );
+        const siblings = cardParent.cc;
         Object.assign(state.selectedCards, siblings);
       }
 
