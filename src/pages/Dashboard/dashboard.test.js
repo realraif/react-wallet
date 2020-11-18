@@ -28,7 +28,7 @@ describe("dashboard", () => {
       selectedCards: [{ id: 1 }],
       balances: [{ id: 1, cc: [{ id: 1.1 }, { id: 1.2 }] }],
     };
-    const payload = { card: { parentId: 1, id: 1.1 } };
+    const payload = { card: { id: 1.1, parentId: 1 } };
 
     const state = dashboardSlice(initialState, {
       type: removeFromSelectedCards.type,
@@ -52,5 +52,32 @@ describe("dashboard", () => {
     });
 
     expect(state.selectedCards).toHaveLength(0);
+  });
+
+  it("should remove only selected card's parent", () => {
+    const parentId = 1;
+    const otherParent = 2;
+    const childId = 1.1;
+    const siblingId = 1.2;
+
+    const initialState = {
+      selectedCards: [{ id: parentId }, { id: otherParent }],
+      balances: [
+        { id: parentId, cc: [{ id: childId }, { id: siblingId }] },
+        { id: otherParent, cc: [] },
+      ],
+    };
+    const payload = {
+      card: { id: childId, parentId },
+    };
+
+    const state = dashboardSlice(initialState, {
+      type: removeFromSelectedCards.type,
+      payload,
+    });
+
+    expect(state.selectedCards.find((card) => card.id === parentId)).toBeFalsy();
+    expect(state.selectedCards.find((card) => card.id === otherParent)).toBeTruthy();
+    expect(state.selectedCards.find((card) => card.id === siblingId)).toBeTruthy();
   });
 });
