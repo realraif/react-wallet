@@ -38,15 +38,16 @@ const dashboardSlice = createSlice({
         (selectedCard) => selectedCard.id === payload.card.parentId
       );
 
+      let selectedCards = state.selectedCards;
       if (isParentSelected) {
         const cardParent = state.balances.find(
           (balance) => balance.id === payload.card.parentId
         );
         const siblings = cardParent.cc;
-        Object.assign(state.selectedCards, siblings);
+        selectedCards = [...state.selectedCards, ...siblings];
       }
 
-      state.selectedCards = state.selectedCards.filter((selectedCard) => {
+      state.selectedCards = selectedCards.filter((selectedCard) => {
         const isUnselectedCard = payload.card.id === selectedCard.id;
         const isParent = payload.card.parentId === selectedCard.id;
         const isChild = childIds.includes(selectedCard.id);
