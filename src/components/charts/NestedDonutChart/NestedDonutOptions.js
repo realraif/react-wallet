@@ -118,7 +118,7 @@ const setEvents = (options, callBackMethods) => {
         callBackMethods.sliceClicked([], true);
         isDonutClicked = false;
       }
-    })
+    });
   };
 
   options.plotOptions.series.point.events.select = function (event) {
@@ -137,10 +137,7 @@ const setEvents = (options, callBackMethods) => {
 
 const getSelectedSlices = (chart) => {
   const selectedSlices = chart.getSelectedPoints();
-  const slicesData = selectedSlices.map((slice) => {
-    slice.update({ sliced: true });
-    return getSliceData(slice);
-  });
+  const slicesData = selectedSlices.map((slice) => getSliceData(slice));
   return slicesData;
 };
 

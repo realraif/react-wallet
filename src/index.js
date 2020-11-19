@@ -16,7 +16,7 @@ import store from './store';
 
 ReactDOM.render(
   <Provider store={store}>
-    <ThemeProvider theme={Themes.default}>
+    <ThemeProvider theme={Themes.dark}>
       <LayoutProvider>
         <UserProvider>
           <CssBaseline />

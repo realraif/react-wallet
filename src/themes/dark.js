@@ -12,6 +12,7 @@ const info = "#9013FE";
 
 export default {
   palette: {
+    type: "dark",
     primary: {
       main: primary,
       light: tinycolor(primary).lighten(lightenRate).toHexString(),
@@ -61,7 +62,7 @@ export default {
   },
   box: {
     borderRadius: 6,
-    borderColor: "#ececec",
+    borderColor: "#888888",
   },
   customSpacing: {
     pageTop: 20,
