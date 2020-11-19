@@ -12,14 +12,14 @@ const CustomThemeProvider = ({ children }) => {
   const [themeName, setThemeName] = useState(currentTheme);
   const theme = getTheme(themeName);
 
-  const setThemeName = (name) => {
+  const setThemeHandler = (name) => {
     localStorage.setItem("appTheme", name);
     setThemeName(name);
   };
 
   const contextValue = {
     currentTheme: themeName,
-    setTheme: setThemeName,
+    setTheme: setThemeHandler,
   };
 
   return (

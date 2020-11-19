@@ -5,13 +5,18 @@ import { AppBar, Toolbar, Button, IconButton } from "@material-ui/core";
 import Select from "react-select";
 
 import { AiOutlineClockCircle } from "react-icons/ai";
-import { MdMenu } from "react-icons/md";
+import {
+  MdMenu,
+  MdBrightnessHigh as DarkThemeIcon,
+  MdBrightness4 as LightThemeIcon,
+} from "react-icons/md";
 
 import firebase from "firebase.js";
 import Dropdown from "components/Dropdown/Dropdown";
 import { useHeaderStyles } from "../Layout/styles";
 import { UserContext } from "context/UserContext";
 import { LayoutContext } from "context/LayoutContext";
+import { CustomThemeContext } from "context/CustomThemeContext";
 
 const Header = ({
   history,
@@ -23,8 +28,10 @@ const Header = ({
 }) => {
   const { currentUser } = useContext(UserContext);
   const { toggleSidebar, isSidebarOpen } = useContext(LayoutContext);
+  const { currentTheme, setTheme } = useContext(CustomThemeContext);
   const classes = useHeaderStyles();
-
+  const isDark = Boolean(currentTheme === "dark");
+  
   const logout = useCallback(
     async (event) => {
       event.preventDefault();
@@ -36,6 +43,16 @@ const Header = ({
       }
     },
     [history]
+  );
+
+  const toggleThemeButton = isDark ? (
+    <IconButton color="inherit" onClick={() => setTheme("default")}>
+      <DarkThemeIcon />
+    </IconButton>
+  ) : (
+    <IconButton color="inherit" onClick={() => setTheme("dark")}>
+      <LightThemeIcon />
+    </IconButton>
   );
 
   const menuButton = !isSidebarOpen ? (
@@ -93,6 +110,7 @@ const Header = ({
           className={classes.selectBox}
         />
         <div className={classes.grow}></div>
+        {toggleThemeButton}
         {!isLoading ? getUserControls() : null}
       </Toolbar>
     </AppBar>
