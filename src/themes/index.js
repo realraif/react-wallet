@@ -26,7 +26,8 @@ const overrides = {
   },
 };
 
-export default {
-  default: createMuiTheme({ ...defaultTheme, ...overrides }),
-  dark: createMuiTheme({ ...darkTheme, ...overrides }),
-};
+export default (themeName) =>
+  ({
+    default: createMuiTheme({ ...defaultTheme, ...overrides }),
+    dark: createMuiTheme({ ...darkTheme, ...overrides }),
+  }[themeName || "default"]);

@@ -121,7 +121,7 @@ export default {
     MuiCard: {
       root: {
         borderRadius: 6,
-        border: "1px solid #ececec",
+        border: "1px solid #888888",
       },
     },
     MuiCardActionArea: {
