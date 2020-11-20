@@ -99,7 +99,7 @@ const Layout = ({ location, isLoading }) => {
 const getSavedTimeframe = () => {
   const currentTimeFrame = localStorage.getItem("walletTimeFrame");
   const timeFrameIndex = timeFrames.findIndex(x => x.value.toString() === currentTimeFrame);
-  return timeFrameIndex || 0;
+  return timeFrameIndex < 0 ? 0 : timeFrameIndex;
 }
 
 export default withRouter(Layout);
