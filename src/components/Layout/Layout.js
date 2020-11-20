@@ -11,8 +11,8 @@ import Header from "components/Header/Header";
 import Sidebar from "components/Sidebar/Sidebar";
 
 const Layout = ({ location, isLoading }) => {
-  const currentTimeFrame = localStorage.getItem("walletTimeFrame") || null;
-  const [timeFrame, setTimeFrame] = useState(timeFrames[0]);
+  const timeFrameIndex = getSavedTimeframe();
+  const [timeFrame, setTimeFrame] = useState(timeFrames[timeFrameIndex]);
   var [screenSize, setScreenSize] = useState(true);
   const { openSideBar } = useContext(LayoutContext);
   const theme = useTheme();
@@ -29,7 +29,7 @@ const Layout = ({ location, isLoading }) => {
   useEffect(onInit, []);
 
   const handleTimeFrameChange = (timeFrame, e) => {
-    localStorage.setItem("walletTimeFrame", timeFrame);
+    localStorage.setItem("walletTimeFrame", timeFrame.value);
     setTimeFrame(timeFrame);
   };
 
@@ -68,6 +68,7 @@ const Layout = ({ location, isLoading }) => {
     <div className={classes.layout}>
       <Header
         timeFrames={timeFrames}
+        initialTimeFrameIndex={timeFrameIndex}
         isSmallScreen={screenSize === "sm"}
         title={getPageTitle(location.pathname)}
         handleTimeFrameChange={handleTimeFrameChange}
@@ -94,5 +95,11 @@ const Layout = ({ location, isLoading }) => {
     }
   }
 };
+
+const getSavedTimeframe = () => {
+  const currentTimeFrame = localStorage.getItem("walletTimeFrame");
+  const timeFrameIndex = timeFrames.findIndex(x => x.value.toString() === currentTimeFrame);
+  return timeFrameIndex || 0;
+}
 
 export default withRouter(Layout);

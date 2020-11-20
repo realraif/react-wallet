@@ -24,6 +24,7 @@ const Header = ({
   handleTimeFrameChange,
   isSmallScreen,
   timeFrames,
+  initialTimeFrameIndex,
   isLoading,
 }) => {
   const { currentUser } = useContext(UserContext);
@@ -104,7 +105,7 @@ const Header = ({
         <div className={clsx(classes.headerItem, classes.title)}>{title}</div>
         <Select
           options={timeFrames}
-          defaultValue={timeFrames[0]}
+          defaultValue={timeFrames[initialTimeFrameIndex]}
           onChange={handleTimeFrameChange}
           isSearchable={false}
           components={{ SingleValue: CustomSelectValue }}
