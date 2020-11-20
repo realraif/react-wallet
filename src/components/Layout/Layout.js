@@ -3,18 +3,12 @@ import { Route, Switch, withRouter } from "react-router-dom";
 import { useTheme } from "@material-ui/styles";
 
 import routes from "routes";
+import timeFrames from '../../constants/timeFrames'
 import useStyles from "./styles";
 import { LayoutContext } from "context/LayoutContext";
 
 import Header from "components/Header/Header";
 import Sidebar from "components/Sidebar/Sidebar";
-
-const timeFrames = [
-  { value: 24 * 7, label: "past week" },
-  { value: 24 * 30, label: "past 30 days" },
-  { value: 24 * 30 * 3, label: "past quarter" },
-  { value: 24 * 365, label: "past year" },
-];
 
 const Layout = ({ location, isLoading }) => {
   var [screenSize, setScreenSize] = useState(true);

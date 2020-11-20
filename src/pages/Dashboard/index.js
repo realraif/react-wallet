@@ -32,6 +32,7 @@ const Dashboard = ({ timeFrame, ...props }) => {
       <Grid item>
         <Balances
           toggleSelection={toggleSelection}
+          timeFrame={timeFrame}
           data={dashboard.balances}
           selectedCards={dashboard.selectedCards}
         />

@@ -56,7 +56,6 @@ const BalanceCard = ({
       <CardActionArea onClick={handleCardClick}>
         <CardContent>
           <Typography variant="subtitle1">{accountID}</Typography>
-
           <div className={classes.balance}>
             <div>
               <NumberFormat

@@ -5,9 +5,7 @@ import { useTheme } from "@material-ui/styles";
 import BalanceCard from "./BalanceCard/BalanceCard";
 import withSection from "HOC/withSection";
 
-const tempTimeFrame = "this week";
-
-export const Balances = ({ data, selectedCards, toggleSelection }) => {
+export const Balances = ({ data, selectedCards, toggleSelection, timeFrame }) => {
   const theme = useTheme();
   const colors = theme.charts.colors;
 
@@ -27,7 +25,7 @@ export const Balances = ({ data, selectedCards, toggleSelection }) => {
             currency={balance.currency}
             isSelected={areCardsSelected.includes(balance.id)}
             color={colors[index]}
-            timeFrameText={tempTimeFrame}
+            timeFrameText={timeFrame.status}
             toggleSelection={(isSelected) => {
               toggleSelection(isSelected, balance);
             }}
