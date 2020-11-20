@@ -14,14 +14,10 @@ const Dashboard = ({ timeFrame, ...props }) => {
 
   useEffect(() => {
     dispatch(fetchDashboard(timeFrame));
-  }, [dispatch, timeFrame]);
-
-  useEffect(
-    () => () => {
+    return () => {
       dispatch(onDestroy());
-    },
-    [dispatch]
-  );
+    };
+  }, [dispatch, timeFrame]);
 
   const toggleSelection = (isSelected, card) => {
     if (isSelected) {

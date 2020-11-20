@@ -46,16 +46,11 @@ const getGenericOptions = () => ({
       },
     },
   },
-  series: [
-    {
-      type: "areaspline",
-      data: [],
-    },
-  ],
+  series: [],
 });
 
 const customiseOptions = (options, data, styles) => {
-  options.series[0].data = confuigureSeries(data);
+  options.series = [{ type: "areaspline", data: confuigureSeries(data) }];
   handleNegativeValues(data, options);
   setChartColors(options, styles.color);
   options.chart.height = styles.height || 80;
