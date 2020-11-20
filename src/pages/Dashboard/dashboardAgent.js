@@ -2,23 +2,23 @@ import getBalancesMock from "pages/mockdata/dashboardBalancesMock";
 import getDonutChartMock from "pages/mockdata/donutChartMock";
 import getMapChartMock from "pages/mockdata/mapChartMock";
 
-const fetchBalancesData = (timeframe) => {
-  return Promise.resolve({ data: getBalancesMock() });
+const fetchBalancesData = (timeFrame) => {
+  return Promise.resolve({ data: getBalancesMock(timeFrame) });
 };
 
-const fetchDonatChartData = (timeframe) => {
-  return Promise.resolve({ data: getDonutChartMock() });
+const fetchDonatChartData = (timeFrame) => {
+  return Promise.resolve({ data: getDonutChartMock(timeFrame) });
 };
 
-const fetchMapChartData = (timeframe) => {
-  return Promise.resolve({ data: getMapChartMock() });
+const fetchMapChartData = (timeFrame) => {
+  return Promise.resolve({ data: getMapChartMock(timeFrame) });
 };
 
-const fetchDashboardData = (timeframe) => {
+const fetchDashboardData = (timeFrame) => {
   return Promise.all([
-    fetchBalancesData(timeframe),
-    fetchDonatChartData(timeframe),
-    fetchMapChartData(timeframe),
+    fetchBalancesData(timeFrame),
+    fetchDonatChartData(timeFrame),
+    fetchMapChartData(timeFrame),
   ]);
 };
 

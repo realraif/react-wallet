@@ -12,11 +12,15 @@ const CreditCards = ({ timeFrame, ...props }) => {
   const categoriesTrendData = getCategoriesTrendData(creditCardsData);
 
   useEffect(() => {
-    dispatch(fetchCreditCards());
-    return () => {
+    dispatch(fetchCreditCards(timeFrame));
+  }, [dispatch, timeFrame]);
+
+  useEffect(
+    () => () => {
       dispatch(onDestroy());
-    }
-  }, [dispatch]);
+    },
+    [dispatch]
+  );
 
   return (
     <Grid container direction="column" alignItems="stretch">

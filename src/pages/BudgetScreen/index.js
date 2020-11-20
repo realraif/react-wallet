@@ -16,11 +16,15 @@ const BudgetScreen = ({ timeFrame, ...props }) => {
   };
 
   useEffect(() => {
-    dispatch(fetchBudget());
-    return () => {
+    dispatch(fetchBudget(timeFrame));
+  }, [dispatch, timeFrame]);
+
+  useEffect(
+    () => () => {
       dispatch(onDestroy());
-    };
-  }, [dispatch]);
+    },
+    [dispatch]
+  );
 
   return (
     <Grid container direction="column" alignItems="stretch">

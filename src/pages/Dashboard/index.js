@@ -13,11 +13,15 @@ const Dashboard = ({ timeFrame, ...props }) => {
   const dashboard = useSelector((state) => state.dashboard);
 
   useEffect(() => {
-    dispatch(fetchDashboard());
-    return () => {
+    dispatch(fetchDashboard(timeFrame));
+  }, [dispatch, timeFrame]);
+
+  useEffect(
+    () => () => {
       dispatch(onDestroy());
-    };
-  }, [dispatch]);
+    },
+    [dispatch]
+  );
 
   const toggleSelection = (isSelected, card) => {
     if (isSelected) {

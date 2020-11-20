@@ -83,4 +83,4 @@ const clickAllPaths = (container) => {
   });
 };
 
-export default SankeyDiagram;
+export default React.memo(SankeyDiagram);

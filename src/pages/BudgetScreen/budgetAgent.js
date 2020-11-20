@@ -2,23 +2,23 @@ import getBudgetSankeyMock from "pages/mockdata/sankeyMock";
 import polarChartMock from "pages/mockdata/polarChartMock";
 import getBarChartMock from "pages/mockdata/barChartMock";
 
-const fetchBudgetSankeyData = (timeframe) => {
+const fetchBudgetSankeyData = (timeFrame) => {
   return Promise.resolve({ data: getBudgetSankeyMock() });
 };
 
-const fetchPolarChartData = (timeframe) => {
+const fetchPolarChartData = (timeFrame) => {
   return Promise.resolve({ data: polarChartMock });
 };
 
-const fetchBarChartData = (timeframe) => {
-  return Promise.resolve({ data: getBarChartMock() });
+const fetchBarChartData = (timeFrame) => {
+  return Promise.resolve({ data: getBarChartMock(timeFrame) });
 };
 
-const fetchBudgetData = (timeframe) => {
+const fetchBudgetData = (timeFrame) => {
   return Promise.all([
-    fetchBudgetSankeyData(timeframe),
-    fetchPolarChartData(timeframe),
-    fetchBarChartData(timeframe),
+    fetchBudgetSankeyData(timeFrame),
+    fetchPolarChartData(timeFrame),
+    fetchBarChartData(timeFrame),
   ]);
 };
 

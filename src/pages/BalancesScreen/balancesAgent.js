@@ -1,11 +1,11 @@
 import getBalancesWithCandleStickMock from "pages/mockdata/balancesWithCandleStickMock";
 
-const fetchBalancesMultiSplineData = (timeframe) => {
-  return Promise.resolve({ data: getBalancesWithCandleStickMock() });
+const fetchBalancesMultiSplineData = (timeFrame) => {
+  return Promise.resolve({ data: getBalancesWithCandleStickMock(timeFrame) });
 };
 
-const fetchBalances = (timeframe) => {
-  return fetchBalancesMultiSplineData(timeframe);
+const fetchBalances = (timeFrame) => {
+  return fetchBalancesMultiSplineData(timeFrame);
 };
 
 export default { fetchBalances };

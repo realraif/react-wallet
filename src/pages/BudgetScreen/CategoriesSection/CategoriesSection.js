@@ -8,9 +8,12 @@ import WithBox from "HOC/withBox";
 import ExpensesPolarChart from "./ExpensesPolarChart";
 import ExpensesBarChart from "./ExpensesBarChart";
 
-const CategoriesSection = ({ budgetData, selectedCategoryType, handleTabChange }) => {
+const CategoriesSection = ({
+  budgetData,
+  selectedCategoryType,
+  handleTabChange,
+}) => {
   const theme = useTheme();
-
   const height = theme.sections.overview.expenses.height;
 
   return (
