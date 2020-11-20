@@ -4,7 +4,7 @@ import { MuiThemeProvider } from "@material-ui/core";
 
 import { Balances as BalancesSection } from "./Balances/BalancesSection";
 import BalanceCard from "./Balances/BalanceCard/BalanceCard";
-import themes from "themes";
+import getTheme from "themes";
 import dashboardSlice, { removeFromSelectedCards } from "./dashboardSlice";
 
 describe("dashboard", () => {
@@ -15,8 +15,9 @@ describe("dashboard", () => {
     ];
     const selectedCards = [{ parentId: 1 }, { id: 2 }];
     const props = { data, selectedCards };
+    const theme = getTheme();
     const wrapper = mount(
-      <MuiThemeProvider theme={themes.default}>
+      <MuiThemeProvider theme={theme}>
         <BalancesSection {...props} />
       </MuiThemeProvider>
     );

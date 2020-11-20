@@ -7,11 +7,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Provider } from "react-redux";
 
 import "./index.css";
-import { LayoutProvider } from "./context/LayoutContext";
-import { UserProvider } from "./context/UserContext";
+import CustomThemeProvider from "./context/CustomThemeContext";
+import LayoutProvider from "./context/LayoutContext";
+import UserProvider from "./context/UserContext";
 import App from "./App";
 import store from './store';
-import CustomThemeProvider from "./context/CustomThemeContext";
 
 ReactDOM.render(
   <Provider store={store}>

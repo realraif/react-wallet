@@ -14,7 +14,7 @@ function layoutReducer(state, action) {
   }
 }
 
-export function LayoutProvider({ children }) {
+const LayoutProvider = ({ children }) => {
   var [state, dispatch] = React.useReducer(layoutReducer, {
     isSidebarOpen: true,
     openSideBar: (isOpen) => {
@@ -33,4 +33,6 @@ export function LayoutProvider({ children }) {
   return (
     <LayoutContext.Provider value={state}>{children}</LayoutContext.Provider>
   );
-}
+};
+
+export default LayoutProvider;

@@ -9,7 +9,7 @@ const tempTimeFrame = "this week";
 
 export const Balances = ({ data, selectedCards, toggleSelection }) => {
   const theme = useTheme();
-  const color = theme.charts.colors[2];
+  const colors = theme.charts.colors;
 
   const areCardsSelected = selectedCards.map(
     (card) => card.parentId || card.id
@@ -26,7 +26,7 @@ export const Balances = ({ data, selectedCards, toggleSelection }) => {
             accountID={balance.id}
             currency={balance.currency}
             isSelected={areCardsSelected.includes(balance.id)}
-            color={color}
+            color={colors[index]}
             timeFrameText={tempTimeFrame}
             toggleSelection={(isSelected) => {
               toggleSelection(isSelected, balance);
