@@ -81,7 +81,7 @@ export default {
       "#f7d3e9",
       "#2e8a60",
     ],
-    pieBorder: "#fff",
+    pieBorder: "#c5c5c5",
   },
   sections: {
     overview: {

@@ -10,9 +10,10 @@ import Header from "components/Header/Header";
 import Sidebar from "components/Sidebar/Sidebar";
 
 const timeFrames = [
-  { value: 24, label: "24 hours" },
   { value: 24 * 7, label: "past week" },
   { value: 24 * 30, label: "past 30 days" },
+  { value: 24 * 30 * 3, label: "past quarter" },
+  { value: 24 * 365, label: "past year" },
 ];
 
 const Layout = ({ location, isLoading }) => {

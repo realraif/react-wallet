@@ -30,12 +30,13 @@ export default makeStyles((theme) => ({
 
 export const useHeaderStyles = makeStyles(
   (theme) => {
-    const hover = {
-      backgroundColor: "transparent",
-      border: "1px solid transparent",
+    const hoverBox = {
       "&:hover": {
         color: "#1DC7EA",
         border: "1px solid #1DC7EA",
+        "& svg": {
+          color: "#1DC7EA",
+        },
       },
     };
 
@@ -90,10 +91,20 @@ export const useHeaderStyles = makeStyles(
         fontWeight: 200,
       },
       selectBox: {
-        width: 200,
-        ...hover,
+        "& div": {
+          cursor: "pointer",
+        },
+        "& .css-yk16xz-control, & .css-1pahdxg-control": {
+          ...hoverBox,
+          color: "#666666",
+          borderColor: "#cccccc",
+          width: 200,
+          boxShadow: "none",
+          outline: 0,
+        },
       },
-      dropDown: hover,
+      selectedValueText: { margin: "0 6px" },
+      dropDown: hoverBox,
     };
   },
   { index: 1 }

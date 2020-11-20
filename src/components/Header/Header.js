@@ -31,7 +31,7 @@ const Header = ({
   const { currentTheme, setTheme } = useContext(CustomThemeContext);
   const classes = useHeaderStyles();
   const isDark = Boolean(currentTheme === "dark");
-  
+
   const logout = useCallback(
     async (event) => {
       event.preventDefault();
@@ -70,7 +70,7 @@ const Header = ({
   const CustomSelectValue = (props) => (
     <div>
       <AiOutlineClockCircle />
-      {props.data.label}
+      <span class={classes.selectedValueText}>{props.data.label}</span>
     </div>
   );
 
@@ -106,6 +106,7 @@ const Header = ({
           options={timeFrames}
           defaultValue={timeFrames[0]}
           onChange={setDataTimeFrame}
+          isSearchable={false}
           components={{ SingleValue: CustomSelectValue }}
           className={classes.selectBox}
         />
