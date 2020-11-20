@@ -91,12 +91,12 @@ export const useHeaderStyles = makeStyles(
         fontWeight: 200,
       },
       selectBox: {
+        color: "#666666",
         "& div": {
           cursor: "pointer",
         },
         "& .css-yk16xz-control, & .css-1pahdxg-control": {
           ...hoverBox,
-          color: "#666666",
           borderColor: "#cccccc",
           width: 200,
           boxShadow: "none",
