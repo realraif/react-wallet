@@ -8,12 +8,12 @@ export const CustomThemeContext = React.createContext({
 });
 
 const CustomThemeProvider = ({ children }) => {
-  const currentTheme = localStorage.getItem("appTheme") || null;
+  const currentTheme = localStorage.getItem("walletTheme") || null;
   const [themeName, setThemeName] = useState(currentTheme);
   const theme = getTheme(themeName);
 
   const setThemeHandler = (name) => {
-    localStorage.setItem("appTheme", name);
+    localStorage.setItem("walletTheme", name);
     setThemeName(name);
   };
 

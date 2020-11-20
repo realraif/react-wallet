@@ -21,7 +21,7 @@ import { CustomThemeContext } from "context/CustomThemeContext";
 const Header = ({
   history,
   title,
-  setDataTimeFrame,
+  handleTimeFrameChange,
   isSmallScreen,
   timeFrames,
   isLoading,
@@ -105,7 +105,7 @@ const Header = ({
         <Select
           options={timeFrames}
           defaultValue={timeFrames[0]}
-          onChange={setDataTimeFrame}
+          onChange={handleTimeFrameChange}
           isSearchable={false}
           components={{ SingleValue: CustomSelectValue }}
           className={classes.selectBox}

@@ -3,7 +3,7 @@ import { Route, Switch, withRouter } from "react-router-dom";
 import { useTheme } from "@material-ui/styles";
 
 import routes from "routes";
-import timeFrames from '../../constants/timeFrames'
+import timeFrames from "constants/timeFrames";
 import useStyles from "./styles";
 import { LayoutContext } from "context/LayoutContext";
 
@@ -11,8 +11,9 @@ import Header from "components/Header/Header";
 import Sidebar from "components/Sidebar/Sidebar";
 
 const Layout = ({ location, isLoading }) => {
-  var [screenSize, setScreenSize] = useState(true);
+  const currentTimeFrame = localStorage.getItem("walletTimeFrame") || null;
   const [timeFrame, setTimeFrame] = useState(timeFrames[0]);
+  var [screenSize, setScreenSize] = useState(true);
   const { openSideBar } = useContext(LayoutContext);
   const theme = useTheme();
   const classes = useStyles();
@@ -27,7 +28,8 @@ const Layout = ({ location, isLoading }) => {
 
   useEffect(onInit, []);
 
-  const setDataTimeFrame = (timeFrame) => {
+  const handleTimeFrameChange = (timeFrame, e) => {
+    localStorage.setItem("walletTimeFrame", timeFrame);
     setTimeFrame(timeFrame);
   };
 
@@ -68,7 +70,7 @@ const Layout = ({ location, isLoading }) => {
         timeFrames={timeFrames}
         isSmallScreen={screenSize === "sm"}
         title={getPageTitle(location.pathname)}
-        setDataTimeFrame={setDataTimeFrame}
+        handleTimeFrameChange={handleTimeFrameChange}
         isLoading={isLoading}
       />
       <Sidebar routes={routes} isSmallScreen={screenSize === "sm"} />
