@@ -42,7 +42,8 @@ const AccordionTable = ({
   columns,
   rows,
   accordionIndex,
-  rowSelectedHandler,
+  subRowSelectedHandler,
+  rowCheckedHander,
   selectedId,
   styles,
 }) => {
@@ -62,7 +63,7 @@ const AccordionTable = ({
 
   const handleSubRowClick = (subRowId) => {
     setSelected(subRowId);
-    rowSelectedHandler(subRowId);
+    subRowSelectedHandler(subRowId);
   };
 
   const handleCheck = (event, rowId) => {
@@ -77,6 +78,7 @@ const AccordionTable = ({
     }
 
     setChecked(newChecked);
+    rowCheckedHander(newChecked);
   };
 
   const isSelected = (id) => id === selected;

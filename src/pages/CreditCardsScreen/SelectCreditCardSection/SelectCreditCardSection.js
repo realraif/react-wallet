@@ -14,6 +14,10 @@ const SelectBalanceSection = ({ creditCardsData }) => {
 
   const rowsPerPage = 4;
   const height = rowHeight * rowsPerPage;
+  const spiderData = getSpiderData(
+    creditCardsData.spiderChart,
+    creditCardsData.checkedBalances
+  );
 
   return (
     <WithBox>
@@ -26,14 +30,19 @@ const SelectBalanceSection = ({ creditCardsData }) => {
           />
         </Grid>
         <Grid item xs={12} md={6} style={{ textAlign: "right" }}>
-          <CreditCardSpiderChart
-            data={creditCardsData.spiderChart}
-            height={height}
-          />
+          <CreditCardSpiderChart data={spiderData} height={height} />
         </Grid>
       </Grid>
     </WithBox>
   );
+};
+
+const getSpiderData = (data, checkedBalances) => {
+  if (!checkedBalances) return data;
+  const series = data.series.filter((balance) =>
+    checkedBalances.includes(balance.id)
+  );
+  return { ...data, series };
 };
 
 export default withSection(SelectBalanceSection);

@@ -43,6 +43,9 @@ const creditCardsSlice = createSlice({
       state.selectedCardId = payload.id;
       state.selectedCategory = null;
     },
+    balancesChecked: (state, { payload }) => {
+      state.checkedBalances = payload.selectedBalances;
+    },
     categorySelected: (state, { payload }) => {
       state.selectedCategory = payload.category;
       state.categoryChangedCounter++;
@@ -76,6 +79,7 @@ const creditCardsSlice = createSlice({
 
 export const {
   cardSelected,
+  balancesChecked,
   categorySelected,
   onDestroy,
 } = creditCardsSlice.actions;

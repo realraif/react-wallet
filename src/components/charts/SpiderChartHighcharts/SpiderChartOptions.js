@@ -108,7 +108,8 @@ const getPointsData = (points) => {
   }));
 };
 
-export const handleCrosshairHover = function (proceed, e) {
+export const handleCrosshairHover = function (proceed, event) {
+  if (!event) return;
   const axis = this;
   proceed.apply(axis, Array.prototype.slice.call(arguments, 1));
   if (!!axis.options.crosshairHoveredHandler) {
