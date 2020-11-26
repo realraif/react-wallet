@@ -1,7 +1,4 @@
-import {
-  configureStore,
-  getDefaultMiddleware,
-} from "@reduxjs/toolkit";
+import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 import logger from "redux-logger";
 import dashboard from "./pages/Dashboard/dashboardSlice";
 import balances from "./pages/BalancesScreen/balancesSlice";
@@ -15,7 +12,10 @@ const reducer = {
   budget,
 };
 
-const middleware = [...getDefaultMiddleware(), logger];
+let middleware = [...getDefaultMiddleware()];
+if (process.env.NODE_ENV === "development") {
+  middleware.push(logger);
+}
 export default configureStore({
   reducer,
   middleware,
