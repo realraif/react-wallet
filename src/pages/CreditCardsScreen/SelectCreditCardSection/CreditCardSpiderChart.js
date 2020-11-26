@@ -25,9 +25,12 @@ const CreditCardSpiderChart = ({ data, height }) => {
 
   const hoverSpiderCategory = () => {
     if (!!creditCardsData.selectedCategory) {
-      chartRef.current.chart
-        .get(creditCardsData.selectedCategory)
-        .onMouseOver();
+      const categoryColumn = chartRef.current.chart.get(
+        creditCardsData.selectedCategory
+      );
+      if (categoryColumn) {
+        categoryColumn.onMouseOver();
+      }
     }
   };
 
