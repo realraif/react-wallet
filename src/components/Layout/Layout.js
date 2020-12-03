@@ -91,7 +91,7 @@ const Layout = ({ location, isLoading }) => {
 
     if (currentScreenSize !== screenSize) {
       setScreenSize(currentScreenSize);
-      openSideBar(currentScreenSize !== "md");
+      openSideBar(currentScreenSize === "lg");
     }
   }
 };
