@@ -4,6 +4,7 @@ import { useTheme } from "@material-ui/styles";
 
 import routes from "routes";
 import timeFrames from "constants/timeFrames";
+import * as size from "constants/screenSizes";
 import useStyles from "./styles";
 import { LayoutContext } from "context/LayoutContext";
 
@@ -69,12 +70,12 @@ const Layout = ({ location, isLoading }) => {
       <Header
         timeFrames={timeFrames}
         initialTimeFrameIndex={timeFrameIndex}
-        isSmallScreen={screenSize === "sm"}
+        isSmallScreen={screenSize === size.SM}
         title={getPageTitle(location.pathname)}
         handleTimeFrameChange={handleTimeFrameChange}
         isLoading={isLoading}
       />
-      <Sidebar routes={routes} isSmallScreen={screenSize === "sm"} />
+      <Sidebar routes={routes} isSmallScreen={screenSize === size.SM} />
       <main className={classes.content}>{renderRoutes()}</main>
     </div>
   );
@@ -84,14 +85,14 @@ const Layout = ({ location, isLoading }) => {
     const isUnderSmallBreakpoint = windowWidth < theme.breakpoints.values.sm;
     const isUnderMediumBreakpoint = windowWidth < theme.breakpoints.values.md;
     const currentScreenSize = isUnderSmallBreakpoint
-      ? "sm"
+      ? size.SM
       : isUnderMediumBreakpoint
-      ? "md"
-      : "lg";
+      ? size.MD
+      : size.LG;
 
     if (currentScreenSize !== screenSize) {
       setScreenSize(currentScreenSize);
-      openSideBar(currentScreenSize === "lg");
+      openSideBar(currentScreenSize === size.LG);
     }
   }
 };

@@ -98,7 +98,6 @@ export const useHeaderStyles = makeStyles(
         "& .css-yk16xz-control, & .css-1pahdxg-control": {
           ...hoverBox,
           borderColor: "#cccccc",
-          width: 200,
           boxShadow: "none",
           outline: 0,
         },

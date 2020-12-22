@@ -71,7 +71,9 @@ const Header = ({
   const CustomSelectValue = (props) => (
     <div>
       <AiOutlineClockCircle />
-      <span className={classes.selectedValueText}>{props.data.label}</span>
+      {isSmallScreen ? null : (
+        <span className={classes.selectedValueText}>{props.data.label}</span>
+      )}
     </div>
   );
 
