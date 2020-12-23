@@ -79,8 +79,12 @@ const Header = ({
 
   const getUserControls = () => (
     <>
-      <div className={classes.headerItem}>{currentUser.email}</div>
-      <Dropdown className={classes.headerItem} />
+      {isSmallScreen ? null : (
+        <>
+          <div className={classes.headerItem}>{currentUser.email}</div>
+          <Dropdown className={classes.headerItem} />
+        </>
+      )}
       <Button onClick={logout} color="primary" className={classes.headerItem}>
         Log out
       </Button>

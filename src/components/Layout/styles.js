@@ -67,10 +67,12 @@ export const useHeaderStyles = makeStyles(
         padding: `0 ${theme.customSpacing.pageSides}px`,
       },
       toolbarMediumSpacing: {
-        paddingLeft: `${theme.customSpacing.pageSides + theme.spacing(closedDrawerWU)}px`,
+        paddingLeft:
+          theme.customSpacing.pageSides + theme.spacing(closedDrawerWU),
       },
       toolbarSmallSpacing: {
-        paddingLeft: `${theme.customSpacing.pageSides + theme.spacing(closedDrawerWU)/2}px`,
+        paddingLeft:
+          theme.customSpacing.pageSides + theme.spacing(closedDrawerWU) / 2,
       },
       grow: {
         flexGrow: 1,
@@ -87,7 +89,9 @@ export const useHeaderStyles = makeStyles(
         },
       },
       headerItem: {
-        marginRight: theme.spacing(2),
+        "&:not(:last-child)": {
+          marginRight: theme.spacing(2),
+        },
       },
       title: {
         fontSize: 25,
