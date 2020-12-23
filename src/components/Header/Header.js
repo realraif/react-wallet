@@ -117,6 +117,13 @@ const Header = ({
           isSearchable={false}
           components={{ SingleValue: CustomSelectValue }}
           className={classes.selectBox}
+          styles={{
+            menu: (styles) => ({
+              ...styles,
+              width: 180,
+              margin: "1px 0",
+            }),
+          }}
         />
         <div className={classes.grow}></div>
         {toggleThemeButton}
