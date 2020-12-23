@@ -100,7 +100,8 @@ const Header = ({
       {menuButton}
       <Toolbar
         className={clsx(classes.toolbar, {
-          [classes.toolbarShift]: !isSidebarOpen,
+          [classes.toolbarMediumSpacing]: !isSidebarOpen && !isSmallScreen,
+          [classes.toolbarSmallSpacing]: isSmallScreen,
           [classes.appBarWide]: isSmallScreen,
         })}
       >

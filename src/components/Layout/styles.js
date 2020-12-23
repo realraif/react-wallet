@@ -66,8 +66,11 @@ export const useHeaderStyles = makeStyles(
         borderBottom: headerBorder,
         padding: `0 ${theme.customSpacing.pageSides}px`,
       },
-      toolbarShift: {
-        paddingLeft: theme.spacing(closedDrawerWU + 3),
+      toolbarMediumSpacing: {
+        paddingLeft: `${theme.customSpacing.pageSides + theme.spacing(closedDrawerWU)}px`,
+      },
+      toolbarSmallSpacing: {
+        paddingLeft: `${theme.customSpacing.pageSides + theme.spacing(closedDrawerWU)/2}px`,
       },
       grow: {
         flexGrow: 1,
