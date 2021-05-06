@@ -21,7 +21,7 @@
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.5",
     "firebase": "^7.16.0",
-    "highcharts": "^8.2.0",
+    "highcharts": "^9.0.0",
     "highcharts-react-official": "^3.0.0",
     "react": "^16.13.1",
     "react-bootstrap": "^1.2.2",
