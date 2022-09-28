@@ -40,8 +40,8 @@
   },
   "scripts": {
     "start-debug": "react-scripts --inspect start --no-cache --runInBand",
-    "start": "react-scripts start --no-cache",
-    "build": "react-scripts build",
+    "start": "react-scripts --openssl-legacy-provider start --no-cache",
+    "build": "react-scripts --openssl-legacy-provider build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
