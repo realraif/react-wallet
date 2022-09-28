@@ -1,6 +1,6 @@
 import getBalancesData from "./balancWithTrendMock";
 
-export default () => {
+const balancWithCandleStickMock = () => {
   return getBalancesData().map(({ id, name, status, trend }) => {
     return {
       id,
@@ -33,3 +33,5 @@ const getRandomHighLowValues = (candleEdges) => {
   });
   return [randomNumber(max, max + 100), randomNumber(min, min - 100)];
 };
+
+export default balancWithCandleStickMock;

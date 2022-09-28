@@ -11,7 +11,7 @@ const labels = [
 const incomes = ["Salary", "Bonus", "Investment", "Interest"];
 const expenses = ["Home", "Food", "Bills", "Other"];
 
-export default () => {
+const barChartMock = () => {
   const incomesSeries = getSeriesData(incomes);
   const expensesSeries = getSeriesData(expenses);
 
@@ -36,3 +36,5 @@ const getSeriesData = (bars) => {
 const randomNumber = (min, max) => {
   return Math.floor(Math.random() * (max - min) + min);
 };
+
+export default barChartMock;

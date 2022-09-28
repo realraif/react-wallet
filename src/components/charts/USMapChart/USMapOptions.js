@@ -3,7 +3,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import Tooltip from "./USMapTooltip";
 
-export default (data, callBackMethods, styles) => {
+const usMapOptions = (data, callBackMethods, styles) => {
   const options = getGenericOptions();
   customiseOptions(options, data, styles);
   setEvents(options, callBackMethods);
@@ -92,3 +92,5 @@ const setEvents = (options, callBackMethods) => {
     });
   };
 };
+
+export default usMapOptions;

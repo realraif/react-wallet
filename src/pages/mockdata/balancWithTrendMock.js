@@ -1,6 +1,6 @@
 import balancesData from "./balancesMock";
 
-export default () => {
+const balanceWithTrendMock = () => {
   return balancesData.map((balance) => {
     return {
       ...balance,
@@ -38,3 +38,5 @@ const getStartDate = (daysBefore) => {
 const randomNumber = (min, max) => {
   return Math.floor(Math.random() * (max - min) + min);
 };
+
+export default balanceWithTrendMock;

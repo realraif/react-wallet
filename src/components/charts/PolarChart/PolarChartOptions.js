@@ -2,7 +2,7 @@ import tinycolor from "tinycolor2";
 
 const defaultDiameter = 200;
 
-export default (data, styles) => {
+const polarChartOptions = (data, styles) => {
   const options = getGenericOptions();
   customiseOptions(options, data);
   customiseStyles(options, styles);
@@ -85,3 +85,5 @@ const customiseStyles = (options, styles) => {
     ],
   }));
 };
+
+export default polarChartOptions;

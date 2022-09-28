@@ -1,6 +1,6 @@
 const defaultDiameter = 200;
 
-export default (data, callBackMethods, styles) => {
+const spiderChartOptions = (data, callBackMethods, styles) => {
   const options = getGenericOptions();
   customiseOptions(options, data, styles);
   setEvents(options, callBackMethods);
@@ -118,3 +118,5 @@ export const handleCrosshairHover = function (proceed, event) {
     axis.options.crosshairHoveredHandler({ category, points });
   }
 };
+
+export default spiderChartOptions;

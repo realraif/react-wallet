@@ -1,6 +1,6 @@
 import balancesData from "./balancesMock";
 
-export default (timeFrame) => {
+const dashboardMock = (timeFrame) => {
   return balancesData.map(({ cc, ...balance }) => {
     const trend = mockBalanceTrend(timeFrame);
     const allUSStates = cc.reduce((arr, { states }) => arr.concat(states), []);
@@ -31,3 +31,5 @@ const mockBalanceTrend = (timeFrame) => {
 const randomNumber = (min, max) => {
   return Math.floor(Math.random() * (max - min) + min);
 };
+
+export default dashboardMock;

@@ -22,4 +22,6 @@ const fetchBudgetData = (timeFrame) => {
   ]);
 };
 
-export default { fetchBudgetData };
+const budgetAgent = { fetchBudgetData };
+
+export default budgetAgent;

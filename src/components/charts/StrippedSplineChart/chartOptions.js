@@ -3,7 +3,7 @@ import { ColorLuminance } from "utils";
 
 const defaultColor = "#4572A7";
 
-export default (data, styles) => {
+const strippedSplineChartOptions = (data, styles) => {
   const options = getGenericOptions();
   customiseOptions(options, data, styles);
   return options;
@@ -116,3 +116,5 @@ const getColors = (chartColor) => ({
   lighterColor: ColorLuminance(chartColor, 0.4),
   whiteColor: ColorLuminance(chartColor, 1),
 });
+
+export default strippedSplineChartOptions;

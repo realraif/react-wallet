@@ -22,4 +22,6 @@ const fetchDashboardData = (timeFrame) => {
   ]);
 };
 
-export default { fetchDashboardData };
+const dashboardAgent = { fetchDashboardData };
+
+export default dashboardAgent;

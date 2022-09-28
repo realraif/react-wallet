@@ -1,6 +1,6 @@
 import balancesData from "./balancesMock";
 
-export default () => {
+const mapChartMock = () => {
   const statesData = getStatesExpenses(balancesData);
   const mapData = [];
 
@@ -44,3 +44,5 @@ const getStateData = (state, expenses, creditInfo) => {
   stateData.creditCards.push(creditInfo);
   return stateData;
 };
+
+export default mapChartMock;
