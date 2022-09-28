@@ -57,6 +57,7 @@ const SankeyDiagram = ({
         data={data}
         {...options}
         onClick={(data, event) => {
+          if (!data.source) return;
           const source = data.source.id.toLowerCase();
           const target = data.target.id.toLowerCase();
           const element = event.target;

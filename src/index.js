@@ -17,7 +17,7 @@ ReactDOM.render(
   <Provider store={store}>
     <CustomThemeProvider>
       <LayoutProvider>
-        <UserProvider>
+        <UserProvider isDefaultUserMode={true} >
           <CssBaseline />
           <App />
         </UserProvider>

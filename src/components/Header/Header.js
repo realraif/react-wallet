@@ -27,7 +27,7 @@ const Header = ({
   initialTimeFrameIndex,
   isLoading,
 }) => {
-  const { currentUser } = useContext(UserContext);
+  const { currentUser, isDefaultUserMode } = useContext(UserContext);
   const { toggleSidebar, isSidebarOpen } = useContext(LayoutContext);
   const { currentTheme, setTheme } = useContext(CustomThemeContext);
   const classes = useHeaderStyles();
@@ -85,9 +85,11 @@ const Header = ({
           <Dropdown className={classes.headerItem} />
         </>
       )}
-      <Button onClick={logout} color="primary" className={classes.headerItem}>
-        Log out
-      </Button>
+      {isDefaultUserMode ? null : (
+        <Button onClick={logout} color="primary" className={classes.headerItem}>
+          Log out
+        </Button>
+      )}
     </>
   );
 

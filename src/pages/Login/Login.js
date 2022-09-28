@@ -1,9 +1,14 @@
 import React, { useCallback, useContext } from "react";
 import { withRouter, Redirect } from "react-router";
+import { NavLink } from "react-router-dom";
 import firebase from "firebase.js";
+
 import { UserContext } from "context/UserContext";
+import useStyles from "components/Layout/styles";
 
 const Login = ({ history }) => {
+  const classes = useStyles();
+
   const handleLogin = useCallback(
     async event => {
       event.preventDefault();
@@ -27,18 +32,25 @@ const Login = ({ history }) => {
 
   return (
     <div>
-      <h1>Log in</h1>
+      <h1>Log In</h1>
       <form onSubmit={handleLogin}>
-        <label>
-          Email
-          <input name="email" type="email" placeholder="Email" />
-        </label>
-        <label>
+        <div>
+          <label>
+            Email
+            <input name="email" type="email" placeholder="Email" />
+          </label>
+        </div>
+        <div>
+          <label>
           Password
           <input name="password" type="password" placeholder="Password" />
-        </label>
-        <button type="submit">Log in</button>
+          </label>
+        </div>
+        <button type="submit" className={classes.loginButton}>Log In</button>
       </form>
+      <NavLink to="/signup" className={classes.loginNav}>
+        SignUp
+      </NavLink>
     </div>
   );
 };

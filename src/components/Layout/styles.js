@@ -26,6 +26,20 @@ export default makeStyles((theme) => ({
     marginTop: headerHeigth,
     minHeight: `calc(100vh - ${headerHeigth}px)`,
   },
+  loginButton: {
+    backgroundColor: "White",
+    fontSize: 20,
+    fontWeight: "bold",
+    border: 0,
+    borderRadius: 2,
+    margin: "16px 0"
+  },
+  loginNav: {
+    color: "white",
+    fontWeight: "bold",
+    fontSize: 12,
+    textDecoration: "none"
+  }
 }));
 
 export const useHeaderStyles = makeStyles(
