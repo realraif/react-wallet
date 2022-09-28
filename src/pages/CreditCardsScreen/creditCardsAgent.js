@@ -15,4 +15,6 @@ const fetchCreditCardsData = (timeFrame) => {
   ]);
 };
 
-export default { fetchCreditCardsData };
+const creditCardsAgent = { fetchCreditCardsData };
+
+export default creditCardsAgent;

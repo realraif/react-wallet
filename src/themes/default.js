@@ -10,7 +10,7 @@ const warning = "#FFC260";
 const success = "#3CD4A0";
 const info = "#9013FE";
 
-export default {
+const defaultTheme = {
   palette: {
     primary: {
       main: primary,
@@ -153,3 +153,5 @@ export default {
     },
   },
 };
+
+export default defaultTheme;

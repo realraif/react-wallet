@@ -8,4 +8,6 @@ const fetchBalances = (timeFrame) => {
   return fetchBalancesMultiSplineData(timeFrame);
 };
 
-export default { fetchBalances };
+const balancesAgent = { fetchBalances };
+
+export default balancesAgent;

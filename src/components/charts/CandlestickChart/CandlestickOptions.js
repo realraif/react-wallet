@@ -1,4 +1,4 @@
-export default (data, callBackMethods, styles) => {
+const candlestickOptions = (data, callBackMethods, styles) => {
   const options = getGenericOptions();
   customiseOptions(options, data, styles);
   setEvents(options, callBackMethods);
@@ -149,3 +149,5 @@ const setEvents = (options, callBackMethods) => {
     }, 0);
   };
 };
+
+export default candlestickOptions;

@@ -1,6 +1,6 @@
 import balancesData, { categories } from "./balancesMock";
 
-export default () => {
+const creditCardsMock = () => {
   return balancesData.map(({ id, name, cc }) => ({
     id,
     name,
@@ -32,3 +32,5 @@ const mockExpensesData = () => {
 const randomNumber = (min, max) => {
   return Math.floor(Math.random() * (max - min) + min);
 };
+
+export default creditCardsMock;

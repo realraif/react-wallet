@@ -1,6 +1,6 @@
 import balancesData from "./balancesMock";
 
-export default () => {
+const donutChartMock = () => {
   let donutData = [];
   balancesData.forEach(({ id, name, cc }) => {
     const allStates = cc.reduce((arr, { states }) => arr.concat(states), []);
@@ -28,3 +28,5 @@ export default () => {
 
   return donutData;
 };
+
+export default donutChartMock;

@@ -11,7 +11,7 @@ export const getBarColors = (bars, colors) => {
   return colorDict;
 };
 
-export default {
+const groupedBarOptions = {
   margin: { top: 20, right: 20, bottom: 30, left: 40 },
   padding: 0.15,
   innerPadding: 1,
@@ -40,3 +40,5 @@ export const chartMethods = {
     event.currentTarget.style.opacity = "1";
   },
 };
+
+export default groupedBarOptions;

@@ -7,4 +7,6 @@ const QUARTER = {
 };
 const YEAR = { value: 365, label: "past year", status: "this year" };
 
-export default [WEEK, MONTH, QUARTER, YEAR];
+const timeFrameOptions = [WEEK, MONTH, QUARTER, YEAR];
+
+export default timeFrameOptions;

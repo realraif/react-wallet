@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-export default (data, callBackMethods, styles) => {
+const multiStockOptions = (data, callBackMethods, styles) => {
   const options = getGenericOptions();
   customiseOptions(options, data, styles);
   setEvents(options, callBackMethods);
@@ -234,3 +234,5 @@ const setEvents = (options, callBackMethods) => {
     callBackMethods.serieClickedHandler(event.target.name);
   };
 };
+
+export default multiStockOptions;

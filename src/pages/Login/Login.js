@@ -1,7 +1,7 @@
 import React, { useCallback, useContext } from "react";
 import { withRouter, Redirect } from "react-router";
 import { NavLink } from "react-router-dom";
-import firebase from "firebase.js";
+import { auth } from "firebaseAuth.js";
 
 import { UserContext } from "context/UserContext";
 import useStyles from "components/Layout/styles";
@@ -14,7 +14,7 @@ const Login = ({ history }) => {
       event.preventDefault();
       const { email, password } = event.target.elements;
       try {
-        await firebase.auth()
+        await auth()
           .signInWithEmailAndPassword(email.value, password.value);
         history.push("/");
       } catch (error) {

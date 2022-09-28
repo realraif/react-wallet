@@ -1,4 +1,5 @@
-import firebase from "firebase";
+import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
 
 const config = {
   apiKey: "AIzaSyBJ6wrA6bohViEPcsM40WufFKe_1uqukUQ",
@@ -8,9 +9,9 @@ const config = {
   storageBucket: "wallet-f71a8.appspot.com",
   messagingSenderId: "964819397119",
   appId: "1:964819397119:web:2ee2dfe917631c4b0b9fca",
-  measurementId: "G-1SFHDSBWEB"
+  measurementId: "G-1SFHDSBWEB",
 };
 
-firebase.initializeApp(config);
+const app = initializeApp(config);
 
-export default firebase;
+export const auth = getAuth(app);

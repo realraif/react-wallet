@@ -1,6 +1,6 @@
 import balancesData, { categories } from "./balancesMock";
 
-export default () => {
+const spiderChartMock = () => {
   const series = balancesData.map(({ id, name }) => ({
     id,
     name,
@@ -17,3 +17,5 @@ export default () => {
 const randomNumber = (min, max) => {
   return Math.floor(Math.random() * (max - min) + min);
 };
+
+export default spiderChartMock;

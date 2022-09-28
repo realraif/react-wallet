@@ -1,7 +1,7 @@
 import React, { useCallback } from "react";
 import { withRouter } from "react-router";
 import { NavLink } from "react-router-dom";
-import firebase from "firebase";
+import { auth } from "firebaseAuth";
 
 import useStyles from "components/Layout/styles";
 
@@ -12,7 +12,7 @@ const SignUp = ({ history }) => {
     event.preventDefault();
     const { email, password } = event.target.elements;
     try {
-      await firebase.auth()
+      await auth()
         .createUserWithEmailAndPassword(email.value, password.value);
       history.push("/");
     } catch (error) {

@@ -1,4 +1,4 @@
-export default (data, selectedId, callBackMethods, styles) => {
+const multiSplineOptions = (data, selectedId, callBackMethods, styles) => {
   const options = getGenericOptions();
   customiseOptions(options, data, selectedId, styles);
   setEvents(options, callBackMethods);
@@ -90,3 +90,5 @@ const setEvents = (options, callBackMethods) => {
     callBackMethods.serieClickedHandler(serie);
   };
 };
+
+export default multiSplineOptions;

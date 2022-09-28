@@ -1,4 +1,4 @@
-export default {
+const sankeyDiagramOptions = {
   margin: { top: 10, right: 10, bottom: 10, left: 10 },
   sort: "input",
   colors: { scheme: "pink_yellowGreen" },
@@ -18,3 +18,5 @@ export default {
   motionStiffness: 190,
   motionDamping: 20,
 };
+
+export default sankeyDiagramOptions;

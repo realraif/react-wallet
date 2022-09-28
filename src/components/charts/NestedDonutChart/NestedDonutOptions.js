@@ -3,7 +3,7 @@ import { loopIndexValue } from "utils";
 const defaultDiameter = 200;
 let isDonutClicked = false;
 
-export default (data, callBackMethods, styles) => {
+const nestedDonutOptions = (data, callBackMethods, styles) => {
   const options = getGenericOptions();
   customiseOptions(options, data, styles);
   setEvents(options, callBackMethods);
@@ -180,3 +180,5 @@ const getSeriesData = (data, colors) => {
     return slice;
   });
 };
+
+export default nestedDonutOptions;

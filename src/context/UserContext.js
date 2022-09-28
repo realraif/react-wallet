@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import firebase from "firebase.js";
+import { auth } from "firebaseAuth.js";
 
 export const UserContext = React.createContext();
 const defaultUser = { name: "", email: "" };
@@ -13,12 +13,12 @@ const UserProvider = ({ children, isDefaultUserMode }) => {
       setCurrentUser(defaultUser);
       setIsPending(false);
     } else {
-      firebase.auth().onAuthStateChanged((user) => {
+      auth().onAuthStateChanged((user) => {
         setCurrentUser(user);
         setIsPending(false);
       });
     }
-  }, []);
+  }, [isDefaultUserMode]);
 
   return (
     <UserContext.Provider

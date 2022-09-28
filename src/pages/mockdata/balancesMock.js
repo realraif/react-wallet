@@ -1,4 +1,4 @@
-export default [
+const balancesMock = [
   {
     id: "DE89-3704-0044-0532-0130-00",
     name: "BOA",
@@ -78,3 +78,5 @@ export const categories = [
   "personal",
   "bills",
 ];
+
+export default balancesMock;
