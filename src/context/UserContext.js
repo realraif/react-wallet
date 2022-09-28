@@ -18,7 +18,7 @@ const UserProvider = ({ children, isDefaultUserMode }) => {
         setIsPending(false);
       });
     }
-  }, []);
+  }, [isDefaultUserMode]);
 
   return (
     <UserContext.Provider
