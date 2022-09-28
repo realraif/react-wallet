@@ -14,7 +14,8 @@ describe("dashboard", () => {
       { id: 2, trend: [] },
     ];
     const selectedCards = [{ parentId: 1 }, { id: 2 }];
-    const props = { data, selectedCards };
+    const timeFrame = {status: "this week"};
+    const props = { data, selectedCards, timeFrame };
     const theme = getTheme();
     const wrapper = mount(
       <MuiThemeProvider theme={theme}>
