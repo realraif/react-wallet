@@ -11,7 +11,7 @@ import {
   MdBrightness4 as LightThemeIcon,
 } from "react-icons/md";
 
-import firebase from "firebase.js";
+import { auth } from "firebaseAuth";
 import Dropdown from "components/Dropdown/Dropdown";
 import { useHeaderStyles } from "../Layout/styles";
 import { UserContext } from "context/UserContext";
@@ -37,7 +37,7 @@ const Header = ({
     async (event) => {
       event.preventDefault();
       try {
-        await firebase.auth().signOut();
+        await auth().signOut();
         history.push("/");
       } catch (error) {
         alert(error);
