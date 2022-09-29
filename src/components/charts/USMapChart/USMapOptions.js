@@ -16,6 +16,7 @@ const getGenericOptions = () => ({
     spacing: [0, 0, 0, 0],
     margin: [0, 0, 0, 0],
     map: mapData,
+    animation: false,
   },
   plotOptions: {
     series: {
