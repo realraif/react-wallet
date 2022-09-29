@@ -45,7 +45,7 @@ const getGenericOptions = () => ({
     },
     outlineWidth: 0,
     xAxis: {
-      labels: false,
+      labels: { enabled: false },
     },
     handles: {
       height: 10,

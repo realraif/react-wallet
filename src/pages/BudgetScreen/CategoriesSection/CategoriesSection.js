@@ -18,7 +18,7 @@ const CategoriesSection = ({
 
   return (
     <WithBox>
-      <Grid container justify="space-between" spacing={0} alignItems="center">
+      <Grid container justifyContent="space-between" spacing={0} alignItems="center">
         <Grid item xs={12}>
           <Tabs
             value={selectedCategoryType}
