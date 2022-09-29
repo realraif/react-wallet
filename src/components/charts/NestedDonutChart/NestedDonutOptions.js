@@ -24,7 +24,7 @@ const getGenericOptions = () => ({
   legend: {
     enabled: false,
   },
-  tooltip: false,
+  tooltip: { enabled: false },
   plotOptions: {
     series: {
       slicedOffset: 10,

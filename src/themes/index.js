@@ -1,7 +1,7 @@
 import defaultTheme from "./default";
 import darkTheme from "./dark";
 
-import { createMuiTheme } from "@material-ui/core";
+import { createTheme } from "@material-ui/core";
 
 const overrides = {
   typography: {
@@ -28,8 +28,8 @@ const overrides = {
 
 const getTheme = (themeName) =>
   ({
-    default: createMuiTheme({ ...defaultTheme, ...overrides }),
-    dark: createMuiTheme({ ...darkTheme, ...overrides }),
+    default: createTheme({ ...defaultTheme, ...overrides }),
+    dark: createTheme({ ...darkTheme, ...overrides }),
   }[themeName || "default"]);
 
 export default getTheme;
