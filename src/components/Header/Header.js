@@ -27,10 +27,11 @@ const Header = ({
   initialTimeFrameIndex,
   isLoading,
 }) => {
+  const classes = useHeaderStyles();
+  
   const { currentUser, isDefaultUserMode } = useContext(UserContext);
   const { toggleSidebar, isSidebarOpen } = useContext(LayoutContext);
   const { currentTheme, setTheme } = useContext(CustomThemeContext);
-  const classes = useHeaderStyles();
   const isDark = Boolean(currentTheme === "dark");
 
   const logout = useCallback(

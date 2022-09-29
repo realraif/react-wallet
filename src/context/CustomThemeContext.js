@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { ThemeProvider } from "@material-ui/core/styles";
-import getTheme from "themes/index";
+import getTheme, { defaultTheme } from "themes/index";
 
 export const CustomThemeContext = React.createContext({
   currentTheme: "normal",
@@ -8,7 +8,7 @@ export const CustomThemeContext = React.createContext({
 });
 
 const CustomThemeProvider = ({ children }) => {
-  const currentTheme = localStorage.getItem("walletTheme") || null;
+  const currentTheme = localStorage.getItem("walletTheme") || defaultTheme;
   const [themeName, setThemeName] = useState(currentTheme);
   const theme = getTheme(themeName);
 

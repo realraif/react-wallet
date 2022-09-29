@@ -26,7 +26,7 @@ const overrides = {
   },
 };
 
-const defaultTheme = "dark";
+export const defaultTheme = "dark";
 
 const getTheme = (themeName) =>
   ({
