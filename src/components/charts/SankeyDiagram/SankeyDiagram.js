@@ -20,6 +20,9 @@ const SankeyDiagram = ({
     if (isTarget) {
       element = sankeyLinks[selectedCategoryType][selectedLink];
     } else {
+      if (!sankeyLinks[selectedLink]) {
+        return null;
+      };
       element = sankeyLinks[selectedLink][selectedCategoryType];
     }
     return element;
@@ -28,6 +31,7 @@ const SankeyDiagram = ({
   const hoverSelectedPath = () => {
     if (selectedLink) {
       const element = getSelectedElement();
+      if (!element) return;
       element.dispatchEvent(getMouseEvent("mouseover"));
       prevElement.current = element;
     } else if (prevElement.current) {
