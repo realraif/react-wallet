@@ -11,7 +11,9 @@ const getStatesCodes = (cardsData) => {
 };
 
 const updateStateColor = (chart, stateCode) => {
-  chart.get(stateCode).update({ color: "red" });
+  let point = chart.get(stateCode);
+  point.color = "red";
+  point.update();
 };
 
 const ExpensesMap = ({ mapData, selectedCards, height }) => {
