@@ -13,6 +13,17 @@ const Sidebar = (props) => {
   const { toggleSidebar, isSidebarOpen } = useContext(LayoutContext);
   const classes = useSidebarStyles();
 
+  let closeDrawerTimeout;
+
+  const closeDrawer = () => {
+    clearTimeout(closeDrawerTimeout);
+    if (props.isSmallScreen) {
+      closeDrawerTimeout = setTimeout(() => {
+        toggleSidebar();
+      }, 300);
+    }
+  };
+
   const arrowButton = (
     <IconButton
       color="inherit"
@@ -49,7 +60,7 @@ const Sidebar = (props) => {
           <span className={classes.logoTitle}>wallet.</span>
         </div>
       </div>
-      <div className={classes.menu}>
+      <div className={classes.menu} onClick={closeDrawer}>
         {routes.map((route) => (
           <NavLink
             key={route.path}

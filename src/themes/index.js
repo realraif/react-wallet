@@ -1,4 +1,4 @@
-import defaultTheme from "./default";
+import lightTheme from "./default";
 import darkTheme from "./dark";
 
 import { createTheme } from "@material-ui/core";
@@ -26,10 +26,12 @@ const overrides = {
   },
 };
 
+const defaultTheme = "dark";
+
 const getTheme = (themeName) =>
   ({
-    default: createTheme({ ...defaultTheme, ...overrides }),
+    light: createTheme({ ...lightTheme, ...overrides }),
     dark: createTheme({ ...darkTheme, ...overrides }),
-  }[themeName || "default"]);
+  }[themeName || defaultTheme]);
 
 export default getTheme;

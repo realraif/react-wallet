@@ -47,7 +47,7 @@ const Header = ({
   );
 
   const toggleThemeButton = isDark ? (
-    <IconButton color="inherit" onClick={() => setTheme("default")}>
+    <IconButton color="inherit" onClick={() => setTheme("light")}>
       <DarkThemeIcon />
     </IconButton>
   ) : (
